@@ -1,13 +1,12 @@
 import React from "react";
 import "./App.css";
-import "./components/test/TestComponent";
-import TestComponent from "./components/test/TestComponent";
+import BasicLineGraph from "./components/test/BasicLineGraph";
 
 function App() {
   return (
     <div className="App">
       <p>Hallo React-App</p>
-      <TestComponent />
+      <BasicLineGraph />
     </div>
   );
 }
