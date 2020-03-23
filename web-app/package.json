@@ -14,10 +14,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "BUILD_ID=dontKillProcess pm2 start ./serve.sh"
+    "build": "react-scripts build",
+    "deploy": "start ./serve.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
