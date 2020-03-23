@@ -9,7 +9,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'chmod +rx npm install -g serve'
                 sh 'chmod +rx ./serve.sh'
             }
         }
