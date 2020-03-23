@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'sudo npm install -g serve'
                 sh 'chmod +rx ./serve.sh'
             }
         }
