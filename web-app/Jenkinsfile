@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Prep') {
+            steps {
+                sh 'sudo pm2 kill'
+            }
+        }
+        stage('Build Frontend') { 
+            steps {
+                sh 'npm install && npm run build' 
+            }
+        }
+        stage('Deploy Frontend') {
+            steps {
+                sh 'npm run deploy'
+            }
+        }
+    }
+}
