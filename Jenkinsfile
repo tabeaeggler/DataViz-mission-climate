@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './serve.sh'
+                sh 'chmod +rx ./serve.sh'
             }
         }
     }

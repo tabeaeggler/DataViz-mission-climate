@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
-    "deploy": "start chmod +rx ./serve.sh"
+    "deploy": "start ./serve.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
