@@ -11,7 +11,7 @@ pipeline {
             steps {
                 //sh 'serve -l 5000 -s build'
                 sh 'chmod +rx ./serve.sh'
-                sh './serve.sh'
+                sh 'start ./serve.sh'
             }
         }
     }
