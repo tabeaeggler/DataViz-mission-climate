@@ -10,7 +10,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 //sh 'serve -l 5000 -s build'
-                sh 'chmod +rx start ./serve.sh'
+                sh 'chmod +rx ./serve.sh'
+                sh './serve.sh'
             }
         }
     }
