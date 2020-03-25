@@ -23,7 +23,7 @@ function BasicLineGraph() {
       .range([0, 300]) //visual representation of domain
 
     const yScale = scaleLinear()
-      .domain([0, 90]) //max elem. of data array
+      .domain([0, 90]) //max element of data array
       .range([150, 0])
 
     const xAxis = axisBottom(xScale)
