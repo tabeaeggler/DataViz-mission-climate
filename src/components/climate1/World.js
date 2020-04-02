@@ -24,8 +24,7 @@ const World = () => {
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd)
 
   // GDP per capita (avoiding countries with small pop)
-  const getVal = feat =>
-    feat.properties.GDP_MD_EST / Math.max(1e5, feat.properties.POP_EST)
+  const getVal = feat => feat.properties.TEMP
 
   const maxVal = useMemo(() => Math.max(...countries.features.map(getVal)), [
     countries
@@ -35,7 +34,7 @@ const World = () => {
   return (
     <Globe
       polygonsData={countries.features}
-      polygonAltitude={d => (d === hoverD ? 0.12 : 0.06)}
+      //polygonAltitude={d => (d === hoverD ? 0.12 : 0.06)}
       polygonCapColor={d =>
         d === hoverD ? "steelblue" : colorScale(getVal(d))
       }
@@ -43,8 +42,7 @@ const World = () => {
       polygonStrokeColor={() => "#111"}
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN} (${d.ISO_A2}):</b> <br />
-        GDP: <i>${d.GDP_MD_EST}</i> M$<br/>
-        Population: <i>${d.POP_EST}</i>
+        TEMP: <i>${d.TEMP}</i> M$<br/>
       `}
       onPolygonHover={setHoverD}
       polygonsTransitionDuration={300}
