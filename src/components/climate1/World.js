@@ -15,26 +15,24 @@ const World = () => {
 
   useEffect(() => {
     // load data
-    fetch("../../assets/data climate1/geojson_temperature_added.geojson")
+    fetch(
+      "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temperature_str.geojson"
+    )
       .then(res => res.json())
       .then(setCountries)
   }, [])
 
-  console.log(countries.features)
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd)
 
   // GDP per capita (avoiding countries with small pop)
   const getVal = feat => feat.properties.TEMP
 
-  const maxVal = useMemo(() => Math.max(...countries.features.map(getVal)), [
-    countries
-  ])
-  colorScale.domain([0, maxVal])
+  colorScale.domain([0, 3])
 
   return (
     <Globe
       polygonsData={countries.features}
-      //polygonAltitude={d => (d === hoverD ? 0.12 : 0.06)}
+      polygonAltitude={d => (d === hoverD ? 0.12 : 0.06)}
       polygonCapColor={d =>
         d === hoverD ? "steelblue" : colorScale(getVal(d))
       }
