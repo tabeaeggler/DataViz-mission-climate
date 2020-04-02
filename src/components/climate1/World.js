@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import React, { useState, useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { scaleSequentialSqrt, interpolateYlOrRd } from "d3"
+
 const World = () => {
   // const { t, i18n } = useTranslation()
   // function handleClick(lang) {
@@ -15,23 +16,18 @@ const World = () => {
   useEffect(() => {
     // load data
     fetch(
-      "https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson"
+      "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temperature_str.geojson"
     )
       .then(res => res.json())
       .then(setCountries)
   }, [])
 
-  console.log(countries.features)
   const colorScale = scaleSequentialSqrt(interpolateYlOrRd)
 
   // GDP per capita (avoiding countries with small pop)
-  const getVal = feat =>
-    feat.properties.GDP_MD_EST / Math.max(1e5, feat.properties.POP_EST)
+  const getVal = feat => feat.properties.TEMP
 
-  const maxVal = useMemo(() => Math.max(...countries.features.map(getVal)), [
-    countries
-  ])
-  colorScale.domain([0, maxVal])
+  colorScale.domain([0, 3])
 
   return (
     <Globe
@@ -44,8 +40,7 @@ const World = () => {
       polygonStrokeColor={() => "#111"}
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN} (${d.ISO_A2}):</b> <br />
-        GDP: <i>${d.GDP_MD_EST}</i> M$<br/>
-        Population: <i>${d.POP_EST}</i>
+        TEMP: <i>${d.TEMP}</i> M$<br/>
       `}
       onPolygonHover={setHoverD}
       polygonsTransitionDuration={300}
