@@ -1,6 +1,5 @@
 import Globe from "react-globe.gl"
-import ReactDOM from "react-dom"
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { scaleSequentialSqrt, interpolateYlOrRd } from "d3"
 
@@ -22,12 +21,10 @@ const World = () => {
       .then(setCountries)
   }, [])
 
-  const colorScale = scaleSequentialSqrt(interpolateYlOrRd)
+  const colorScale = scaleSequentialSqrt(interpolateYlOrRd).domain([0, 3])
 
-  // GDP per capita (avoiding countries with small pop)
+  //temperature values
   const getVal = feat => feat.properties.TEMP
-
-  colorScale.domain([0, 3])
 
   return (
     <Globe
@@ -47,7 +44,4 @@ const World = () => {
     />
   )
 }
-
-ReactDOM.render(<World />, document.getElementById("globeViz"))
-
 export default World

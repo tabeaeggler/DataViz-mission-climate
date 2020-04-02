@@ -18,7 +18,7 @@ function App() {
       <button onClick={() => handleClick("fr")}>F</button>
       <button onClick={() => handleClick("it")}>I</button>
       <p>{t("Willkommen.1")}</p>
-      <World></World>
+      <World />
     </div>
   )
 }
