@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import React, { useState, useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { scaleSequentialSqrt, interpolateYlOrRd } from "d3"
+
 const World = () => {
   // const { t, i18n } = useTranslation()
   // function handleClick(lang) {
@@ -14,9 +15,7 @@ const World = () => {
 
   useEffect(() => {
     // load data
-    fetch(
-      "https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson"
-    )
+    fetch("../../assets/data climate1/geojson_temperature_added.geojson")
       .then(res => res.json())
       .then(setCountries)
   }, [])
