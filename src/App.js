@@ -1,7 +1,6 @@
 import React from "react"
 import "./App.css"
 import { useTranslation } from "react-i18next"
-import BasicLineGraph from "./components/test/BasicLineGraph"
 import World from "./components/climate1/World"
 
 function App() {
