@@ -1,5 +1,5 @@
 import Globe from "react-globe.gl"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { scaleSequential, interpolateYlOrRd } from "d3"
 
@@ -9,6 +9,7 @@ const World = () => {
   //   i18n.changeLanguage(lang)
   // }
 
+  const globeEl = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [clickedCountry, setClickedCountry] = useState()
   const currentLocationMarker = [
@@ -27,6 +28,16 @@ const World = () => {
     )
       .then(res => res.json())
       .then(setCountries)
+
+    //initial zoom on europe
+    globeEl.current.pointOfView(
+      {
+        lat: 30,
+        lng: 10,
+        altitude: 1
+      },
+      6000
+    )
   }, [])
 
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
@@ -38,7 +49,10 @@ const World = () => {
 
   return (
     <Globe
+      //global config
+      ref={globeEl}
       showGraticules={true}
+      //country config
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
       polygonCapColor={d => colorScale(getVal(d))}
@@ -50,6 +64,7 @@ const World = () => {
       `}
       onPolygonClick={setClickedCountry}
       polygonsTransitionDuration={300}
+      //position-marker config
       labelsData={currentLocationMarker}
       labelLat={d => d.latitude}
       labelLng={d => d.longitude}
