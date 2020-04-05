@@ -15,7 +15,8 @@ const World = () => {
     {
       text: "You are here",
       latitude: 46.85048,
-      longitude: 8.20635
+      longitude: 8.20635,
+      coutry: "Switzerland"
     }
   ]
 
@@ -33,20 +34,11 @@ const World = () => {
   //temperature values
   const getVal = feat => feat.properties.TEMP
 
-  console.log(countries.features)
+  console.log()
 
   return (
     <Globe
       showGraticules={true}
-      labelsData={currentLocationMarker}
-      labelLat={d => d.latitude}
-      labelLng={d => d.longitude}
-      labelText={d => d.text}
-      labelAltitude={0.06}
-      labelSize={1}
-      labelDotRadius={0.6}
-      labelColor={() => "rgba(255, 165, 0, 0.75)"}
-      labelResolution={6}
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
       polygonCapColor={d => colorScale(getVal(d))}
@@ -58,6 +50,20 @@ const World = () => {
       `}
       onPolygonClick={setClickedCountry}
       polygonsTransitionDuration={300}
+      labelsData={currentLocationMarker}
+      labelLat={d => d.latitude}
+      labelLng={d => d.longitude}
+      labelText={d => d.text}
+      labelAltitude={d => {
+        if (clickedCountry !== undefined) {
+          return clickedCountry.properties.ADMIN === d.coutry ? 0.12 : 0.06
+        }
+        return 0.06
+      }}
+      labelSize={1}
+      labelDotRadius={0.4}
+      labelColor={() => "rgba(255, 165, 0, 0.75)"}
+      labelResolution={6}
     />
   )
 }
