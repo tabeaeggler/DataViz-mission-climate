@@ -61,8 +61,10 @@ const World = () => {
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
       polygonCapColor={d => colorScale(getVal(d))}
-      polygonSideColor={"rgba(0, 0, 0, 0.2)"}
-      polygonStrokeColor={() => "#000"}
+      polygonSideColor={d =>
+        d === clickedCountry ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)"
+      }
+      polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN}</b> <br />
         ${t("TooltipTemperatur.1")}: ${

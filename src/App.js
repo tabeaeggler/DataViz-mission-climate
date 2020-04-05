@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="App">
-      <BasicLineGraph />
       <button onClick={() => handleClick("en")}>E</button>
       <button onClick={() => handleClick("de")}>D</button>
       <button onClick={() => handleClick("fr")}>F</button>
