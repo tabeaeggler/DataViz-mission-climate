@@ -56,13 +56,19 @@ const World = () => {
 
     //create Legend
     const svg = select(svgRef.current)
-    var legend = legendColor().scale(colorScale)
+    var legend = legendColor()
+      .title(t("TooltipTemperatur.1") + "°C")
+      .scale(colorScale)
+      .cells(8)
+      .orient("horizontal")
+      .shapeWidth(30)
+      .shapePadding(0)
+      .shapeHeight(10)
     svg.call(legend)
   }, [])
 
   return (
     <React.Fragment>
-      <svg ref={svgRef}></svg>
       <Globe
         //global config
         ref={globeEl}
@@ -105,6 +111,7 @@ const World = () => {
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
       />
+      <svg ref={svgRef}></svg>
     </React.Fragment>
   )
 }
