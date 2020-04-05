@@ -1,11 +1,17 @@
 import Globe from "react-globe.gl"
 import React, { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import { scaleSequential, interpolateYlOrRd } from "d3"
+import {
+  scaleSequential,
+  interpolateYlOrRd,
+  interpolateRdBu,
+  interpolateRdYlBu,
+  interpolateOranges,
+  interpolateTurbo
+} from "d3"
 
 const World = () => {
   const { t } = useTranslation()
-
   const globeEl = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [clickedCountry, setClickedCountry] = useState()
@@ -17,6 +23,15 @@ const World = () => {
       coutry: "Switzerland"
     }
   ]
+
+  const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
+  // const colorScale = scaleSequential(interpolateYlOrRd).domain([-1, 4])
+  // const colorScale = scaleSequential(interpolateRdBu).domain([3, -3])
+  // const colorScale = scaleSequential(interpolateRdYlBu).domain([3, -3])
+  // const colorScale = scaleSequential(interpolateOranges).domain([0, 3])
+  // const colorScale = scaleSequential(interpolateTurbo).domain([-5, 3])
+
+  const getVal = feat => feat.properties.TEMP
 
   useEffect(() => {
     // load data
@@ -37,13 +52,6 @@ const World = () => {
     )
   }, [])
 
-  const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
-
-  //temperature values
-  const getVal = feat => feat.properties.TEMP
-
-  console.log()
-
   return (
     <Globe
       //global config
@@ -53,12 +61,12 @@ const World = () => {
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
       polygonCapColor={d => colorScale(getVal(d))}
-      polygonSideColor={() => "rgba(0, 0, 0, 0.2)"}
-      polygonStrokeColor={() => "#111"}
+      polygonSideColor={"rgba(0, 0, 0, 0.2)"}
+      polygonStrokeColor={() => "#000"}
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN}</b> <br />
         ${t("TooltipTemperatur.1")}: ${
-        (d.TEMP === "NO_DATA" || d.TEMP === "nan")
+        d.TEMP === "NO_DATA" || d.TEMP === "nan"
           ? t("TooltipTemperatur.2")
           : Number(d.TEMP).toFixed(1) + "°C"
       }<br/>
