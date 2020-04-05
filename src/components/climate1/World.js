@@ -11,6 +11,13 @@ const World = () => {
 
   const [countries, setCountries] = useState({ features: [] })
   const [clickedCountry, setClickedCountry] = useState()
+  const currentLocationMarker = [
+    {
+      text: "You are here",
+      latitude: 46.85048,
+      longitude: 8.20635
+    }
+  ]
 
   useEffect(() => {
     // load data
@@ -26,9 +33,20 @@ const World = () => {
   //temperature values
   const getVal = feat => feat.properties.TEMP
 
+  console.log(countries.features)
+
   return (
     <Globe
-      showGraticules="true"
+      showGraticules={true}
+      labelsData={currentLocationMarker}
+      labelLat={d => d.latitude}
+      labelLng={d => d.longitude}
+      labelText={d => d.text}
+      labelAltitude={0.06}
+      labelSize={1}
+      labelDotRadius={0.6}
+      labelColor={() => "rgba(255, 165, 0, 0.75)"}
+      labelResolution={6}
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
       polygonCapColor={d => colorScale(getVal(d))}
