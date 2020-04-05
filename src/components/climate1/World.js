@@ -58,7 +58,7 @@ const World = () => {
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN}</b> <br />
         ${t("TooltipTemperatur.1")}: ${
-        d.TEMP === "NO_DATA"
+        (d.TEMP === "NO_DATA" || d.TEMP === "nan")
           ? t("TooltipTemperatur.2")
           : Number(d.TEMP).toFixed(1) + "°C"
       }<br/>
