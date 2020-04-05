@@ -57,6 +57,8 @@ const World = () => {
       //global config
       ref={globeEl}
       showGraticules={true}
+      backgroundColor={"#4D4D50"}
+      showAtmosphere={false}
       //country config
       polygonsData={countries.features}
       polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
