@@ -1,5 +1,9 @@
 {
   "Willkommen": {
     "1": "Bienvenue"
-  }
+  },
+  "TooltipTemperatur": {
+    "1": "Changement de température"
+  },
+  "Standort": "Tu es ici"
 }

@@ -4,17 +4,14 @@ import { useTranslation } from "react-i18next"
 import { scaleSequential, interpolateYlOrRd } from "d3"
 
 const World = () => {
-  // const { t, i18n } = useTranslation()
-  // function handleClick(lang) {
-  //   i18n.changeLanguage(lang)
-  // }
+  const { t } = useTranslation()
 
   const globeEl = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [clickedCountry, setClickedCountry] = useState()
   const currentLocationMarker = [
     {
-      text: "You are here",
+      text: t("Standort"),
       latitude: 46.85048,
       longitude: 8.20635,
       coutry: "Switzerland"
@@ -59,8 +56,8 @@ const World = () => {
       polygonSideColor={() => "rgba(0, 0, 0, 0.2)"}
       polygonStrokeColor={() => "#111"}
       polygonLabel={({ properties: d }) => `
-        <b>${d.ADMIN}:</b> <br />
-        TEMP: <i>${d.TEMP}</i><br/>
+        <b>${d.ADMIN}</b> <br />
+        ${t("TooltipTemperatur.1")}: ${Number(d.TEMP).toFixed(2)}°C<br/>
       `}
       onPolygonClick={setClickedCountry}
       polygonsTransitionDuration={300}
@@ -75,9 +72,9 @@ const World = () => {
         }
         return 0.06
       }}
-      labelSize={1}
+      labelSize={0.7}
       labelDotRadius={0.4}
-      labelColor={() => "rgba(255, 165, 0, 0.75)"}
+      labelColor={() => "rgba(255, 165, 0, 1)"}
       labelResolution={6}
     />
   )
