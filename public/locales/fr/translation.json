@@ -3,7 +3,8 @@
     "1": "Bienvenue"
   },
   "TooltipTemperatur": {
-    "1": "Changement de température"
+    "1": "Changement de température",
+    "2": "aucune information"
   },
   "Standort": "Tu es ici"
 }

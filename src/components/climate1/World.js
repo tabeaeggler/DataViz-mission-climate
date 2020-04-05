@@ -57,7 +57,11 @@ const World = () => {
       polygonStrokeColor={() => "#111"}
       polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN}</b> <br />
-        ${t("TooltipTemperatur.1")}: ${Number(d.TEMP).toFixed(2)}°C<br/>
+        ${t("TooltipTemperatur.1")}: ${
+        d.TEMP === "NO_DATA"
+          ? t("TooltipTemperatur.2")
+          : Number(d.TEMP).toFixed(1) + "°C"
+      }<br/>
       `}
       onPolygonClick={setClickedCountry}
       polygonsTransitionDuration={300}
