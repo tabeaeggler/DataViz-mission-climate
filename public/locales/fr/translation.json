@@ -6,5 +6,6 @@
     "1": "Changement de température",
     "2": "aucune information"
   },
-  "Standort": "Tu es ici"
+  "Standort": "Tu es ici",
+  "CountryTranslationCol": "d.ADMIN_FR"
 }

@@ -6,5 +6,6 @@
     "1": "Temperature change",
     "2": "no values"
   },
-  "Standort": "You are here"
+  "Standort": "You are here",
+  "CountryTranslationCol": "d.ADMIN"
 }

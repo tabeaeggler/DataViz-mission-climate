@@ -6,5 +6,6 @@
     "1": "Variazione di temperatura",
     "2": "nessuna informazione"
   },
-  "Standort": "Tu sei qui"
+  "Standort": "Tu sei qui",
+  "CountryTranslationCol": "d.ADMIN_IT"
 }

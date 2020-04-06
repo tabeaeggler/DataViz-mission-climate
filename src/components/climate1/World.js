@@ -8,7 +8,7 @@ import {
   interpolateRdYlBu,
   interpolateOranges,
   interpolateTurbo,
-  select
+  select,
 } from "d3"
 import { legendColor } from "d3-svg-legend"
 
@@ -23,8 +23,8 @@ const World = () => {
       text: t("Standort"),
       latitude: 46.85048,
       longitude: 8.20635,
-      coutry: "Switzerland"
-    }
+      coutry: "Switzerland",
+    },
   ]
 
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
@@ -39,7 +39,7 @@ const World = () => {
   useEffect(() => {
     // load data
     fetch(
-      "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temperature.geojson"
+      "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temp_translations.geojson"
     )
       .then(res => res.json())
       .then(setCountries)
@@ -49,7 +49,7 @@ const World = () => {
       {
         lat: 30,
         lng: 10,
-        altitude: 1
+        altitude: 1,
       },
       6000
     )
@@ -87,6 +87,10 @@ const World = () => {
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
         <b>${d.ADMIN}</b> <br />
+        <b>${d.ADMIN_DE}</b> <br />
+        <b>${d.ADMIN_FR}</b> <br />
+        <b>${d.ADMIN_IT}</b> <br />
+        <b>${t("CountryTranslationCol")}</b> <br />
         ${t("TooltipTemperatur.1")}: ${
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
             ? t("TooltipTemperatur.2")
