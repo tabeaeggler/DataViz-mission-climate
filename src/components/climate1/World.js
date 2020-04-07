@@ -111,7 +111,7 @@ const World = () => {
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
       />
-      <svg ref={svgRef}></svg>
+      <svg className="legend-world" ref={svgRef}></svg>
     </React.Fragment>
   )
 }

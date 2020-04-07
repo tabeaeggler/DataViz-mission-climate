@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.css"
 import { useTranslation } from "react-i18next"
-import World from "./components/climate1/World"
+import Climate1 from "./components/climate1/Climate1"
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -16,7 +16,7 @@ function App() {
       <button onClick={() => handleClick("fr")}>F</button>
       <button onClick={() => handleClick("it")}>I</button>
       <p>{t("Welcome.1")}</p>
-      <World />
+      <Climate1 />
     </div>
   )
 }
