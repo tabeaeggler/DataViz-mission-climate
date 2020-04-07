@@ -86,11 +86,7 @@ const World = () => {
         }
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
-        <b>${d.ADMIN}</b> <br />
-        <b>${d.ADMIN_DE}</b> <br />
-        <b>${d.ADMIN_FR}</b> <br />
-        <b>${d.ADMIN_IT}</b> <br />
-        <b>${t("CountryTranslationCol")}</b> <br />
+        <b>${eval(t("CountryTranslationCol"))}</b> <br />
         ${t("TooltipTemperatur.1")}: ${
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
             ? t("TooltipTemperatur.2")
