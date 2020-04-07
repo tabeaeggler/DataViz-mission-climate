@@ -20,7 +20,7 @@ const World = () => {
   const [clickedCountry, setClickedCountry] = useState()
   const currentLocationMarker = [
     {
-      text: t("Standort"),
+      text: t("Location"),
       latitude: 46.85048,
       longitude: 8.20635,
       coutry: "Switzerland",
@@ -57,7 +57,7 @@ const World = () => {
     //create Legend
     const svg = select(svgRef.current)
     var legend = legendColor()
-      .title(t("TooltipTemperatur.1") + "°C")
+      .title(t("TooltipTemperature.1") + "°C")
       .scale(colorScale)
       .cells(8)
       .orient("horizontal")
@@ -86,10 +86,10 @@ const World = () => {
         }
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
-        <b>${eval(t("CountryTranslationCol"))}</b> <br />
-        ${t("TooltipTemperatur.1")}: ${
+        <b>${eval(t("TooltipTemperature.3"))}</b> <br />
+        ${t("TooltipTemperature.1")}: ${
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
-            ? t("TooltipTemperatur.2")
+            ? t("TooltipTemperature.2")
             : Number(d.TEMP).toFixed(1) + "°C"
         }<br/>
       `}

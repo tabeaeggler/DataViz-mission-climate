@@ -1,11 +1,11 @@
 {
-  "Willkommen": {
+  "Welcome": {
     "1": "Benevenuto"
   },
-  "TooltipTemperatur": {
+  "TooltipTemperature": {
     "1": "Variazione di temperatura",
-    "2": "nessuna informazione"
+    "2": "nessuna informazione",
+    "3": "d.ADMIN_IT"
   },
-  "Standort": "Tu sei qui",
-  "CountryTranslationCol": "d.ADMIN_IT"
+  "Location": "Tu sei qui"
 }
