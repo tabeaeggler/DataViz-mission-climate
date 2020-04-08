@@ -4,3 +4,9 @@
   margin: auto;
   width: 240px;
 }
+
+.temperature-graph {
+  width: 1500px;
+  z-index: 100;
+  height: 500px;
+}

@@ -81,7 +81,6 @@ const World = () => {
 
   function updateCountry(country) {
     setClickedCountry(country)
-    console.log("clickedCountry", clickedCountry)
     setFilteredDataClickedCountry(
       climateData.filter(
         o =>
