@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
-    "deploy": "pm2 start ./serve.sh"
+    "deploy": "BUILD_ID=dontKillme pm2 restart ./serve.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
