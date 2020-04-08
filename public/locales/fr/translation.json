@@ -1,6 +1,7 @@
 {
-  "Welcome": {
-    "1": "Bienvenue"
+  "": "Climate1_Screen",
+  "Climate1_Title": {
+    "1": "1. Le monde change"
   },
   "TooltipTemperature": {
     "1": "Changement de température",
