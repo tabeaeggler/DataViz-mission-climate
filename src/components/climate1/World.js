@@ -11,6 +11,7 @@ import {
   select,
 } from "d3"
 import { legendColor } from "d3-svg-legend"
+import TemperatureLineGraph from "./TemperatureLineGraph"
 
 const World = () => {
   const { t } = useTranslation()
@@ -112,6 +113,7 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
+      <TemperatureLineGraph selectedCountry={clickedCountry} />
     </React.Fragment>
   )
 }
