@@ -4,3 +4,8 @@
   margin: auto;
   width: 240px;
 }
+
+text.legendTitle,
+text.label {
+  fill: #bbb9b9;
+}
