@@ -13,6 +13,7 @@ import "./basicLineGraph.css"
 
 function BasicLineGraph() {
   const [data, setData] = useState([20, 30, 60, 25, 10, 18, 20, 20, 90, 10])
+  
   const svgRef = useRef()
 
   useEffect(() => {

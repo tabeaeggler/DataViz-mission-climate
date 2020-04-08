@@ -9,16 +9,22 @@ import {
   interpolateOranges,
   interpolateTurbo,
   select,
+  csv,
 } from "d3"
 import { legendColor } from "d3-svg-legend"
 import TemperatureLineGraph from "./TemperatureLineGraph"
+import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 
 const World = () => {
   const { t } = useTranslation()
   const globeEl = useRef()
   const svgRef = useRef()
   const [countries, setCountries] = useState({ features: [] })
+  const [climateData, setClimateData] = useState([])
   const [clickedCountry, setClickedCountry] = useState()
+  const [filteredDataClickedCountry, setFilteredDataClickedCountry] = useState(
+    []
+  )
   const currentLocationMarker = [
     {
       text: t("Location"),
@@ -38,12 +44,17 @@ const World = () => {
   const getVal = feat => feat.properties.TEMP
 
   useEffect(() => {
-    // load data
+    // load geojson-data 2019
     fetch(
       "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temp_translations.geojson"
     )
       .then(res => res.json())
       .then(setCountries)
+
+    //fetch climate data
+    csv(climateDataPath).then(data => {
+      setClimateData(data)
+    })
 
     //initial zoom on europe
     globeEl.current.pointOfView(
@@ -67,6 +78,18 @@ const World = () => {
       .shapeHeight(10)
     svg.call(legend)
   }, [])
+
+  function updateCountry(country) {
+    setClickedCountry(country)
+    console.log("clickedCountry", clickedCountry)
+    setFilteredDataClickedCountry(
+      climateData.filter(
+        o =>
+          o.country_code.toLowerCase() ===
+          country.properties.ISO_A2.toLowerCase()
+      )
+    )
+  }
 
   return (
     <React.Fragment>
@@ -94,7 +117,7 @@ const World = () => {
             : Number(d.TEMP).toFixed(1) + "°C"
         }<br/>
       `}
-        onPolygonClick={setClickedCountry}
+        onPolygonClick={d => updateCountry(d)}
         polygonsTransitionDuration={300}
         //position-marker config
         labelsData={currentLocationMarker}
@@ -113,7 +136,14 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
-      <TemperatureLineGraph selectedCountry={clickedCountry} />
+      {clickedCountry === undefined ? (
+        ""
+      ) : (
+        <TemperatureLineGraph
+          selectedCountry={clickedCountry}
+          climateData={filteredDataClickedCountry}
+        />
+      )}
     </React.Fragment>
   )
 }
