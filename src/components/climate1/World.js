@@ -37,6 +37,8 @@ const World = () => {
 
   const getVal = feat => feat.properties.TEMP
 
+  
+
   useEffect(() => {
     // load data
     fetch(

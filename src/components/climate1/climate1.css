@@ -9,3 +9,8 @@ text.legendTitle,
 text.label {
   fill: #bbb9b9;
 }
+
+.info-box {
+  height: auto;
+  width: 40em;
+}
