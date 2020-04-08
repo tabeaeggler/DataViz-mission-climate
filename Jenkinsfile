@@ -4,8 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'npm install'
-                sh 'npm run build' 
-                sh 'npm run restartPm2'
+                sh 'npm run build'
             }
         }
         stage('Deploy') {
