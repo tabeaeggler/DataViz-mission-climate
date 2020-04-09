@@ -3,12 +3,12 @@
   "Climate1_Title": {
     "1": "1. The world is changing"
   },
-  "TooltipTemperature": {
+  "Climate1_TooltipTemperature": {
     "1": "Temperature change",
     "2": "no values",
     "3": "d.ADMIN"
   },
-  "Location": "You are here",
+  "Climate1_Location": "You are here",
   "Climate1_Textbox1": {
     "1": "Die Welt wird wärmer!",
     "2": "Laut den Daten des Institutes für «Space Studies» der NASA, steigt die globale Temperatur stetig seit 1961. Im Jahr 2019 war die globale Temperatur knapp 1.5°C höher als die mittlere globale Temperatur von 1950 -81. Was denkst du welche Länder am meisten von der Klimaerwärmung betroffen sind?"
