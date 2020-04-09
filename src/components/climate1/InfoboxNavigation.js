@@ -6,6 +6,7 @@ import ButtonDown from "../../assets/img/buttonDown.svg"
 const InfoboxNavigation = props => {
   var [counter, setCounter] = useState(1)
 
+  //set navigation postition
   function handleClick(e) {
     console.log(counter)
     e.target.id === "next-button"
@@ -18,15 +19,15 @@ const InfoboxNavigation = props => {
       <div className="infobox-button-container">
         {counter > 1 ? (
           <button onClick={e => handleClick(e)}>
-            <img src={ButtonUp} id="back-button"></img>
+            <img src={ButtonUp} id="back-button" alt=""></img>
           </button>
-        ) : null}{" "}
+        ) : null}
       </div>
       <TextInfobox text={"Climate1_Textbox" + counter} />
       <div className="infobox-button-container">
         {counter < props.upperLimit ? (
           <button onClick={e => handleClick(e)}>
-            <img src={ButtonDown} id="next-button"></img>
+            <img src={ButtonDown} id="next-button" alt=""></img>
           </button>
         ) : null}
       </div>
