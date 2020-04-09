@@ -2,16 +2,18 @@ import React, { useState } from "react"
 import TextInfobox from "./TextInfobox"
 import ButtonUp from "../../assets/img/buttonUp.svg"
 import ButtonDown from "../../assets/img/buttonDown.svg"
+import { CSSTransition } from "react-transition-group"
 
 const InfoboxNavigation = props => {
   var [counter, setCounter] = useState(1)
+  const [showText, setShowText] = useState(false);
 
-  //set navigation postition
+  //set navigation postition and initiate transition
   function handleClick(e) {
-    console.log(counter)
     e.target.id === "next-button"
       ? setCounter(++counter)
       : setCounter(--counter)
+      setShowText(!showText)
   }
 
   return (
@@ -23,7 +25,9 @@ const InfoboxNavigation = props => {
           </button>
         ) : null}
       </div>
-      <TextInfobox text={"Climate1_Textbox" + counter} />
+      <CSSTransition in={showText} timeout={400} classNames="infobox">
+          <TextInfobox text={"Climate1_Textbox" + counter} />
+      </CSSTransition>
       <div className="infobox-button-container">
         {counter < props.upperLimit ? (
           <button onClick={e => handleClick(e)}>

@@ -1,38 +1,24 @@
-.legend-world {
-  padding-top: 50px;
-  display: block;
-  margin: auto;
-  width: 240px;
-}
-
+/*temperature linegraph style*/
 .temperature-graph {
   width: 1500px;
   z-index: 100;
   height: 500px;
 }
 
+/*world component style*/
+.legend-world {
+  padding-top: 50px;
+  display: block;
+  margin: auto;
+  width: 240px;
+}
 .text.legendTitle,
 .text.label {
   fill: #bbb9b9;
 }
 
-.info-box,
-.infobox-container {
-  height: auto;
-  width: 40em;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-}
-
-.infobox-button-container {
-  display: flex;
-  justify-content: center;
-}
-
-.location-button, .language-button {
+.location-button,
+.language-button {
   font-size: medium;
   color: #bbb9b9;
 }

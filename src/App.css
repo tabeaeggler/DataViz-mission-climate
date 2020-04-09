@@ -8,3 +8,30 @@ h1 {
   text-align: center;
   padding-bottom: 50px;
 }
+
+/* infobox style*/
+.infobox-enter,
+.infobox-exit {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.infobox-enter-active,
+.infobox-exit-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 400ms, transform 400ms;
+}
+.info-box,
+.infobox-container {
+  height: auto;
+  width: 40em;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+.infobox-button-container {
+  display: flex;
+  justify-content: center;
+}

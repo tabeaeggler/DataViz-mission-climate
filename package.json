@@ -17,7 +17,8 @@
     "react-dom": "^16.13.0",
     "react-globe.gl": "^2.7.6",
     "react-i18next": "^11.3.4",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-transition-group": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
