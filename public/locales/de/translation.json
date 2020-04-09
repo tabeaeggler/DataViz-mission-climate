@@ -6,7 +6,8 @@
   "Climate1_TooltipTemperature": {
     "1": "Temperaturveränderung",
     "2": "keine Angaben",
-    "3": "d.ADMIN_DE"
+    "3": "d.ADMIN_DE",
+    "4": "data.selectedCountry.properties.ADMIN_DE"
   },
   "Climate1_Location": "Du befindest dich hier",
   "Climate1_Textbox1": {
