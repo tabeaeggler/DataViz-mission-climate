@@ -21,10 +21,11 @@ const World = () => {
   const svgRef = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [climateData, setClimateData] = useState([])
-  const [clickedCountry, setClickedCountry] = useState()
-  const [filteredDataClickedCountry, setFilteredDataClickedCountry] = useState(
-    []
-  )
+  const [clickedCountry, setClickedCountry] = useState({
+    country: undefined,
+    filteredCountry: [],
+  })
+
   const currentLocationMarker = [
     {
       text: t("Location"),
@@ -80,14 +81,14 @@ const World = () => {
   }, [])
 
   function updateCountry(country) {
-    setClickedCountry(country)
-    setFilteredDataClickedCountry(
-      climateData.filter(
+    setClickedCountry({
+      country: country,
+      filteredCountry: climateData.filter(
         o =>
           o.country_code.toLowerCase() ===
           country.properties.ISO_A2.toLowerCase()
-      )
-    )
+      ),
+    })
   }
 
   return (
@@ -100,10 +101,10 @@ const World = () => {
         showAtmosphere={false}
         //country config
         polygonsData={countries.features}
-        polygonAltitude={d => (d === clickedCountry ? 0.12 : 0.06)}
+        polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
         polygonCapColor={d => colorScale(getVal(d))}
         polygonSideColor={d =>
-          d === clickedCountry
+          d === clickedCountry.country
             ? "rgba(255, 255, 255, 0.2)"
             : "rgba(0, 0, 0, 0.2)"
         }
@@ -124,8 +125,10 @@ const World = () => {
         labelLng={d => d.longitude}
         labelText={d => d.text}
         labelAltitude={d => {
-          if (clickedCountry !== undefined) {
-            return clickedCountry.properties.ADMIN === d.coutry ? 0.12 : 0.06
+          if (clickedCountry.country !== undefined) {
+            return clickedCountry.country.properties.ADMIN === d.coutry
+              ? 0.12
+              : 0.06
           }
           return 0.06
         }}
@@ -135,12 +138,12 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
-      {clickedCountry === undefined ? (
+      {clickedCountry.country === undefined ? (
         ""
       ) : (
         <TemperatureLineGraph
-          selectedCountry={clickedCountry}
-          climateData={filteredDataClickedCountry}
+          selectedCountry={clickedCountry.country}
+          climateData={clickedCountry.filteredCountry}
         />
       )}
     </React.Fragment>
