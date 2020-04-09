@@ -10,7 +10,7 @@ function Climate1() {
     <div>
       <h1> {t("Climate1_Title.1")}</h1>
       <World />
-      <InfoboxNavigation upperLimit={2} textIdentifier={"Climate1_Textbox."}/>
+      <InfoboxNavigation upperLimit={3} textIdentifier={"Climate1_Textbox."}/>
     </div>
   )
 }

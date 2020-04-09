@@ -44,8 +44,6 @@ const World = () => {
 
   const getVal = feat => feat.properties.TEMP
 
-  
-
   useEffect(() => {
     // load geojson-data 2019
     fetch(
@@ -140,9 +138,7 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
-      {clickedCountry.country === undefined ? (
-        ""
-      ) : (
+      {clickedCountry.country === undefined ? null : (
         <TemperatureLineGraph
           selectedCountry={clickedCountry.country}
           climateData={clickedCountry.filteredCountry}

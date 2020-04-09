@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import TextInfobox from "./TextInfobox"
+import ButtonUp from "../../assets/img/buttonUp.svg"
+import ButtonDown from "../../assets/img/buttonDown.svg"
 
 const InfoboxNavigation = props => {
   var [counter, setCounter] = useState(1)
@@ -12,18 +14,22 @@ const InfoboxNavigation = props => {
   }
 
   return (
-    <div>
-      {counter < props.upperLimit ? (
-        <button onClick={e => handleClick(e)} id="next-button">
-          Weiter
-        </button>
-      ) : null}
+    <div className="infobox-container">
+      <div className="infobox-button-container">
+        {counter > 1 ? (
+          <button onClick={e => handleClick(e)}>
+            <img src={ButtonUp} id="back-button"></img>
+          </button>
+        ) : null}{" "}
+      </div>
       <TextInfobox text={"Climate1_Textbox" + counter} />
-      {counter > 1 ? (
-        <button onClick={handleClick} id="back-button">
-          Zurück
-        </button>
-      ) : null}
+      <div className="infobox-button-container">
+        {counter < props.upperLimit ? (
+          <button onClick={e => handleClick(e)}>
+            <img src={ButtonDown} id="next-button"></img>
+          </button>
+        ) : null}
+      </div>
     </div>
   )
 }
