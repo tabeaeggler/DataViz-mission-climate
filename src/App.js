@@ -11,10 +11,18 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => handleClick("en")}>E</button>
-      <button onClick={() => handleClick("de")}>D</button>
-      <button onClick={() => handleClick("fr")}>F</button>
-      <button onClick={() => handleClick("it")}>I</button>
+      <button className="language-button" onClick={() => handleClick("en")}>
+        E
+      </button>
+      <button className="language-button" onClick={() => handleClick("de")}>
+        D
+      </button>
+      <button className="language-button" onClick={() => handleClick("fr")}>
+        F
+      </button>
+      <button className="language-button" onClick={() => handleClick("it")}>
+        I
+      </button>
       <Climate1 />
     </div>
   )

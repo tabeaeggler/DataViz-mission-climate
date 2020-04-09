@@ -16,7 +16,8 @@
   fill: #bbb9b9;
 }
 
-.info-box, .infobox-container {
+.info-box,
+.infobox-container {
   height: auto;
   width: 40em;
 }
@@ -29,4 +30,9 @@ button {
 .infobox-button-container {
   display: flex;
   justify-content: center;
+}
+
+.location-button, .language-button {
+  font-size: medium;
+  color: #bbb9b9;
 }

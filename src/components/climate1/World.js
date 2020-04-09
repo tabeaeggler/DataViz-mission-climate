@@ -1,23 +1,14 @@
 import Globe from "react-globe.gl"
 import React, { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import {
-  scaleSequential,
-  interpolateYlOrRd,
-  interpolateRdBu,
-  interpolateRdYlBu,
-  interpolateOranges,
-  interpolateTurbo,
-  select,
-  csv,
-} from "d3"
+import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
 import { legendColor } from "d3-svg-legend"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 
 const World = () => {
   const { t } = useTranslation()
-  const globeEl = useRef()
+  const globeElement = useRef()
   const svgRef = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [climateData, setClimateData] = useState([])
@@ -25,7 +16,6 @@ const World = () => {
     country: undefined,
     filteredCountry: [],
   })
-
   const currentLocationMarker = [
     {
       text: t("Location"),
@@ -34,14 +24,7 @@ const World = () => {
       coutry: "Switzerland",
     },
   ]
-
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
-  // const colorScale = scaleSequential(interpolateYlOrRd).domain([-1, 4])
-  // const colorScale = scaleSequential(interpolateRdBu).domain([3, -3])
-  // const colorScale = scaleSequential(interpolateRdYlBu).domain([3, -3])
-  // const colorScale = scaleSequential(interpolateOranges).domain([0, 3])
-  // const colorScale = scaleSequential(interpolateTurbo).domain([-5, 3])
-
   const getVal = feat => feat.properties.TEMP
 
   useEffect(() => {
@@ -58,14 +41,7 @@ const World = () => {
     })
 
     //initial zoom on europe
-    globeEl.current.pointOfView(
-      {
-        lat: 30,
-        lng: 10,
-        altitude: 1,
-      },
-      6000
-    )
+    handleZoom()
 
     //create Legend
     const svg = select(svgRef.current)
@@ -80,6 +56,19 @@ const World = () => {
     svg.call(legend)
   }, [])
 
+  //zoom to Switzerland
+  function handleZoom() {
+    globeElement.current.pointOfView(
+      {
+        lat: 30,
+        lng: 10,
+        altitude: 1,
+      },
+      5000
+    )
+  }
+
+  //update selected country and filter data
   function updateCountry(country) {
     setClickedCountry({
       country: country,
@@ -93,9 +82,13 @@ const World = () => {
 
   return (
     <React.Fragment>
+      <button className="location-button" onClick={handleZoom}>
+        {t("Climate1_BackToLocation")}
+      </button>
+
       <Globe
         //global config
-        ref={globeEl}
+        ref={globeElement}
         showGraticules={true}
         backgroundColor={"#141416"}
         showAtmosphere={false}
