@@ -10,15 +10,19 @@ import {
   extent,
   csv,
 } from "d3"
+import globalDataPath from "../../assets/data_climate1/climate_change_global_median_cleaned.csv"
 
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const [data, setData] = useState(props)
+  const [globalData, setGlobalData] = useState([])
   const svgRef = useRef()
 
   //Fetch global climate data
   useEffect(() => {
-    
+    csv(globalDataPath).then(function (d) {
+      setGlobalData(d)
+    })
   }, []) //Render only once
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const TemperatureLineGraph = props => {
       .range([0, width]) //visual representation of domain
 
     const xScaleGlobal = scaleLinear()
-      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
+      .domain(extent(globalData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
 
     const yScale = scaleLinear().domain([-1.5, 3]).range([400, 0])
@@ -60,6 +64,8 @@ const TemperatureLineGraph = props => {
       .y(climateData => yScale(climateData.median))
       .curve(curveCardinal)
 
+    console.log("hello")
+
     //Create line
     svg
       .selectAll(".line")
@@ -73,7 +79,7 @@ const TemperatureLineGraph = props => {
     //Create Global line
     svg
       .selectAll(".global-line")
-      .data([props.globalData])
+      .data([globalData])
       .join("path")
       .attr("class", "global-line")
       .attr("d", climateData => globalLine(climateData))
