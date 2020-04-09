@@ -44,6 +44,8 @@ const World = () => {
 
   const getVal = feat => feat.properties.TEMP
 
+  
+
   useEffect(() => {
     // load geojson-data 2019
     fetch(
@@ -97,7 +99,7 @@ const World = () => {
         //global config
         ref={globeEl}
         showGraticules={true}
-        backgroundColor={"#4D4D50"}
+        backgroundColor={"#141416"}
         showAtmosphere={false}
         //country config
         polygonsData={countries.features}
