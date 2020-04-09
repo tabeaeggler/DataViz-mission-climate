@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import {
   select,
   line,
@@ -12,6 +13,7 @@ import {
 import globalDataPath from "../../assets/data_climate1/climate_change_global_median_cleaned.csv"
 
 const TemperatureLineGraph = props => {
+  const { t } = useTranslation()
   const [data, setData] = useState(props)
   const [globalData, setGlobalData] = useState([])
   const svgRef = useRef()
@@ -27,15 +29,16 @@ const TemperatureLineGraph = props => {
     setData(props)
 
     const svg = select(svgRef.current) //wrapper, so that the svg is available for d3.
+    const width = 1000
 
     //Set the ranges
     const xScale = scaleLinear()
       .domain(extent(data.climateData, d => d.year)) //1961 - 2019: 58 Jahre
-      .range([0, 1500]) //visual representation of domain
+      .range([0, width]) //visual representation of domain
 
     const xScaleGlobal = scaleLinear()
       .domain(extent(globalData, d => d.year)) //1961 - 2019: 58 Jahre
-      .range([0, 1500]) //visual representation of domain
+      .range([0, width]) //visual representation of domain
 
     const yScale = scaleLinear().domain([-1.5, 3]).range([400, 0])
 
@@ -61,9 +64,9 @@ const TemperatureLineGraph = props => {
       .y(climateData => yScale(climateData.median))
       .curve(curveCardinal)
 
-    console.log(globalData)
+    console.log(data.climateData[58].value)
 
-    //Create lines
+    //Create line
     svg
       .selectAll(".line")
       .data([data.climateData])
@@ -72,6 +75,25 @@ const TemperatureLineGraph = props => {
       .attr("d", climateData => selectedCountryLine(climateData))
       .attr("fill", "none")
       .attr("stroke", "blue")
+
+    //Create Legend
+    svg
+      .append("text")
+      .attr(
+        "transform",
+        "translate(" +
+          (width + 25) +
+          "," +
+          yScale(data.climateData[58].value) +
+          ")"
+      )
+      .attr("dy", ".35em")
+      .attr("text-anchor", "start")
+      .style("fill", "blue")
+      .text(eval(t("TooltipTemperature.4")))
+
+    /*  
+    //Create Global line
     svg
       .append("path")
       .data([globalData])
@@ -79,10 +101,12 @@ const TemperatureLineGraph = props => {
       .attr("d", climateData => globalLine(climateData))
       .attr("fill", "none")
       .attr("stroke", "green")
+      */
   }, [props])
 
   return (
     <React.Fragment>
+      <h1>{eval(t("TooltipTemperature.4"))}</h1>
       <svg className="temperature-graph" ref={svgRef}>
         <g className="x-axis" />
         <g className="y-axis" />

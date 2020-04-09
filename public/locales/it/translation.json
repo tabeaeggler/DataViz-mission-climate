@@ -6,7 +6,8 @@
   "TooltipTemperature": {
     "1": "Variazione di temperatura",
     "2": "nessuna informazione",
-    "3": "d.ADMIN_IT"
+    "3": "d.ADMIN_IT",
+    "4": "data.selectedCountry.properties.ADMIN_IT"
   },
   "Location": "Tu sei qui"
 }
