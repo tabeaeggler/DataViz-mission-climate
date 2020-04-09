@@ -5,6 +5,8 @@ import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
 import { legendColor } from "d3-svg-legend"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
+import globalDataPath from "../../assets/data_climate1/climate_change_global_median_cleaned.csv"
+
 
 const World = () => {
   const { t } = useTranslation()
@@ -12,6 +14,7 @@ const World = () => {
   const svgRef = useRef()
   const [countries, setCountries] = useState({ features: [] })
   const [climateData, setClimateData] = useState([])
+  const [globalData, setGlobalData] = useState([])
   const [clickedCountry, setClickedCountry] = useState({
     country: undefined,
     filteredCountry: [],
@@ -38,6 +41,11 @@ const World = () => {
     //fetch climate data
     csv(climateDataPath).then(data => {
       setClimateData(data)
+    })
+
+    //fetch global climat data
+    csv(globalDataPath).then(function (d) {
+      setGlobalData(d)
     })
 
     //initial zoom on europe
@@ -135,6 +143,7 @@ const World = () => {
         <TemperatureLineGraph
           selectedCountry={clickedCountry.country}
           climateData={clickedCountry.filteredCountry}
+          globalData={globalData}
         />
       )}
     </React.Fragment>
