@@ -14,10 +14,7 @@ import globalDataPath from "../../assets/data_climate1/climate_change_global_med
 
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
-  const [globalData, setGlobalData] = useState([])
   const svgRef = useRef()
-
-  function fetchGlobalData() {}
 
   function createLineGraph() {
     const svg = select(svgRef.current) //wrapper, so that the svg is available for d3.
@@ -29,7 +26,7 @@ const TemperatureLineGraph = props => {
       .range([0, width]) //visual representation of domain
 
     const xScaleGlobal = scaleLinear()
-      .domain(extent(globalData, d => d.year)) //1961 - 2019: 58 Jahre
+      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
 
     const yScale = scaleLinear().domain([-1.5, 3]).range([400, 0])
@@ -69,7 +66,7 @@ const TemperatureLineGraph = props => {
     //Create Global line
     svg
       .selectAll(".global-line")
-      .data([globalData])
+      .data([props.globalData])
       .join("path")
       .attr("class", "global-line")
       .attr("d", climateData => globalLine(climateData))
@@ -88,7 +85,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width + 10) +
           "," +
-          yScale(props.climateData[58].value) +
+          yScale(props.climateData[props.climateData.length - 1].value) +
           ")"
       )
       .attr("dy", ".35em")
@@ -99,24 +96,21 @@ const TemperatureLineGraph = props => {
     //Create Line-naming for global line
     svg
       .append("text")
-      /*
-    .attr(
+
+      .attr(
         "transform",
-        "translate(" + (width + 10) + "," + yScale(globalData[58].median) + ")"
+        "translate(" +
+          (width + 10) +
+          "," +
+          yScale(props.globalData[props.globalData.length - 1].median) +
+          ")"
       )
-    */
+
       .attr("dy", ".35em")
       .attr("text-anchor", "hallo")
       .style("fill", "green")
       .text(t("Climate1_TooltipTemperature.5"))
   }
-
-  //Fetch global climate data
-  useEffect(() => {
-    csv(globalDataPath).then(function (d) {
-      setGlobalData(d)
-    })
-  }, []) //Render only once
 
   useEffect(() => {
     createLineGraph()
