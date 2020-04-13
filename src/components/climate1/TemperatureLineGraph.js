@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react"
 import { useTranslation } from "react-i18next"
 import {
   select,
@@ -17,14 +17,9 @@ const TemperatureLineGraph = props => {
   const [globalData, setGlobalData] = useState([])
   const svgRef = useRef()
 
-  //Fetch global climate data
-  useEffect(() => {
-    csv(globalDataPath).then(function (d) {
-      setGlobalData(d)
-    })
-  }, []) //Render only once
+  function fetchGlobalData() {}
 
-  useEffect(() => {
+  function createLineGraph() {
     const svg = select(svgRef.current) //wrapper, so that the svg is available for d3.
     const width = 1000
 
@@ -81,13 +76,17 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "green")
 
+    //Remove old country line tag
+    svg.select(".countryName").remove()
+
     //Create Line-naming for country line
     svg
       .append("text")
+      .attr("class", "countryName")
       .attr(
         "transform",
         "translate(" +
-          (width + 25) +
+          (width + 10) +
           "," +
           yScale(props.climateData[58].value) +
           ")"
@@ -100,15 +99,28 @@ const TemperatureLineGraph = props => {
     //Create Line-naming for global line
     svg
       .append("text")
-      .attr(
+      /*
+    .attr(
         "transform",
-        "translate(" + (width + 25) + "," + yScale(globalData[58].value) + ")"
+        "translate(" + (width + 10) + "," + yScale(globalData[58].median) + ")"
       )
+    */
       .attr("dy", ".35em")
       .attr("text-anchor", "hallo")
       .style("fill", "green")
       .text(t("Climate1_TooltipTemperature.5"))
-  }, [props])
+  }
+
+  //Fetch global climate data
+  useEffect(() => {
+    csv(globalDataPath).then(function (d) {
+      setGlobalData(d)
+    })
+  }, []) //Render only once
+
+  useEffect(() => {
+    createLineGraph()
+  }, [props]) //Render as soon props has changed
 
   return (
     <React.Fragment>
