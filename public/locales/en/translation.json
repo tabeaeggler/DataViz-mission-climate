@@ -7,7 +7,8 @@
     "1": "Temperature change",
     "2": "no values",
     "3": "d.ADMIN",
-    "4": "data.selectedCountry.properties.ADMIN"
+    "4": "props.selectedCountry.properties.ADMIN",
+    "5": "Global average"
   },
   "Climate1_Location": "You are here",
   "Climate1_Textbox1": {

@@ -7,7 +7,8 @@
     "1": "Variazione di temperatura",
     "2": "nessuna informazione",
     "3": "d.ADMIN_IT",
-    "4": "data.selectedCountry.properties.ADMIN_IT"
+    "4": "props.selectedCountry.properties.ADMIN_IT",
+    "5": "Media globale"
   },
   "Climate1_Location": "Tu sei qui",
   "Climate1_Textbox1": {

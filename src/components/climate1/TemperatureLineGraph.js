@@ -14,7 +14,6 @@ import globalDataPath from "../../assets/data_climate1/climate_change_global_med
 
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
-  const [data, setData] = useState(props)
   const [globalData, setGlobalData] = useState([])
   const svgRef = useRef()
 
@@ -26,14 +25,12 @@ const TemperatureLineGraph = props => {
   }, []) //Render only once
 
   useEffect(() => {
-    setData(props)
-
     const svg = select(svgRef.current) //wrapper, so that the svg is available for d3.
     const width = 1000
 
     //Set the ranges
     const xScale = scaleLinear()
-      .domain(extent(data.climateData, d => d.year)) //1961 - 2019: 58 Jahre
+      .domain(extent(props.climateData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
 
     const xScaleGlobal = scaleLinear()
@@ -64,12 +61,10 @@ const TemperatureLineGraph = props => {
       .y(climateData => yScale(climateData.median))
       .curve(curveCardinal)
 
-    console.log("hello")
-
-    //Create line
+    //Create Country line
     svg
       .selectAll(".line")
-      .data([data.climateData])
+      .data([props.climateData])
       .join("path")
       .attr("class", "line")
       .attr("d", climateData => selectedCountryLine(climateData))
@@ -86,7 +81,7 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "green")
 
-    //Create Legend
+    //Create Line-naming for country line
     svg
       .append("text")
       .attr(
@@ -94,13 +89,25 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width + 25) +
           "," +
-          yScale(data.climateData[58].value) +
+          yScale(props.climateData[58].value) +
           ")"
       )
       .attr("dy", ".35em")
       .attr("text-anchor", "start")
       .style("fill", "blue")
       .text(eval(t("Climate1_TooltipTemperature.4")))
+
+    //Create Line-naming for global line
+    svg
+      .append("text")
+      .attr(
+        "transform",
+        "translate(" + (width + 25) + "," + yScale(globalData[58].value) + ")"
+      )
+      .attr("dy", ".35em")
+      .attr("text-anchor", "hallo")
+      .style("fill", "green")
+      .text(t("Climate1_TooltipTemperature.5"))
   }, [props])
 
   return (

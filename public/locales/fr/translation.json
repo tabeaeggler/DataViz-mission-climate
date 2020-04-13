@@ -7,7 +7,8 @@
     "1": "Changement de température",
     "2": "aucune information",
     "3": "d.ADMIN_FR",
-    "4": "data.selectedCountry.properties.ADMIN_FR"
+    "4": "props.selectedCountry.properties.ADMIN_FR",
+    "5": "Moyenne mondiale"
   },
   "Climate1_Location": "Tu es ici",
   "Climate1_Textbox1": {
