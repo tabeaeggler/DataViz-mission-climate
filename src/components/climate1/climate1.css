@@ -1,8 +1,12 @@
 /*temperature linegraph style*/
+.temperature-graph-container{
+  display: flex; justify-content: center;
+}
 .temperature-graph {
-  width: 1500px;
+  width: 70em;
   z-index: 100;
   height: 500px;
+  margin: auto;
 }
 
 /*world component style*/

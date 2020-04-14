@@ -120,9 +120,11 @@ const TemperatureLineGraph = props => {
   return (
     <React.Fragment>
       <h1>{eval(t("Climate1_TooltipTemperature.4"))}</h1>
-      <svg className="temperature-graph">
-        <g ref={svgRef}></g>
-      </svg>
+      <div className="temperature-graph-container">
+        <svg className="temperature-graph">
+          <g ref={svgRef}></g>
+        </svg>
+      </div>
     </React.Fragment>
   )
 }
