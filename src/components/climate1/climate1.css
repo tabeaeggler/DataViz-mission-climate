@@ -3,9 +3,8 @@
   display: flex; justify-content: center;
 }
 .temperature-graph {
-  width: 70em;
-  z-index: 100;
-  height: 500px;
+  width: 80em;
+  height: 35em;
   margin: auto;
 }
 
@@ -16,6 +15,7 @@
   margin: auto;
   width: 240px;
 }
+
 .text.legendTitle,
 .text.label {
   fill: #bbb9b9;
@@ -25,4 +25,8 @@
 .language-button {
   font-size: medium;
   color: #bbb9b9;
+}
+
+.container {
+  position: relative;
 }

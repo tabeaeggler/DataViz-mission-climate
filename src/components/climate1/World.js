@@ -6,6 +6,7 @@ import { legendColor } from "d3-svg-legend"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global.csv"
+import InfoboxNavigation from "./InfoboxNavigation"
 
 const World = () => {
   const { t } = useTranslation()
@@ -138,13 +139,17 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
+      <div className="container">
       {clickedCountry.country === undefined ? null : (
         <TemperatureLineGraph
           selectedCountry={clickedCountry.country}
           climateData={clickedCountry.filteredCountry}
           globalData={globalData}
         />
-      )}
+        )}
+        <InfoboxNavigation upperLimit={3} textIdentifier={"Climate1_Textbox."} />
+        </div>
+
     </React.Fragment>
   )
 }

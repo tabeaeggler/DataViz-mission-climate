@@ -15,7 +15,7 @@ const TemperatureLineGraph = props => {
   const svgRef = useRef()
 
   function createLineGraph() {
-    const width = 1000
+    const width = 1300
     const height = 350
     const margin = 40
     const svg = select(svgRef.current).attr(
