@@ -6,7 +6,7 @@ import {
   curveCardinal,
   axisBottom,
   scaleLinear,
-  axisRight,
+  axisLeft,
   extent,
 } from "d3"
 
@@ -15,8 +15,13 @@ const TemperatureLineGraph = props => {
   const svgRef = useRef()
 
   function createLineGraph() {
-    const svg = select(svgRef.current) //wrapper, so that the svg is available for d3.
     const width = 1000
+    const height = 350
+    const margin = 40
+    const svg = select(svgRef.current).attr(
+      "transform",
+      `translate(${margin},${margin})`
+    ) //wrapper, so that the svg is available for d3.
 
     //Set the ranges
     const xScale = scaleLinear()
@@ -24,21 +29,19 @@ const TemperatureLineGraph = props => {
       .range([0, width]) //visual representation of domain
       .nice()
 
-
     const xScaleGlobal = scaleLinear()
       .domain(extent(props.globalData, d => d.Year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
+      .nice()
 
-    const yScale = scaleLinear().domain([-1.5, 3]).range([400, 0])
+    const yScale = scaleLinear().domain([-1.5, 3]).range([height, 0])
 
-    //Axis
-    const xAxis = axisBottom(xScale)
-      .tickFormat(index => index)
+    //create and axis
+    const xAxis = axisBottom(xScale).tickFormat(index => index)
+    const yAxis = axisLeft(yScale)
 
-    const yAxis = axisRight(yScale)
-
-    svg.select(".x-axis").style("transform", "translateY(400px)").call(xAxis)
-    svg.select(".y-axis").call(yAxis)
+    svg.append("g").attr("transform", `translate(0,${height})`).call(xAxis)
+    svg.append("g").call(yAxis)
 
     //define country line
     const selectedCountryLine = line()
@@ -52,7 +55,7 @@ const TemperatureLineGraph = props => {
       .y(climateData => yScale(climateData.Value))
       .curve(curveCardinal)
 
-    //Create Country line
+    //create country line
     svg
       .selectAll(".line")
       .data([props.climateData])
@@ -62,7 +65,7 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "blue")
 
-    //Create Global line
+    //create global line
     svg
       .selectAll(".global-line")
       .data([props.globalData])
@@ -72,17 +75,17 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "green")
 
-    //Remove old country line tag
+    //remove old country line tag
     svg.select(".countryName").remove()
 
-    //Create Line-naming for country line
+    //create line-naming for country line
     svg
       .append("text")
       .attr("class", "countryName")
       .attr(
         "transform",
         "translate(" +
-          (width + 10) +
+          (width + 5) +
           "," +
           yScale(props.climateData[props.climateData.length - 1].value) +
           ")"
@@ -92,19 +95,18 @@ const TemperatureLineGraph = props => {
       .style("fill", "blue")
       .text(eval(t("Climate1_TooltipTemperature.4")))
 
-    //Create Line-naming for global line
+    //create line-naming for global line
     svg
       .append("text")
 
       .attr(
         "transform",
         "translate(" +
-          (width + 10) +
+          (width + 5) +
           "," +
           yScale(props.globalData[props.globalData.length - 1].Value) +
           ")"
       )
-
       .attr("dy", ".35em")
       .attr("text-anchor", "hallo")
       .style("fill", "green")
@@ -118,9 +120,8 @@ const TemperatureLineGraph = props => {
   return (
     <React.Fragment>
       <h1>{eval(t("Climate1_TooltipTemperature.4"))}</h1>
-      <svg className="temperature-graph" ref={svgRef}>
-        <g className="x-axis" />
-        <g className="y-axis" />
+      <svg className="temperature-graph">
+        <g ref={svgRef}></g>
       </svg>
     </React.Fragment>
   )
