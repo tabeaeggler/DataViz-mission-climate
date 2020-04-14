@@ -1,4 +1,4 @@
 {
-      "python.pythonPath": "C:\\Users\\Tabea\\Anaconda3\\python.exe",
+      "python.pythonPath": "/usr/local/bin/python3",
       "files.autoSave": "afterDelay"
 }

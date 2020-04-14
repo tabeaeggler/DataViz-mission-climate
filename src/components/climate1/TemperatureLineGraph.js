@@ -24,7 +24,7 @@ const TemperatureLineGraph = props => {
       .range([0, width]) //visual representation of domain
 
     const xScaleGlobal = scaleLinear()
-      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
+      .domain(extent(props.globalData, d => d.Year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
 
     const yScale = scaleLinear().domain([-1.5, 3]).range([400, 0])
@@ -47,8 +47,8 @@ const TemperatureLineGraph = props => {
 
     //define global line
     const globalLine = line()
-      .x(climateData => xScaleGlobal(climateData.year))
-      .y(climateData => yScale(climateData.median))
+      .x(climateData => xScaleGlobal(climateData.Year))
+      .y(climateData => yScale(climateData.Value))
       .curve(curveCardinal)
 
     //Create Country line
@@ -100,7 +100,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width + 10) +
           "," +
-          yScale(props.globalData[props.globalData.length - 1].median) +
+          yScale(props.globalData[props.globalData.length - 1].Value) +
           ")"
       )
 
