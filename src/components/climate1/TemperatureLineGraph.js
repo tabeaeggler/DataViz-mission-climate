@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import {
   select,
@@ -8,9 +8,7 @@ import {
   scaleLinear,
   axisRight,
   extent,
-  csv,
 } from "d3"
-import globalDataPath from "../../assets/data_climate1/climate_change_global_median_cleaned.csv"
 
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
