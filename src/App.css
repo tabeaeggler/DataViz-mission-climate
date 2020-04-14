@@ -21,24 +21,34 @@ h1 {
   transform: translateX(0);
   transition: opacity 400ms, transform 400ms;
 }
-.info-box,
+
 .infobox-container {
   height: auto;
-  width: 40em;
+  text-align: justify;
+}
+
+.info-box {
+  width: 45em;
 }
 
 .infobox-container {
   position: absolute;
   z-index: 10;
-  top: 5em;
-  right: 45em;
+  bottom: 24em;
+  right: 38em;
+  display: flex;
+  justify-content: center;
+}
+
+#back-button {
+  margin-right: 1em;
+}
+
+#next-button {
+  margin-left: 1em;
 }
 
 button {
   background-color: transparent;
   border: none;
-}
-.infobox-button-container {
-  display: flex;
-  justify-content: center;
 }

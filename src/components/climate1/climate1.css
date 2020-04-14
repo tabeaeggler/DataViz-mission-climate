@@ -3,7 +3,7 @@
   display: flex; justify-content: center;
 }
 .temperature-graph {
-  width: 80em;
+  width: 90em;
   height: 35em;
   margin: auto;
 }
@@ -27,6 +27,6 @@
   color: #bbb9b9;
 }
 
-.container {
+.linegraph-text-container{
   position: relative;
 }

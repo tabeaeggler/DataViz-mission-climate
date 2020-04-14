@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import TextInfobox from "./TextInfobox"
-import ButtonUp from "../../assets/img/buttonUp.svg"
-import ButtonDown from "../../assets/img/buttonDown.svg"
+import ButtonLeft from "../../assets/img/buttonLeft.svg"
+import ButtonRight from "../../assets/img/buttonRight.svg"
 import { CSSTransition } from "react-transition-group"
 
 const InfoboxNavigation = props => {
@@ -18,23 +18,19 @@ const InfoboxNavigation = props => {
 
   return (
     <div className="infobox-container">
-      <div className="infobox-button-container">
         {counter > 1 ? (
           <button onClick={e => handleClick(e)}>
-            <img src={ButtonUp} id="back-button" alt=""></img>
+            <img src={ButtonLeft} id="back-button" alt=""></img>
           </button>
         ) : null}
-      </div>
       <CSSTransition in={showText} timeout={400} classNames="infobox">
           <TextInfobox text={"Climate1_Textbox" + counter} />
       </CSSTransition>
-      <div className="infobox-button-container">
         {counter < props.upperLimit ? (
           <button onClick={e => handleClick(e)}>
-            <img src={ButtonDown} id="next-button" alt=""></img>
+            <img src={ButtonRight} id="next-button" alt=""></img>
           </button>
         ) : null}
-      </div>
     </div>
   )
 }

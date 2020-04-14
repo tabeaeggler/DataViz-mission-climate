@@ -139,7 +139,7 @@ const World = () => {
         labelResolution={6}
       />
       <svg className="legend-world" ref={svgRef}></svg>
-      <div className="container">
+      <div className="linegraph-text-container">
       {clickedCountry.country === undefined ? null : (
         <TemperatureLineGraph
           selectedCountry={clickedCountry.country}
