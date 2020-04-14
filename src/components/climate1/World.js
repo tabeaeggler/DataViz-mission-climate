@@ -140,16 +140,20 @@ const World = () => {
       />
       <svg className="legend-world" ref={svgRef}></svg>
       <div className="linegraph-text-container">
-      {clickedCountry.country === undefined ? null : (
-        <TemperatureLineGraph
-          selectedCountry={clickedCountry.country}
-          climateData={clickedCountry.filteredCountry}
-          globalData={globalData}
-        />
+        {clickedCountry.country === undefined ? null : (
+          <div>
+            <TemperatureLineGraph
+              selectedCountry={clickedCountry.country}
+              climateData={clickedCountry.filteredCountry}
+              globalData={globalData}
+            />
+            <InfoboxNavigation
+              upperLimit={3}
+              textIdentifier={"Climate1_Textbox."}
+            />
+          </div>
         )}
-        <InfoboxNavigation upperLimit={3} textIdentifier={"Climate1_Textbox."} />
-        </div>
-
+      </div>
     </React.Fragment>
   )
 }

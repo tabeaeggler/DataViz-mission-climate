@@ -15,7 +15,7 @@ const TemperatureLineGraph = props => {
   const svgRef = useRef()
 
   function createLineGraph() {
-    const width = 1400
+    const width = 1350
     const height = 350
     const margin = 40
     const svg = select(svgRef.current).attr(
@@ -85,13 +85,12 @@ const TemperatureLineGraph = props => {
       .attr(
         "transform",
         "translate(" +
-          (width + 5) +
+          (width - 20) +
           "," +
           yScale(props.climateData[props.climateData.length - 1].value) +
           ")"
       )
       .attr("dy", ".35em")
-      .attr("text-anchor", "start")
       .style("fill", "blue")
       .text(eval(t("Climate1_TooltipTemperature.4")))
 
@@ -102,13 +101,12 @@ const TemperatureLineGraph = props => {
       .attr(
         "transform",
         "translate(" +
-          (width + 5) +
+          (width - 20) +
           "," +
           yScale(props.globalData[props.globalData.length - 1].Value) +
           ")"
       )
       .attr("dy", ".35em")
-      .attr("text-anchor", "hallo")
       .style("fill", "green")
       .text(t("Climate1_TooltipTemperature.5"))
   }
