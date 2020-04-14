@@ -22,6 +22,8 @@ const TemperatureLineGraph = props => {
     const xScale = scaleLinear()
       .domain(extent(props.climateData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
+      .nice()
+
 
     const xScaleGlobal = scaleLinear()
       .domain(extent(props.globalData, d => d.Year)) //1961 - 2019: 58 Jahre
@@ -31,8 +33,7 @@ const TemperatureLineGraph = props => {
 
     //Axis
     const xAxis = axisBottom(xScale)
-      .ticks(14)
-      .tickFormat(index => index + 1)
+      .tickFormat(index => index)
 
     const yAxis = axisRight(yScale)
 
