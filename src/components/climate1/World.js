@@ -5,7 +5,7 @@ import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
 import { legendColor } from "d3-svg-legend"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
-import globalDataPath from "../../assets/data_climate1/climate_change_global.csv"
+import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import InfoboxNavigation from "./InfoboxNavigation"
 
 const World = () => {

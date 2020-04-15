@@ -30,7 +30,7 @@ const TemperatureLineGraph = props => {
       .nice()
 
     const xScaleGlobal = scaleLinear()
-      .domain(extent(props.globalData, d => d.Year)) //1961 - 2019: 58 Jahre
+      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
       .nice()
 
@@ -51,8 +51,8 @@ const TemperatureLineGraph = props => {
 
     //define global line
     const globalLine = line()
-      .x(climateData => xScaleGlobal(climateData.Year))
-      .y(climateData => yScale(climateData.Value))
+      .x(climateData => xScaleGlobal(climateData.year))
+      .y(climateData => yScale(climateData.value))
       .curve(curveCardinal)
 
     //create country line
@@ -103,7 +103,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width - 20) +
           "," +
-          yScale(props.globalData[props.globalData.length - 1].Value) +
+          yScale(props.globalData[props.globalData.length - 1].value) +
           ")"
       )
       .attr("dy", ".35em")
