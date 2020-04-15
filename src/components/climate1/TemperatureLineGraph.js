@@ -75,8 +75,9 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "green")
 
-    //remove old country line tag
+    //remove old line tag
     svg.select(".countryName").remove()
+    svg.select(".globalName").remove()
 
     //create line-naming for country line
     svg
@@ -97,7 +98,7 @@ const TemperatureLineGraph = props => {
     //create line-naming for global line
     svg
       .append("text")
-
+      .attr("class", "globalName")
       .attr(
         "transform",
         "translate(" +
