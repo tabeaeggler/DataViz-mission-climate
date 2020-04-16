@@ -20,14 +20,14 @@ const TemperatureLineGraph = props => {
 
     console.log("countryTagPos", countryTagPos)
 
-    if (Math.abs(globalTagPos - countryTagPos) < 0.1) {
+    if (Math.abs(globalTagPos - countryTagPos) < 0.15) {
       if (globalTagPos > countryTagPos) {
-        if (tag === "global") return parseFloat(globalTagPos) + 0.07
-        if (tag === "country") return parseFloat(countryTagPos) - 0.07
+        if (tag === "global") return parseFloat(globalTagPos) + 0.1
+        if (tag === "country") return parseFloat(countryTagPos) - 0.1
       }
       if (globalTagPos < countryTagPos) {
-        if (tag === "global") return parseFloat(globalTagPos) - 0.07
-        if (tag === "country") return parseFloat(countryTagPos) + 0.07
+        if (tag === "global") return parseFloat(globalTagPos) - 0.1
+        if (tag === "country") return parseFloat(countryTagPos) + 0.1
       }
     } else {
       if (tag === "global") return globalTagPos
