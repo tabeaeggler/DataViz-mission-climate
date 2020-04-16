@@ -39,7 +39,7 @@ const World = () => {
 
   useEffect(() => {
     // load data
-    fetch("../../assets/data_climate1/geojson_temp_translations.geojson")
+    fetch("../../../geojson_temp_translations.geojson")
       .then(res => res.json())
       .then(setCountries)
 
