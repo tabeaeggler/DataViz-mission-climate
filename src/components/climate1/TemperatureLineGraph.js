@@ -53,7 +53,7 @@ const TemperatureLineGraph = props => {
       "transform",
       `translate(${margin},${margin})`
     ) //wrapper, so that the svg is available for d3.
-
+    //Create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
     const svgLines = select(svgLinesRef.current).attr(
       "transform",
       `translate(${margin},${margin})`
