@@ -14,6 +14,25 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
 
+  function getTagPosition(tag) {
+    var countryTagPos = props.climateData[props.climateData.length - 1].value
+    var globalTagPos = props.globalData[props.globalData.length - 1].value
+
+    if (Math.abs(globalTagPos - countryTagPos) < 0.1) {
+      if (globalTagPos > countryTagPos) {
+        if (tag === "global") return parseFloat(globalTagPos) + 0.07
+        if (tag === "country") return parseFloat(countryTagPos) - 0.07
+      }
+      if (globalTagPos < countryTagPos) {
+        if (tag === "global") return parseFloat(globalTagPos) - 0.07
+        if (tag === "country") return parseFloat(countryTagPos) + 0.07
+      }
+    } else {
+      if (tag === "global") return globalTagPos
+      if (tag === "country") return countryTagPos
+    }
+  }
+
   function createLineGraph() {
     const width = 1350
     const height = 350
@@ -88,7 +107,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width - 20) +
           "," +
-          yScale(props.climateData[props.climateData.length - 1].value) +
+          yScale(getTagPosition("country")) +
           ")"
       )
       .attr("dy", ".35em")
@@ -104,7 +123,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width - 20) +
           "," +
-          yScale(props.globalData[props.globalData.length - 1].value) +
+          yScale(getTagPosition("global")) +
           ")"
       )
       .attr("dy", ".35em")
