@@ -52,3 +52,7 @@ button {
   background-color: transparent;
   border: none;
 }
+
+button:focus {
+  outline: 0;
+}

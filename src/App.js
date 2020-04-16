@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <Climate1 />
       <button className="language-button" onClick={() => handleClick("en")}>
         E
       </button>
@@ -23,7 +24,6 @@ function App() {
       <button className="language-button" onClick={() => handleClick("it")}>
         I
       </button>
-      <Climate1 />
     </div>
   )
 }
