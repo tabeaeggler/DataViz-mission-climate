@@ -4,7 +4,7 @@
     "1": "1. Le monde change"
   },
   "Climate1_TooltipTemperature": {
-    "1": "Changement de température",
+    "1": "Changement de température °C",
     "2": "aucune information",
     "3": "d.ADMIN_FR",
     "4": "props.selectedCountry.properties.ADMIN_FR",

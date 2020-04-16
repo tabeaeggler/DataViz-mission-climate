@@ -54,8 +54,9 @@ const World = () => {
 
     //create Legend
     const svg = select(svgRef.current)
+    // var title = t("Climate1_TooltipTemperature.1")
     var legend = legendColor()
-      .title(t("Climate1_TooltipTemperature.1") + " °C")
+      .title(t("Climate1_TooltipTemperature.1"))
       .scale(colorScale)
       .cells(8)
       .orient("horizontal")
