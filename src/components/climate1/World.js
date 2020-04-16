@@ -34,7 +34,7 @@ const World = () => {
 
   //is loaded only once
   useEffect(() => {
-    // load geojson-data 2019
+    // load data
     fetch("../../../geojson_temp_translations.geojson")
       .then(res => res.json())
       .then(setCountries)
