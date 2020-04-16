@@ -107,8 +107,8 @@ const World = () => {
         polygonCapColor={d => colorScale(getVal(d))}
         polygonSideColor={d =>
           d === clickedCountry.country
-            ? "rgba(255, 255, 255, 0.2)"
-            : "rgba(0, 0, 0, 0.2)"
+            ? "rgba(0, 0, 0, 1)"
+            : "rgba(0, 0, 0, 0)"
         }
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
