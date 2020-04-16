@@ -14,6 +14,27 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
 
+  function getTagPosition(tag) {
+    var countryTagPos = props.climateData[props.climateData.length - 1].value
+    var globalTagPos = props.globalData[props.globalData.length - 1].value
+
+    console.log("countryTagPos", countryTagPos)
+
+    if (Math.abs(globalTagPos - countryTagPos) < 0.15) {
+      if (globalTagPos > countryTagPos) {
+        if (tag === "global") return parseFloat(globalTagPos) + 0.1
+        if (tag === "country") return parseFloat(countryTagPos) - 0.1
+      }
+      if (globalTagPos < countryTagPos) {
+        if (tag === "global") return parseFloat(globalTagPos) - 0.1
+        if (tag === "country") return parseFloat(countryTagPos) + 0.1
+      }
+    } else {
+      if (tag === "global") return globalTagPos
+      if (tag === "country") return countryTagPos
+    }
+  }
+
   function createLineGraph() {
     const width = 1350
     const height = 350
@@ -45,6 +66,9 @@ const TemperatureLineGraph = props => {
 
     //define country line
     const selectedCountryLine = line()
+      .defined(function (climateData) {
+        return climateData.value !== ""
+      })
       .x(climateData => xScale(climateData.year))
       .y(climateData => yScale(climateData.value))
       .curve(curveCardinal)
@@ -88,7 +112,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width - 20) +
           "," +
-          yScale(props.climateData[props.climateData.length - 1].value) +
+          yScale(getTagPosition("country")) +
           ")"
       )
       .attr("dy", ".35em")
@@ -104,7 +128,7 @@ const TemperatureLineGraph = props => {
         "translate(" +
           (width - 20) +
           "," +
-          yScale(props.globalData[props.globalData.length - 1].value) +
+          yScale(getTagPosition("global")) +
           ")"
       )
       .attr("dy", ".35em")
@@ -113,6 +137,8 @@ const TemperatureLineGraph = props => {
   }
 
   useEffect(() => {
+    console.log(props.selectedCountry)
+    console.log(props.climateData)
     createLineGraph()
   }, [props]) //Render as soon props has changed
 
