@@ -69,15 +69,19 @@ const World = () => {
   //updates when ever legend changes
   useEffect(() => { 
         //create Legend
-        const svg = select(svgRef.current)
+        const svg = select(svgRef.current).attr(
+          "transform",
+          "translate(0,20)"
+        ) 
         var legend = legendColor()
-          .title(t("Climate1_TooltipTemperature.1") + " °C")
           .scale(colorScale)
           .cells(8)
           .orient("horizontal")
           .shapeWidth(40)
           .shapePadding(0)
           .shapeHeight(10)
+          .title(t("Climate1_TooltipTemperature.1") + " °C")
+    
         svg.call(legend)
   })
 
@@ -144,7 +148,7 @@ const World = () => {
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
       />
-      <svg className="legend-world" ref={svgRef}></svg>
+      <svg className="legend-world"> <g ref={svgRef}></g></svg>
       <div className="linegraph-text-container">
         {clickedCountry.country === undefined ? null : (
           <div>
