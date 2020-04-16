@@ -18,6 +18,8 @@ const TemperatureLineGraph = props => {
     var countryTagPos = props.climateData[props.climateData.length - 1].value
     var globalTagPos = props.globalData[props.globalData.length - 1].value
 
+    console.log("countryTagPos", countryTagPos)
+
     if (Math.abs(globalTagPos - countryTagPos) < 0.1) {
       if (globalTagPos > countryTagPos) {
         if (tag === "global") return parseFloat(globalTagPos) + 0.07
@@ -64,6 +66,9 @@ const TemperatureLineGraph = props => {
 
     //define country line
     const selectedCountryLine = line()
+      .defined(function (climateData) {
+        return climateData.value !== ""
+      })
       .x(climateData => xScale(climateData.year))
       .y(climateData => yScale(climateData.value))
       .curve(curveCardinal)
@@ -132,6 +137,8 @@ const TemperatureLineGraph = props => {
   }
 
   useEffect(() => {
+    console.log(props.selectedCountry)
+    console.log(props.climateData)
     createLineGraph()
   }, [props]) //Render as soon props has changed
 
