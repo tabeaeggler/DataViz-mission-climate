@@ -7,6 +7,7 @@ import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import InfoboxNavigation from "./InfoboxNavigation"
+import LocationButton from "../../assets/img/location.svg"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 
 const World = () => {
@@ -94,10 +95,12 @@ const World = () => {
 
   return (
     <React.Fragment>
-      <button className="location-button" onClick={handleZoom}>
-        {t("Climate1_BackToLocation")}
-      </button>
-
+      <div className="location-button">
+      <button onClick={handleZoom}>
+        <img src={LocationButton}></img>
+        </button>
+        <p>{t("Climate1_BackToLocation")}</p>
+      </div>
       <Globe
         //global config
         ref={globeElement}

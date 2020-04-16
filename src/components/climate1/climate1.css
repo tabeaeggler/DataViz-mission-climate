@@ -25,10 +25,20 @@ svg text.label {
   fill: #bbb9b9;
 }
 
-
-.location-button{
-  font-size: medium;
+.location-button {
+  font-size: x-small;
   color: #bbb9b9;
+  align-content: center;
+}
+
+.location-button button {
+  display: block;
+  margin: auto;
+}
+
+.location-button p {
+  text-align: center;
+  margin-top: 0;
 }
 
 .linegraph-text-container {
