@@ -57,7 +57,7 @@ button:focus {
   outline: 0;
 }
 
-button.language-button, button.language-button-clicked {
+button.language-button, #language-button-clicked {
   font-size: 30pt;
   color: #fffbfb;
   background-color: #bbb9b9;
@@ -70,7 +70,7 @@ button.language-button, button.language-button-clicked {
   margin-bottom: 0.5em;
 }
 
-button.language-button-clicked {
+#language-button-clicked {
   color: #bbb9b9;
   background-color: #D14AA7;
 }

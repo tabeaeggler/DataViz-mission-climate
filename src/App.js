@@ -5,16 +5,16 @@ import Climate1 from "./components/climate1/Climate1"
 
 function App() {
   const { t, i18n } = useTranslation()
+
+  //handles translation an visual selection of button
   function handleClick(lang, e) {
     i18n.changeLanguage(lang)
-    var selectedItem = document.getElementsByClassName("language-button-clicked")
-    console.log(selectedItem)
-
-    if (selectedItem.length != 0) { 
-      selectedItem.classList.remove("language-button-clicked")
+    var selectedItem = document.getElementById("language-button-clicked")
+    if (selectedItem != null) { 
+      selectedItem.removeAttribute("id")
       selectedItem.classList.add("language-button")
     }
-    e.target.className = "language-button-clicked"
+    e.target.id = "language-button-clicked"
   }
 
   return (
