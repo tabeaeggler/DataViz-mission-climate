@@ -31,6 +31,7 @@ const World = () => {
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
 
+  //is loaded only once
   useEffect(() => {
     // load geojson-data 2019
     fetch(
@@ -51,19 +52,6 @@ const World = () => {
 
     //initial zoom on europe
     handleZoom()
-
-    //create Legend
-    const svg = select(svgRef.current)
-    // var title = t("Climate1_TooltipTemperature.1")
-    var legend = legendColor()
-      .title(t("Climate1_TooltipTemperature.1"))
-      .scale(colorScale)
-      .cells(8)
-      .orient("horizontal")
-      .shapeWidth(30)
-      .shapePadding(0)
-      .shapeHeight(10)
-    svg.call(legend)
   }, [])
 
   //zoom to Switzerland
@@ -77,6 +65,21 @@ const World = () => {
       5000
     )
   }
+
+  //updates when ever legend changes
+  useEffect(() => { 
+        //create Legend
+        const svg = select(svgRef.current)
+        var legend = legendColor()
+          .title(t("Climate1_TooltipTemperature.1") + " °C")
+          .scale(colorScale)
+          .cells(8)
+          .orient("horizontal")
+          .shapeWidth(40)
+          .shapePadding(0)
+          .shapeHeight(10)
+        svg.call(legend)
+  })
 
   //update selected country and filter data
   function updateCountry(country) {

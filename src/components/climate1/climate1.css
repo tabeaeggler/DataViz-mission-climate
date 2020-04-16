@@ -1,6 +1,7 @@
 /*temperature linegraph style*/
-.temperature-graph-container{
-  display: flex; justify-content: center;
+.temperature-graph-container {
+  display: flex;
+  justify-content: center;
 }
 .temperature-graph {
   width: 90em;
@@ -13,15 +14,15 @@
   padding-top: 50px;
   display: block;
   margin: auto;
-  width: 240px;
+  width: 320px;
 }
 
 .scene-tooltip {
   font-family: "Open Sans", sans-serif;
 }
 
-.text.legendTitle,
-.text.label {
+svg text.legendTitle,
+svg text.label {
   fill: #bbb9b9;
 }
 
@@ -31,6 +32,6 @@
   color: #bbb9b9;
 }
 
-.linegraph-text-container{
+.linegraph-text-container {
   position: relative;
 }
