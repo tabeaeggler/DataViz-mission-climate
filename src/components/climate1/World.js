@@ -7,6 +7,7 @@ import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import InfoboxNavigation from "./InfoboxNavigation"
+import OpenSans from "../../assets/font/OpenSansRegular.json"
 
 const World = () => {
   const { t } = useTranslation()
@@ -30,6 +31,7 @@ const World = () => {
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
 
+  //is loaded only once
   useEffect(() => {
     // load geojson-data 2019
     fetch(
@@ -50,18 +52,6 @@ const World = () => {
 
     //initial zoom on europe
     handleZoom()
-
-    //create Legend
-    const svg = select(svgRef.current)
-    var legend = legendColor()
-      .title(t("Climate1_TooltipTemperature.1") + " °C")
-      .scale(colorScale)
-      .cells(8)
-      .orient("horizontal")
-      .shapeWidth(30)
-      .shapePadding(0)
-      .shapeHeight(10)
-    svg.call(legend)
   }, [])
 
   //zoom to Switzerland
@@ -75,6 +65,21 @@ const World = () => {
       5000
     )
   }
+
+  //updates when ever legend changes
+  useEffect(() => { 
+        //create Legend
+        const svg = select(svgRef.current)
+        var legend = legendColor()
+          .title(t("Climate1_TooltipTemperature.1") + " °C")
+          .scale(colorScale)
+          .cells(8)
+          .orient("horizontal")
+          .shapeWidth(40)
+          .shapePadding(0)
+          .shapeHeight(10)
+        svg.call(legend)
+  })
 
   //update selected country and filter data
   function updateCountry(country) {
@@ -106,8 +111,8 @@ const World = () => {
         polygonCapColor={d => colorScale(getVal(d))}
         polygonSideColor={d =>
           d === clickedCountry.country
-            ? "rgba(255, 255, 255, 0.2)"
-            : "rgba(0, 0, 0, 0.2)"
+            ? "rgba(0, 0, 0, 1)"
+            : "rgba(0, 0, 0, 0)"
         }
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
@@ -116,11 +121,12 @@ const World = () => {
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
             ? t("Climate1_TooltipTemperature.2")
             : Number(d.TEMP).toFixed(1) + "°C"
-        }<br/>
+          }<br/>
       `}
         onPolygonClick={d => updateCountry(d)}
         polygonsTransitionDuration={300}
         //position-marker config
+        labelTypeFace={OpenSans}
         labelsData={currentLocationMarker}
         labelLat={d => d.latitude}
         labelLng={d => d.longitude}

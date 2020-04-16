@@ -10,6 +10,7 @@ function Climate1() {
     <div>
       <h1> {t("Climate1_Title.1")}</h1>
       <World />
+      <h6>{t("Climate1_Source")}</h6>
     </div>
   )
 }
