@@ -5,25 +5,35 @@ import Climate1 from "./components/climate1/Climate1"
 
 function App() {
   const { t, i18n } = useTranslation()
-  function handleClick(lang) {
+  function handleClick(lang, e) {
     i18n.changeLanguage(lang)
+    var selectedItem = document.getElementsByClassName("language-button-clicked")
+    console.log(selectedItem)
+
+    if (selectedItem.length != 0) { 
+      selectedItem.classList.remove("language-button-clicked")
+      selectedItem.classList.add("language-button")
+    }
+    e.target.className = "language-button-clicked"
   }
 
   return (
     <div className="App">
       <Climate1 />
-      <button className="language-button" onClick={() => handleClick("en")}>
-        E
-      </button>
-      <button className="language-button" onClick={() => handleClick("de")}>
-        D
-      </button>
-      <button className="language-button" onClick={() => handleClick("fr")}>
-        F
-      </button>
-      <button className="language-button" onClick={() => handleClick("it")}>
-        I
-      </button>
+      <div className="language-button-container">
+        <button className="language-button" onClick={(e) => handleClick("en", e)}>
+          E
+        </button>
+        <button className="language-button" onClick={(e) => handleClick("de", e)}>
+          D
+        </button>
+        <button className="language-button" onClick={(e) => handleClick("fr", e)}>
+          F
+        </button>
+        <button className="language-button" onClick={(e) => handleClick("it", e)}>
+          I
+        </button>
+      </div>
     </div>
   )
 }

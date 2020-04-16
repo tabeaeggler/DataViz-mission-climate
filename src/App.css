@@ -56,3 +56,21 @@ button {
 button:focus {
   outline: 0;
 }
+
+button.language-button, button.language-button-clicked {
+  font-size: 30pt;
+  color: #fffbfb;
+  background-color: #bbb9b9;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+button.language-button-clicked {
+  color: #bbb9b9;
+  background-color: #D14AA7;
+}
