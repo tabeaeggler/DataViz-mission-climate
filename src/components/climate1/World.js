@@ -7,6 +7,7 @@ import TemperatureLineGraph from "./TemperatureLineGraph"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import InfoboxNavigation from "./InfoboxNavigation"
+import OpenSans from "../../assets/font/OpenSansRegular.json"
 
 const World = () => {
   const { t } = useTranslation()
@@ -116,11 +117,12 @@ const World = () => {
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
             ? t("Climate1_TooltipTemperature.2")
             : Number(d.TEMP).toFixed(1) + "°C"
-        }<br/>
+          }<br/>
       `}
         onPolygonClick={d => updateCountry(d)}
         polygonsTransitionDuration={300}
         //position-marker config
+        labelTypeFace={OpenSans}
         labelsData={currentLocationMarker}
         labelLat={d => d.latitude}
         labelLng={d => d.longitude}

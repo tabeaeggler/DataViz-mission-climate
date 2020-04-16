@@ -16,6 +16,10 @@
   width: 240px;
 }
 
+.scene-tooltip {
+  font-family: "Open Sans", sans-serif;
+}
+
 .text.legendTitle,
 .text.label {
   fill: #bbb9b9;
