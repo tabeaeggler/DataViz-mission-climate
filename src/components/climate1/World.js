@@ -99,7 +99,7 @@ const World = () => {
       <button onClick={handleZoom}>
         <img src={LocationButton}></img>
         </button>
-        <p>{t("Climate1_BackToLocation")}</p>
+        <span>{t("Climate1_BackToLocation")}</span>
       </div>
       <Globe
         //global config

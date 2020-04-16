@@ -3,10 +3,37 @@ body {
   background-color: #141416;
   color: #bbb9b9;
 }
+/*headings and fonts*/
 h1 {
   font-family: "Inconsolata", monospace;
+  font-size: 36pt;
   text-align: center;
   padding-bottom: 50px;
+}
+
+h2 {
+  font-family: "Inconsolata", monospace;
+  font-size: 24pt;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18pt;
+  text-align: left;
+}
+
+h6 {
+  font-size: 12pt;
+}
+
+p {
+  font-size: 16pt;
+}
+
+span {
+  font-size: 14pt;
 }
 
 /* infobox style*/
@@ -40,6 +67,10 @@ h1 {
   justify-content: center;
 }
 
+.infobox-paragraph {
+  margin: 0;
+}
+
 #back-button {
   margin-right: 1em;
 }
@@ -48,6 +79,7 @@ h1 {
   margin-left: 1em;
 }
 
+/* general button style*/
 button {
   background-color: transparent;
   border: none;
@@ -57,7 +89,9 @@ button:focus {
   outline: 0;
 }
 
-button.language-button, #language-button-clicked {
+/* languague button style*/
+button.language-button,
+#language-button-clicked {
   font-size: 30pt;
   color: #fffbfb;
   background-color: #bbb9b9;
@@ -72,5 +106,5 @@ button.language-button, #language-button-clicked {
 
 #language-button-clicked {
   color: #141416;
-  background-color: #D14AA7;
+  background-color: #d14aa7;
 }
