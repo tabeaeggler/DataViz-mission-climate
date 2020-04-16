@@ -34,9 +34,7 @@ const World = () => {
   //is loaded only once
   useEffect(() => {
     // load geojson-data 2019
-    fetch(
-      "https://raw.githubusercontent.com/tabeaeggler/geojson/master/geojson_temp_translations.geojson"
-    )
+    fetch("../../../geojson_temp_translations.geojson")
       .then(res => res.json())
       .then(setCountries)
 
@@ -67,22 +65,19 @@ const World = () => {
   }
 
   //updates when ever legend changes
-  useEffect(() => { 
-        //create Legend
-        const svg = select(svgRef.current).attr(
-          "transform",
-          "translate(0,20)"
-        ) 
-        var legend = legendColor()
-          .scale(colorScale)
-          .cells(8)
-          .orient("horizontal")
-          .shapeWidth(40)
-          .shapePadding(0)
-          .shapeHeight(10)
-          .title(t("Climate1_TooltipTemperature.1") + " °C")
-    
-        svg.call(legend)
+  useEffect(() => {
+    //create Legend
+    const svg = select(svgRef.current).attr("transform", "translate(0,20)")
+    var legend = legendColor()
+      .scale(colorScale)
+      .cells(8)
+      .orient("horizontal")
+      .shapeWidth(40)
+      .shapePadding(0)
+      .shapeHeight(10)
+      .title(t("Climate1_TooltipTemperature.1") + " °C")
+
+    svg.call(legend)
   })
 
   //update selected country and filter data
@@ -114,9 +109,7 @@ const World = () => {
         polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
         polygonCapColor={d => colorScale(getVal(d))}
         polygonSideColor={d =>
-          d === clickedCountry.country
-            ? "rgba(0, 0, 0, 1)"
-            : "rgba(0, 0, 0, 0)"
+          d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
         }
         polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
         polygonLabel={({ properties: d }) => `
@@ -125,7 +118,7 @@ const World = () => {
           d.TEMP === "NO_DATA" || d.TEMP === "nan"
             ? t("Climate1_TooltipTemperature.2")
             : Number(d.TEMP).toFixed(1) + "°C"
-          }<br/>
+        }<br/>
       `}
         onPolygonClick={d => updateCountry(d)}
         polygonsTransitionDuration={300}
@@ -148,7 +141,10 @@ const World = () => {
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
       />
-      <svg className="legend-world"> <g ref={svgRef}></g></svg>
+      <svg className="legend-world">
+        {" "}
+        <g ref={svgRef}></g>
+      </svg>
       <div className="linegraph-text-container">
         {clickedCountry.country === undefined ? null : (
           <div>
