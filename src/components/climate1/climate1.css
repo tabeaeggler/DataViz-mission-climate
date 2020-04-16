@@ -34,3 +34,12 @@ svg text.label {
 .linegraph-text-container {
   position: relative;
 }
+
+/*grid*/
+.grid line {
+  stroke: #1c1c1d;
+}
+
+.grid path {
+  stroke-width: 0;
+}
