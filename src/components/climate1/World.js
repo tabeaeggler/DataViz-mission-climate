@@ -6,6 +6,7 @@ import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import InfoboxNavigation from "./InfoboxNavigation"
+import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 
@@ -55,8 +56,6 @@ const World = () => {
     csv(globalDataPath).then(function (d) {
       setGlobalData(d)
     })
-
-    handleZoom()
   }
 
   /**
@@ -169,16 +168,19 @@ const World = () => {
    */
   useEffect(() => {
     loadData()
+    handleZoom()
   }, [])
 
   return (
     <React.Fragment>
-      <button className="location-button" onClick={handleZoom}>
-        {t("Climate1_BackToLocation")}
-      </button>
+      <div className="location-button">
+        <button onClick={handleZoom}>
+          <img src={LocationButton}></img>
+        </button>
+        <span>{t("Climate1_BackToLocation")}</span>
+      </div>
       {createGlobe()}
       <svg className="legend-world">
-        {" "}
         <g ref={svgRef}></g>
       </svg>
       <div className="linegraph-text-container">
