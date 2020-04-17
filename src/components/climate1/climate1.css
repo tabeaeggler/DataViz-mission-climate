@@ -20,7 +20,7 @@
 
 /*world component style*/
 .legend-world {
-  width: 9.5em;
+  width: 11.5em;
   height: 4em;
   margin: auto;
   display: block;
@@ -33,7 +33,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
-svg text.legendTitle,
+svg text.legendTitle {
+  fill: #bbb9b9;
+  font-size: 0.9em;
+}
 svg text.label {
   fill: #bbb9b9;
   font-size: 0.7em;

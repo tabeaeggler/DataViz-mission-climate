@@ -137,7 +137,7 @@ const World = () => {
       .scale(colorScale)
       .cells(8)
       .orient("horizontal")
-      .shapeWidth(25)
+      .shapeWidth(28)
       .shapePadding(-2)
       .shapeHeight(5)
       .title(t("Climate1_TooltipTemperature.1") + " °C")
