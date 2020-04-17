@@ -20,9 +20,14 @@
 
 /*world component style*/
 .legend-world {
-  display: block;
+  width: 9.5em;
+  height: 3em;
   margin: auto;
-  width: 320px;
+  display: block;
+  padding-bottom: 1em;
+}
+
+.legend-container {
 }
 
 .scene-tooltip {
@@ -32,7 +37,7 @@
 svg text.legendTitle,
 svg text.label {
   fill: #bbb9b9;
-  font-size: 14pt;
+  font-size: 0.6em;
 }
 
 .location-button {
@@ -49,4 +54,7 @@ svg text.label {
 
 .linegraph-text-container {
   position: relative;
+}
+
+.globe-container {
 }

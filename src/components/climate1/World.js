@@ -6,7 +6,6 @@ import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import InfoboxNavigation from "./InfoboxNavigation"
-import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 
@@ -64,49 +63,54 @@ const World = () => {
    */
   function createGlobe() {
     return (
-      <Globe
-        //global config
-        ref={globeElement}
-        showGraticules={true}
-        backgroundColor={"#141416"}
-        showAtmosphere={false}
-        //country config
-        polygonsData={countries.features}
-        polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
-        polygonCapColor={d => colorScale(getVal(d))}
-        polygonSideColor={d =>
-          d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
-        }
-        polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
-        polygonLabel={({ properties: d }) => `
+      <div className="globe-container">
+        <Globe
+          //global config
+          ref={globeElement}
+          showGraticules={true}
+          backgroundColor={"#141416"}
+          showAtmosphere={false}
+          height={350}
+          //country config
+          polygonsData={countries.features}
+          polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
+          polygonCapColor={d => colorScale(getVal(d))}
+          polygonSideColor={d =>
+            d === clickedCountry.country
+              ? "rgba(0, 0, 0, 1)"
+              : "rgba(0, 0, 0, 0)"
+          }
+          polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
+          polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
-          d.TEMP === "NO_DATA" || d.TEMP === "nan"
-            ? t("Climate1_TooltipTemperature.2")
-            : Number(d.TEMP).toFixed(1) + "°C"
-        }<br/>
+            d.TEMP === "NO_DATA" || d.TEMP === "nan"
+              ? t("Climate1_TooltipTemperature.2")
+              : Number(d.TEMP).toFixed(1) + "°C"
+          }<br/>
       `}
-        onPolygonClick={d => updateCountry(d)}
-        polygonsTransitionDuration={300}
-        //position-marker config
-        labelTypeFace={OpenSans}
-        labelsData={currentLocationMarker}
-        labelLat={d => d.latitude}
-        labelLng={d => d.longitude}
-        labelText={d => d.text}
-        labelAltitude={d => {
-          if (clickedCountry.country !== undefined) {
-            return clickedCountry.country.properties.ADMIN === d.coutry
-              ? 0.12
-              : 0.06
-          }
-          return 0.06
-        }}
-        labelSize={0.7}
-        labelDotRadius={0.4}
-        labelColor={() => "rgba(255, 165, 0, 1)"}
-        labelResolution={6}
-      />
+          onPolygonClick={d => updateCountry(d)}
+          polygonsTransitionDuration={300}
+          //position-marker config
+          labelTypeFace={OpenSans}
+          labelsData={currentLocationMarker}
+          labelLat={d => d.latitude}
+          labelLng={d => d.longitude}
+          labelText={d => d.text}
+          labelAltitude={d => {
+            if (clickedCountry.country !== undefined) {
+              return clickedCountry.country.properties.ADMIN === d.coutry
+                ? 0.12
+                : 0.06
+            }
+            return 0.06
+          }}
+          labelSize={0.7}
+          labelDotRadius={0.4}
+          labelColor={() => "rgba(255, 165, 0, 1)"}
+          labelResolution={6}
+        />
+      </div>
     )
   }
 
@@ -133,9 +137,9 @@ const World = () => {
       .scale(colorScale)
       .cells(8)
       .orient("horizontal")
-      .shapeWidth(40)
-      .shapePadding(0)
-      .shapeHeight(10)
+      .shapeWidth(25)
+      .shapePadding(-2)
+      .shapeHeight(5)
       .title(t("Climate1_TooltipTemperature.1") + " °C")
 
     svg.call(legend)
@@ -173,16 +177,17 @@ const World = () => {
 
   return (
     <React.Fragment>
+      <div className="legend-container">
+        <svg className="legend-world">
+          <g ref={svgRef}></g>
+        </svg>
+      </div>
+      {createGlobe()}
       <div className="location-button">
         <button onClick={handleZoom}>
-          <img src={LocationButton}></img>
         </button>
         <span>{t("Climate1_BackToLocation")}</span>
       </div>
-      {createGlobe()}
-      <svg className="legend-world">
-        <g ref={svgRef}></g>
-      </svg>
       <div className="linegraph-text-container">
         {clickedCountry.country === undefined ? null : (
           <div>
