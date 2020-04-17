@@ -149,7 +149,6 @@ const World = () => {
         {clickedCountry.country === undefined ? null : (
           <div>
             <TemperatureLineGraph
-              selectedCountry={clickedCountry.country}
               climateData={clickedCountry.filteredCountry}
               globalData={globalData}
             />

@@ -11,6 +11,11 @@ import {
   extent,
 } from "d3"
 
+/**
+ * Creates a linegraph with two lines: country specific & global climate change 
+ * @param {list} props.climateData country specifiy climate data from 1961 - 2019
+ * @param {list} props.globalData global climata data from 1961 - 2019
+ */
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
