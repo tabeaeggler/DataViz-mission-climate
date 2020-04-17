@@ -1,6 +1,10 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
+/**
+ * Creates TextInfobox
+ * @param {@TODO} props.text @TODO
+ */
 const TextInfobox = props => {
   const { t } = useTranslation()
 
