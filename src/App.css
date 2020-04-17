@@ -55,7 +55,7 @@ span {
 }
 
 .info-box {
-  width: 33em;
+  width: 80%;
 }
 
 .infobox-container {
@@ -63,8 +63,7 @@ span {
   z-index: 10;
   display: flex;
   justify-content: center;
-  top: 17em;
-  left: 0.8em;
+  top: 80%;
 }
 
 .infobox-paragraph {
