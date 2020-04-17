@@ -33,7 +33,7 @@ p {
 }
 
 span {
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 /* infobox style*/
@@ -92,12 +92,12 @@ button:focus {
 /* languague button style*/
 button.language-button,
 #language-button-clicked {
-  font-size: 30pt;
+  font-size: 26pt;
   color: #fffbfb;
   background-color: #bbb9b9;
   border-radius: 100%;
-  width: 60px;
-  height: 60px;
+  width: 5%;
+  height: 5%;
   display: block;
   margin-left: auto;
   margin-right: 0.5em;

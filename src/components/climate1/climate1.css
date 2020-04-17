@@ -24,7 +24,7 @@
   height: 3em;
   margin: auto;
   display: block;
-  padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .legend-container {
@@ -37,7 +37,7 @@
 svg text.legendTitle,
 svg text.label {
   fill: #bbb9b9;
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
 .location-button {
