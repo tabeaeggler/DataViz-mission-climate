@@ -32,7 +32,7 @@ const World = () => {
   const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
 
-  //is loaded only once
+  //is loaded donly once
   useEffect(() => {
     // load data
     fetch("../../../geojson_temp_translations.geojson")
@@ -96,8 +96,8 @@ const World = () => {
   return (
     <React.Fragment>
       <div className="location-button">
-      <button onClick={handleZoom}>
-        <img src={LocationButton}></img>
+        <button onClick={handleZoom}>
+          <img src={LocationButton}></img>
         </button>
         <span>{t("Climate1_BackToLocation")}</span>
       </div>
