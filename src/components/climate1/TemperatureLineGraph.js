@@ -45,7 +45,6 @@ const TemperatureLineGraph = props => {
    * @returns {number} position for naming tag
    */
   function getTagPosition(tag) {
-    console.log(typeof tag)
     var countryTagPos = props.climateData[props.climateData.length - 1].value
     var globalTagPos = props.globalData[props.globalData.length - 1].value
 
