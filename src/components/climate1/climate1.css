@@ -23,13 +23,20 @@
 svg text.legendTitle,
 svg text.label {
   fill: #bbb9b9;
+  font-size: 14pt;
 }
 
-
-.location-button,
-.language-button {
-  font-size: medium;
+.location-button {
   color: #bbb9b9;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 2em;
+
+}
+
+.location-button button {
+  display: block;
+  margin: auto;
 }
 
 .linegraph-text-container {
