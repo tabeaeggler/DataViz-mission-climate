@@ -5,8 +5,8 @@
 }
 
 .temperature-graph {
-  width: 90em;
-  height: 35em;
+  width: 900px;
+  height: 400px;
   margin: auto;
 }
 
@@ -24,9 +24,6 @@
   height: 4em;
   margin: auto;
   display: block;
-}
-
-.legend-container {
 }
 
 .scene-tooltip {
@@ -54,9 +51,20 @@ svg text.label {
   margin: auto;
 }
 
+.linegraph-container {
+  position: absolute;
+  left: 45em;
+  top: 16em;
+}
+
 .linegraph-text-container {
   position: relative;
 }
 
 .globe-container {
+  position: absolute;
+}
+
+.wrapper-container {
+  position: relative;
 }

@@ -63,54 +63,50 @@ const World = () => {
    */
   function createGlobe() {
     return (
-      <div className="globe-container">
-        <Globe
-          //global config
-          ref={globeElement}
-          showGraticules={true}
-          backgroundColor={"#141416"}
-          showAtmosphere={false}
-          height={350}
-          //country config
-          polygonsData={countries.features}
-          polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
-          polygonCapColor={d => colorScale(getVal(d))}
-          polygonSideColor={d =>
-            d === clickedCountry.country
-              ? "rgba(0, 0, 0, 1)"
-              : "rgba(0, 0, 0, 0)"
-          }
-          polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
-          polygonLabel={({ properties: d }) => `
+      <Globe
+        //global config
+        ref={globeElement}
+        showGraticules={true}
+        backgroundColor={"#141416"}
+        showAtmosphere={false}
+        width={900}
+        //country config
+        polygonsData={countries.features}
+        polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
+        polygonCapColor={d => colorScale(getVal(d))}
+        polygonSideColor={d =>
+          d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
+        }
+        polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
+        polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
-            d.TEMP === "NO_DATA" || d.TEMP === "nan"
-              ? t("Climate1_TooltipTemperature.2")
-              : Number(d.TEMP).toFixed(1) + "°C"
-          }<br/>
+          d.TEMP === "NO_DATA" || d.TEMP === "nan"
+            ? t("Climate1_TooltipTemperature.2")
+            : Number(d.TEMP).toFixed(1) + "°C"
+        }<br/>
       `}
-          onPolygonClick={d => updateCountry(d)}
-          polygonsTransitionDuration={300}
-          //position-marker config
-          labelTypeFace={OpenSans}
-          labelsData={currentLocationMarker}
-          labelLat={d => d.latitude}
-          labelLng={d => d.longitude}
-          labelText={d => d.text}
-          labelAltitude={d => {
-            if (clickedCountry.country !== undefined) {
-              return clickedCountry.country.properties.ADMIN === d.coutry
-                ? 0.12
-                : 0.06
-            }
-            return 0.06
-          }}
-          labelSize={0.7}
-          labelDotRadius={0.4}
-          labelColor={() => "rgba(255, 165, 0, 1)"}
-          labelResolution={6}
-        />
-      </div>
+        onPolygonClick={d => updateCountry(d)}
+        polygonsTransitionDuration={300}
+        //position-marker config
+        labelTypeFace={OpenSans}
+        labelsData={currentLocationMarker}
+        labelLat={d => d.latitude}
+        labelLng={d => d.longitude}
+        labelText={d => d.text}
+        labelAltitude={d => {
+          if (clickedCountry.country !== undefined) {
+            return clickedCountry.country.properties.ADMIN === d.coutry
+              ? 0.12
+              : 0.06
+          }
+          return 0.06
+        }}
+        labelSize={0.7}
+        labelDotRadius={0.4}
+        labelColor={() => "rgba(255, 165, 0, 1)"}
+        labelResolution={6}
+      />
     )
   }
 
@@ -122,7 +118,7 @@ const World = () => {
       {
         lat: 30,
         lng: 10,
-        altitude: 1,
+        altitude: 2.7,
       },
       5000
     )
@@ -177,31 +173,31 @@ const World = () => {
 
   return (
     <React.Fragment>
-      <div className="legend-container">
-        <svg className="legend-world">
-          <g ref={svgRef}></g>
-        </svg>
+      <div className="wrapper-container"></div>
+      <div className="globe-container">
+        {createGlobe()}
+        <div className="location-button">
+          <button onClick={handleZoom}></button>
+          <span>{t("Climate1_BackToLocation")}</span>
+        </div>
       </div>
-      {createGlobe()}
-      <div className="location-button">
-        <button onClick={handleZoom}>
-        </button>
-        <span>{t("Climate1_BackToLocation")}</span>
-      </div>
-      <div className="linegraph-text-container">
-        {clickedCountry.country === undefined ? null : (
-          <div>
-            <TemperatureLineGraph
-              selectedCountry={clickedCountry.country}
-              climateData={clickedCountry.filteredCountry}
-              globalData={globalData}
-            />
-            <InfoboxNavigation
-              upperLimit={3}
-              textIdentifier={"Climate1_Textbox."}
-            />
-          </div>
-        )}
+
+      <div className="linegraph-container">
+        <div className="linegraph-text-container">
+          {clickedCountry.country === undefined ? null : (
+            <div>
+              <TemperatureLineGraph
+                selectedCountry={clickedCountry.country}
+                climateData={clickedCountry.filteredCountry}
+                globalData={globalData}
+              />
+              <InfoboxNavigation
+                upperLimit={3}
+                textIdentifier={"Climate1_Textbox."}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </React.Fragment>
   )

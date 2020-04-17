@@ -67,8 +67,8 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const width = 1000
-    const height = 350
+    const width = 700
+    const height = 250
     const margin = 40
     //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr(
