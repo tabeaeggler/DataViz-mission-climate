@@ -3,10 +3,19 @@
   display: flex;
   justify-content: center;
 }
+
 .temperature-graph {
   width: 90em;
   height: 35em;
   margin: auto;
+}
+
+.grid line {
+  stroke: #1c1c1d;
+}
+
+.grid path {
+  stroke-width: 0;
 }
 
 /*world component style*/
@@ -31,7 +40,6 @@ svg text.label {
   align-content: center;
   text-align: center;
   margin-bottom: 2em;
-
 }
 
 .location-button button {
@@ -41,13 +49,4 @@ svg text.label {
 
 .linegraph-text-container {
   position: relative;
-}
-
-/*grid*/
-.grid line {
-  stroke: #1c1c1d;
-}
-
-.grid path {
-  stroke-width: 0;
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import "./climate1.css"
 import { useTranslation } from "react-i18next"
 import {
   select,
@@ -11,21 +10,40 @@ import {
   extent,
 } from "d3"
 
+/**
+ * Creates a linegraph with two lines: country specific & global climate change
+ * @param {array} props.selectedCountry geojson data for selected country
+ * @param {array} props.climateData country specifiy climate data from 1961 - 2019
+ * @param {array} props.globalData global climata data from 1961 - 2019
+ */
 const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
 
-  // gridlines in x axis function
+  /**
+   * Creates a gridlines in x axis function
+   * @param {function} xScale
+   * @returns {function} grid function
+   */
   function make_x_gridlines(xScale) {
     return axisBottom(xScale).ticks(10)
   }
 
-  // gridlines in y axis function
+  /**
+   * Creates a gridlines in y axis function
+   * @param {function} yScale
+   * @returns {function} grid function
+   */
   function make_y_gridlines(yScale) {
     return axisLeft(yScale).ticks(10)
   }
 
+  /**
+   * Calculates best position for naming tags beside line
+   * @param {string} tag differs the line. Is either global or country
+   * @returns {number} position for naming tag
+   */
   function getTagPosition(tag) {
     var countryTagPos = props.climateData[props.climateData.length - 1].value
     var globalTagPos = props.globalData[props.globalData.length - 1].value
@@ -45,38 +63,37 @@ const TemperatureLineGraph = props => {
     }
   }
 
+  /**
+   * Main code for linegraph
+   */
   function createLineGraph() {
     const width = 1000
     const height = 350
     const margin = 40
+    //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr(
       "transform",
       `translate(${margin},${margin})`
-    ) //wrapper, so that the svg is available for d3.
-    //Create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
+    )
+    //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
     const svgLines = select(svgLinesRef.current).attr(
       "transform",
       `translate(${margin},${margin})`
     )
 
-    //Set the ranges
+    //set the X and Y ranges
     const xScale = scaleLinear()
       .domain(extent(props.climateData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
       .nice()
 
-    const xScaleGlobal = scaleLinear()
-      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
-      .range([0, width]) //visual representation of domain
-      .nice()
-
     const yScale = scaleLinear().domain([-1.5, 3]).range([height, 0])
 
-    //create and axis
+    //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
     const yAxis = axisLeft(yScale)
 
-    //define country line
+    //define country and global line
     const selectedCountryLine = line()
       .defined(function (climateData) {
         return climateData.value !== ""
@@ -85,26 +102,24 @@ const TemperatureLineGraph = props => {
       .y(climateData => yScale(climateData.value))
       .curve(curveCardinal)
 
-    //define global line
     const globalLine = line()
-      .x(climateData => xScaleGlobal(climateData.year))
+      .x(climateData => xScale(climateData.year))
       .y(climateData => yScale(climateData.value))
       .curve(curveCardinal)
 
-    // add the X gridlines
+    //add X and Y gridlines
     svg
       .append("g")
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines(xScale).tickSize(-height).tickFormat(""))
 
-    // add the Y gridlines
     svg
       .append("g")
       .attr("class", "grid")
       .call(make_y_gridlines(yScale).tickSize(-width).tickFormat(""))
 
-    // add axis
+    //add X and Y axis
     svg.append("g").attr("transform", `translate(0,${height})`).call(xAxis)
     svg.append("g").call(yAxis)
 
@@ -112,7 +127,7 @@ const TemperatureLineGraph = props => {
     svg.select(".countryName").remove()
     svg.select(".globalName").remove()
 
-    //create line-naming for country line
+    //add naming tags for country and global line
     svg
       .append("text")
       .attr("class", "countryName")
@@ -128,7 +143,6 @@ const TemperatureLineGraph = props => {
       .style("fill", "#D37B61")
       .text(eval(t("Climate1_TooltipTemperature.4")))
 
-    //create line-naming for global line
     svg
       .append("text")
       .attr("class", "globalName")
@@ -145,7 +159,7 @@ const TemperatureLineGraph = props => {
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
 
-    //create country line
+    //add lines
     svgLines
       .selectAll(".line")
       .data([props.climateData])
@@ -155,7 +169,6 @@ const TemperatureLineGraph = props => {
       .attr("fill", "none")
       .attr("stroke", "#D37B61")
 
-    //create global line
     svgLines
       .selectAll(".global-line")
       .data([props.globalData])
@@ -167,9 +180,12 @@ const TemperatureLineGraph = props => {
       .attr("stroke", "white")
   }
 
+  /**
+   * React Lifecycle -> Renders as soon as props has changed
+   */
   useEffect(() => {
     createLineGraph()
-  }, [props]) //Render as soon props has changed
+  }, [props])
 
   return (
     <React.Fragment>
