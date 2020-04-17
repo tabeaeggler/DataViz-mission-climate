@@ -53,8 +53,8 @@ svg text.label {
 
 .linegraph-container {
   position: absolute;
-  left: 45em;
-  top: 16em;
+  left: 41em;
+  top: 15.5em;
 }
 
 .linegraph-text-container {
@@ -63,6 +63,7 @@ svg text.label {
 
 .globe-container {
   position: absolute;
+  left: -4em;
 }
 
 .wrapper-container {

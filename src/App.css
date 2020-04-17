@@ -6,7 +6,7 @@ body {
 /*headings and fonts*/
 h1 {
   font-family: "Inconsolata", monospace;
-  font-size: 1.7em;
+  font-size: 2.2em;
   text-align: center;
   padding-bottom: 50px;
 }
@@ -15,12 +15,12 @@ h2 {
   font-family: "Inconsolata", monospace;
   font-size: 24pt;
   text-align: center;
-  padding-bottom: 50px;
+  margin: 0;
 }
 
 h3 {
   font-family: "Open Sans", sans-serif;
-  font-size: 18pt;
+  font-size: 1.2em;
   text-align: left;
 }
 
@@ -29,7 +29,7 @@ h6 {
 }
 
 p {
-  font-size: 16pt;
+  font-size: 1em;
 }
 
 span {
@@ -55,20 +55,21 @@ span {
 }
 
 .info-box {
-  width: 45em;
+  width: 33em;
 }
 
 .infobox-container {
   position: absolute;
   z-index: 10;
-  bottom: 24em;
-  right: 38em;
   display: flex;
   justify-content: center;
+  top: 17em;
+  left: 0.8em;
 }
 
 .infobox-paragraph {
   margin: 0;
+
 }
 
 #back-button {
