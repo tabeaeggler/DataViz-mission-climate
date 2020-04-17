@@ -21,10 +21,9 @@
 /*world component style*/
 .legend-world {
   width: 9.5em;
-  height: 3em;
+  height: 4em;
   margin: auto;
   display: block;
-  margin-bottom: 1em;
 }
 
 .legend-container {

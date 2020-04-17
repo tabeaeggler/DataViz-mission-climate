@@ -92,7 +92,7 @@ button:focus {
 /* languague button style*/
 button.language-button,
 #language-button-clicked {
-  font-size: 26pt;
+  font-size: 1.2em;
   color: #fffbfb;
   background-color: #bbb9b9;
   border-radius: 100%;
