@@ -25,7 +25,9 @@ h3 {
 }
 
 h6 {
-  font-size: 12pt;
+  font-size: 0.7em;
+  color:white;
+  opacity: 0.2;
 }
 
 p {

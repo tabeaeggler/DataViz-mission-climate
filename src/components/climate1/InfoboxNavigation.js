@@ -32,7 +32,7 @@ const InfoboxNavigation = props => {
         </button>
       ) : null}
       <CSSTransition in={showText} timeout={400} classNames="infobox">
-        <TextInfobox text={"Climate1_Textbox" + counter} />
+        <TextInfobox text={"Climate1_Textbox" + counter} source={"Climate1_Source"} />
       </CSSTransition>
       {counter < props.upperLimit ? (
         <button onClick={e => handleClick(e)}>
