@@ -184,19 +184,17 @@ const World = () => {
 
       <div className="linegraph-container">
         <div className="linegraph-text-container">
-          {clickedCountry.country === undefined ? null : (
-            <div>
+          {globalData === undefined ? null : (
               <TemperatureLineGraph
                 selectedCountry={clickedCountry.country}
                 climateData={clickedCountry.filteredCountry}
                 globalData={globalData}
               />
-              <InfoboxNavigation
-                upperLimit={3}
-                textIdentifier={"Climate1_Textbox."}
-              />
-            </div>
-          )}
+            )}
+           <InfoboxNavigation
+               upperLimit={3}
+               textIdentifier={"Climate1_Textbox."}
+             />
         </div>
       </div>
     </React.Fragment>

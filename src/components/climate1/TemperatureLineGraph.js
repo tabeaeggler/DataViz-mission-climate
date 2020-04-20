@@ -45,9 +45,10 @@ const TemperatureLineGraph = props => {
    * @returns {number} position for naming tag
    */
   function getTagPosition(tag) {
-    var countryTagPos = props.climateData[props.climateData.length - 1].value
     var globalTagPos = props.globalData[props.globalData.length - 1].value
+    if (props.selectedCountry === undefined || props.climateData.length === 0) return globalTagPos
 
+    var countryTagPos = props.climateData[props.climateData.length - 1].value
     if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
       if (globalTagPos > countryTagPos) {
         if (tag === "global") return parseFloat(globalTagPos) + 0.1
@@ -83,7 +84,7 @@ const TemperatureLineGraph = props => {
 
     //set the X and Y ranges
     const xScale = scaleLinear()
-      .domain(extent(props.climateData, d => d.year)) //1961 - 2019: 58 Jahre
+      .domain(extent(props.globalData, d => d.year)) //1961 - 2019: 58 Jahre
       .range([0, width]) //visual representation of domain
       .nice()
 
@@ -94,20 +95,6 @@ const TemperatureLineGraph = props => {
     const yAxis = axisLeft(yScale).tickFormat(
       index => index.toFixed(1) + " " + "\u2103"
     )
-
-    //define country and global line
-    const selectedCountryLine = line()
-      .defined(function (climateData) {
-        return climateData.value !== ""
-      })
-      .x(climateData => xScale(climateData.year))
-      .y(climateData => yScale(climateData.value))
-      .curve(curveCardinal)
-
-    const globalLine = line()
-      .x(climateData => xScale(climateData.year))
-      .y(climateData => yScale(climateData.value))
-      .curve(curveCardinal)
 
     //add X and Y gridlines
     svg
@@ -129,22 +116,24 @@ const TemperatureLineGraph = props => {
     svg.select(".countryName").remove()
     svg.select(".globalName").remove()
 
-    //add naming tags for country and global line
-    svg
-      .append("text")
-      .attr("class", "countryName")
-      .attr(
-        "transform",
-        "translate(" +
-          (width - 15) +
-          "," +
-          yScale(getTagPosition("country")) +
-          ")"
-      )
-      .attr("dy", ".35em")
-      .style("fill", "#D37B61")
-      .text(eval(t("Climate1_TooltipTemperature.4")))
+    //define global line
+    const globalLine = line()
+      .x(climateData => xScale(climateData.year))
+      .y(climateData => yScale(climateData.value))
+      .curve(curveCardinal)
 
+    //add global line
+    svgLines
+      .selectAll(".global-line")
+      .data([props.globalData])
+      .join("path")
+      .attr("class", "global-line")
+      .attr("d", climateData => globalLine(climateData))
+      .attr("fill", "none")
+      .attr("opacity", "0.2")
+      .attr("stroke", "white")
+
+    //add name tag for global line
     svg
       .append("text")
       .attr("class", "globalName")
@@ -161,25 +150,43 @@ const TemperatureLineGraph = props => {
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
 
-    //add lines
-    svgLines
-      .selectAll(".line")
-      .data([props.climateData])
-      .join("path")
-      .attr("class", "line")
-      .attr("d", climateData => selectedCountryLine(climateData))
-      .attr("fill", "none")
-      .attr("stroke", "#D37B61")
+    //only render country line when country is selected
+    if (props.selectedCountry != undefined || props.climateData.length > 0) {
+      //define country line
+      const selectedCountryLine = line()
+        .defined(function (climateData) {
+          return climateData.value !== ""
+        })
+        .x(climateData => xScale(climateData.year))
+        .y(climateData => yScale(climateData.value))
+        .curve(curveCardinal)
 
-    svgLines
-      .selectAll(".global-line")
-      .data([props.globalData])
-      .join("path")
-      .attr("class", "global-line")
-      .attr("d", climateData => globalLine(climateData))
-      .attr("fill", "none")
-      .attr("opacity", "0.2")
-      .attr("stroke", "white")
+      //add country line
+      svgLines
+        .selectAll(".line")
+        .data([props.climateData])
+        .join("path")
+        .attr("class", "line")
+        .attr("d", climateData => selectedCountryLine(climateData))
+        .attr("fill", "none")
+        .attr("stroke", "#D37B61")
+
+      //add name tag for country line
+      svg
+        .append("text")
+        .attr("class", "countryName")
+        .attr(
+          "transform",
+          "translate(" +
+            (width - 15) +
+            "," +
+            yScale(getTagPosition("country")) +
+            ")"
+        )
+        .attr("dy", ".35em")
+        .style("fill", "#D37B61")
+        .text(eval(t("Climate1_TooltipTemperature.4")))
+    }
   }
 
   /**
