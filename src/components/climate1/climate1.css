@@ -42,9 +42,9 @@ svg text.label {
   align-content: center;
   text-align: center;
   margin-bottom: 2em;
-  position: absolute;
-  bottom: 0.1%;
-  left: 10%;
+  position: fixed;
+  bottom: -3%;
+  left: 1%;
 }
 
 .location-button button {
@@ -55,7 +55,7 @@ svg text.label {
 .linegraph-container {
   position: absolute;
   left: 46.5%;
-  top: 20%;
+  top: 23%;
 }
 
 .linegraph-text-container {
@@ -77,5 +77,9 @@ svg text.label {
   z-index: 10;
   left: 46.5%;
   padding: 0;
-  top: 10%
+  top: 13%
+}
+
+text.global-name, text.country-name {
+  font-size: 0.9em;
 }

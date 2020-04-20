@@ -69,7 +69,7 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const width = (window.innerWidth/2)* 0.845
+    const width = (window.innerWidth/2)*0.8
     const height = 250
     const margin = 40
     //wrapper, so that the svg is available for d3
@@ -87,7 +87,7 @@ const TemperatureLineGraph = props => {
       .range([0, width]) //visual representation of domain
       .nice()
 
-    const yScale = scaleLinear().domain([-1.5, 3]).range([height, 0])
+    const yScale = scaleLinear().domain([-2, 3]).range([height, 0])
 
     //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
@@ -112,8 +112,8 @@ const TemperatureLineGraph = props => {
     svg.append("g").call(yAxis)
 
     //remove old line tag
-    svg.select(".countryName").remove()
-    svg.select(".globalName").remove()
+    svg.select(".country-name").remove()
+    svg.select(".global-name").remove()
 
     //define global line
     const globalLine = line()
@@ -135,11 +135,11 @@ const TemperatureLineGraph = props => {
     //add name tag for global line
     svg
       .append("text")
-      .attr("class", "globalName")
+      .attr("class", "global-name")
       .attr(
         "transform",
         "translate(" +
-          (width - 15) +
+          (width - 12) +
           "," +
           yScale(getTagPosition("global")) +
           ")"
@@ -173,11 +173,11 @@ const TemperatureLineGraph = props => {
       //add name tag for country line
       svg
         .append("text")
-        .attr("class", "countryName")
+        .attr("class", "country-name")
         .attr(
           "transform",
           "translate(" +
-            (width - 15) +
+            (width - 12) +
             "," +
             yScale(getTagPosition("country")) +
             ")"
@@ -199,7 +199,7 @@ const TemperatureLineGraph = props => {
     <React.Fragment>
       {/* <h2>{eval(t("Climate1_TooltipTemperature.4"))}</h2> */}
       <div className="temperature-graph-container">
-        <svg className="temperature-graph" width={(window.innerWidth/2)}>
+        <svg className="temperature-graph" width={(window.innerWidth/2*1.1)}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
