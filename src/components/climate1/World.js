@@ -6,6 +6,7 @@ import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import InfoboxNavigation from "./InfoboxNavigation"
+import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 
@@ -176,10 +177,10 @@ const World = () => {
       <div className="wrapper-container"></div>
       <div className="globe-container">
         {createGlobe()}
-        {/* <div className="location-button">
-          <button onClick={handleZoom}></button>
+        <div className="location-button">
+          <button onClick={handleZoom}> <img src={LocationButton}></img></button>
           <span>{t("Climate1_BackToLocation")}</span>
-        </div> */}
+        </div>
       </div>
 
       <div className="linegraph-container">
