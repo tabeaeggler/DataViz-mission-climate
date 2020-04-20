@@ -103,7 +103,7 @@ const World = () => {
           }
           return 0.06
         }}
-        labelSize={0.7}
+        labelSize={1.5}
         labelDotRadius={0.4}
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
@@ -134,7 +134,7 @@ const World = () => {
       .scale(colorScale)
       .cells(8)
       .orient("horizontal")
-      .shapeWidth(28)
+      .shapeWidth(27)
       .shapePadding(-2)
       .shapeHeight(5)
       .title(t("Climate1_TooltipTemperature.1") + " °C")
@@ -182,6 +182,9 @@ const World = () => {
           <span>{t("Climate1_BackToLocation")}</span>
         </div>
       </div>
+      <svg className="legend-world">
+        <g ref={svgRef}></g>
+      </svg>
 
       <div className="linegraph-container">
         <div className="linegraph-text-container">

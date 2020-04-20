@@ -20,8 +20,9 @@
 .legend-world {
   width: 11.5em;
   height: 4em;
-  margin: auto;
-  display: block;
+  position: fixed;
+  bottom: 0.5%;
+  left: 32%;
 }
 
 .scene-tooltip {
@@ -31,6 +32,7 @@
 svg text.legendTitle {
   fill: #bbb9b9;
   font-size: 0.9em;
+  transform: translate(0px,15px);
 }
 svg text.label {
   fill: #bbb9b9;
