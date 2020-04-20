@@ -52,7 +52,7 @@ svg text.label {
 .linegraph-container {
   position: absolute;
   left: 46.5%;
-  top: 26%;
+  top: 20%;
 }
 
 .linegraph-text-container {
@@ -62,8 +62,17 @@ svg text.label {
 .globe-container {
   position: absolute;
   left: -4%;
+  bottom: 00.1%;
 }
 
 .wrapper-container {
   position: relative;
+}
+
+.climate-1-title {
+  position: absolute;
+  z-index: 10;
+  left: 46.5%;
+  padding: 0;
+  top: 10%
 }

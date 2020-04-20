@@ -69,7 +69,7 @@ const World = () => {
         showGraticules={true}
         backgroundColor={"#141416"}
         showAtmosphere={false}
-        width={window.innerWidth/2}
+        width={window.innerWidth / 2}
         //country config
         polygonsData={countries.features}
         polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
