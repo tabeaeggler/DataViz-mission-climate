@@ -46,7 +46,8 @@ const TemperatureLineGraph = props => {
    */
   function getTagPosition(tag) {
     var globalTagPos = props.globalData[props.globalData.length - 1].value
-    if (props.selectedCountry === undefined || props.climateData.length === 0) return globalTagPos
+    if (props.selectedCountry === undefined || props.climateData.length === 0)
+      return globalTagPos
 
     var countryTagPos = props.climateData[props.climateData.length - 1].value
     if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
@@ -68,14 +69,12 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const width = 700
+    const width = (window.innerWidth/2)* 0.845
     const height = 250
     const margin = 40
     //wrapper, so that the svg is available for d3
-    const svg = select(svgRef.current).attr(
-      "transform",
-      `translate(${margin},${margin})`
-    )
+    const svg = select(svgRef.current)
+      .attr("transform", `translate(${margin},${margin})`)
     //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
     const svgLines = select(svgLinesRef.current).attr(
       "transform",
@@ -200,7 +199,7 @@ const TemperatureLineGraph = props => {
     <React.Fragment>
       {/* <h2>{eval(t("Climate1_TooltipTemperature.4"))}</h2> */}
       <div className="temperature-graph-container">
-        <svg className="temperature-graph">
+        <svg className="temperature-graph" width={(window.innerWidth/2)}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>

@@ -52,18 +52,14 @@ span {
 .infobox-container {
   height: auto;
   text-align: justify;
-}
-
-.info-box {
-  width: 80%;
-}
-
-.infobox-container {
   position: absolute;
   z-index: 10;
   display: flex;
   justify-content: center;
-  top: 80%;
+  top: 100%;
+  right: 8.5%;
+  width: 91.5%
+
 }
 
 .infobox-paragraph {

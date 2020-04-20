@@ -69,7 +69,7 @@ const World = () => {
         showGraticules={true}
         backgroundColor={"#141416"}
         showAtmosphere={false}
-        width={900}
+        width={window.innerWidth/2}
         //country config
         polygonsData={countries.features}
         polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
@@ -176,10 +176,10 @@ const World = () => {
       <div className="wrapper-container"></div>
       <div className="globe-container">
         {createGlobe()}
-        <div className="location-button">
+        {/* <div className="location-button">
           <button onClick={handleZoom}></button>
           <span>{t("Climate1_BackToLocation")}</span>
-        </div>
+        </div> */}
       </div>
 
       <div className="linegraph-container">

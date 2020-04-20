@@ -5,9 +5,7 @@
 }
 
 .temperature-graph {
-  width: 900px;
-  height: 400px;
-  margin: auto;
+  height: 320px;
 }
 
 .grid line {
@@ -53,7 +51,7 @@ svg text.label {
 
 .linegraph-container {
   position: absolute;
-  left: 48%;
+  left: 46.5%;
   top: 26%;
 }
 
