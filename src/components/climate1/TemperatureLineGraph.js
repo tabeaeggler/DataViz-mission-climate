@@ -69,12 +69,14 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const width = (window.innerWidth/2)*0.8
+    const width = (window.innerWidth / 2) * 0.8
     const height = 250
     const margin = 40
     //wrapper, so that the svg is available for d3
-    const svg = select(svgRef.current)
-      .attr("transform", `translate(${margin},${margin})`)
+    const svg = select(svgRef.current).attr(
+      "transform",
+      `translate(${margin},${margin})`
+    )
     //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
     const svgLines = select(svgLinesRef.current).attr(
       "transform",
@@ -114,6 +116,7 @@ const TemperatureLineGraph = props => {
     //remove old line tag
     svg.select(".country-name").remove()
     svg.select(".global-name").remove()
+    svg.select(".linegraph-description").remove()
 
     //define global line
     const globalLine = line()
@@ -129,7 +132,7 @@ const TemperatureLineGraph = props => {
       .attr("class", "global-line")
       .attr("d", climateData => globalLine(climateData))
       .attr("fill", "none")
-      .attr("opacity", "0.2")
+      .attr("opacity", "0.4")
       .attr("stroke", "white")
 
     //add name tag for global line
@@ -145,11 +148,22 @@ const TemperatureLineGraph = props => {
           ")"
       )
       .attr("dy", ".35em")
-      .attr("opacity", "0.2")
+      .attr("opacity", "0.4")
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
 
-    //only render country line when country is selected
+    //add description text for graph
+    svg
+      .append("svg:text")
+      .append("svg:tspan")
+      .attr("class", "linegraph-description")
+      .style("fill", "#bbb9b9")
+      .attr("y", "15px").attr("x", "20px")
+      .text(t("Climate1_TooltipTemperature.6"))
+      .append("svg:tspan").attr("y", "40px").attr("x", "22px").text(t("Climate1_TooltipTemperature.7"))
+
+
+    //only render country line when country is selcted
     if (props.selectedCountry != undefined || props.climateData.length > 0) {
       //define country line
       const selectedCountryLine = line()
@@ -199,7 +213,9 @@ const TemperatureLineGraph = props => {
     <React.Fragment>
       {/* <h2>{eval(t("Climate1_TooltipTemperature.4"))}</h2> */}
       <div className="temperature-graph-container">
-        <svg className="temperature-graph" width={(window.innerWidth/2*1.1)}>
+        <svg
+          className="temperature-graph"
+          width={(window.innerWidth / 2) * 1.1}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
