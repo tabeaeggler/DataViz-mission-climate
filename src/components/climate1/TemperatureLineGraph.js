@@ -167,7 +167,7 @@ const TemperatureLineGraph = props => {
       .text(t("Climate1_TooltipTemperature.7"))
 
     //only render country line when country is selcted
-    if (props.selectedCountry != undefined || props.climateData.length > 0) {
+    if (props.selectedCountry !== undefined || props.climateData.length > 0) {
       //define country line
       const selectedCountryLine = line()
         .defined(function (climateData) {
