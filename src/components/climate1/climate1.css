@@ -34,9 +34,9 @@ text.year-text {
 
 /*world component style*/
 .legend-world {
-  width: 4em;
-  height: 14em;
-  position: fixed;
+  width: 30px;
+  height: 280px;
+  position: absolute;
   bottom: 47%;
   left: 50.5%;
 }
