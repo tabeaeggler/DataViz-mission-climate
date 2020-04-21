@@ -154,25 +154,6 @@ const TemperatureLineGraph = props => {
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
 
-    //add line and text for year 2019
-    svg
-      .append("line")
-      .attr("class", "year-line")
-      .attr("x1", xScale(2019))
-      .attr("x2", xScale(2019))
-      .attr("y1", 17)
-      .attr("y2", height)
-      .style("stroke-dasharray", "5,5")
-      .attr("stroke", "#bbb9b9")
-
-    svg
-      .append("text")
-      .attr("class", "year-text")
-      .text("2019")
-      .attr("x", xScale(2019) - 17)
-      .attr("y", 15)
-      .attr("fill", "#bbb9b9")
-
     //add description text for graph
     svg
       .append("svg:text")
