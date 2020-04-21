@@ -8,7 +8,11 @@ import {
   scaleLinear,
   axisLeft,
   extent,
+  interpolateRdYlBu,
+  scaleSequential
 } from "d3"
+import { legendColor } from "d3-svg-legend"
+
 
 /**
  * Creates a linegraph with two lines: country specific & global climate change
@@ -20,6 +24,8 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
+  const svgRefLegend = useRef()
+
 
   /**
    * Creates a gridlines in x axis function
@@ -206,10 +212,27 @@ const TemperatureLineGraph = props => {
   }
 
   /**
+   * Creates color-scale legend for globe
+   */
+  function createLegend() {
+    const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
+    const svg = select(svgRefLegend.current).attr("transform", "translate(0,20)")
+    var legend = legendColor()
+      .scale(colorScaleLegend)
+      .cells(8)
+      .orient("vertical")
+      .shapeWidth(5)
+      .shapePadding(-2)
+      .shapeHeight(35)
+    svg.call(legend)
+  }
+
+  /**
    * React Lifecycle -> Renders as soon as props has changed
    */
   useEffect(() => {
     createLineGraph()
+    createLegend()
   }, [props])
 
   return (
@@ -221,6 +244,9 @@ const TemperatureLineGraph = props => {
           width={(window.innerWidth / 2) * 1.1}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
+        </svg>
+        <svg className="legend-world">
+          <g ref={svgRefLegend}></g>
         </svg>
       </div>
     </React.Fragment>

@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from "react"
 import {
   scaleSequential,
   interpolateYlOrRd,
-  interpolateRdYlBu,
   select,
   csv,
 } from "d3"
-import { legendColor } from "d3-svg-legend"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
@@ -23,7 +21,6 @@ import globalDataPath from "../../assets/data_climate1/climate_change_global_cle
 const World = () => {
   const { t } = useTranslation()
   const globeElement = useRef()
-  const svgRef = useRef()
   const [countries, setCountries] = useState({
     features: [],
   })
@@ -42,7 +39,6 @@ const World = () => {
     },
   ]
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
-  const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
   const getVal = feat => feat.properties.TEMP
 
   /**
@@ -133,21 +129,6 @@ const World = () => {
   }
 
   /**
-   * Creates color-scale legend for globe
-   */
-  function createLegend() {
-    const svg = select(svgRef.current).attr("transform", "translate(0,20)")
-    var legend = legendColor()
-      .scale(colorScaleLegend)
-      .cells(8)
-      .orient("vertical")
-      .shapeWidth(5)
-      .shapePadding(-2)
-      .shapeHeight(35)
-    svg.call(legend)
-  }
-
-  /**
    * Updates selected country and filter climate data for selected country
    * @param {country object} country
    */
@@ -161,13 +142,6 @@ const World = () => {
       ),
     })
   }
-
-  /**
-   * React Lifecycle -> Updates when ever legend changes
-   */
-  useEffect(() => {
-    createLegend()
-  })
 
   /**
    * React Lifecycle -> Renders only once
@@ -189,10 +163,6 @@ const World = () => {
           <span className="location-button-text">{t("Climate1_BackToLocation")}</span>
         </div>
       </div>
-      <svg className="legend-world">
-        <g ref={svgRef}></g>
-      </svg>
-
       <div className="linegraph-container">
         <div className="linegraph-text-container">
           {globalData === undefined ? null : (
