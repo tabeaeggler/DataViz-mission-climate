@@ -19,7 +19,7 @@
 .linegraph-container {
   position: absolute;
   left: 52%;
-  top: 21%;
+  top: 23%;
 }
 
 .linegraph-text-container {
@@ -35,10 +35,10 @@ text.year-text {
 /*world component style*/
 .legend-world {
   width: 30px;
-  height: 280px;
+  height: 250px;
   position: absolute;
   left: -2.7%;
-  top: 5%;
+  top: 12.1%;
 }
 
 .scene-tooltip {
@@ -90,5 +90,5 @@ svg text.label {
   z-index: 10;
   left: 50.2%;
   padding: 0;
-  top: 12%;
+  top: 14%;
 }

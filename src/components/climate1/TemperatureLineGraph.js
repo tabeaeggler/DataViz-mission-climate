@@ -216,14 +216,14 @@ const TemperatureLineGraph = props => {
    */
   function createLegend() {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
-    const svg = select(svgRefLegend.current).attr("transform", "translate(0,20)")
+    const svg = select(svgRefLegend.current)//.attr("transform", "translate(0,20)")
     var legend = legendColor()
       .scale(colorScaleLegend)
       .cells(8)
       .orient("vertical")
       .shapeWidth(5)
       .shapePadding(-2)
-      .shapeHeight(35)
+      .shapeHeight(33)
     svg.call(legend)
   }
 
@@ -241,7 +241,7 @@ const TemperatureLineGraph = props => {
       <div className="temperature-graph-container">
         <svg
           className="temperature-graph"
-          width={(window.innerWidth / 2) * 1.1}>
+          width={(window.innerWidth / 2)*0.96}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
