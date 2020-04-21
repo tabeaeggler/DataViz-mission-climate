@@ -162,7 +162,7 @@ const TemperatureLineGraph = props => {
       .attr("x2", xScale(2019))
       .attr("y1", 17)
       .attr("y2", height)
-      .style("stroke-dasharray", "5,5") //dashed array for line
+      .style("stroke-dasharray", "5,5")
       .attr("stroke", "#bbb9b9")
 
     svg

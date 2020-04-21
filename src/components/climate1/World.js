@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
-import { scaleSequential, interpolateYlOrRd, interpolateRdYlBu, select, csv } from "d3"
+import {
+  scaleSequential,
+  interpolateYlOrRd,
+  interpolateRdYlBu,
+  select,
+  csv,
+} from "d3"
 import { legendColor } from "d3-svg-legend"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -138,7 +144,7 @@ const World = () => {
       .shapeWidth(5)
       .shapePadding(-2)
       .shapeHeight(35)
-      // .title(t("Climate1_TooltipTemperature.1") + " °C")
+    // .title(t("Climate1_TooltipTemperature.1") + " °C")
 
     svg.call(legend)
   }
@@ -179,7 +185,10 @@ const World = () => {
       <div className="globe-container">
         {createGlobe()}
         <div className="location-button">
-          <button onClick={handleZoom}> <img src={LocationButton}></img></button>
+          <button onClick={handleZoom}>
+            {" "}
+            <img src={LocationButton}></img>
+          </button>
           <span>{t("Climate1_BackToLocation")}</span>
         </div>
       </div>
@@ -190,16 +199,16 @@ const World = () => {
       <div className="linegraph-container">
         <div className="linegraph-text-container">
           {globalData === undefined ? null : (
-              <TemperatureLineGraph
-                selectedCountry={clickedCountry.country}
-                climateData={clickedCountry.filteredCountry}
-                globalData={globalData}
-              />
-            )}
-           <InfoboxNavigation
-               upperLimit={3}
-               textIdentifier={"Climate1_Textbox."}
-             />
+            <TemperatureLineGraph
+              selectedCountry={clickedCountry.country}
+              climateData={clickedCountry.filteredCountry}
+              globalData={globalData}
+            />
+          )}
+          <InfoboxNavigation
+            upperLimit={3}
+            textIdentifier={"Climate1_Textbox."}
+          />
         </div>
       </div>
     </React.Fragment>
