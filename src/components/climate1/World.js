@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
+import { scaleSequential, interpolateYlOrRd, interpolateRdYlBu, select, csv } from "d3"
 import { legendColor } from "d3-svg-legend"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -35,7 +35,8 @@ const World = () => {
       coutry: "Switzerland",
     },
   ]
-  const colorScale = scaleSequential(interpolateYlOrRd).domain([0, 3])
+  const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
+  const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
   const getVal = feat => feat.properties.TEMP
 
   /**
@@ -74,7 +75,7 @@ const World = () => {
         //country config
         polygonsData={countries.features}
         polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
-        polygonCapColor={d => colorScale(getVal(d))}
+        polygonCapColor={d => colorScaleGlobe(getVal(d))}
         polygonSideColor={d =>
           d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
         }
@@ -103,7 +104,7 @@ const World = () => {
           }
           return 0.06
         }}
-        labelSize={1.5}
+        labelSize={1}
         labelDotRadius={0.4}
         labelColor={() => "rgba(255, 165, 0, 1)"}
         labelResolution={6}
@@ -131,13 +132,13 @@ const World = () => {
   function createLegend() {
     const svg = select(svgRef.current).attr("transform", "translate(0,20)")
     var legend = legendColor()
-      .scale(colorScale)
+      .scale(colorScaleLegend)
       .cells(8)
-      .orient("horizontal")
-      .shapeWidth(27)
+      .orient("vertical")
+      .shapeWidth(5)
       .shapePadding(-2)
-      .shapeHeight(5)
-      .title(t("Climate1_TooltipTemperature.1") + " °C")
+      .shapeHeight(35)
+      // .title(t("Climate1_TooltipTemperature.1") + " °C")
 
     svg.call(legend)
   }

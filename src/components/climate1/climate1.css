@@ -18,11 +18,11 @@
 
 /*world component style*/
 .legend-world {
-  width: 11.5em;
-  height: 4em;
+  width: 4em;
+  height: 14em;
   position: fixed;
-  bottom: 0.5%;
-  left: 32%;
+  bottom: 45%;
+  left: 46.5%;
 }
 
 .scene-tooltip {
@@ -35,7 +35,7 @@ svg text.legendTitle {
   transform: translate(0px,15px);
 }
 svg text.label {
-  fill: #bbb9b9;
+  fill:transparent;
   font-size: 0.7em;
 }
 
@@ -56,7 +56,7 @@ svg text.label {
 
 .linegraph-container {
   position: absolute;
-  left: 46.5%;
+  left: 48.0%;
   top: 23%;
 }
 

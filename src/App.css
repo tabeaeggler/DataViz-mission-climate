@@ -53,14 +53,13 @@ span {
 
 .infobox-container {
   height: auto;
-  text-align: justify;
   position: absolute;
   z-index: 10;
   display: flex;
   justify-content: center;
   top: 100%;
   right: 21%;
-  width: 79%;
+  width: 82%;
 }
 
 .infobox-paragraph {
@@ -107,6 +106,6 @@ button.language-button,
 .language-button-container {
   position: fixed;
   bottom: 0;
-  left: 95%;
+  left: 96%;
   margin-bottom: 2px;
 }
