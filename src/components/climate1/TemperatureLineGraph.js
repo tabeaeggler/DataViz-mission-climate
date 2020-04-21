@@ -117,6 +117,8 @@ const TemperatureLineGraph = props => {
     svg.select(".country-name").remove()
     svg.select(".global-name").remove()
     svg.select(".linegraph-description").remove()
+    svg.select(".year-line").remove()
+    svg.select(".year-text").remove()
 
     //define global line
     const globalLine = line()
@@ -142,7 +144,7 @@ const TemperatureLineGraph = props => {
       .attr(
         "transform",
         "translate(" +
-          (width - 12) +
+          (width - 10) +
           "," +
           yScale(getTagPosition("global")) +
           ")"
@@ -152,16 +154,38 @@ const TemperatureLineGraph = props => {
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
 
+    //add line and text for year 2019
+    svg
+      .append("line")
+      .attr("class", "year-line")
+      .attr("x1", xScale(2019))
+      .attr("x2", xScale(2019))
+      .attr("y1", 17)
+      .attr("y2", height)
+      .style("stroke-dasharray", "5,5") //dashed array for line
+      .attr("stroke", "#bbb9b9")
+
+    svg
+      .append("text")
+      .attr("class", "year-text")
+      .text("2019")
+      .attr("x", xScale(2019) - 17)
+      .attr("y", 15)
+      .attr("fill", "#bbb9b9")
+
     //add description text for graph
     svg
       .append("svg:text")
       .append("svg:tspan")
       .attr("class", "linegraph-description")
       .style("fill", "#bbb9b9")
-      .attr("y", "15px").attr("x", "20px")
+      .attr("y", "15px")
+      .attr("x", "20px")
       .text(t("Climate1_TooltipTemperature.6"))
-      .append("svg:tspan").attr("y", "40px").attr("x", "22px").text(t("Climate1_TooltipTemperature.7"))
-
+      .append("svg:tspan")
+      .attr("y", "40px")
+      .attr("x", "22px")
+      .text(t("Climate1_TooltipTemperature.7"))
 
     //only render country line when country is selcted
     if (props.selectedCountry != undefined || props.climateData.length > 0) {
@@ -191,7 +215,7 @@ const TemperatureLineGraph = props => {
         .attr(
           "transform",
           "translate(" +
-            (width - 12) +
+            (width - 10) +
             "," +
             yScale(getTagPosition("country")) +
             ")"

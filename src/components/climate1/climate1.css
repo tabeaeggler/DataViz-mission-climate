@@ -82,6 +82,6 @@ svg text.label {
   top: 13%
 }
 
-text.global-name, text.country-name {
-  font-size: 0.9em;
+text.global-name, text.country-name, text.year-text {
+  font-size: 0.7em;
 }
