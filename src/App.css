@@ -34,10 +34,6 @@ p {
   font-size: 1em;
 }
 
-span {
-  font-size: 0.9em;
-}
-
 /* infobox style*/
 .infobox-enter,
 .infobox-exit {
@@ -90,8 +86,7 @@ button.language-button,
   border-radius: 100%;
   width: 40px;
   height: 40px;
-  display: block;
-  margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 #language-button-clicked {
@@ -102,6 +97,7 @@ button.language-button,
 .language-button-container {
   position: fixed;
   bottom: 0;
-  left: 96%;
-  margin-bottom: 2px;
+  left: 85.5%;
+  margin-bottom: 17px;
+  width: auto;
 }

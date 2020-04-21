@@ -111,8 +111,8 @@ const World = () => {
           return 0.06
         }}
         labelSize={1}
-        labelDotRadius={0.4}
-        labelColor={() => "rgba(255, 165, 0, 1)"}
+        labelDotRadius={0.5}
+        labelColor={() => "rgba(187, 185, 185, 1)"}
         labelResolution={6}
       />
     )
@@ -128,7 +128,7 @@ const World = () => {
         lng: 10,
         altitude: 2.7,
       },
-      5000
+      3500
     )
   }
 
@@ -144,8 +144,6 @@ const World = () => {
       .shapeWidth(5)
       .shapePadding(-2)
       .shapeHeight(35)
-    // .title(t("Climate1_TooltipTemperature.1") + " °C")
-
     svg.call(legend)
   }
 
@@ -186,10 +184,9 @@ const World = () => {
         {createGlobe()}
         <div className="location-button">
           <button onClick={handleZoom}>
-            {" "}
-            <img src={LocationButton}></img>
+              <img src={LocationButton}></img>
           </button>
-          <span>{t("Climate1_BackToLocation")}</span>
+          <span className="location-button-text">{t("Climate1_BackToLocation")}</span>
         </div>
       </div>
       <svg className="legend-world">

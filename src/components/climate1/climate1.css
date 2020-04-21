@@ -21,8 +21,8 @@
   width: 4em;
   height: 14em;
   position: fixed;
-  bottom: 45%;
-  left: 46.5%;
+  bottom: 47%;
+  left: 50.5%;
 }
 
 .scene-tooltip {
@@ -32,32 +32,37 @@
 svg text.legendTitle {
   fill: #bbb9b9;
   font-size: 0.9em;
-  transform: translate(0px,15px);
+  transform: translate(0px, 15px);
 }
 svg text.label {
-  fill:transparent;
+  fill: transparent;
   font-size: 0.7em;
 }
 
 .location-button {
   color: #bbb9b9;
-  align-content: center;
   text-align: center;
   margin-bottom: 2em;
   position: fixed;
   bottom: -3%;
-  left: 1%;
+  left: 1.5%;
+  display: block;
 }
 
 .location-button button {
-  display: block;
-  margin: auto;
+  padding: 0;
+}
+
+.location-button-text {
+  font-size: 0.7em;
+  left: 2%;
+  /* display: block; */
 }
 
 .linegraph-container {
   position: absolute;
-  left: 48.0%;
-  top: 23%;
+  left: 52%;
+  top: 21%;
 }
 
 .linegraph-text-container {
@@ -66,7 +71,6 @@ svg text.label {
 
 .globe-container {
   position: absolute;
-  left: -4%;
   bottom: 00.1%;
 }
 
@@ -77,11 +81,13 @@ svg text.label {
 .climate-1-title {
   position: absolute;
   z-index: 10;
-  left: 46.5%;
+  left: 50.5%;
   padding: 0;
-  top: 13%
+  top: 12%;
 }
 
-text.global-name, text.country-name, text.year-text {
+text.global-name,
+text.country-name,
+text.year-text {
   font-size: 0.7em;
 }
