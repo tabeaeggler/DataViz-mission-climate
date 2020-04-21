@@ -117,8 +117,6 @@ const TemperatureLineGraph = props => {
     svg.select(".country-name").remove()
     svg.select(".global-name").remove()
     svg.select(".linegraph-description").remove()
-    svg.select(".year-line").remove()
-    svg.select(".year-text").remove()
 
     //define global line
     const globalLine = line()

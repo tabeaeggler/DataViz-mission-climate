@@ -16,6 +16,22 @@
   stroke-width: 0;
 }
 
+.linegraph-container {
+  position: absolute;
+  left: 52%;
+  top: 21%;
+}
+
+.linegraph-text-container {
+  position: relative;
+}
+
+text.global-name,
+text.country-name,
+text.year-text {
+  font-size: 0.7em;
+}
+
 /*world component style*/
 .legend-world {
   width: 4em;
@@ -59,16 +75,6 @@ svg text.label {
   /* display: block; */
 }
 
-.linegraph-container {
-  position: absolute;
-  left: 52%;
-  top: 21%;
-}
-
-.linegraph-text-container {
-  position: relative;
-}
-
 .globe-container {
   position: absolute;
   bottom: 00.1%;
@@ -78,16 +84,11 @@ svg text.label {
   position: relative;
 }
 
+/*climate 1 style*/
 .climate-1-title {
   position: absolute;
   z-index: 10;
   left: 50.5%;
   padding: 0;
   top: 12%;
-}
-
-text.global-name,
-text.country-name,
-text.year-text {
-  font-size: 0.7em;
 }
