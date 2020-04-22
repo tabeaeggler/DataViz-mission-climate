@@ -168,7 +168,6 @@ const World = () => {
             />
           )}
           <div className="info-box-linegraph">
-            <p>{t("Climate1_Textbox1.1")}</p>
             <h6>{t("Climate1_Source")}</h6>
           </div>
         </div>

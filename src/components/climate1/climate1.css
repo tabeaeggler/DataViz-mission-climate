@@ -34,6 +34,7 @@ text.year-text {
 
 .info-box-linegraph {
   position: absolute;
+  bottom: -15%;
   right: 7%;
   width: 96%;
 }
@@ -61,12 +62,12 @@ svg text.label {
   font-size: 0.7em;
 }
 
-.location-button button{
+.location-button button {
   color: #bbb9b9;
   text-align: center;
   margin-bottom: 2em;
   position: fixed;
-  bottom:-1%;
+  bottom: -1%;
   left: 1%;
   display: block;
   font-size: 0.7em;
@@ -88,4 +89,80 @@ svg text.label {
   left: 51.2%;
   padding: 0;
   top: 14%;
+}
+
+.bubble-box-climate1-globe {
+  z-index: 100;
+  position: absolute;
+  bottom: 5.7%;
+  left: 35%;
+  background-color: #1c1c1d;
+  width: 24%;
+  height: auto;
+  padding: 0% 0.6% 0.6% 0.6%;
+  border-radius: 5px;
+}
+
+.bubble-arrow-climate1-globe {
+  z-index: 100;
+  width: 1%;
+  height: auto;
+  position: absolute;
+  bottom: 14%;
+  left: 35%;
+  fill: #1c1c1d;
+  height: auto;
+  transform: rotate(90deg);
+}
+
+.bubble-box-climate1-linegraph {
+  z-index: 100;
+  position: absolute;
+  bottom: 16.5%;
+  left: 51.7%;
+  background-color: #1c1c1d;
+  width: 43%;
+  height: auto;
+  padding: 0% 0.6% 0.6% 0.6%;
+  border-radius: 5px;
+}
+
+.bubble-arrow-climate1-linegraph {
+  z-index: 100;
+  width: 1%;
+  height: auto;
+  position: absolute;
+  bottom: 24.2%;
+  left: 85%;
+  fill: #1c1c1d;
+  height: auto;
+  transform: rotate(90deg);
+}
+
+.bubble-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-top: -10%;
+  margin-bottom: -2%;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.bubble-button-arrow {
+  position: absolute;
+  bottom: 15%;
+  fill: #bbb9b9;
+  width: 3.5%;
+  height: auto;
+}
+
+.bubble-visible {
+  visibility: visible;
+}
+
+.bubble-hidden {
+  visibility: hidden;
 }
