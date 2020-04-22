@@ -158,9 +158,10 @@ const World = () => {
         {createGlobe()}
         <div className="location-button">
           <button onClick={handleZoom}>
-              <img src={LocationButton}></img>
+            <img src={LocationButton}></img>
+            {t("Climate1_BackToLocation")}
+
           </button>
-          <span className="location-button-text">{t("Climate1_BackToLocation")}</span>
         </div>
       </div>
       <div className="linegraph-container">
