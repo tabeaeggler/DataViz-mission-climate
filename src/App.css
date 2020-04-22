@@ -99,11 +99,22 @@ button.language-button,
 }
 
 /*Bubble Text box*/
-.bubble-fade-in-enter {
-  opacity: 0.01;
+.bubble-fade-enter,
+.bubble-fade-appear {
+  opacity: 0;
 }
 
-.bubble-fade-in-active {
+.bubble-fade-enter-active,
+.bubble-fade-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 200ms;
+}
+
+.bubble-fade-exit {
+  opacity: 1;
+}
+
+.bubble-fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }

@@ -15,11 +15,11 @@ function Climate1() {
     return (
       <CSSTransition
         in={showBubble.globe}
-        timeout={800}
-        classNames="bubble-fade-in"
+        timeout={20000}
+        classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className={showBubble.globe ? "bubble-visible" : "bubble-hidden"}>
+        <div>
           <div className="bubble-box-climate1-globe">
             <p>{t("Climate1_Bubble.1")}</p>
             <button
@@ -54,12 +54,11 @@ function Climate1() {
     return (
       <CSSTransition
         in={showBubble.linegraph}
-        timeout={800}
-        classNames="bubble-fade-in"
+        timeout={2000}
+        classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div
-          className={showBubble.linegraph ? "bubble-visible" : "bubble-hidden"}>
+        <div>
           <div className="bubble-box-climate1-linegraph">
             <p>{t("Climate1_Bubble.2")}</p>
             <button

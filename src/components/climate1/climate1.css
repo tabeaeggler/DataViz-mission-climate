@@ -132,7 +132,7 @@ svg text.label {
   width: 1%;
   height: auto;
   position: absolute;
-  bottom: 24.2%;
+  bottom: 24.7%;
   left: 88%;
   fill: #1c1c1d;
   height: auto;
@@ -153,7 +153,7 @@ svg text.label {
 
 .bubble-button-arrow-globe {
   position: absolute;
-  bottom: 14.5%;
+  bottom: 18%;
   fill: #bbb9b9;
   width: 3.8%;
   height: auto;
@@ -162,17 +162,9 @@ svg text.label {
 
 .bubble-button-arrow-linegraph {
   position: absolute;
-  bottom: 11.5%;
+  bottom: 15%;
   fill: #bbb9b9;
   width: 2.3%;
   height: auto;
   margin-left: 19.5%;
-}
-
-.bubble-visible {
-  visibility: visible;
-}
-
-.bubble-hidden {
-  visibility: hidden;
 }
