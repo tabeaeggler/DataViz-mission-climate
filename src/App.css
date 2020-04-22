@@ -49,13 +49,9 @@ p {
 
 .infobox-container {
   height: auto;
-  position: absolute;
   z-index: 10;
   display: flex;
   justify-content: center;
-  top: 100%;
-  right: 7%;
-  width: 96%;
 }
 
 #back-button {

@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
-import {
-  scaleSequential,
-  interpolateYlOrRd,
-  select,
-  csv,
-} from "d3"
+import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
-import InfoboxNavigation from "./InfoboxNavigation"
+import InfoboxNavigation from "../navigation/InfoboxNavigation"
 import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
@@ -160,7 +155,6 @@ const World = () => {
           <button onClick={handleZoom}>
             <img src={LocationButton}></img>
             {t("Climate1_Location")}
-
           </button>
         </div>
       </div>
@@ -173,10 +167,10 @@ const World = () => {
               globalData={globalData}
             />
           )}
-          <InfoboxNavigation
-            upperLimit={3}
-            textIdentifier={"Climate1_Textbox."}
-          />
+          <div className="info-box-linegraph">
+            <p>{t("Climate1_Textbox1.1")}</p>
+            <h6>{t("Climate1_Source")}</h6>
+          </div>
         </div>
       </div>
     </React.Fragment>

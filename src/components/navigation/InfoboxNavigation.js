@@ -26,19 +26,19 @@ const InfoboxNavigation = props => {
 
   return (
     <div className="infobox-container">
-      {/* {counter > 1 ? (
+      {counter > 1 ? (
         <button onClick={e => handleClick(e)}>
           <img src={ButtonLeft} id="back-button" alt=""></img>
         </button>
-      ) : null} */}
+      ) : null}
       <CSSTransition in={showText} timeout={400} classNames="infobox">
         <TextInfobox text={"Climate1_Textbox" + counter} source={"Climate1_Source"} />
       </CSSTransition>
-      {/* {counter < props.upperLimit ? (
+      {counter < props.upperLimit ? (
         <button onClick={e => handleClick(e)}>
           <img src={ButtonRight} id="next-button" alt=""></img>
         </button>
-      ) : null} */}
+      ) : null}
     </div>
   )
 }

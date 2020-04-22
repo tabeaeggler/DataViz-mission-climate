@@ -32,6 +32,12 @@ text.year-text {
   font-size: 0.7em;
 }
 
+.info-box-linegraph {
+  position: absolute;
+  right: 7%;
+  width: 96%;
+}
+
 /*world component style*/
 .legend-world {
   width: 30px;

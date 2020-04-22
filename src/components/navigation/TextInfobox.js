@@ -10,7 +10,7 @@ const TextInfobox = props => {
 
   return (
     <div className="info-box">
-      <p className="infobox-paragraph">{t(props.text + ".2")}</p>
+      <p className="infobox-paragraph">{t(props.text + ".1")}</p>
       <h6>{t(props.source)}</h6>
     </div>
   )
