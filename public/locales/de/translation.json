@@ -12,7 +12,7 @@
     "6": "Temperaturabweichung",
     "7": "vom Mittelwert"
   },
-  "Climate1_Location": "Du befindest dich hier",
+  "Climate1_Location": "Mein Standort",
   "Climate1_Textbox1": {
     "1": "Was sagen diese Daten aus?",
     "2": "Laut den Daten des Institutes für «Space Studies» der NASA, nimmt die durchschnittliche globale Temperatur seit 1961 stetig zu. Im Jahr 2019 ist in allen Ländern der Welt  die Temperatur, im Verhältnis zum Mittelwert von 1950-81, gestiegen. Die Temperaturzunahmen des Jahres 2019 kannst du im Globus auf der linken Seite entdecken. Klicke auf ein Land und erfahre mehr über die dortigen Temperaturveränderungen der letzten 50 Jahre."
@@ -21,6 +21,5 @@
     "1": "Auch wir sind betroffen!",
     "2": "Die höchsten Temperaturzunahmen wurden in XXX, XXX und XXX gemessen. Folgen  der steigenden Temperaturen sind steigende Meeresspiegel, Gletscherschmelze, Verschiebung von Klimazonen, Vegetationszonen und Lebensräumen, stärkere oder häufigere Waldbrände, verändertes Auftreten von Niederschlägen, stärkere oder häufigere Wetterextreme wie Überschwemmungen, Stürme und Dürren, Ausbreitung von Parasiten und tropischen Krankheiten sowie mehr Umweltflüchtlingen.Wie ist die Schweiz nun davon betroffen?"
   },
-  "Climate1_BackToLocation": "Schweiz",
   "Climate1_Source": "Quelle: NASA-GISS"
 }

@@ -159,7 +159,7 @@ const World = () => {
         <div className="location-button">
           <button onClick={handleZoom}>
             <img src={LocationButton}></img>
-            {t("Climate1_BackToLocation")}
+            {t("Climate1_Location")}
 
           </button>
         </div>

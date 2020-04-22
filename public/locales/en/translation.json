@@ -12,7 +12,7 @@
     "6": "Temperature deviation",
     "7": "from the mean"
   },
-  "Climate1_Location": "You are here",
+  "Climate1_Location": "My location",
   "Climate1_Textbox1": {
     "1": "What does the data say?",
     "2": "Laut den Daten des Institutes für «Space Studies» der NASA, steigt die globale Temperatur stetig seit 1961. Im Jahr 2019 war die globale Temperatur knapp 1.5°C höher als die mittlere globale Temperatur von 1950 -81. Was denkst du welche Länder am meisten von der Klimaerwärmung betroffen sind?"
@@ -21,6 +21,5 @@
     "1": "Text 2",
     "2": "Laut den Daten des Institutes für «Space Studies» der NASA, steigt die globale Temperatur stetig seit 1961. Im Jahr 2019 war die globale Temperatur knapp 1.5°C höher als die mittlere globale Temperatur von 1950 -81. Was denkst du welche Länder am meisten von der Klimaerwärmung betroffen sind?"
   },
-  "Climate1_BackToLocation": "Switzerland",
   "Climate1_Source": "Source: NASA-GISS"
 }
