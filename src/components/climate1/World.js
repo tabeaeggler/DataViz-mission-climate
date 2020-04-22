@@ -8,6 +8,7 @@ import InfoboxNavigation from "../navigation/InfoboxNavigation"
 import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
+import { CSSTransition } from "react-transition-group"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -35,6 +36,10 @@ const World = () => {
   ]
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
+  const [showBubble, setShowBubble] = useState({
+    globe: true,
+    linegraph: false,
+  })
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -136,6 +141,101 @@ const World = () => {
           country.properties.ISO_A2.toLowerCase()
       ),
     })
+    setShowBubble({ globe: false })
+  }
+
+  /**
+   * Adds Speach Bubble with text for Globe
+   */
+  function createBubbleGlobe() {
+    return (
+      <CSSTransition
+        in={showBubble.globe}
+        timeout={3000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div>
+          <div className="bubble-box-climate1-globe">
+            <p>{t("Climate1_Bubble.1")}</p>
+            <button
+              className="bubble-button"
+              onClick={() =>
+                setShowBubble({
+                  globe: false,
+                  linegraph: true,
+                })
+              }>
+              <p>
+                {t("Climate1_Button.1")}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="bubble-button-arrow-globe"
+                  viewBox="0 0 511.995 511.995">
+                  <path
+                    d="M381.039,248.62L146.373,3.287c-4.083-4.229-10.833-4.417-15.083-0.333c-4.25,4.073-4.396,10.823-0.333,15.083
+                  L358.56,255.995L130.956,493.954c-4.063,4.26-3.917,11.01,0.333,15.083c2.063,1.979,4.729,2.958,7.375,2.958
+                  c2.813,0,5.604-1.104,7.708-3.292L381.039,263.37C384.977,259.245,384.977,252.745,381.039,248.62z"
+                  />
+                </svg>
+              </p>
+            </button>
+          </div>
+          <svg
+            className="bubble-arrow-climate1-globe"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 42.5L44 2V85.5L1 42.5Z" />
+          </svg>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
+   * Adds Speach Bubble with text for Linegraph
+   */
+  function createBubbleLineGraph() {
+    return (
+      <CSSTransition
+        in={showBubble.linegraph}
+        timeout={3000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div>
+          <div className="bubble-box-climate1-linegraph">
+            <p>{t("Climate1_Bubble.2")}</p>
+            <button
+              className="bubble-button"
+              onClick={() =>
+                setShowBubble({
+                  globe: false,
+                  linegraph: true,
+                })
+              }>
+              <p>
+                {t("Climate1_Button.2")}{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="bubble-button-arrow-linegraph"
+                  viewBox="0 0 511.995 511.995">
+                  <path
+                    d="M381.039,248.62L146.373,3.287c-4.083-4.229-10.833-4.417-15.083-0.333c-4.25,4.073-4.396,10.823-0.333,15.083
+                  L358.56,255.995L130.956,493.954c-4.063,4.26-3.917,11.01,0.333,15.083c2.063,1.979,4.729,2.958,7.375,2.958
+                  c2.813,0,5.604-1.104,7.708-3.292L381.039,263.37C384.977,259.245,384.977,252.745,381.039,248.62z"
+                  />
+                </svg>
+              </p>
+            </button>
+          </div>
+          <svg
+            className="bubble-arrow-climate1-linegraph"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 42.5L44 2V85.5L1 42.5Z" />
+          </svg>
+        </div>
+      </CSSTransition>
+    )
   }
 
   /**
@@ -172,6 +272,8 @@ const World = () => {
           </div>
         </div>
       </div>
+      {createBubbleGlobe()}
+      {createBubbleLineGraph()}
     </React.Fragment>
   )
 }
