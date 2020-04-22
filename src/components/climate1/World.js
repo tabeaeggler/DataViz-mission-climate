@@ -124,7 +124,7 @@ const World = () => {
         lng: 10,
         altitude: 2.7,
       },
-      3500
+      2500
     )
   }
 
