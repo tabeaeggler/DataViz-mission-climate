@@ -18,7 +18,7 @@
 
 .linegraph-container {
   position: absolute;
-  left: 52%;
+  left: 53%;
   top: 23%;
 }
 
@@ -88,7 +88,7 @@ svg text.label {
 .climate-1-title {
   position: absolute;
   z-index: 10;
-  left: 50.2%;
+  left: 51.2%;
   padding: 0;
   top: 14%;
 }
