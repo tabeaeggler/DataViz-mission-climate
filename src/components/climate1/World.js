@@ -141,7 +141,7 @@ const World = () => {
           country.properties.ISO_A2.toLowerCase()
       ),
     })
-    setShowBubble({ globe: false })
+    setShowBubble({ globe: false, linegraph: true })
   }
 
   /**
