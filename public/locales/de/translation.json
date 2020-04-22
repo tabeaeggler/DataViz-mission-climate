@@ -14,8 +14,8 @@
   },
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
-    "1": "Dreh und Zoom in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950-81.",
-    "2": "Klicke im Globus auf ein Land und erkundige die Temperaturerwärmung seit 1961. Du wirst rasch erkennen, dass laut den Daten des Institutes für «Space Studies» der NASA, eine enorme Veränderung stattfindet."
+    "1": "Drehe und Zoome in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950 - 1981.",
+    "2": "Klicke im Globus auf ein Land und betrachte dessen Temperaturerwärmung seit 1961. Dank den Daten des Institutes für «Space Studies» der NASA wirst du erkennen, dass eine enorme Veränderung stattfindet."
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {

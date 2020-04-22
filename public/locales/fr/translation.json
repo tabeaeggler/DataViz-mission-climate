@@ -13,12 +13,13 @@
     "7": "à la moyenne de 1950-81"
   },
   "Climate1_Location": "Ma position",
-  "Climate1_Textbox1": {
-    "1": "Laut den Daten des Institutes für «Space Studies» der NASA, nimmt die durchschnittliche globale Temperatur seit 1961 stetig zu. Im Jahr 2019 ist in allen Ländern der Welt  die Temperatur, im Verhältnis zum Mittelwert von 1950-81, gestiegen. Die Temperaturzunahmen des Jahres 2019 kannst du im Globus auf der linken Seite entdecken."
+  "Climate1_Bubble": {
+    "1": "Drehe und Zoome in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950 - 1981.",
+    "2": "Klicke im Globus auf ein Land und betrachte dessen Temperaturerwärmung seit 1961. Dank den Daten des Institutes für «Space Studies» der NASA wirst du erkennen, dass eine enorme Veränderung stattfindet."
   },
-  "Climate1_Textbox2": {
-    "1": "Text 2",
-    "2": "Laut den Daten des Institutes für «Space Studies» der NASA, steigt die globale Temperatur stetig seit 1961. Im Jahr 2019 war die globale Temperatur knapp 1.5°C höher als die mittlere globale Temperatur von 1950 -81. Was denkst du welche Länder am meisten von der Klimaerwärmung betroffen sind?"
-  },
-  "Climate1_Source": "Source: NASA-GISS"
+  "Climate1_Source": "Quelle: NASA-GISS",
+  "Climate1_Button": {
+    "1": "Weiter",
+    "2": "Was bedeutet das für die Schweiz?"
+  }
 }
