@@ -26,7 +26,7 @@ h3 {
 
 h6 {
   font-size: 0.7em;
-  color:white;
+  color: white;
   opacity: 0.2;
 }
 
@@ -87,7 +87,7 @@ button.language-button,
 
 #language-button-clicked {
   color: #141416;
-  background-color: #D37B61;
+  background-color: #d37b61;
 }
 
 .language-button-container {
@@ -96,4 +96,14 @@ button.language-button,
   left: 85.5%;
   margin-bottom: 1.5%;
   width: 220px;
+}
+
+/*Bubble Text box*/
+.bubble-fade-in-enter {
+  opacity: 0.01;
+}
+
+.bubble-fade-in-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
 }
