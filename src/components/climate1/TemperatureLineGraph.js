@@ -216,7 +216,7 @@ const TemperatureLineGraph = props => {
    */
   function createLegend() {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
-    const svg = select(svgRefLegend.current)//.attr("transform", "translate(0,20)")
+    const svg = select(svgRefLegend.current)
     var legend = legendColor()
       .scale(colorScaleLegend)
       .cells(8)
@@ -237,7 +237,6 @@ const TemperatureLineGraph = props => {
 
   return (
     <React.Fragment>
-      {/* <h2>{eval(t("Climate1_TooltipTemperature.4"))}</h2> */}
       <div className="temperature-graph-container">
         <svg
           className="temperature-graph"
