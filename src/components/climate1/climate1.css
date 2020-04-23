@@ -94,25 +94,13 @@ svg text.label {
 .bubble-box-climate1-globe {
   z-index: 100;
   position: absolute;
-  bottom: 5%;
-  left: 35%;
+  bottom: 10%;
+  left: 28.5%;
   background-color: #2d2d2e;
-  width: 24%;
+  width: 35%;
   height: auto;
-  padding: 0% 0.8% 0.6% 0.8%;
+  padding: 0% 1.5%;
   border-radius: 5px;
-}
-
-.bubble-arrow-climate1-globe {
-  z-index: 1090;
-  width: 5%;
-  height: auto;
-  position: absolute;
-  bottom: 163px;
-  left: 0px;
-  fill: #2d2d2e;
-  height: auto;
-  transform: rotate(90deg);
 }
 
 .bubble-box-climate1-linegraph {
@@ -127,27 +115,11 @@ svg text.label {
   border-radius: 5px;
 }
 
-.bubble-arrow-climate1-linegraph {
-  z-index: 100;
-  width: 3%;
-  height: auto;
-  position: absolute;
-  top: -62%;
-  left: 75%;
-  fill: #2d2d2e;
-  height: auto;
-  transform: rotate(90deg);
-}
-
-.bubble-button {
-  background: none;
-  color: inherit;
+button.bubble-button  {
+  background: #bbb9b9;
+  color: white;
+  border-radius: 50%;
   border: none;
-  padding: 0;
-  margin-top: -1em;
-  margin-bottom: 0%;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  font-weight: 700;
+  font-family: "Inconsolata", monospace;
+  margin-bottom: 0.6em;
 }

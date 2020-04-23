@@ -8,6 +8,7 @@ import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
+import ButtonRight from "../../assets/img/buttonRight.svg"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -154,20 +155,18 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box-climate1-globe-container">
-          <div className="bubble-box-climate1-globe">
-            <p>{t("Climate1_Bubble.1")}</p>
-            <button
-              className="bubble-button"
-              onClick={() =>
-                setShowBubble({
-                  globe: false,
-                  linegraph: true,
-                })
-              }>
-              <p>{t("Climate1_Button.1")}</p>
-            </button>
-          </div>
+        <div className="bubble-box-climate1-globe">
+          <p>{t("Climate1_Bubble.1")}</p>
+          <button
+            id="next-button"
+            onClick={() =>
+              setShowBubble({
+                globe: false,
+                linegraph: true,
+              })
+            }>
+            <img src={ButtonRight}></img>
+          </button>
         </div>
       </CSSTransition>
     )
@@ -242,6 +241,7 @@ const World = () => {
       <div className="wrapper-container"></div>
       <div className="globe-container">
         {createGlobe()}
+        {createBubbleGlobe()}
         <div className="location-button">
           <button onClick={handleZoom}>
             <img src={LocationButton}></img>
@@ -250,7 +250,6 @@ const World = () => {
         </div>
       </div>
       {createLinegraph()}
-      {createBubbleGlobe()}
       {createBubbleLineGraph()}
     </React.Fragment>
   )
