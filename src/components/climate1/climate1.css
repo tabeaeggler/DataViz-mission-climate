@@ -96,7 +96,8 @@ svg text.label {
   position: absolute;
   bottom: 5%;
   left: 35%;
-  background-color: #1c1c1d;
+  background-color: white;
+  opacity: 0.2;
   width: 24%;
   height: 17%;
   padding: 0% 0.8% 0.6% 0.8%;
@@ -104,13 +105,14 @@ svg text.label {
 }
 
 .bubble-arrow-climate1-globe {
-  z-index: 100;
-  width: 1%;
+  z-index: 1000;
+  width: 5%;
   height: auto;
   position: absolute;
-  bottom: 15.2%;
-  left: 35%;
-  fill: #1c1c1d;
+  top: -54%;
+  left: 15%;
+  fill: greenyellow;
+  opacity: 1;
   height: auto;
   transform: rotate(90deg);
 }
@@ -120,7 +122,8 @@ svg text.label {
   position: absolute;
   bottom: 16.5%;
   left: 51.7%;
-  background-color: #1c1c1d;
+  background-color: white;
+  opacity: 0.2;
   width: 43%;
   height: 15%;
   padding: 0% 0.8% 0.6% 0.8%;
@@ -134,7 +137,8 @@ svg text.label {
   position: absolute;
   bottom: 24.7%;
   left: 88%;
-  fill: #1c1c1d;
+  fill: white;
+  opacity: 0.2;
   height: auto;
   transform: rotate(90deg);
 }
@@ -149,22 +153,5 @@ svg text.label {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-}
-
-.bubble-button-arrow-globe {
-  position: absolute;
-  bottom: 11.5%;
-  fill: #bbb9b9;
-  width: 3.8%;
-  height: auto;
-  margin-left: 0.5%;
-}
-
-.bubble-button-arrow-linegraph {
-  position: absolute;
-  bottom: 16%;
-  fill: #bbb9b9;
-  width: 2.3%;
-  height: auto;
-  margin-left: 19.5%;
+  font-weight: 700;
 }
