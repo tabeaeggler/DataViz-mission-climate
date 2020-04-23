@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
-import InfoboxNavigation from "../navigation/InfoboxNavigation"
 import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
@@ -149,13 +148,12 @@ const World = () => {
    */
   function createBubbleGlobe() {
     return (
-      <CSSTransition
-        in={showBubble.globe}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
-        <div>
+        <CSSTransition
+          in={showBubble.globe}
+          timeout={4000}
+          classNames="bubble-fade"
+          unmountOnExit
+          appear>
           <div className="bubble-box-climate1-globe">
             <p>{t("Climate1_Bubble.1")}</p>
             <button
@@ -174,8 +172,7 @@ const World = () => {
               <path d="M1 42.5L44 2V85.5L1 42.5Z" />
             </svg>
           </div>
-        </div>
-      </CSSTransition>
+        </CSSTransition>
     )
   }
 
@@ -190,25 +187,49 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div>
-          <div className="bubble-box-climate1-linegraph">
-            <p>{t("Climate1_Bubble.2")}</p>
-            <button
-              className="bubble-button"
-              onClick={() =>
-                setShowBubble({
-                  globe: false,
-                  linegraph: true,
-                })
-              }>
-              <p>{t("Climate1_Button.2")} </p>
-            </button>
-          </div>
+        <div className="bubble-box-climate1-linegraph">
+          <p>{t("Climate1_Bubble.2")}</p>
+          <button
+            className="bubble-button"
+            onClick={() =>
+              setShowBubble({
+                globe: false,
+                linegraph: true,
+              })
+            }>
+            <p>{t("Climate1_Button.2")} </p>
+          </button>
           <svg
             className="bubble-arrow-climate1-linegraph"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M1 42.5L44 2V85.5L1 42.5Z" />
           </svg>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  function createLinegraph() {
+    return (
+      <CSSTransition
+        in={true}
+        timeout={200000}
+        classNames="linegraph-fade"
+        unmountOnExit
+        appear>
+        <div className="linegraph-container">
+          <div className="linegraph-text-container">
+            {globalData === undefined ? null : (
+              <TemperatureLineGraph
+                selectedCountry={clickedCountry.country}
+                climateData={clickedCountry.filteredCountry}
+                globalData={globalData}
+              />
+            )}
+            <div className="info-box-linegraph">
+              <h6>{t("Climate1_Source")}</h6>
+            </div>
+          </div>
         </div>
       </CSSTransition>
     )
@@ -234,20 +255,7 @@ const World = () => {
           </button>
         </div>
       </div>
-      <div className="linegraph-container">
-        <div className="linegraph-text-container">
-          {globalData === undefined ? null : (
-            <TemperatureLineGraph
-              selectedCountry={clickedCountry.country}
-              climateData={clickedCountry.filteredCountry}
-              globalData={globalData}
-            />
-          )}
-          <div className="info-box-linegraph">
-            <h6>{t("Climate1_Source")}</h6>
-          </div>
-        </div>
-      </div>
+      {createLinegraph()}
       {createBubbleGlobe()}
       {createBubbleLineGraph()}
     </React.Fragment>
