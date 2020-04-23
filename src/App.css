@@ -74,7 +74,7 @@ button.language-button,
 #language-button-clicked {
   font-size: 1.2em;
   font-family: "Inconsolata", monospace;
-  color: #fffbfb;
+  color: #141416;
   background-color: #bbb9b9;
   border-radius: 100%;
   width: 40px;
@@ -83,7 +83,6 @@ button.language-button,
 }
 
 #language-button-clicked {
-  color: #141416;
   background-color: #d37b61;
 }
 

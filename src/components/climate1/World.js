@@ -219,6 +219,7 @@ const World = () => {
             )}
             <div className="info-box-linegraph">
               <h6>{t("Climate1_Source")}</h6>
+              {createBubbleLineGraph()}
             </div>
           </div>
         </div>
@@ -248,7 +249,6 @@ const World = () => {
         </div>
       </div>
       {createLinegraph()}
-      {createBubbleLineGraph()}
     </React.Fragment>
   )
 }

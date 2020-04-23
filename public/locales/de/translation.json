@@ -14,7 +14,7 @@
   },
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
-    "1": "Im Globus werden die relativen Temperaturzunahmen des Jahres 2019 angezeigt. Um einen besseren Überblick zu gewinnen, kannst du die Weltkugel drehen oder mit zwei Fingern zoomen.",
+    "1": "Im Globus werden die Temperaturzunahmen des Jahres 2019 angezeigt. Um einen besseren Überblick zu gewinnen, kannst du die Weltkugel drehen oder mit zwei Fingern zoomen.",
     "2": "Klicke im Globus auf ein spezifisches Land, damit du seine relativen Temperaturveränderung über die Jahre hinweg sehen kannst. Um relative Temperaturveränderungen zu beschreiben, werden die Durchschnitte der nationalen oder globalen Temperaturen mit der durchschnittlichen Temperatur der Jahre 1950 - 81 verglichen. Was bedeutet diese enorme Temperaturzunahme für die Schweiz?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
