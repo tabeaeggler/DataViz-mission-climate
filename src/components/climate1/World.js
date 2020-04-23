@@ -155,8 +155,8 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box-climate1-globe">
-          <p>{t("Climate1_Bubble.1")}</p>
+        <div className="bubble-box bubble-box-climate1-globe">
+          <p className="bubble-box-text">{t("Climate1_Bubble.1")}</p>
           <button
             id="next-button"
             onClick={() =>
@@ -183,21 +183,19 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box-climate1-linegraph-container">
-          <div className="bubble-box-climate1-linegraph">
-            <p>{t("Climate1_Bubble.2")}</p>
+          <div className="bubble-box bubble-box-climate1-linegraph">
+            <p className="bubble-box-text">{t("Climate1_Bubble.2")}</p>
             <button
-              className="bubble-button"
-              onClick={() =>
+            id="next-button"
+            onClick={() =>
                 setShowBubble({
                   globe: false,
                   linegraph: true,
                 })
               }>
-              <p>{t("Climate1_Button.2")} </p>
+            <img src={ButtonRight}></img>
             </button>
           </div>
-        </div>
       </CSSTransition>
     )
   }
