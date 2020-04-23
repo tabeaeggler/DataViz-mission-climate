@@ -91,36 +91,52 @@ svg text.label {
   top: 14%;
 }
 
-.bubble-box-climate1-globe-container {
-  position: absolute;
-  top: 75%;
-  left: 35%;
-  width: 20%;
-  height: auto;
-}
-
 .bubble-box-climate1-globe {
-  width: 100%;
-  height: auto;
-  padding: 0.8em 0.6em 0.6em 0.6em;
-  background-image: url(../../assets/icons/bubble_climate1_globe.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+  z-index: 100;
+  position: absolute;
+  bottom: 5%;
+  left: 35%;
+  background-color: #2d2d2e;
+  width: 24%;
+  height: 17%;
+  padding: 0% 0.8% 0.6% 0.8%;
+  border-radius: 5px;
 }
 
-.bubble-box-climate1-linegraph-container {
-  position: absolute;
-  top: 65%;
-  left: 51.6%;
-  width: 44%;
+.bubble-arrow-climate1-globe {
+  z-index: 1090;
+  width: 5%;
   height: auto;
+  position: absolute;
+  bottom: 163px;
+  left: 0px;
+  fill: #2d2d2e;
+  height: auto;
+  transform: rotate(90deg);
 }
 
 .bubble-box-climate1-linegraph {
-  padding: 1em 0.6em 0.6em 0.6em;
-  background-image: url(../../assets/icons/bubble_climate1_linegraph.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+  z-index: 100;
+  position: absolute;
+  bottom: 16.5%;
+  left: 51.7%;
+  background-color: #2d2d2e;
+  width: 43%;
+  height: 15%;
+  padding: 0% 0.8% 0.6% 0.8%;
+  border-radius: 5px;
+}
+
+.bubble-arrow-climate1-linegraph {
+  z-index: 100;
+  width: 3%;
+  height: auto;
+  position: absolute;
+  top: -62%;
+  left: 75%;
+  fill: #2d2d2e;
+  height: auto;
+  transform: rotate(90deg);
 }
 
 .bubble-button {
@@ -129,7 +145,7 @@ svg text.label {
   border: none;
   padding: 0;
   margin-top: -1em;
-  margin-bottom: -0.6em;
+  margin-bottom: 0%;
   font: inherit;
   cursor: pointer;
   outline: inherit;
