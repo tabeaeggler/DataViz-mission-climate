@@ -98,7 +98,7 @@ svg text.label {
   left: 35%;
   background-color: #2d2d2e;
   width: 24%;
-  height: 17%;
+  height: auto;
   padding: 0% 0.8% 0.6% 0.8%;
   border-radius: 5px;
 }
