@@ -10,12 +10,12 @@
     "4": "props.selectedCountry.properties.ADMIN",
     "5": "Global",
     "6": "Temperature deviation",
-    "7": "from the mean from 1950-81"
+    "7": "from the average of 1950-81"
   },
   "Climate1_Location": "My location",
   "Climate1_Bubble": {
-    "1": "Drehe und Zoome in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950 - 1981.",
-    "2": "Klicke im Globus auf ein Land und betrachte dessen Temperaturerwärmung seit 1961. Dank den Daten des Institutes für «Space Studies» der NASA wirst du erkennen, dass eine enorme Veränderung stattfindet."
+    "1": "The temperature increases of 2019 are shown in the globe. To get a better overview, you can turn the globe or zoom with two fingers.",
+    "2": "Click on a specific country in the globe so you can see its relative temperature change over the years. To describe relative temperature changes, the averages of national or global temperatures are compared to the average temperature from 1950-81. What does this enormous temperature increase mean for Switzerland?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {

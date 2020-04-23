@@ -10,12 +10,12 @@
     "4": "props.selectedCountry.properties.ADMIN_IT",
     "5": "Globalmente",
     "6": "Deviazione della temperatura",
-    "7": "dalla media dal 1950-81"
+    "7": "dalla media del 1950-81"
   },
   "Climate1_Location": "La mia posizione",
   "Climate1_Bubble": {
-    "1": "Drehe und Zoome in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950 - 1981.",
-    "2": "Klicke im Globus auf ein Land und betrachte dessen Temperaturerwärmung seit 1961. Dank den Daten des Institutes für «Space Studies» der NASA wirst du erkennen, dass eine enorme Veränderung stattfindet."
+    "1": "Gli aumenti di temperatura del 2019 sono mostrati in tutto il mondo. Per una migliore visione d'insieme, puoi ruotare il globo o eseguire lo zoom con due dita.",
+    "2": "Fai clic su un paese specifico nel globo in modo da poter vedere la sua variazione di temperatura relativa nel corso degli anni. Per descrivere le variazioni di temperatura relative, le medie delle temperature nazionali o globali vengono confrontate con la temperatura media degli anni 1950-81. Cosa significa questo enorme aumento di temperatura per la Svizzera?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {

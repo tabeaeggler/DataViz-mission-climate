@@ -14,8 +14,8 @@
   },
   "Climate1_Location": "Ma position",
   "Climate1_Bubble": {
-    "1": "Drehe und Zoome in den Globus und entdecke die Termperaturveränderung der Welt im Jahr 2019 im Verhältnis zum Mittelwert von 1950 - 1981.",
-    "2": "Klicke im Globus auf ein Land und betrachte dessen Temperaturerwärmung seit 1961. Dank den Daten des Institutes für «Space Studies» der NASA wirst du erkennen, dass eine enorme Veränderung stattfindet."
+    "1": "Les augmentations de température de 2019 sont indiquées dans le monde. Pour obtenir un meilleur aperçu, vous pouvez tourner le globe ou zoomer avec deux doigts.",
+    "2": "Cliquez sur un pays spécifique du globe pour voir sa variation de température relative au fil des ans. Pour décrire les changements de température relative, les moyennes des températures nationales ou mondiales sont comparées à la température moyenne de 1950 à 1981. Que signifie cette énorme augmentation de température pour la Suisse?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {
