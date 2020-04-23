@@ -237,7 +237,6 @@ const World = () => {
 
   return (
     <React.Fragment>
-      <div className="wrapper-container"></div>
       <div className="globe-container">
         {createGlobe()}
         {createBubbleGlobe()}
