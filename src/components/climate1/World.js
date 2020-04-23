@@ -148,12 +148,13 @@ const World = () => {
    */
   function createBubbleGlobe() {
     return (
-        <CSSTransition
-          in={showBubble.globe}
-          timeout={4000}
-          classNames="bubble-fade"
-          unmountOnExit
-          appear>
+      <CSSTransition
+        in={showBubble.globe}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div className="bubble-box-climate1-globe-container">
           <div className="bubble-box-climate1-globe">
             <p>{t("Climate1_Bubble.1")}</p>
             <button
@@ -166,13 +167,9 @@ const World = () => {
               }>
               <p>{t("Climate1_Button.1")}</p>
             </button>
-            <svg
-              className="bubble-arrow-climate1-globe"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 42.5L44 2V85.5L1 42.5Z" />
-            </svg>
           </div>
-        </CSSTransition>
+        </div>
+      </CSSTransition>
     )
   }
 
@@ -187,23 +184,20 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box-climate1-linegraph">
-          <p>{t("Climate1_Bubble.2")}</p>
-          <button
-            className="bubble-button"
-            onClick={() =>
-              setShowBubble({
-                globe: false,
-                linegraph: true,
-              })
-            }>
-            <p>{t("Climate1_Button.2")} </p>
-          </button>
-          <svg
-            className="bubble-arrow-climate1-linegraph"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 42.5L44 2V85.5L1 42.5Z" />
-          </svg>
+        <div className="bubble-box-climate1-linegraph-container">
+          <div className="bubble-box-climate1-linegraph">
+            <p>{t("Climate1_Bubble.2")}</p>
+            <button
+              className="bubble-button"
+              onClick={() =>
+                setShowBubble({
+                  globe: false,
+                  linegraph: true,
+                })
+              }>
+              <p>{t("Climate1_Button.2")} </p>
+            </button>
+          </div>
         </div>
       </CSSTransition>
     )
