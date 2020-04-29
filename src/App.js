@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import "./App.css"
 import { useTranslation } from "react-i18next"
 import Climate1 from "./components/climate1/Climate1"
+import Climate2 from "./components/climate2/Climate2"
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -10,7 +11,6 @@ function App() {
   useEffect(() => {
     var selectedItem = document.getElementById(i18n.language)
     selectedItem.id = "language-button-clicked"
-
   }, [])
 
   //handle button clickevent
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <Climate1 />
+      <Climate2 />
       <div className="language-button-container">
         <button
           className="language-button"
