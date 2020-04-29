@@ -165,7 +165,7 @@ const World = () => {
                 linegraph: true,
               })
             }>
-            <img src={ButtonRight}></img>
+            <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
       </CSSTransition>

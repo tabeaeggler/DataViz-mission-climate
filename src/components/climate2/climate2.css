@@ -1,4 +1,9 @@
-.snowLine-container {
+.snowline-container {
+  width: 40%;
+  margin: auto;
+}
+
+.snowline-graph {
   height: 500px;
 }
 
@@ -10,4 +15,10 @@
 line {
   shape-rendering: crispEdges;
   vector-effect: non-scaling-stroke;
+}
+
+/*Bubble Textbox*/
+.bubble-box-climate2-start {
+  left: 5%;
+  width: 20.5%;
 }
