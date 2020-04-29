@@ -84,15 +84,15 @@ function SnowLineDraggable() {
       var y = event.dy
       var currentLine = select(this)
       var newYPosition = parseInt(currentLine.attr("y1")) + y
-      console.log(newYPosition)
 
-      //Check boundary
+      //Check boundaries of drag area
       if (newYPosition > height) newYPosition = height
       else if (newYPosition < 0) newYPosition = 0
 
-      // Update the line properties
+      //Update the line properties
       currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
 
+      //Update text
       text
         .attr("y", newYPosition)
         .text(yScale.invert(newYPosition).toFixed(0) + " m.ü.M")

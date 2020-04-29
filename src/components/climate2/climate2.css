@@ -3,5 +3,11 @@
 }
 
 .active-d3-item {
+  cursor: pointer;
   stroke: magenta;
+}
+
+line {
+  shape-rendering: crispEdges;
+  vector-effect: non-scaling-stroke;
 }
