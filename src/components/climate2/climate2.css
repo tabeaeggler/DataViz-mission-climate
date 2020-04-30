@@ -12,9 +12,10 @@
 }
 
 .snowline-wrapper {
-  position: fixed;
-  bottom: 0;
-  margin-left: 30%;
+  position:absolute;
+    width:100%;
+    bottom:0;
+    text-align:center;
 }
 
 .snowline-enter {
@@ -30,15 +31,16 @@
   stroke-width: 5;
 }
 .snowline-container {
-  width: 741px;
-  margin: auto;
+  width: auto;
+  height: 550px;
   z-index: 100;
   background-image: url("../../assets/img/mountains.svg");
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .snowline-graph {
-  height: 500px;
+  height: 550px;
 }
 
 .active-d3-item {
@@ -54,11 +56,13 @@
 
 /*Bubble Textbox*/
 .bubble-box-climate2-start {
-  left: -25%;
-  width: 50%;
+  left: 10%;
+  width: 30%;
+  text-align: left;
 }
 .bubble-box-climate2-answer {
-  right: -45%;
-  top: -10%;
-  width: 50%;
+  right: 5%;
+  width: 30%;
+  text-align: left;
+
 }

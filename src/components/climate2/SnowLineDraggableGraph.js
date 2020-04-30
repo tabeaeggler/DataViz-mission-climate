@@ -21,13 +21,13 @@ const SnowLineDraggableGraph = props => {
   function createSnowLine() {
     const width = 600
     const height = 550
-    const margin = 50
+    const margin = 148
     const mountainHeight = 2200
     const marginTextYear = 60
 
     const svg = select(svgRef.current).attr(
       "transform",
-      `translate(${margin},${margin})`
+      `translate(${margin},0)`
     )
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
@@ -296,7 +296,7 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={800}>
+        <svg className="snowline-graph" width={900}>
           <g ref={svgRef}></g>
         </svg>
       </div>
