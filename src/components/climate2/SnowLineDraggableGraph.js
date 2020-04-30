@@ -1,55 +1,13 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { select, scaleLinear, drag, event } from "d3"
-import { CSSTransition } from "react-transition-group"
-import ButtonRight from "../../assets/img/buttonRight.svg"
 
-function SnowLineDraggable() {
+
+const SnowLineDraggableGraph = props => {
+
   const { t } = useTranslation()
   const svgRef = useRef()
-
-  const [showBubbleStart, setShowBubbleStart] = useState(true)
-  const [showBubbleExit, setShowBubbleExit] = useState(false)
-
-  const startQuizzRef = useRef()
-  startQuizzRef.current = showBubbleStart
-  // const [data, setData] = useState({ year: 1960, snowline: 900 })
-
-  const data = [{ year: 1960, snowline: 900 }]
-
-  /**
-   * Adds Speach Bubble with text for Globe
-   */
-  function createBubbleStartQuizz() {
-    return (
-      <CSSTransition
-        in={showBubbleStart}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
-        <div className="bubble-box bubble-box-climate2-start">
-          <p className="bubble-box-text">
-            "Starte das Quizz und bestätige die Eingabe"
-          </p>
-          <button id="next-button" onClick={() => showQuizzResult()}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
-        </div>
-      </CSSTransition>
-    )
-  }
-
-  function showQuizzResult() {
-    console.log(data)
-
-    //show result line
-    data.push({ year: 1980, snowline: 100 })
-    //undrag line
-    setShowBubbleStart(false)
-    setShowBubbleExit(true)
-    //shwo second bubble
-  }
+  const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
 
   /**
    * Main code for SnowLineDraggable
@@ -82,7 +40,7 @@ function SnowLineDraggable() {
     //add static line
     svg
       .selectAll("line")
-      .data(data)
+      .data(props.data)
       .join(
         enter => enter.append("line").attr("stroke", "green"),
         update => update.attr("stroke", "red")
@@ -99,8 +57,8 @@ function SnowLineDraggable() {
       .attr("stroke-width", "10")
       .attr("x1", 0)
       .attr("x2", width)
-      .attr("y1", yScale(data[0].snowline - 100))
-      .attr("y2", yScale(data[0].snowline - 100))
+      .attr("y1", yScale(draggableLinePosition))
+      .attr("y2", yScale(draggableLinePosition))
       .call(
         drag().on("start", dragstarted).on("drag", dragged).on("end", dragended)
       )
@@ -109,17 +67,17 @@ function SnowLineDraggable() {
       .append("text")
       .style("fill", "white")
       .attr("x", width + 20)
-      .attr("y", yScale(data[0].snowline - 100))
-      .text(data[0].snowline + " m.ü.M")
+      .attr("y", yScale(props.data[0].snowline - 100))
+      .text(props.data[0].snowline + " m.ü.M")
 
     function dragstarted() {
-      if (startQuizzRef.current) {
+      if (!props.showAnswer) {
         select(this).classed("active-d3-item", true)
       }
     }
 
     function dragged() {
-      if (startQuizzRef.current) {
+      if (!props.showAnswer) {
         var y = event.dy
         var currentLine = select(this)
         var newYPosition = parseInt(currentLine.attr("y1")) + y
@@ -127,6 +85,8 @@ function SnowLineDraggable() {
         //Check boundaries of drag area
         if (newYPosition > height) newYPosition = height
         else if (newYPosition < 0) newYPosition = 0
+
+        setDraggableLinePosition(yScale.invert(newYPosition))
 
         //Update the line properties
         currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
@@ -139,7 +99,7 @@ function SnowLineDraggable() {
     }
 
     function dragended() {
-      if (startQuizzRef.current) {
+      if (!props.showAnswer) {
         select(this).classed("active-d3-item", false)
       }
     }
@@ -149,13 +109,13 @@ function SnowLineDraggable() {
    * React Lifecycle
    */
   useEffect(() => {
+    console.log(props)
     createSnowLine()
-  }, [showBubbleStart])
+  }, [props])
 
   return (
     <React.Fragment>
       <div className="snowline-container">
-        {createBubbleStartQuizz()}
         <svg className="snowline-graph" width={500}>
           <g ref={svgRef}></g>
         </svg>
@@ -164,4 +124,5 @@ function SnowLineDraggable() {
   )
 }
 
-export default SnowLineDraggable
+
+export default SnowLineDraggableGraph

@@ -1,5 +1,5 @@
 import React from "react"
-import SnowLine from "./SnowLineDraggable"
+import SnowLineOverview from "./SnowLineOverview"
 import "./climate2.css"
 import { useTranslation } from "react-i18next"
 
@@ -8,7 +8,7 @@ function Climate2() {
 
   return (
     <React.Fragment>
-      <SnowLine />
+      <SnowLineOverview />
     </React.Fragment>
   )
 }
