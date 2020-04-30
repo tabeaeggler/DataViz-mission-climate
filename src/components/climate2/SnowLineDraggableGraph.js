@@ -68,7 +68,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x2", 0)
         .transition()
         .delay(800)
-        .duration(3000)
+        .duration(2500)
         .ease(easeCubic)
         .attr("x2", width)
 
@@ -76,11 +76,12 @@ const SnowLineDraggableGraph = props => {
         .append("text")
         .attr("x", width + 20)
         .attr("y", yScale(props.data[1].snowline - 35))
-        .text(props.data[1].snowline + " m.ü.M")
+        .style("font-size", "10px")
+        .text("Schneefallgrenze bei " + props.data[1].snowline + " m.ü.M")
         .style("fill", "white")
         .style("opacity", 0)
         .transition()
-        .delay(3400)
+        .delay(2700)
         .duration(300)
         .ease(easeLinear)
         .style("opacity", 1)
@@ -94,7 +95,7 @@ const SnowLineDraggableGraph = props => {
         .text("2018")
         .style("opacity", 0)
         .transition()
-        .delay(3400)
+        .delay(2700)
         .duration(300)
         .ease(easeLinear)
         .style("opacity", 1)
@@ -224,7 +225,12 @@ const SnowLineDraggableGraph = props => {
           //Update text
           textDraggableLineMeter
             .attr("y", newYPosition)
-            .text(yScale.invert(newYPosition).toFixed(0) + " m.ü.M")
+            .style("font-size", "10px")
+            .text(
+              "Schneefallgrenze bei " +
+                yScale.invert(newYPosition).toFixed(0) +
+                " m.ü.M"
+            )
 
           textDraggableLineYear
             .attr("y", newYPosition + marginTextYear / 4)
