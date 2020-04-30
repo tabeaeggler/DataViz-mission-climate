@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { select, scaleLinear, drag, event, easeQuad } from "d3"
+import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear } from "d3"
 
 const SnowLineDraggableGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
-
-  const transitionData = [1000, 850, 1010, 900, 1200]
-  const transitionDurations = [800, 900, 1000, 900, 900]
 
   /**
    * Main code for SnowLineDraggable
@@ -43,17 +40,28 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("line")
         .attr("class", "snowline-update")
-        .attr("x1", 0)
-        .attr("x2", width)
         .attr("y1", d => yScale(props.data[1].snowline))
         .attr("y2", d => yScale(props.data[1].snowline))
+        .attr("x1", 0)
+        .attr("x2", 0)
+        .transition()
+        .delay(800)
+        .duration(3000)
+        .ease(easeCubic)
+        .attr("x2", width)
 
       svg
         .append("text")
-        .style("fill", "white")
         .attr("x", width + 20)
         .attr("y", yScale(props.data[1].snowline - 35))
         .text(props.data[1].snowline + " m.ü.M")
+        .style("fill", "white")
+        .style("opacity", 0)
+        .transition()
+        .delay(3400)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
 
       //render draggable line STATIC
       svg.select(".draggable-line").remove()
@@ -146,11 +154,11 @@ const SnowLineDraggableGraph = props => {
       svg
         .select(".draggable-line")
         .transition()
-        .delay(1000)
-        .duration(800)
+        .delay(3000)
+        .duration(600)
         .ease(easeQuad)
-        .attr("y1", d => yScale(draggableLinePosition + 40))
-        .attr("y2", d => yScale(draggableLinePosition + 40))
+        .attr("y1", d => yScale(draggableLinePosition + 60))
+        .attr("y2", d => yScale(draggableLinePosition + 60))
         .transition()
         .attr("y1", d => yScale(draggableLinePosition))
         .attr("y2", d => yScale(draggableLinePosition))
