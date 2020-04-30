@@ -10,7 +10,8 @@ function SnowLineOverview() {
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
 
-  const data = [{ year: 1960, snowline: 900 }]
+  const [data, setData] = useState([{ year: 1960, snowline: 900 }])
+//   let data = [{ year: 1960, snowline: 900 }]
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -37,7 +38,10 @@ function SnowLineOverview() {
 
   function showQuizzResult() {
     //show result line
-    data.push({ year: 1980, snowline: 100 })
+    //data.push({ year: 1980, snowline: 100 })
+      //data = [{ year: 1980, snowline: 100 }, { year: 1980, snowline: 300 }]
+      setData(prevState => [...prevState, { year: 2020, snowline: 1250 }])
+      console.log(data)
     //undrag line
     setShowAnswer(true)
     //shwo second bubble
@@ -46,7 +50,8 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        {createBubbleStartQuizz()}
+              {createBubbleStartQuizz()}
+              {console.log(data)}
         <SnowLineDraggableGraph
           showAnswer={showAnswer}
           data={data}/>

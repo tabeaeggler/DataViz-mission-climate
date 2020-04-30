@@ -1,3 +1,14 @@
+.draggable-line{
+  stroke-width: 10px;
+  stroke: blue;
+}
+
+.snowline-enter{
+stroke: red;
+}
+.snowline-update{
+stroke: green;
+}
 .snowline-container {
   width: 40%;
   margin: auto;
@@ -22,3 +33,5 @@ line {
   left: 5%;
   width: 20.5%;
 }
+
+

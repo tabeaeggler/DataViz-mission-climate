@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { select, scaleLinear, drag, event } from "d3"
 
-
 const SnowLineDraggableGraph = props => {
-
   const { t } = useTranslation()
   const svgRef = useRef()
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
@@ -37,38 +35,60 @@ const SnowLineDraggableGraph = props => {
           .attr("fill", "white")
       )
 
-    //add static line
+    //render answer-line and text
+    if (props.showAnswer) {
+      svg
+        .append("line")
+        .attr("class", "snowline-update")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", d => yScale(props.data[1].snowline))
+        .attr("y2", d => yScale(props.data[1].snowline))
+      
+        svg
+        .append("text")
+        .style("fill", "white")
+        .attr("x", width + 20)
+        .attr("y", yScale(props.data[1].snowline - 35))
+        .text(props.data[1].snowline + " m.ü.M")
+    }
+
+    //add static line and text for 1960
+    if(!props.showAnswer){
     svg
-      .selectAll("line")
-      .data(props.data)
-      .join(
-        enter => enter.append("line").attr("stroke", "green"),
-        update => update.attr("stroke", "red")
-      )
+      .append("line")
+      .attr("class", "snowline-enter")
       .attr("x1", 0)
       .attr("x2", width)
-      .attr("y1", d => yScale(d.snowline))
-      .attr("y2", d => yScale(d.snowline))
+      .attr("y1", d => yScale(props.data[0].snowline))
+      .attr("y2", d => yScale(props.data[0].snowline))
+    
+     svg
+      .append("text")
+      .style("fill", "white")
+      .attr("x", width + 20)
+      .attr("y", yScale(props.data[0].snowline - 35))
+       .text(props.data[0].snowline + " m.ü.M")
+      }
 
     //draggable line
-    var draggableLine = svg
+    svg
       .append("line")
-      .attr("stroke", "blue")
-      .attr("stroke-width", "10")
+      .attr("class", "draggable-line")
       .attr("x1", 0)
       .attr("x2", width)
       .attr("y1", yScale(draggableLinePosition))
       .attr("y2", yScale(draggableLinePosition))
       .call(
         drag().on("start", dragstarted).on("drag", dragged).on("end", dragended)
-      )
+    )
 
     var text = svg
-      .append("text")
-      .style("fill", "white")
-      .attr("x", width + 20)
-      .attr("y", yScale(props.data[0].snowline - 100))
-      .text(props.data[0].snowline + " m.ü.M")
+    .append("text")
+    .style("fill", "white")
+    .attr("x", width + 20)
+    .attr("y", yScale(draggableLinePosition))
+    .text(draggableLinePosition+ " m.ü.M")
 
     function dragstarted() {
       if (!props.showAnswer) {
@@ -86,7 +106,7 @@ const SnowLineDraggableGraph = props => {
         if (newYPosition > height) newYPosition = height
         else if (newYPosition < 0) newYPosition = 0
 
-        setDraggableLinePosition(yScale.invert(newYPosition))
+        setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
         //Update the line properties
         currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
@@ -123,6 +143,5 @@ const SnowLineDraggableGraph = props => {
     </React.Fragment>
   )
 }
-
 
 export default SnowLineDraggableGraph
