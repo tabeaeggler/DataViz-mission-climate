@@ -61,7 +61,7 @@ function SnowLineOverview() {
 
   return (
     <React.Fragment>
-      <div className="snowline-container">
+      <div className="snowline-wrapper">
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         {console.log(data)}

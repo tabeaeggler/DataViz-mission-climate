@@ -4,6 +4,12 @@
   stroke: blue;
 }
 
+.snowline-wrapper{
+  position: fixed;
+  bottom: 0;
+  margin-left: 30%;
+}
+
 .snowline-enter {
   stroke: red;
 }
@@ -11,9 +17,11 @@
   stroke: green;
 }
 .snowline-container {
-  width: 40%;
+  width: 741px;
   margin: auto;
   z-index: 100;
+  background-image: url("../../assets/img/mountains.svg");
+  background-repeat: no-repeat;
 }
 
 .snowline-graph {

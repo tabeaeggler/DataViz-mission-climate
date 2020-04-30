@@ -11,8 +11,8 @@ const SnowLineDraggableGraph = props => {
    * Main code for SnowLineDraggable
    */
   function createSnowLine() {
-    const width = 300
-    const height = 300
+    const width = 600
+    const height = 550
     const margin = 50
     const mountainHeight = 2200
 
@@ -22,18 +22,6 @@ const SnowLineDraggableGraph = props => {
     )
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
-
-    //add mountain
-    svg
-      .selectAll("rect")
-      .data([null])
-      .join(enter =>
-        enter
-          .append("rect")
-          .attr("width", width)
-          .attr("height", height)
-          .attr("fill", "white")
-      )
 
     if (props.showAnswer) {
       //render answer-line and text
@@ -182,7 +170,7 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={500}>
+        <svg className="snowline-graph" width={800}>
           <g ref={svgRef}></g>
         </svg>
       </div>
