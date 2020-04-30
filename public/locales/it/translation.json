@@ -21,5 +21,9 @@
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
+  },  "Climate2_Bubble":{
+    "1": "A causa del riscaldamento globale, il livello di congelamento si sta spostando verso l'alto e nelle aree inferiori rimane meno neve. Cosa ne pensi, qual è stato il livello di congelamento nel 2018? Dai un suggerimento e conferma il tuo preventivo!",
+    "2": "Come puoi vedere, il livello di congelamento è di 350 metri più alto nel 2018 rispetto al 1960. Aumenta di circa 200 metri per grado di riscaldamento globale. Ma non solo il limite di zero gradi e quindi le nevicate sono influenzate dal riscaldamento globale, ma anche dai ghiacciai. Scopri di più!"
+
   }
 }

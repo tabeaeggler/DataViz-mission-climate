@@ -21,5 +21,9 @@
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
+  },  "Climate2_Bubble":{
+    "1": "En raison du réchauffement climatique, le niveau de gel monte et il reste moins de neige dans les zones inférieures. Que pensez-vous, quel était le niveau de gel en 2018? Faites une suggestion et confirmez votre estimation!",
+    "2": "Comme vous pouvez le voir, le niveau de congélation est 350 mètres plus élevé en 2018 qu'en 1960. Il s'élève d'environ 200 mètres par degré de réchauffement climatique. Mais non seulement la limite de zéro degré et donc les chutes de neige sont affectées par le réchauffement climatique, mais aussi les glaciers. Apprenez-en plus!"
+
   }
 }
