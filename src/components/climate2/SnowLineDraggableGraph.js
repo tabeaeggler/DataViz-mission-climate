@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear } from "d3"
+import {
+  select,
+  scaleLinear,
+  drag,
+  event,
+  easeQuad,
+  easeCubic,
+  easeLinear,
+} from "d3"
 
 const SnowLineDraggableGraph = props => {
   const { t } = useTranslation()
@@ -51,6 +59,20 @@ const SnowLineDraggableGraph = props => {
         .ease(easeLinear)
         .style("opacity", 1)
 
+      svg
+        .append("text")
+        .style("fill", "black")
+        .style("font-size", "12px")
+        .attr("x", 2)
+        .attr("y", yScale(props.data[1].snowline - 90))
+        .text("Lösung 2018")
+        .style("opacity", 0)
+        .transition()
+        .delay(3400)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
+
       //render draggable line STATIC
       svg.select(".draggable-line").remove()
       svg
@@ -75,9 +97,18 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .style("fill", "white")
+        .style("font-size", "10px")
         .attr("x", width + 20)
         .attr("y", yScale(props.data[0].snowline - 35))
-        .text(props.data[0].snowline + " m.ü.M")
+        .text("Schneefallgrenze bei " + props.data[0].snowline + " m.ü.M")
+
+      svg
+        .append("text")
+        .style("fill", "black")
+        .style("font-size", "12px")
+        .attr("x", 2)
+        .attr("y", yScale(props.data[0].snowline - 90))
+        .text(1960)
 
       //render draggable line
       svg
@@ -95,17 +126,28 @@ const SnowLineDraggableGraph = props => {
         )
       animationLine()
 
-      var text = svg
+      var textDraggableLineMeter = svg
         .append("text")
         .style("fill", "white")
         .attr("x", width + 20)
         .attr("y", yScale(draggableLinePosition))
         .text(" ")
 
+      var textDraggableLineYear = svg
+        .append("text")
+        .attr("class", "draggable-line-text")
+        .style("fill", "black")
+        .style("font-size", "12px")
+        .attr("x", 2)
+        .attr("y", yScale(draggableLinePosition - 100))
+        .text(2018)
+      animationLineText()
+
       function dragstarted() {
         if (!props.showAnswer) {
           select(this).classed("active-d3-item", true)
           svg.select(".draggable-line").interrupt()
+          svg.select(".draggable-line-text").interrupt()
         }
       }
 
@@ -125,9 +167,11 @@ const SnowLineDraggableGraph = props => {
           currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
 
           //Update text
-          text
+          textDraggableLineMeter
             .attr("y", newYPosition)
             .text(yScale.invert(newYPosition).toFixed(0) + " m.ü.M")
+
+          textDraggableLineYear.attr("y", newYPosition).text("2018")
         }
       }
 
@@ -136,6 +180,23 @@ const SnowLineDraggableGraph = props => {
           select(this).classed("active-d3-item", false)
         }
       }
+    }
+
+    function animationLineText() {
+      svg
+        .select(".draggable-line-text")
+        .transition()
+        .delay(3000)
+        .duration(600)
+        .ease(easeQuad)
+        .attr("y", yScale(draggableLinePosition - 100 + 60))
+        .transition()
+        .attr("y", yScale(draggableLinePosition - 100))
+        .transition()
+        .attr("y", yScale(draggableLinePosition - 100 + 60))
+        .transition()
+        .attr("y", yScale(draggableLinePosition - 100))
+        .on("end", animationLineText)
     }
 
     function animationLine() {
