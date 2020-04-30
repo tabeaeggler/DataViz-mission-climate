@@ -36,28 +36,27 @@ const SnowLineDraggableGraph = props => {
       //create distance rectangle
       svg
         .append("rect")
-        .style("fill", "blue")
+        .style("fill", "orange")
         .attr("x", 0)
         .attr(
           "y",
-          yScale(
-            draggableLinePosition > props.data[1].snowline
-              ? draggableLinePosition
-              : props.data[1].snowline
-          )
+          draggableLinePosition > props.data[1].snowline
+            ? yScale(draggableLinePosition)
+            : yScale(props.data[1].snowline)
         )
         .attr("width", width)
-        .attr("height", 10)
-        .transition()
-        .delay(100)
-        .duration(1000)
-        .ease(easeLinear)
         .attr(
           "height",
           Math.abs(
             yScale(draggableLinePosition) - yScale(props.data[1].snowline)
           )
         )
+        .style("opacity", "0")
+        .transition()
+        .delay(3500)
+        .duration(1000)
+        .ease(easeLinear)
+        .style("opacity", "1")
 
       //render answer-line and text
       svg
