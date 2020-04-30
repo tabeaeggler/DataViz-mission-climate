@@ -1,4 +1,5 @@
-.draggable-line {
+.draggable-line,
+.draggable-line-static {
   stroke-width: 10px;
   stroke: blue;
 }
