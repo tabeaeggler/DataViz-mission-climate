@@ -9,7 +9,7 @@ function Climate2() {
 
   return (
     <React.Fragment>
-      <Snow animationInterval={70}></Snow>
+      <Snow animationInterval={70} followMouse={false}></Snow>
       <SnowLineOverview />
     </React.Fragment>
   )
