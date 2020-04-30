@@ -25,9 +25,7 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-start">
-          <p className="bubble-box-text">
-            "Starte das Quizz und bestätige die Eingabe"
-          </p>
+          <p className="bubble-box-text">{t("Climate2_Bubble.1")}</p>
           <button id="next-button" onClick={() => showQuizzResult()}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
@@ -45,7 +43,7 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-answer">
-          <p className="bubble-box-text">"Das ist die Lösung"</p>
+          <p className="bubble-box-text">{t("Climate2_Bubble.2")}</p>
           <button id="next-button" onClick={() => setShowAnswer(true)}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
