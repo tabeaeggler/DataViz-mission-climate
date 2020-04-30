@@ -1,13 +1,14 @@
-.draggable-line{
+.draggable-line,
+.draggable-line-static {
   stroke-width: 10px;
   stroke: blue;
 }
 
-.snowline-enter{
-stroke: red;
+.snowline-enter {
+  stroke: red;
 }
-.snowline-update{
-stroke: green;
+.snowline-update {
+  stroke: green;
 }
 .snowline-container {
   width: 40%;
@@ -34,8 +35,8 @@ line {
   left: 5%;
   width: 20.5%;
 }
-
-
-
-
-
+.bubble-box-climate2-answer {
+  right: 5%;
+  top: 20%;
+  width: 20.5%;
+}
