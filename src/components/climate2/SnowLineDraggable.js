@@ -7,10 +7,12 @@ import ButtonRight from "../../assets/img/buttonRight.svg"
 function SnowLineDraggable() {
   const { t } = useTranslation()
   const svgRef = useRef()
-  const [showBubble, setShowBubble] = useState({
-    startQuizz: true,
-    exitQuizz: false,
-  })
+
+  const [showBubbleStart, setShowBubbleStart] = useState(true)
+  const [showBubbleExit, setShowBubbleExit] = useState(false)
+
+  const startQuizzRef = useRef()
+  startQuizzRef.current = showBubbleStart
   //const [data, setData] = useState({ year: 1960, snowline: 900 })
 
   //console.log("init", data)
@@ -23,7 +25,7 @@ function SnowLineDraggable() {
   function createBubbleStartQuizz() {
     return (
       <CSSTransition
-        in={showBubble.startQuizz}
+        in={showBubbleStart}
         timeout={4000}
         classNames="bubble-fade"
         unmountOnExit
@@ -43,10 +45,8 @@ function SnowLineDraggable() {
   function showQuizzResult() {
     //setData({ year: 1960, snowline: 900 }, { year: 2018, snowline: 1250 })
     // console.log(data)
-    setShowBubble({
-      startQuizz: false,
-      exitQuizz: true,
-    })
+    setShowBubbleStart(false)
+    setShowBubbleExit(true)
     //show result line
     //undrag line
     //shwo second bubble
@@ -114,13 +114,13 @@ function SnowLineDraggable() {
       .text(data[0].snowline + " m.ü.M")
 
     function dragstarted() {
-      if (showBubble.startQuizz) {
+      if (startQuizzRef.current) {
         select(this).classed("active-d3-item", true)
       }
     }
 
     function dragged() {
-      if (showBubble.startQuizz) {
+      if (startQuizzRef.current) {
         var y = event.dy
         var currentLine = select(this)
         var newYPosition = parseInt(currentLine.attr("y1")) + y
@@ -140,7 +140,7 @@ function SnowLineDraggable() {
     }
 
     function dragended() {
-      if (showBubble.startQuizz) {
+      if (startQuizzRef.current) {
         select(this).classed("active-d3-item", false)
       }
     }
@@ -151,7 +151,7 @@ function SnowLineDraggable() {
    */
   useEffect(() => {
     createSnowLine()
-  }, [showBubble])
+  }, [])
 
   return (
     <React.Fragment>
