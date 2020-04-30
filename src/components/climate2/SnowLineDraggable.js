@@ -13,11 +13,9 @@ function SnowLineDraggable() {
 
   const startQuizzRef = useRef()
   startQuizzRef.current = showBubbleStart
-  //const [data, setData] = useState({ year: 1960, snowline: 900 })
+  // const [data, setData] = useState({ year: 1960, snowline: 900 })
 
-  //console.log("init", data)
-
-  var data = [{ year: 1960, snowline: 900 }]
+  const data = [{ year: 1960, snowline: 900 }]
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -43,12 +41,13 @@ function SnowLineDraggable() {
   }
 
   function showQuizzResult() {
-    //setData({ year: 1960, snowline: 900 }, { year: 2018, snowline: 1250 })
-    // console.log(data)
+    console.log(data)
+
+    //show result line
+    data.push({ year: 1980, snowline: 100 })
+    //undrag line
     setShowBubbleStart(false)
     setShowBubbleExit(true)
-    //show result line
-    //undrag line
     //shwo second bubble
   }
 
@@ -151,7 +150,7 @@ function SnowLineDraggable() {
    */
   useEffect(() => {
     createSnowLine()
-  }, [])
+  }, [showBubbleStart])
 
   return (
     <React.Fragment>
