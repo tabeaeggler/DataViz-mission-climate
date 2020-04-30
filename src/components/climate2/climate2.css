@@ -1,20 +1,28 @@
 .draggable-line,
 .draggable-line-static {
-  stroke-width: 10px;
-  stroke: blue;
+  stroke: #FFD763;
+  stroke-dasharray: 10;
+  stroke-linecap: round;
+  stroke-width: 5;
 }
 
-.snowline-wrapper{
+.snowline-wrapper {
   position: fixed;
   bottom: 0;
   margin-left: 30%;
 }
 
 .snowline-enter {
-  stroke: red;
+  stroke: #bbb9b9;
+  stroke-dasharray: 5.5;
+  stroke-linecap: round;
+  stroke-width: 3;
 }
 .snowline-update {
-  stroke: green;
+  stroke: #6A8ADF;
+  stroke-dasharray: 5.5;
+  stroke-linecap: round;
+  stroke-width: 3;
 }
 .snowline-container {
   width: 741px;
@@ -30,21 +38,17 @@
 
 .active-d3-item {
   cursor: pointer;
-  stroke: magenta;
-}
-
-line {
-  shape-rendering: crispEdges;
-  vector-effect: non-scaling-stroke;
+  stroke: #FFD763;
+  opacity: 0.6;
 }
 
 /*Bubble Textbox*/
 .bubble-box-climate2-start {
-  left: 5%;
+  left: -25%;
   width: 50%;
 }
 .bubble-box-climate2-answer {
-  right: 5%;
-  top: 20%;
+  right: -45%;
+  top: -10%;
   width: 50%;
 }
