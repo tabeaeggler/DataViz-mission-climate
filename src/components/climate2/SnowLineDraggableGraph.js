@@ -36,19 +36,21 @@ const SnowLineDraggableGraph = props => {
       //create distance rectangle
       svg
         .append("rect")
-        .style("fill", "orange")
-        .attr("x", 0)
+        .attr("class", "rect-difference")
+        .attr("x", -2)
+        .attr("rx", 5)
+        .attr("ry", 5)
         .attr(
           "y",
           draggableLinePosition > props.data[1].snowline
-            ? yScale(draggableLinePosition)
-            : yScale(props.data[1].snowline)
+            ? yScale(draggableLinePosition - 10)
+            : yScale(props.data[1].snowline - 10)
         )
-        .attr("width", width)
+        .attr("width", width + 2)
         .attr(
           "height",
           Math.abs(
-            yScale(draggableLinePosition) - yScale(props.data[1].snowline)
+            yScale(draggableLinePosition) - yScale(props.data[1].snowline - 10)
           )
         )
         .style("opacity", "0")
@@ -56,7 +58,7 @@ const SnowLineDraggableGraph = props => {
         .delay(3500)
         .duration(1000)
         .ease(easeLinear)
-        .style("opacity", "1")
+        .style("opacity", "0.3")
 
       //render answer-line and text
       svg
@@ -74,10 +76,10 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("x", width + 20)
+        .attr("x", width + 5)
         .attr("y", yScale(props.data[1].snowline - 35))
         .style("font-size", "10px")
-        .text("Schneefallgrenze bei " + props.data[1].snowline + " m.ü.M")
+        .text("Nullgradgrenze bei " + props.data[1].snowline + " m.ü.M")
         .style("fill", "white")
         .style("opacity", 0)
         .transition()
@@ -154,9 +156,9 @@ const SnowLineDraggableGraph = props => {
         .append("text")
         .style("fill", "white")
         .style("font-size", "10px")
-        .attr("x", width + 20)
+        .attr("x", width + 5)
         .attr("y", yScale(props.data[0].snowline - 35))
-        .text("Schneefallgrenze bei " + props.data[0].snowline + " m.ü.M")
+        .text("Nullgradgrenze bei " + props.data[0].snowline + " m.ü.M")
 
       svg
         .append("text")
@@ -185,7 +187,7 @@ const SnowLineDraggableGraph = props => {
       var textDraggableLineMeter = svg
         .append("text")
         .style("fill", "white")
-        .attr("x", width + 20)
+        .attr("x", width + 5)
         .attr("y", yScale(draggableLinePosition))
         .text(" ")
 
@@ -227,7 +229,7 @@ const SnowLineDraggableGraph = props => {
             .attr("y", newYPosition)
             .style("font-size", "10px")
             .text(
-              "Schneefallgrenze bei " +
+              "Nullgradgrenze bei " +
                 yScale.invert(newYPosition).toFixed(0) +
                 " m.ü.M"
             )

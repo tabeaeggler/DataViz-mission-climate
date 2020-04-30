@@ -1,9 +1,14 @@
 .draggable-line,
 .draggable-line-static {
   stroke: #FFD763;
-  stroke-dasharray: 10;
+  stroke-dasharray: 10.5;
   stroke-linecap: round;
   stroke-width: 5;
+}
+
+.draggable-line-static{
+  stroke-width: 3;
+  stroke-dasharray: 5.5;
 }
 
 .snowline-wrapper {
@@ -20,9 +25,9 @@
 }
 .snowline-update {
   stroke: #6A8ADF;
-  stroke-dasharray: 5.5;
+  stroke-dasharray: 10.5;
   stroke-linecap: round;
-  stroke-width: 3;
+  stroke-width: 5;
 }
 .snowline-container {
   width: 741px;
@@ -40,6 +45,11 @@
   cursor: pointer;
   stroke: #FFD763;
   opacity: 0.6;
+}
+
+.rect-difference{
+  fill: #FFD763;
+  opacity: 0.1;
 }
 
 /*Bubble Textbox*/
