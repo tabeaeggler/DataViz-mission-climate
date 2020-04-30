@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { select, scaleLinear, drag, event } from "d3"
+import { select, scaleLinear, drag, event, easeQuad } from "d3"
 
 const SnowLineDraggableGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
 
-  const transitionData = [1100, 1300, 1200]
+  const transitionData = [1000, 850, 1010, 900, 1200]
+  const transitionDurations = [800, 900, 1000, 900, 900]
 
   /**
    * Main code for SnowLineDraggable
@@ -96,49 +97,19 @@ const SnowLineDraggableGraph = props => {
             .on("drag", dragged)
             .on("end", dragended)
         )
-        .transition()
-        .duration(500)
-        .attr("y1", d => yScale(transitionData[0]))
-        .attr("y2", d => yScale(transitionData[0]))
-        .transition()
-        .duration(500)
-        .attr("y1", d => yScale(transitionData[1]))
-        .attr("y2", d => yScale(transitionData[1]))
-        .transition()
-        .duration(700)
-        .attr("y1", d => yScale(transitionData[2]))
-        .attr("y2", d => yScale(transitionData[2]))
-        .transition()
-        .duration(500)
-        .attr("y1", d => yScale(draggableLinePosition))
-        .attr("y2", d => yScale(draggableLinePosition))
+      animationLine()
 
       var text = svg
         .append("text")
         .style("fill", "white")
         .attr("x", width + 20)
         .attr("y", yScale(draggableLinePosition))
-        .text(draggableLinePosition + " m.ü.M")
-        .transition()
-        .duration(500)
-        .attr("y", yScale(transitionData[0]))
-        .text(transitionData[0] + " m.ü.M")
-        .transition()
-        .duration(500)
-        .attr("y", yScale(transitionData[1]))
-        .text(transitionData[1] + " m.ü.M")
-        .transition()
-        .duration(700)
-        .attr("y", yScale(transitionData[2]))
-        .text(transitionData[2] + " m.ü.M")
-        .transition()
-        .duration(500)
-        .attr("y", yScale(draggableLinePosition))
-        .text(draggableLinePosition + " m.ü.M")
+        .text(" ")
 
       function dragstarted() {
         if (!props.showAnswer) {
           select(this).classed("active-d3-item", true)
+          svg.select(".draggable-line").interrupt()
         }
       }
 
@@ -169,6 +140,27 @@ const SnowLineDraggableGraph = props => {
           select(this).classed("active-d3-item", false)
         }
       }
+    }
+
+    function animationLine() {
+      svg
+        .select(".draggable-line")
+        .transition()
+        .delay(1000)
+        .duration(800)
+        .ease(easeQuad)
+        .attr("y1", d => yScale(draggableLinePosition + 40))
+        .attr("y2", d => yScale(draggableLinePosition + 40))
+        .transition()
+        .attr("y1", d => yScale(draggableLinePosition))
+        .attr("y2", d => yScale(draggableLinePosition))
+        .transition()
+        .attr("y1", d => yScale(draggableLinePosition + 60))
+        .attr("y2", d => yScale(draggableLinePosition + 60))
+        .transition()
+        .attr("y1", d => yScale(draggableLinePosition))
+        .attr("y2", d => yScale(draggableLinePosition))
+        .on("end", animationLine)
     }
   }
 
