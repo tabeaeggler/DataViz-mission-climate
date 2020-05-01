@@ -1,7 +1,7 @@
 .draggable-line,
 .draggable-line-static {
   stroke: #FFD763;
-  stroke-dasharray: 10.5;
+  stroke-dasharray: 11.5;
   stroke-linecap: round;
   stroke-width: 5;
 }
@@ -26,7 +26,7 @@
 }
 .snowline-update {
   stroke: #6A8ADF;
-  stroke-dasharray: 10.5;
+  stroke-dasharray: 11.5;
   stroke-linecap: round;
   stroke-width: 5;
 }

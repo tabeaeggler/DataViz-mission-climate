@@ -14,15 +14,15 @@ const SnowLineDraggableGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
-  const[showSubmitButton, setShowSubmitButton] = useState(false)
+  const [showSubmitButton, setShowSubmitButton] = useState(false)
 
   /**
    * Main code for SnowLineDraggable
    */
   function createSnowLine() {
-    const width = 600
+    const width = 700
     const height = 550
-    const margin = 148
+    const margin = 98
     const mountainHeight = 2200
     const marginTextYear = 60
 
@@ -295,7 +295,10 @@ const SnowLineDraggableGraph = props => {
     createSnowLine()
   }, [props])
 
-  function showResult() { 
+  /**
+   * Handle submission of result
+   */
+  function showResult() {
     props.showQuizzResult()
     setShowSubmitButton(false)
   }
@@ -306,7 +309,14 @@ const SnowLineDraggableGraph = props => {
         <svg className="snowline-graph" width={900}>
           <g ref={svgRef}></g>
         </svg>
-        {showSubmitButton ? <button className="confirmButton" style={{ bottom: draggableLinePosition*550/2200}} onClick={() => showResult()}>Bestätigen</button> : null}
+        {showSubmitButton ? (
+          <button
+            className="confirmButton"
+            style={{ bottom: (draggableLinePosition * 550) / 2200 }}
+            onClick={() => showResult()}>
+            {t("Climate2_Submit_Button")}
+          </button>
+        ) : null}
       </div>
     </React.Fragment>
   )
