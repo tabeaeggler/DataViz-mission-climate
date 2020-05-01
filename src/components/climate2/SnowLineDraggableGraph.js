@@ -14,6 +14,7 @@ const SnowLineDraggableGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
+  const[showSubmitButton, setShowSubmitButton] = useState(false)
 
   /**
    * Main code for SnowLineDraggable
@@ -92,7 +93,7 @@ const SnowLineDraggableGraph = props => {
         .append("text")
         .style("fill", "white")
         .style("font-size", "12px")
-        .attr("x", 2)
+        .attr("x", 0)
         .attr("y", yScale(props.data[1].snowline - marginTextYear))
         .text("2018")
         .style("opacity", 0)
@@ -122,7 +123,7 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("line")
         .attr("class", "draggable-line-static")
-        .attr("x1", 0)
+        .attr("x1", 2)
         .attr("x2", width)
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
@@ -203,6 +204,7 @@ const SnowLineDraggableGraph = props => {
 
       function dragstarted() {
         if (!props.showAnswer) {
+          setShowSubmitButton(true)
           select(this).classed("active-d3-item", true)
           svg.select(".draggable-line").interrupt()
           svg.select(".draggable-line-text").interrupt()
@@ -293,12 +295,18 @@ const SnowLineDraggableGraph = props => {
     createSnowLine()
   }, [props])
 
+  function showResult() { 
+    props.showQuizzResult()
+    setShowSubmitButton(false)
+  }
+
   return (
     <React.Fragment>
       <div className="snowline-container">
         <svg className="snowline-graph" width={900}>
           <g ref={svgRef}></g>
         </svg>
+        {showSubmitButton ? <button className="confirmButton" style={{ bottom: draggableLinePosition*550/2200}} onClick={() => showResult()}>Bestätigen</button> : null}
       </div>
     </React.Fragment>
   )

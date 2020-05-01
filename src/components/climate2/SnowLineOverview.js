@@ -7,7 +7,8 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 function SnowLineOverview() {
   const { t } = useTranslation()
 
-  const [showAnswer, setShowAnswer] = useState(false)
+    const [showAnswer, setShowAnswer] = useState(false)
+    console.log(showAnswer)
   const [nextPage, setNextPage] = useState(false)
 
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
@@ -26,9 +27,6 @@ function SnowLineOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-start">
           <p className="bubble-box-text">{t("Climate2_Bubble.1")}</p>
-          <button id="next-button" onClick={() => showQuizzResult()}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
         </div>
       </CSSTransition>
     )
@@ -63,7 +61,7 @@ function SnowLineOverview() {
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         {console.log(data)}
-        <SnowLineDraggableGraph showAnswer={showAnswer} data={data} />
+              <SnowLineDraggableGraph showAnswer={showAnswer} data={data} showQuizzResult={showQuizzResult} />
       </div>
     </React.Fragment>
   )
