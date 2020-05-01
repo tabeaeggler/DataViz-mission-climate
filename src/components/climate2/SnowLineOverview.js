@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, {useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -7,8 +7,8 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 function SnowLineOverview() {
   const { t } = useTranslation()
 
-    const [showAnswer, setShowAnswer] = useState(false)
-    console.log(showAnswer)
+  const [showAnswer, setShowAnswer] = useState(false)
+  console.log(showAnswer)
   const [nextPage, setNextPage] = useState(false)
 
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
@@ -60,8 +60,11 @@ function SnowLineOverview() {
       <div className="snowline-wrapper">
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
-        {console.log(data)}
-              <SnowLineDraggableGraph showAnswer={showAnswer} data={data} showQuizzResult={showQuizzResult} />
+        <SnowLineDraggableGraph
+          showAnswer={showAnswer}
+          data={data}
+          showQuizzResult={showQuizzResult}
+        />
       </div>
     </React.Fragment>
   )

@@ -100,7 +100,7 @@ const TemperatureLineGraph = props => {
     //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
     const yAxis = axisLeft(yScale).tickFormat(
-      index => index.toFixed(1) + " " + "\u2103"
+      index => index.toFixed(1) + " \u2103"
     )
 
     //add X and Y gridlines

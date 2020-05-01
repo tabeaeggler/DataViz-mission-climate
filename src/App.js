@@ -1,17 +1,16 @@
 import React, { useEffect } from "react"
 import "./App.css"
 import { useTranslation } from "react-i18next"
-import Climate1 from "./components/climate1/Climate1"
 import Climate2 from "./components/climate2/Climate2"
 
 function App() {
-  const { t, i18n } = useTranslation()
+  const { i18n } = useTranslation()
 
   //initally color button with current language
   useEffect(() => {
     var selectedItem = document.getElementById(i18n.language)
     selectedItem.id = "language-button-clicked"
-  }, [])
+  }, [i18n])
 
   //handle button clickevent
   function handleClick(lang, e) {

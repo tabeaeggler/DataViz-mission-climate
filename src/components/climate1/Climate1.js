@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React from "react"
 import World from "./World"
 import "./climate1.css"
 import { useTranslation } from "react-i18next"

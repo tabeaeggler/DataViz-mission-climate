@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { scaleSequential, interpolateYlOrRd, select, csv } from "d3"
+import { scaleSequential, interpolateYlOrRd, csv } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
@@ -193,7 +193,7 @@ const World = () => {
                   linegraph: true,
                 })
               }>
-            <img src={ButtonRight}></img>
+            <img src={ButtonRight} alt="continue"></img>
             </button>
           </div>
       </CSSTransition>
@@ -242,7 +242,7 @@ const World = () => {
         {createBubbleGlobe()}
         <div className="location-button">
           <button onClick={handleZoom}>
-            <img src={LocationButton}></img>
+            <img src={LocationButton} alt="location"></img>
             {t("Climate1_Location")}
           </button>
         </div>
