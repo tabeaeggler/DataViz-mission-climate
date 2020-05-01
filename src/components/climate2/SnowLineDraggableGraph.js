@@ -312,7 +312,7 @@ const SnowLineDraggableGraph = props => {
         </svg>
         {showSubmitButton ? (
           <button
-            className="confirmButton"
+            className="submit-button"
             style={{ bottom: (draggableLinePosition * 550) / 2200 }}
             onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}
