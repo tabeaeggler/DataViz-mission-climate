@@ -29,9 +29,10 @@ const SnowLineDraggableGraph = props => {
     const svg = select(svgRef.current).attr(
       "transform",
       `translate(${margin},0)`
-    )
+    ).attr("class", "group")
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
+
 
     if (props.showAnswer) {
       //create distance rectangle
@@ -293,7 +294,7 @@ const SnowLineDraggableGraph = props => {
    */
   useEffect(() => {
     createSnowLine()
-  }, [props])
+  }, [props.showAnswer])
 
   /**
    * Handle submission of result
