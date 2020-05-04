@@ -9,7 +9,7 @@ import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.c
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
-import history from '../../history';
+import history from '../../routing/history';
 
 /**
  * Creates a interactive globe to show climate warming
