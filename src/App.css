@@ -133,14 +133,14 @@ button.language-button,
   float: right;
 }
 
-/*Linegraph fade*/
-.linegraph-fade-enter,
-.linegraph-fade-appear {
+/*Fade for titles and linegraph*/
+.fade-enter,
+.fade-appear {
   opacity: 0;
 }
 
-.linegraph-fade-enter-active,
-.linegraph-fade-appear-active {
+.fade-enter-active,
+.fade-appear-active {
   opacity: 1;
   transition: opacity 4000ms;
 }

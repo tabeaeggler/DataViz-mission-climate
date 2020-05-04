@@ -12,7 +12,7 @@ function Climate1() {
       <CSSTransition
         in={true}
         timeout={100000}
-        classNames="linegraph-fade"
+        classNames="fade"
         unmountOnExit
         appear>
         <h1 className="climate-1-title"> {t("Climate1_Title.1")}</h1>

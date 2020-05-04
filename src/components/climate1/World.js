@@ -204,7 +204,7 @@ const World = () => {
       <CSSTransition
         in={true}
         timeout={200000}
-        classNames="linegraph-fade"
+        classNames="fade"
         unmountOnExit
         appear>
         <div className="linegraph-container">
