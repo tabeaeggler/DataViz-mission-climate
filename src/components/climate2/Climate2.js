@@ -6,7 +6,7 @@ import Snow from "react-snowstorm"
 function Climate2() {
   return (
     <React.Fragment>
-      <Snow animationInterval={70} followMouse={false}></Snow>
+      <Snow animationInterval={50} followMouse={false} vMaxY={1.5} vMaxX={3} flakesMaxActive={90} flakesMax={150}></Snow>
       <SnowLineOverview />
     </React.Fragment>
   )

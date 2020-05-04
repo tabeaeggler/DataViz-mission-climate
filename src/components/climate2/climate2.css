@@ -33,7 +33,6 @@
 .snowline-container {
   width: auto;
   height: 550px;
-  z-index: 100;
   background-image: url("../../assets/img/mountains.svg");
   background-repeat: no-repeat;
   background-position: center;
