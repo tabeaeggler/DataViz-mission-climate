@@ -37,10 +37,7 @@ const World = () => {
   ]
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
-  const [showBubble, setShowBubble] = useState({
-    globe: true,
-    linegraph: false,
-  })
+  const [showInitialBubble, setShowInitialBubble] = useState(true)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -142,7 +139,7 @@ const World = () => {
           country.properties.ISO_A2.toLowerCase()
       ),
     })
-    setShowBubble({ globe: false, linegraph: true })
+    setShowInitialBubble(false)
   }
 
   /**
@@ -151,7 +148,7 @@ const World = () => {
   function createBubbleGlobe() {
     return (
       <CSSTransition
-        in={showBubble.globe}
+        in={showInitialBubble}
         timeout={4000}
         classNames="bubble-fade"
         unmountOnExit
@@ -161,10 +158,7 @@ const World = () => {
           <button
             id="next-button"
             onClick={() =>
-              setShowBubble({
-                globe: false,
-                linegraph: true,
-              })
+              setShowInitialBubble(false)
             }>
             <img src={ButtonRight} alt="continue"></img>
           </button>
@@ -179,7 +173,7 @@ const World = () => {
   function createBubbleLineGraph() {
     return (
       <CSSTransition
-        in={showBubble.linegraph}
+        in={!showInitialBubble}
         timeout={4000}
         classNames="bubble-fade"
         unmountOnExit
