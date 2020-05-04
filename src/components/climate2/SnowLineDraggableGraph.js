@@ -11,8 +11,18 @@ import {
 } from "d3"
 
 const SnowLineDraggableGraph = props => {
+  //transaltion
   const { t } = useTranslation()
+
+  //svg sizing
   const svgRef = useRef()
+  const width = 700
+  const height = 550
+  const margin = 98
+  const mountainHeight = 2200
+  const marginTextYear = 60
+
+  //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
 
@@ -20,19 +30,11 @@ const SnowLineDraggableGraph = props => {
    * Main code for SnowLineDraggable
    */
   function createSnowLine() {
-    const width = 700
-    const height = 550
-    const margin = 98
-    const mountainHeight = 2200
-    const marginTextYear = 60
-
-    const svg = select(svgRef.current).attr(
-      "transform",
-      `translate(${margin},0)`
-    ).attr("class", "group")
+    const svg = select(svgRef.current)
+      .attr("transform", `translate(${margin},0)`)
+      .attr("class", "group")
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
-
 
     if (props.showAnswer) {
       //create distance rectangle
@@ -307,13 +309,13 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={900}>
+        <svg className="snowline-graph" width={width+2*margin}>
           <g ref={svgRef}></g>
         </svg>
         {showSubmitButton ? (
           <button
             className="submit-button"
-            style={{ bottom: (draggableLinePosition * 550) / 2200 }}
+            style={{ bottom: (draggableLinePosition * height) / mountainHeight }}
             onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}
           </button>
