@@ -17,6 +17,7 @@
     "react-dom": "^16.13.0",
     "react-globe.gl": "^2.7.6",
     "react-i18next": "^11.3.4",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-snowstorm": "0.0.3",
     "react-transition-group": "^4.3.0"

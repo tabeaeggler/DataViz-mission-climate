@@ -1,7 +1,8 @@
 import React, { useEffect } from "react"
+import { BrowserRouter as Router } from "react-router-dom"
 import "./App.css"
 import { useTranslation } from "react-i18next"
-import Climate2 from "./components/climate2/Climate2"
+import Routes from "./Routes"
 
 function App() {
   const { i18n } = useTranslation()
@@ -27,35 +28,37 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Climate2 />
-      <div className="language-button-container">
-        <button
-          className="language-button"
-          id="en"
-          onClick={e => handleClick("en", e)}>
-          E
-        </button>
-        <button
-          className="language-button"
-          id="de"
-          onClick={e => handleClick("de", e)}>
-          D
-        </button>
-        <button
-          className="language-button"
-          id="fr"
-          onClick={e => handleClick("fr", e)}>
-          F
-        </button>
-        <button
-          className="language-button"
-          id="it"
-          onClick={e => handleClick("it", e)}>
-          I
-        </button>
+    <Router>
+      <div className="App">
+        <Routes />
+        <div className="language-button-container">
+          <button
+            className="language-button"
+            id="en"
+            onClick={e => handleClick("en", e)}>
+            E
+          </button>
+          <button
+            className="language-button"
+            id="de"
+            onClick={e => handleClick("de", e)}>
+            D
+          </button>
+          <button
+            className="language-button"
+            id="fr"
+            onClick={e => handleClick("fr", e)}>
+            F
+          </button>
+          <button
+            className="language-button"
+            id="it"
+            onClick={e => handleClick("it", e)}>
+            I
+          </button>
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
