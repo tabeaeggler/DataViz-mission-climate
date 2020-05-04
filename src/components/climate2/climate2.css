@@ -1,3 +1,12 @@
+.climate2-title {
+  padding-bottom: 1%;
+  margin-top: 7%
+}
+
+.climate2-subtitle {
+  opacity: 0.7;
+}
+
 .draggable-line,
 .draggable-line-static {
   stroke: #FFD763;
