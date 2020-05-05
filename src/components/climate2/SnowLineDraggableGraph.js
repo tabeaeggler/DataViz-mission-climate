@@ -41,7 +41,7 @@ const SnowLineDraggableGraph = props => {
       //create distance rectangle and answer text
       svg
         .append("rect")
-        .attr("class", "rect-difference")
+        .attr("class", "difference-rect")
         .attr("x", -2)
         .attr("rx", 5)
         .attr("ry", 5)
@@ -60,14 +60,27 @@ const SnowLineDraggableGraph = props => {
         .duration(1000)
         .ease(easeLinear)
         .style("opacity", "0.3")
-
+      
       svg
+        .append("line")
+        .attr("class", "difference-line")
+        .attr("y1", yScale(props.data[0].snowline))
+        .attr("y2", yScale(props.data[1].snowline))
+        .attr("x1", width + 10)
+        .attr("x2", width + 10)
+        .style("opacity", 0)
+        .transition()
+        .delay(3500)
+        .duration(1000)
+        .ease(easeLinear)
+        .style("opacity", 1)
+      
+        svg
         .append("text")
         .attr("class", "difference-text")
-        .attr("x", width / 2 - 29)
+        .attr("x", width + 15)
         .attr("y", yScale(props.data[1].snowline - 175))
         .text("350 m")
-        .style("fill", "#6A8ADF")
         .style("opacity", 0)
         .transition()
         .delay(3500)
@@ -91,26 +104,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", width - marginTextX)
-        .attr(
-          "y",
-          props.data[1].snowline - draggableLinePosition < 75 &&
-            props.data[1].snowline - draggableLinePosition > 0
-            ? yScale(props.data[1].snowline + marginTextY / 2)
-            : yScale(props.data[1].snowline - marginTextY)
-        )
-        .text(props.data[1].snowline + " m")
-        .style("opacity", 0)
-        .transition()
-        .delay(2700)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
+        .attr("class", "snowline-text answer-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -141,7 +135,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text")
+        .attr("class", "snowline-text draggable-text")
         .attr("x", width - marginTextX)
         .attr(
           "y",
@@ -154,7 +148,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text")
+        .attr("class", "snowline-text draggable-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -165,6 +159,26 @@ const SnowLineDraggableGraph = props => {
         )
         .text("2018: Deine Schätzung")
       animationLineText()
+
+      svg
+        .append("text")
+        .attr("class", "snowline-text answer-text")
+        .attr("x", width - marginTextX)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < 75 &&
+            props.data[1].snowline - draggableLinePosition > 0
+            ? yScale(props.data[1].snowline + marginTextY / 2)
+            : yScale(props.data[1].snowline - marginTextY)
+        )
+        .text(props.data[1].snowline + " m")
+        .style("opacity", 0)
+        .transition()
+        .delay(2700)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
+      
     }
 
     if (!props.showAnswer) {
@@ -226,6 +240,8 @@ const SnowLineDraggableGraph = props => {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
           select(this).classed("active-d3-item", true)
+          select(".draggable-line-text-meter").classed("active-text", true)
+          select(".draggable-line-text-year").classed("active-text", true)
           svg.select(".draggable-line").interrupt()
           svg.select(".draggable-line-text-year").interrupt()
         }
@@ -258,6 +274,8 @@ const SnowLineDraggableGraph = props => {
       function dragended() {
         if (!props.showAnswer) {
           select(this).classed("active-d3-item", false)
+          select(".draggable-line-text-meter").classed("active-text", false)
+          select(".draggable-line-text-year").classed("active-text", false)
         }
       }
     }

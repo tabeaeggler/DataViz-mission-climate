@@ -53,18 +53,31 @@
   height: 550px;
 }
 
+.snowline-text {
+  font-size: 0.7em;
+  fill: #bbb9b9;
+}
+
 .active-d3-item {
   cursor: pointer;
   stroke: #FFD763;
   opacity: 0.6;
 }
 
-.rect-difference{
+.active-text {
+  opacity: 0.6;
+}
+
+.draggable-line-text-meter, .draggable-line-text-year{
+  fill:  #FFD763;
+}
+
+.difference-rect{
   fill: #6A8ADF;
   opacity: 0.1;
 }
 .submit-button {
-  background-color:#6A8ADF;
+  background-color:#bbb9b9;
   color: #141416;
   position:absolute;
   margin-bottom: 20px;
@@ -73,12 +86,22 @@
 }
 
 .difference-text {
-  font-size: 1em;
+  fill: #6A8ADF;
+  font-size: 0.7em;
 }
 
-.snowline-text {
-  font-size: 0.7em;
-  fill: #bbb9b9;
+.answer-text {
+  fill: #6A8ADF
+}
+
+.draggable-text {
+  fill: #FFD763;
+}
+
+.difference-line {
+  stroke: #6A8ADF;
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 /*Bubble Textbox*/
