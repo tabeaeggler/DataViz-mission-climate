@@ -26,8 +26,8 @@
     "2": "Was bedeutet das für die Schweiz?"
   },
   "Climate2_Bubble": {
-    "1": "Durch die Klimaerwärmung verschiebt sich die Nullgradgrenze immer weiter nach oben und weniger Schnee bleibt in tieferen Lagen liegen. Was denkst du, auf welcher Höhe befand sich die Nullgradgrenze im Jahr 2018? Mach einen Vorschlag und bestätige deine Schätzung!",
-    "2": "Wie du siehst, liegt die Nullgradgrenze im Jahr 2018 350 Meter weiter oben, als noch im Jahr 1960. Pro Grad Erderwärmung steigt sie ungefähr 200 Meter. Aber nicht nur die Nullgradgrenze und somit der Schneefall sind von der Klimaerwärmung betroffen, sondern auch die Gletscher. Erfahre mehr!"
+    "4": "Die Nullgradgrenze stieg in den letzten 60 Jahre um 350 Meter - ",
+    "5": "pro Grad Erwärmung ca. 200 Meter. Auch die Gletscher sind betroffen, erfahre mehr!"
   },
   "Climate2_Submit_Button": "Bestätigen",
   "Climate2_Title": {

@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -33,21 +33,24 @@ function SnowLineOverview() {
   }
 
   function createBubbleShowAnswer() {
-    // return (
-    //   <CSSTransition
-    //     in={showAnswer}
-    //     timeout={4000}
-    //     classNames="bubble-fade"
-    //     unmountOnExit
-    //     appear>
-    //     <div className="bubble-box bubble-box-climate2-answer">
-    //       <p className="bubble-box-text">{t("Climate2_Bubble.2")}</p>
-    //       <button id="next-button" onClick={() => setShowAnswer(true)}>
-    //         <img src={ButtonRight} alt="continue"></img>
-    //       </button>
-    //     </div>
-    //   </CSSTransition>
-    // )
+    return (
+      <CSSTransition
+        in={showAnswer}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div className="bubble-box bubble-box-climate2-answer">
+          <p className="bubble-box-text">
+            <b>{t("Climate2_Bubble.4")}</b>
+            {t("Climate2_Bubble.5")}
+          </p>
+          <button id="next-button" onClick={() => setShowAnswer(true)}>
+            <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
   }
 
   function showQuizzResult() {
