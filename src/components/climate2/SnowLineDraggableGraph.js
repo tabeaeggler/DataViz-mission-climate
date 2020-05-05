@@ -114,7 +114,7 @@ const SnowLineDraggableGraph = props =>{
             ? yScale(props.data[1].snowline + marginTextY / 2)
             : yScale(props.data[1].snowline - marginTextY)
         )
-        .text("2018: Lösung")
+        .text(t("Climate2_Graph.1"))
         .style("opacity", 0)
         .transition()
         .delay(2700)
@@ -158,7 +158,7 @@ const SnowLineDraggableGraph = props =>{
             ? yScale(draggableLinePosition) - 5
             : yScale(draggableLinePosition - marginTextY)
         )
-        .text("2018: Deine Schätzung")
+        .text(t("Climate2_Graph.2"))
       animationLineText()
 
       svg
@@ -234,7 +234,7 @@ const SnowLineDraggableGraph = props =>{
         .attr("class", "draggable-line-text-year snowline-text")
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
-        .text("2018: Deine Schätzung")
+        .text(t("Climate2_Graph.2"))
       animationLineText()
 
       function dragstarted() {
@@ -326,6 +326,9 @@ const SnowLineDraggableGraph = props =>{
   useEffect(() => {
     createSnowLine()
   }, [props.showAnswer])
+
+  useEffect(() => {
+  }, [props])
 
   /**
    * Handle submission of result
