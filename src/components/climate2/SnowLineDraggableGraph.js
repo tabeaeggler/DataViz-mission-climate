@@ -37,7 +37,7 @@ const SnowLineDraggableGraph = props => {
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
     if (props.showAnswer) {
-      //create distance rectangle
+      //create distance rectangle and answer text
       svg
         .append("rect")
         .attr("class", "rect-difference")
@@ -45,16 +45,13 @@ const SnowLineDraggableGraph = props => {
         .attr("rx", 5)
         .attr("ry", 5)
         .attr(
-          "y",
-          draggableLinePosition > props.data[1].snowline
-            ? yScale(draggableLinePosition - 10)
-            : yScale(props.data[1].snowline - 10)
+          "y", yScale(props.data[1].snowline)
         )
         .attr("width", width + 2)
         .attr(
           "height",
           Math.abs(
-            yScale(draggableLinePosition) - yScale(props.data[1].snowline - 10)
+            yScale(props.data[0].snowline - 10) - yScale(props.data[1].snowline - 10)
           )
         )
         .style("opacity", "0")
@@ -63,6 +60,20 @@ const SnowLineDraggableGraph = props => {
         .duration(1000)
         .ease(easeLinear)
         .style("opacity", "0.3")
+      
+        svg
+        .append("text")
+        .attr("x", width/2)
+        .attr("y", yScale(props.data[1].snowline - 175))
+        .style("font-size", "15px")
+        .text("350 Meter")
+        .style("fill", "#6A8ADF")
+        .style("opacity", 0)
+        .transition()
+        .delay(3500)
+        .duration(1000)
+        .ease(easeLinear)
+        .style("opacity", 1)
 
       //render answer-line and text
       svg
