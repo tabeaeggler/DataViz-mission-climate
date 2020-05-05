@@ -3,6 +3,7 @@ import { Router, Switch, Route } from "react-router-dom"
 
 import Climate2 from "../components/climate2/Climate2"
 import Climate1 from "../components/climate1/Climate1"
+import Glacier from "../components/climate2/GlacierMeltDraggable"
 import history from "./history"
 
 export default class Routes extends Component {
@@ -12,6 +13,7 @@ export default class Routes extends Component {
         <Switch>
           <Route path="/" exact component={Climate1} />
           <Route path="/Climate2" component={Climate2} />
+          <Route path="/Glacier" component={Glacier} />
         </Switch>
       </Router>
     )
