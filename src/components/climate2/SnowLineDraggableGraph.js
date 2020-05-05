@@ -44,14 +44,13 @@ const SnowLineDraggableGraph = props => {
         .attr("x", -2)
         .attr("rx", 5)
         .attr("ry", 5)
-        .attr(
-          "y", yScale(props.data[1].snowline)
-        )
+        .attr("y", yScale(props.data[1].snowline))
         .attr("width", width + 2)
         .attr(
           "height",
           Math.abs(
-            yScale(props.data[0].snowline - 10) - yScale(props.data[1].snowline - 10)
+            yScale(props.data[0].snowline - 10) -
+              yScale(props.data[1].snowline - 10)
           )
         )
         .style("opacity", "0")
@@ -60,13 +59,13 @@ const SnowLineDraggableGraph = props => {
         .duration(1000)
         .ease(easeLinear)
         .style("opacity", "0.3")
-      
-        svg
+
+      svg
         .append("text")
-        .attr("x", width/2)
+        .attr("class", "difference-text")
+        .attr("x", width / 2)
         .attr("y", yScale(props.data[1].snowline - 175))
-        .style("font-size", "15px")
-        .text("350 Meter")
+        .text("350 m")
         .style("fill", "#6A8ADF")
         .style("opacity", 0)
         .transition()
@@ -94,7 +93,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", width + 5)
         .attr("y", yScale(props.data[1].snowline - 35))
         .style("font-size", "10px")
-        .text("Nullgradgrenze bei " + props.data[1].snowline + " m.ü.M")
+        .text(props.data[1].snowline + " m")
         .style("fill", "white")
         .style("opacity", 0)
         .transition()
@@ -173,7 +172,7 @@ const SnowLineDraggableGraph = props => {
         .style("font-size", "10px")
         .attr("x", width + 5)
         .attr("y", yScale(props.data[0].snowline - 35))
-        .text("Nullgradgrenze bei " + props.data[0].snowline + " m.ü.M")
+        .text(props.data[0].snowline + " m")
 
       svg
         .append("text")
@@ -320,13 +319,15 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={width+2*margin}>
+        <svg className="snowline-graph" width={width + 2 * margin}>
           <g ref={svgRef}></g>
         </svg>
         {showSubmitButton ? (
           <button
             className="submit-button"
-            style={{ bottom: (draggableLinePosition * height) / mountainHeight }}
+            style={{
+              bottom: (draggableLinePosition * height) / mountainHeight,
+            }}
             onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}
           </button>

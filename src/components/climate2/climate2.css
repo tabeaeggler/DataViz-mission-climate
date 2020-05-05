@@ -72,6 +72,10 @@
   font-size: 0.9em;
 }
 
+.difference-text {
+  font-size: 1em;
+}
+
 /*Bubble Textbox*/
 .bubble-box-climate2-start {
   left: 5%;
