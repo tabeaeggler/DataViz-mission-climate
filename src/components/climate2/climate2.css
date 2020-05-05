@@ -104,6 +104,13 @@
   fill: #FFD763;
 }
 
+.source-climate2{
+  position:absolute;
+    width:100%;
+    bottom:0;
+    text-align:center;
+}
+
 /*Bubble Textbox*/
 .bubble-box-climate2-start {
   left: 5%;

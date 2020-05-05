@@ -17,7 +17,7 @@
     "1": "Gli aumenti di temperatura del 2019 sono mostrati in tutto il mondo. Per una migliore visione d'insieme, puoi ruotare il globo o eseguire lo zoom con due dita.",
     "2": "Fai clic su un paese specifico nel globo in modo da poter vedere la sua variazione di temperatura relativa nel corso degli anni. Per descrivere le variazioni di temperatura relative, le medie delle temperature nazionali o globali vengono confrontate con la temperatura media degli anni 1950-81. Cosa significa questo enorme aumento di temperatura per la Svizzera?"
   },
-  "Climate1_Source": "Quelle: NASA-GISS",
+  "Climate1_Source": "Fonte: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
@@ -32,5 +32,6 @@
   },"Climate2_Graph": {
     "1": "2018: Soluzione",
     "2": "2018: Il tuo preventivo"
-  }
+  },
+  "Climate2_Source": "Fonte: OcCC & ProClim"
 }

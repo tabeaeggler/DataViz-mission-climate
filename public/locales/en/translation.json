@@ -17,7 +17,7 @@
     "1": "The temperature increases of 2019 are shown in the globe. To get a better overview, you can turn the globe or zoom with two fingers.",
     "2": "Click on a specific country in the globe so you can see its relative temperature change over the years. To describe relative temperature changes, the averages of national or global temperatures are compared to the average temperature from 1950-81. What does this enormous temperature increase mean for Switzerland?"
   },
-  "Climate1_Source": "Quelle: NASA-GISS",
+  "Climate1_Source": "Source: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
@@ -32,5 +32,6 @@
   },"Climate2_Graph": {
     "1": "2018: Solution",
     "2": "2018: Your estimate"
-  }
+  },
+  "Climate2_Source": "Source: OcCC & ProClim"
 }

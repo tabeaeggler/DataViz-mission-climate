@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState} from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import {
   select,
@@ -10,7 +10,7 @@ import {
   easeLinear,
 } from "d3"
 
-const SnowLineDraggableGraph = props =>{
+const SnowLineDraggableGraph = props => {
   //transaltion
   const { t } = useTranslation()
 
@@ -61,7 +61,7 @@ const SnowLineDraggableGraph = props =>{
         .duration(1000)
         .ease(easeLinear)
         .style("opacity", "0.3")
-      
+
       svg
         .append("line")
         .attr("class", "difference-line")
@@ -75,8 +75,8 @@ const SnowLineDraggableGraph = props =>{
         .duration(1000)
         .ease(easeLinear)
         .style("opacity", 1)
-      
-        svg
+
+      svg
         .append("text")
         .attr("class", "difference-text")
         .attr("x", width + 20)
@@ -179,7 +179,6 @@ const SnowLineDraggableGraph = props =>{
         .duration(300)
         .ease(easeLinear)
         .style("opacity", 1)
-      
     }
 
     if (!props.showAnswer) {
@@ -327,8 +326,7 @@ const SnowLineDraggableGraph = props =>{
     createSnowLine()
   }, [props.showAnswer])
 
-  useEffect(() => {
-  }, [props])
+  useEffect(() => {}, [props])
 
   /**
    * Handle submission of result

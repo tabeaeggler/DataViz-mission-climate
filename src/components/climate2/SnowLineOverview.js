@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -56,6 +56,7 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <div className="snowline-wrapper">
+      <h6 className="source-climate2">{t("Climate2_Source")}</h6>
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <SnowLineDraggableGraph
