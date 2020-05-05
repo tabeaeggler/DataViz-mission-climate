@@ -76,6 +76,11 @@
   font-size: 1em;
 }
 
+.snowline-text {
+  font-size: 0.7em;
+  fill: #bbb9b9;
+}
+
 /*Bubble Textbox*/
 .bubble-box-climate2-start {
   left: 5%;

@@ -90,11 +90,10 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
+        .attr("class", "snowline-text")
         .attr("x", width + 5)
         .attr("y", yScale(props.data[1].snowline - 35))
-        .style("font-size", "10px")
         .text(props.data[1].snowline + " m")
-        .style("fill", "white")
         .style("opacity", 0)
         .transition()
         .delay(2700)
@@ -104,8 +103,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .style("fill", "white")
-        .style("font-size", "12px")
+        .attr("class", "snowline-text")
         .attr("x", 0)
         .attr("y", yScale(props.data[1].snowline - marginTextYear))
         .text("2018")
@@ -118,8 +116,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .style("fill", "white")
-        .style("font-size", "12px")
+        .attr("class", "snowline-text")
         .attr("x", -50)
         .attr("y", yScale(props.data[1].snowline))
         .text("Lösung")
@@ -143,8 +140,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .style("fill", "white")
-        .style("font-size", "12px")
+        .attr("class", "snowline-text")
         .attr("x", -100)
         .attr("y", yScale(draggableLinePosition))
         .text("Deine Schätzung")
@@ -168,19 +164,17 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .style("fill", "white")
-        .style("font-size", "10px")
+        .attr("class", "snowline-text")
         .attr("x", width + 5)
         .attr("y", yScale(props.data[0].snowline - 35))
         .text(props.data[0].snowline + " m")
 
       svg
         .append("text")
-        .style("fill", "white")
-        .style("font-size", "12px")
+        .attr("class", "snowline-text")
         .attr("x", 2)
         .attr("y", yScale(props.data[0].snowline - marginTextYear))
-        .text(1960)
+        .text("1960")
 
       //render draggable line
       svg
@@ -200,16 +194,14 @@ const SnowLineDraggableGraph = props => {
 
       var textDraggableLineMeter = svg
         .append("text")
-        .style("fill", "white")
+        .attr("class", "snowline-text")
         .attr("x", width + 5)
         .attr("y", yScale(draggableLinePosition))
         .text(" ")
 
       var textDraggableLineYear = svg
         .append("text")
-        .attr("class", "draggable-line-text")
-        .style("fill", "white")
-        .style("font-size", "12px")
+        .attr("class", "draggable-line-text snowline-text")
         .attr("x", 2)
         .attr("y", yScale(draggableLinePosition - marginTextYear))
         .text(2018)
@@ -242,11 +234,9 @@ const SnowLineDraggableGraph = props => {
           //Update text
           textDraggableLineMeter
             .attr("y", newYPosition)
-            .style("font-size", "10px")
             .text(
-              "Nullgradgrenze bei " +
                 yScale.invert(newYPosition).toFixed(0) +
-                " m.ü.M"
+                " m"
             )
 
           textDraggableLineYear
