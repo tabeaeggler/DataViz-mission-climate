@@ -20,7 +20,8 @@ const SnowLineDraggableGraph = props => {
   const height = 550
   const margin = 98
   const mountainHeight = 2200
-  const marginTextYear = 60
+  const marginTextY = 60
+  const marginTextX =50
 
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
@@ -63,7 +64,7 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "difference-text")
-        .attr("x", width / 2)
+        .attr("x", width / 2 - 29)
         .attr("y", yScale(props.data[1].snowline - 175))
         .text("350 m")
         .style("fill", "#6A8ADF")
@@ -91,8 +92,8 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "snowline-text")
-        .attr("x", width + 5)
-        .attr("y", yScale(props.data[1].snowline - 35))
+        .attr("x", width  - marginTextX)
+        .attr("y", yScale(props.data[1].snowline - marginTextY))
         .text(props.data[1].snowline + " m")
         .style("opacity", 0)
         .transition()
@@ -104,8 +105,8 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "snowline-text")
-        .attr("x", 0)
-        .attr("y", yScale(props.data[1].snowline - marginTextYear))
+        .attr("x", 8)
+        .attr("y", yScale(props.data[1].snowline - marginTextY))
         .text("2018")
         .style("opacity", 0)
         .transition()
@@ -165,15 +166,15 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "snowline-text")
-        .attr("x", width + 5)
-        .attr("y", yScale(props.data[0].snowline - 35))
+        .attr("x", width - marginTextX)
+        .attr("y", yScale(props.data[0].snowline - marginTextY))
         .text(props.data[0].snowline + " m")
 
       svg
         .append("text")
         .attr("class", "snowline-text")
-        .attr("x", 2)
-        .attr("y", yScale(props.data[0].snowline - marginTextYear))
+        .attr("x", 8)
+        .attr("y", yScale(props.data[0].snowline - marginTextY))
         .text("1960")
 
       //render draggable line
@@ -195,16 +196,16 @@ const SnowLineDraggableGraph = props => {
       var textDraggableLineMeter = svg
         .append("text")
         .attr("class", "snowline-text")
-        .attr("x", width + 5)
-        .attr("y", yScale(draggableLinePosition))
+        .attr("x", width - marginTextX)
+        .attr("y", yScale(draggableLinePosition - marginTextY))
         .text(" ")
 
       var textDraggableLineYear = svg
         .append("text")
         .attr("class", "draggable-line-text snowline-text")
-        .attr("x", 2)
-        .attr("y", yScale(draggableLinePosition - marginTextYear))
-        .text(2018)
+        .attr("x", 8)
+        .attr("y", yScale(draggableLinePosition - marginTextY))
+        .text("2018")
       animationLineText()
 
       function dragstarted() {
@@ -233,14 +234,14 @@ const SnowLineDraggableGraph = props => {
 
           //Update text
           textDraggableLineMeter
-            .attr("y", newYPosition)
+            .attr("y", newYPosition + marginTextY / 4)
             .text(
                 yScale.invert(newYPosition).toFixed(0) +
                 " m"
             )
 
           textDraggableLineYear
-            .attr("y", newYPosition + marginTextYear / 4)
+            .attr("y", newYPosition + marginTextY / 4)
             .text("2018")
         }
       }
@@ -259,13 +260,13 @@ const SnowLineDraggableGraph = props => {
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y", yScale(draggableLinePosition - marginTextYear + 60))
+        .attr("y", yScale(draggableLinePosition - marginTextY + 60))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextYear))
+        .attr("y", yScale(draggableLinePosition - marginTextY))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextYear + 60))
+        .attr("y", yScale(draggableLinePosition - marginTextY + 60))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextYear))
+        .attr("y", yScale(draggableLinePosition - marginTextY))
         .on("end", animationLineText)
     }
 
