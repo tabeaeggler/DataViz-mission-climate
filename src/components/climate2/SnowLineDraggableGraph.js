@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle  } from "react"
+import React, { useEffect, useRef, useState} from "react"
 import { useTranslation } from "react-i18next"
 import {
   select,
@@ -10,7 +10,7 @@ import {
   easeLinear,
 } from "d3"
 
-const SnowLineDraggableGraph = forwardRef((props, ref) =>{
+const SnowLineDraggableGraph = props =>{
   //transaltion
   const { t } = useTranslation()
 
@@ -335,19 +335,6 @@ const SnowLineDraggableGraph = forwardRef((props, ref) =>{
     setShowSubmitButton(false)
   }
 
-   /**
-   * Trigger visibility of button from parent
-   */
-  function showButton() {
-    setShowSubmitButton(true)
-  }
-
-  useImperativeHandle(ref, () => {
-    return {
-      showButton: showButton
-    };
-  });
-
   return (
     <React.Fragment>
       <div className="snowline-container">
@@ -367,6 +354,6 @@ const SnowLineDraggableGraph = forwardRef((props, ref) =>{
       </div>
     </React.Fragment>
   )
-});
+}
 
 export default SnowLineDraggableGraph

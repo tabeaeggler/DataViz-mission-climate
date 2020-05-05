@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react"
+import React, {useState} from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -11,8 +11,6 @@ function SnowLineOverview() {
   const [nextPage, setNextPage] = useState(false)
 
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
-
-  const submitButtonRef = useRef(null);
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -27,9 +25,6 @@ function SnowLineOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-start">
           <p className="bubble-box-text">{t("Climate2_Bubble.1")}</p>
-          <button id="next-button" onClick={() => submitButtonRef.current.showButton()}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
         </div>
       </CSSTransition>
     )
@@ -64,7 +59,6 @@ function SnowLineOverview() {
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <SnowLineDraggableGraph
-          ref={submitButtonRef}
           showAnswer={showAnswer}
           data={data}
           showQuizzResult={showQuizzResult}
