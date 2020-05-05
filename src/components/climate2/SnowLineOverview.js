@@ -44,7 +44,10 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-answer">
-          <p className="bubble-box-text">{t("Climate2_Bubble.2")}</p>
+          <p className="bubble-box-text">
+            <b>{t("Climate2_Bubble.4")}</b>
+            {t("Climate2_Bubble.5")}
+          </p>
           <button id="next-button" onClick={() => setShowAnswer(true)}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
