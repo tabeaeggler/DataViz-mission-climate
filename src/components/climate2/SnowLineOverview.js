@@ -24,7 +24,12 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-start">
-          <p className="bubble-box-text">{t("Climate2_Bubble.1")}</p>
+          <p className="bubble-box-text">
+            {t("Climate2_Bubble.1")}
+            <b>{t("Climate2_Bubble.2")}</b>
+            {t("Climate2_Bubble.3")}
+          </p>
+
         </div>
       </CSSTransition>
     )
