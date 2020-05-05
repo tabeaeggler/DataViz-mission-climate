@@ -17,9 +17,10 @@ const SnowLineDraggableGraph = props => {
   //svg sizing
   const svgRef = useRef()
   const width = 700
-  const height = 550
-  const margin = 98
-  const mountainHeight = 2200
+  const height = 556
+  const marginLeft = 98
+  const marginTop = 45
+  const mountainHeight = 2128
   const marginTextY = 60
   const marginTextX = 50
 
@@ -32,7 +33,7 @@ const SnowLineDraggableGraph = props => {
    */
   function createSnowLine() {
     const svg = select(svgRef.current)
-      .attr("transform", `translate(${margin},0)`)
+      .attr("transform", `translate(${marginLeft},${marginTop})`)
       .attr("class", "group")
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
@@ -337,7 +338,7 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={width + 2 * margin}>
+        <svg className="snowline-graph" width={width + 2 * marginLeft}>
           <g ref={svgRef}></g>
         </svg>
         {showSubmitButton ? (
