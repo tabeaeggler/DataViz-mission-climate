@@ -107,23 +107,10 @@ const SnowLineDraggableGraph = props => {
         .attr("class", "snowline-text")
         .attr("x", 8)
         .attr("y", yScale(props.data[1].snowline - marginTextY))
-        .text("2018")
+        .text("2018: Lösung")
         .style("opacity", 0)
         .transition()
         .delay(2700)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", -50)
-        .attr("y", yScale(props.data[1].snowline))
-        .text("Lösung")
-        .style("opacity", 0)
-        .transition()
-        .delay(3400)
         .duration(300)
         .ease(easeLinear)
         .style("opacity", 1)
@@ -139,18 +126,6 @@ const SnowLineDraggableGraph = props => {
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
 
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", -100)
-        .attr("y", yScale(draggableLinePosition))
-        .text("Deine Schätzung")
-        .style("opacity", 0)
-        .transition()
-        .delay(300)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
     }
 
     if (!props.showAnswer) {
@@ -205,7 +180,7 @@ const SnowLineDraggableGraph = props => {
         .attr("class", "draggable-line-text snowline-text")
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
-        .text("2018")
+        .text("2018: Deine Schätzung")
       animationLineText()
 
       function dragstarted() {
@@ -242,7 +217,6 @@ const SnowLineDraggableGraph = props => {
 
           textDraggableLineYear
             .attr("y", newYPosition + marginTextY / 4)
-            .text("2018")
         }
       }
 
