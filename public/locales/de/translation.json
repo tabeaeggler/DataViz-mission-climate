@@ -14,18 +14,22 @@
   },
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
-    "1": "Im Globus werden die Temperaturzunahmen des Jahres 2019 angezeigt. Um einen besseren Überblick zu gewinnen, kannst du die Weltkugel drehen oder mit zwei Fingern zoomen.",
-    "2": "Klicke im Globus auf ein spezifisches Land, damit du seine relativen Temperaturveränderung über die Jahre hinweg sehen kannst. Um relative Temperaturveränderungen zu beschreiben, werden die Durchschnitte der nationalen oder globalen Temperaturen mit der durchschnittlichen Temperatur der Jahre 1950 - 81 verglichen. Was bedeutet diese enorme Temperaturzunahme für die Schweiz?"
+    "1": "Temperaturzunahmen im Jahr 2019: ",
+    "2": "Drehe die Weltkugel oder zoome mit zwei Fingern.",
+    "3": "Klicke auf ein Land, damit du seine relativen Temperaturveränderung über die Jahre sehen kannst. ",
+    "4": "Um relative Temperaturveränderungen zu beschreiben, werden die Durchschnitte der nationalen oder globalen Temperaturen mit der durchschnittlichen Temperatur der Jahre 1950 - 81 verglichen. ",
+    "5": "Was bedeutet diese für die Schweiz?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
   },
-  "Climate2_Bubble":{
+  "Climate2_Bubble": {
     "1": "Durch die Klimaerwärmung verschiebt sich die Nullgradgrenze immer weiter nach oben und weniger Schnee bleibt in tieferen Lagen liegen. Was denkst du, auf welcher Höhe befand sich die Nullgradgrenze im Jahr 2018? Mach einen Vorschlag und bestätige deine Schätzung!",
     "2": "Wie du siehst, liegt die Nullgradgrenze im Jahr 2018 350 Meter weiter oben, als noch im Jahr 1960. Pro Grad Erderwärmung steigt sie ungefähr 200 Meter. Aber nicht nur die Nullgradgrenze und somit der Schneefall sind von der Klimaerwärmung betroffen, sondern auch die Gletscher. Erfahre mehr!"
-  }, "Climate2_Submit_Button": "Bestätigen",
+  },
+  "Climate2_Submit_Button": "Bestätigen",
   "Climate2_Title": {
     "1": "2. Die Schweiz wird wärmer",
     "2": "- Die Nullgradgrenze steigt -"

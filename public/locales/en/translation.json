@@ -14,18 +14,22 @@
   },
   "Climate1_Location": "My location",
   "Climate1_Bubble": {
-    "1": "The temperature increases of 2019 are shown in the globe. To get a better overview, you can turn the globe or zoom with two fingers.",
-    "2": "Click on a specific country in the globe so you can see its relative temperature change over the years. To describe relative temperature changes, the averages of national or global temperatures are compared to the average temperature from 1950-81. What does this enormous temperature increase mean for Switzerland?"
+    "1": "Temperature increases in 2019: ",
+    "2": "Turn the globe or zoom with two fingers.",
+    "3": "Click on a country to see its relative temperature change over the years. ",
+    "4": "To describe relative temperature changes, the averages of national or global temperatures are compared with the average temperature of the years 1950 - 81. ",
+    "5": "What does this mean for Switzerland?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
-  },  "Climate2_Bubble":{
+  },
+  "Climate2_Bubble": {
     "1": "Due to global warming, the freezing level is shifting upwards and less snow remains in lower areas. What do you think, what was the freezing level in 2018? Make a suggestion and confirm your estimate!",
     "2": "As you can see, the freezing level is 350 meters higher in 2018 than in 1960. It rises about 200 meters per degree of global warming. But not only the zero degree limit and thus snowfall are affected by global warming, but also the glaciers. Learn more!"
-
-  }, "Climate2_Submit_Button": "Submit",
+  },
+  "Climate2_Submit_Button": "Submit",
   "Climate2_Title": {
     "1": "2. Die Schweiz wird wärmer",
     "2": "Die Nullgradgrenze steigt"

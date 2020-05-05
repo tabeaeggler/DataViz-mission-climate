@@ -14,18 +14,22 @@
   },
   "Climate1_Location": "Ma position",
   "Climate1_Bubble": {
-    "1": "Les augmentations de température de 2019 sont indiquées dans le monde. Pour obtenir un meilleur aperçu, vous pouvez tourner le globe ou zoomer avec deux doigts.",
-    "2": "Cliquez sur un pays spécifique du globe pour voir sa variation de température relative au fil des ans. Pour décrire les changements de température relative, les moyennes des températures nationales ou mondiales sont comparées à la température moyenne de 1950 à 1981. Que signifie cette énorme augmentation de température pour la Suisse?"
+    "1": "La température augmente en 2019: ",
+    "2": "Tournez le globe ou zoomez avec deux doigts. ",
+    "3": "Cliquez sur un pays pour voir l'évolution de sa température relative au fil des ans. ",
+    "4": "Pour décrire les changements relatifs de température, les moyennes des températures nationales ou mondiales sont comparées à la température moyenne des années 1950 - 81. ",
+    "5": "Qu'est-ce que cela signifie pour la Suisse ?"
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
-  },  "Climate2_Bubble":{
+  },
+  "Climate2_Bubble": {
     "1": "En raison du réchauffement climatique, le niveau de gel monte et il reste moins de neige dans les zones inférieures. Que pensez-vous, quel était le niveau de gel en 2018? Faites une suggestion et confirmez votre estimation!",
     "2": "Comme vous pouvez le voir, le niveau de congélation est 350 mètres plus élevé en 2018 qu'en 1960. Il s'élève d'environ 200 mètres par degré de réchauffement climatique. Mais non seulement la limite de zéro degré et donc les chutes de neige sont affectées par le réchauffement climatique, mais aussi les glaciers. Apprenez-en plus!"
-
-  }, "Climate2_Submit_Button": "Confirmer",
+  },
+  "Climate2_Submit_Button": "Confirmer",
   "Climate2_Title": {
     "1": "2. Die Schweiz wird wärmer",
     "2": "Die Nullgradgrenze steigt"
