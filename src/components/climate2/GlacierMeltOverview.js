@@ -45,7 +45,7 @@ function GlacierMeltOverview() {
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        <LakeGraph></LakeGraph>
+        <LakeGraph scaleFactor={6}></LakeGraph>
       </div>
     </React.Fragment>
   )

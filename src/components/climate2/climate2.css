@@ -138,10 +138,16 @@
 }
 
 .original-lake {
-  margin-top: 25%;
+  position: absolute;
+  z-index: 5;
+}
+
+.scaled-lake{
+  position: absolute;
 }
 
 .lake-graph-container {
+  margin-top: 25%;
   display: flex;
   justify-content: center;
   align-items: center; 
