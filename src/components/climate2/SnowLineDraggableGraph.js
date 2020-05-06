@@ -34,7 +34,6 @@ const SnowLineDraggableGraph = props => {
   function createSnowLine() {
     const svg = select(svgRef.current)
       .attr("transform", `translate(${marginLeft},${marginTop})`)
-      .attr("class", "group")
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 

@@ -2,15 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
-import {
-  select,
-  scaleLinear,
-  drag,
-  event,
-  easeQuad,
-  easeCubic,
-  easeLinear,
-} from "d3"
+import LakeGraph from "./LakeGraph"
 
 function GlacierMeltOverview() {
   //transaltion
@@ -53,9 +45,7 @@ function GlacierMeltOverview() {
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        <svg className="glacier-graph" width={width + 2 * margin}>
-          <g ref={svgRef}></g>
-        </svg>
+        <LakeGraph></LakeGraph>
       </div>
     </React.Fragment>
   )

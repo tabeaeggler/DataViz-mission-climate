@@ -136,3 +136,13 @@
   width: 30%;
   text-align: left;
 }
+
+.original-lake {
+  margin-top: 25%;
+}
+
+.lake-graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
