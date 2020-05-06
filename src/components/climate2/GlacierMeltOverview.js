@@ -30,8 +30,10 @@ function GlacierMeltOverview() {
   const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentage: 5,
-    volumePercentage: 6.5,
+    currentVolume: 124,
   })
+  const [scaleFactor, setScaleFactor] = useState(1)
+
   const [dataVolume, setDataVolume] = useState({
     data_1850: 130,
     data_2019: 50.645,
@@ -40,8 +42,27 @@ function GlacierMeltOverview() {
   function handleSliderChange(p) {
     setPercentageLabel({
       percentage: p,
-      volumePercentage: (dataVolume.data_1850 * p) / 100,
+      currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100,
     })
+    setScaleFactor(calculateScaleFactor(p))
+  }
+
+  function calculateScaleFactor(p) {
+    //Source: https://en.wikipedia.org/wiki/Water
+    const densityWater = 997
+    //Source: https://de.wikipedia.org/wiki/Eis
+    const densityIce = 918
+    //Source: https://en.wikipedia.org/wiki/Lake_Lucerne
+    const volumeLakeLucern = 11.8
+
+    var newCurrentVolume =
+      dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100
+
+    var difference = dataVolume.data_1850 - newCurrentVolume
+    var conversionIceToWater = (densityIce * difference) / densityWater
+    var scaleFactor = conversionIceToWater / volumeLakeLucern
+
+    return scaleFactor
   }
 
   function showPercentageLabel() {
@@ -52,9 +73,8 @@ function GlacierMeltOverview() {
           1850.
         </p>
         <p>
-          Dies entspricht einem Gesamtvolument von{" "}
-          {(dataVolume.data_1850 - percentageLabel.volumePercentage).toFixed(0)}{" "}
-          km <sup>3</sup>
+          Dies entspricht einer Eismasse von{" "}
+          {percentageLabel.currentVolume.toFixed(0)} km <sup>3</sup>
         </p>
         <button className="submit-button" onClick={() => ""}>
           {t("Climate2_Submit_Button")}
@@ -94,9 +114,7 @@ function GlacierMeltOverview() {
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        <svg className="glacier-graph" width={500}>
-          <g ref={svgRef}></g>
-        </svg>
+        {console.log(scaleFactor)}
       </div>
     </React.Fragment>
   )

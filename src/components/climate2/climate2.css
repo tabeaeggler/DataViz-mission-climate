@@ -139,9 +139,9 @@
 .rc-slider-handle {
   border: #6a8adf !important;
   background-color: white !important;
-  width: 18px !important;
+  /*width: 18px !important;
   height: 18px !important;
-  margin-top: -7px !important;
+  margin-top: -7px !important;*/
 }
 
 .rc-slider-rail {
