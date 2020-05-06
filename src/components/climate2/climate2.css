@@ -1,5 +1,4 @@
 /*Snowline*/
-
 .climate2-title {
   padding-bottom: 1%;
   margin-top: 7%;
@@ -152,4 +151,21 @@
 .rc-slider-track {
   background-color: #ffd763 !important;
   height: 6px !important;
+}
+
+/* Lake */
+.original-lake {
+  position: absolute;
+  z-index: 5;
+}
+
+.scaled-lake{
+  position: absolute;
+}
+
+.lake-graph-container {
+  margin-top: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }

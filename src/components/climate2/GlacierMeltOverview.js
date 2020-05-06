@@ -5,16 +5,7 @@ import ButtonRight from "../../assets/img/buttonRight.svg"
 import Slider from "rc-slider"
 import Tooltip from "rc-slider"
 import SliderWithTooltip from "rc-slider"
-
-import {
-  select,
-  scaleLinear,
-  drag,
-  event,
-  easeQuad,
-  easeCubic,
-  easeLinear,
-} from "d3"
+import LakeGraph from "./LakeGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
@@ -29,8 +20,8 @@ function GlacierMeltOverview() {
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
-    percentage: 5,
-    currentVolume: 124,
+    percentage: 0,
+    currentVolume: 130,
   })
   const [scaleFactor, setScaleFactor] = useState(1)
 
@@ -115,6 +106,8 @@ function GlacierMeltOverview() {
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         {console.log(scaleFactor)}
+        <LakeGraph scaleFactor={scaleFactor}></LakeGraph>
+        <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
     </React.Fragment>
   )

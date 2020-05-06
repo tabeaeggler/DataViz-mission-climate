@@ -38,5 +38,6 @@
     "1": "2018: Soluzione",
     "2": "2018: Il tuo preventivo"
   },
-  "Climate2_Source": "Fonte: OcCC & ProClim"
+  "Climate2_Source_Snow": "Fonte: OcCC & ProClim",
+  "Climate2_Source_Glacier": "Fonte: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"
 }
