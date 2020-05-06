@@ -3,7 +3,7 @@ import { Router, Switch, Route } from "react-router-dom"
 
 import Climate2 from "../components/climate2/Climate2"
 import Climate1 from "../components/climate1/Climate1"
-import Glacier from "../components/climate2/GlacierMeltDraggable"
+import Glacier from "../components/climate2/GlacierMeltOverview"
 import history from "./history"
 
 export default class Routes extends Component {

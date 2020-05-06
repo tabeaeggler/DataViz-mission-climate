@@ -23,13 +23,12 @@ function SnowLineOverview() {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-start">
+        <div className="bubble-box bubble-box-climate2-snow-start">
           <p className="bubble-box-text">
             {t("Climate2_Bubble.1")}
             <b>{t("Climate2_Bubble.2")}</b>
             {t("Climate2_Bubble.3")}
           </p>
-
         </div>
       </CSSTransition>
     )
@@ -43,7 +42,7 @@ function SnowLineOverview() {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-answer">
+        <div className="bubble-box bubble-box-climate2-snow-answer">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble.4")}</b>
             {t("Climate2_Bubble.5")}
@@ -64,7 +63,7 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <div className="snowline-wrapper">
-      <h6 className="source-climate2">{t("Climate2_Source")}</h6>
+        <h6 className="source-climate2">{t("Climate2_Source")}</h6>
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <SnowLineDraggableGraph
