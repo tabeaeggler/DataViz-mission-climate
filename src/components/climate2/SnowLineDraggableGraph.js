@@ -17,11 +17,12 @@ const SnowLineDraggableGraph = props => {
   //svg sizing
   const svgRef = useRef()
   const width = 700
-  const height = 550
-  const margin = 98
-  const mountainHeight = 2200
+  const height = 556
+  const marginLeft = 98
+  const marginTop = 45
+  const mountainHeight = 2128
   const marginTextY = 60
-  const marginTextX =50
+  const marginTextX = 50
 
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
@@ -32,7 +33,7 @@ const SnowLineDraggableGraph = props => {
    */
   function createSnowLine() {
     const svg = select(svgRef.current)
-      .attr("transform", `translate(${margin},0)`)
+      .attr("transform", `translate(${marginLeft},${marginTop})`)
       .attr("class", "group")
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
@@ -41,7 +42,7 @@ const SnowLineDraggableGraph = props => {
       //create distance rectangle and answer text
       svg
         .append("rect")
-        .attr("class", "rect-difference")
+        .attr("class", "difference-rect")
         .attr("x", -2)
         .attr("rx", 5)
         .attr("ry", 5)
@@ -62,12 +63,25 @@ const SnowLineDraggableGraph = props => {
         .style("opacity", "0.3")
 
       svg
+        .append("line")
+        .attr("class", "difference-line")
+        .attr("y1", yScale(props.data[0].snowline))
+        .attr("y2", yScale(props.data[1].snowline))
+        .attr("x1", width + 15)
+        .attr("x2", width + 15)
+        .style("opacity", 0)
+        .transition()
+        .delay(3500)
+        .duration(1000)
+        .ease(easeLinear)
+        .style("opacity", 1)
+
+      svg
         .append("text")
         .attr("class", "difference-text")
-        .attr("x", width / 2 - 29)
+        .attr("x", width + 20)
         .attr("y", yScale(props.data[1].snowline - 175))
         .text("350 m")
-        .style("fill", "#6A8ADF")
         .style("opacity", 0)
         .transition()
         .delay(3500)
@@ -91,23 +105,16 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", width  - marginTextX)
-        .attr("y", yScale(props.data[1].snowline - marginTextY))
-        .text(props.data[1].snowline + " m")
-        .style("opacity", 0)
-        .transition()
-        .delay(2700)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
+        .attr("class", "snowline-text answer-text")
         .attr("x", 8)
-        .attr("y", yScale(props.data[1].snowline - marginTextY))
-        .text("2018: Lösung")
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < 75 &&
+            props.data[1].snowline - draggableLinePosition > 0
+            ? yScale(props.data[1].snowline + marginTextY / 2)
+            : yScale(props.data[1].snowline - marginTextY)
+        )
+        .text(t("Climate2_Graph.1"))
         .style("opacity", 0)
         .transition()
         .delay(2700)
@@ -115,8 +122,9 @@ const SnowLineDraggableGraph = props => {
         .ease(easeLinear)
         .style("opacity", 1)
 
-      //render draggable line STATIC
-      svg.select(".draggable-line-text").interrupt()
+      //render draggable line and text STATIC
+      svg.select(".draggable-line-text-year").remove()
+      svg.select(".draggable-line-text-meter").remove()
       svg.select(".draggable-line").remove()
       svg
         .append("line")
@@ -126,6 +134,51 @@ const SnowLineDraggableGraph = props => {
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
 
+      svg
+        .append("text")
+        .attr("class", "snowline-text draggable-text")
+        .attr("x", width - marginTextX)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < 0 &&
+            props.data[1].snowline - draggableLinePosition > -75
+            ? yScale(draggableLinePosition) - 5
+            : yScale(draggableLinePosition - marginTextY)
+        )
+        .text(draggableLinePosition + " m")
+
+      svg
+        .append("text")
+        .attr("class", "snowline-text draggable-text")
+        .attr("x", 8)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < 0 &&
+            props.data[1].snowline - draggableLinePosition > -75
+            ? yScale(draggableLinePosition) - 5
+            : yScale(draggableLinePosition - marginTextY)
+        )
+        .text(t("Climate2_Graph.2"))
+      animationLineText()
+
+      svg
+        .append("text")
+        .attr("class", "snowline-text answer-text")
+        .attr("x", width - marginTextX)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < 75 &&
+            props.data[1].snowline - draggableLinePosition > 0
+            ? yScale(props.data[1].snowline + marginTextY / 2)
+            : yScale(props.data[1].snowline - marginTextY)
+        )
+        .text(props.data[1].snowline + " m")
+        .style("opacity", 0)
+        .transition()
+        .delay(2700)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
     }
 
     if (!props.showAnswer) {
@@ -170,25 +223,27 @@ const SnowLineDraggableGraph = props => {
 
       var textDraggableLineMeter = svg
         .append("text")
-        .attr("class", "snowline-text")
+        .attr("class", "draggable-line-text-meter snowline-text")
         .attr("x", width - marginTextX)
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .text(" ")
 
       var textDraggableLineYear = svg
         .append("text")
-        .attr("class", "draggable-line-text snowline-text")
+        .attr("class", "draggable-line-text-year snowline-text")
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
-        .text("2018: Deine Schätzung")
+        .text(t("Climate2_Graph.2"))
       animationLineText()
 
       function dragstarted() {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
           select(this).classed("active-d3-item", true)
+          select(".draggable-line-text-meter").classed("active-text", true)
+          select(".draggable-line-text-year").classed("active-text", true)
           svg.select(".draggable-line").interrupt()
-          svg.select(".draggable-line-text").interrupt()
+          svg.select(".draggable-line-text-year").interrupt()
         }
       }
 
@@ -210,26 +265,24 @@ const SnowLineDraggableGraph = props => {
           //Update text
           textDraggableLineMeter
             .attr("y", newYPosition + marginTextY / 4)
-            .text(
-                yScale.invert(newYPosition).toFixed(0) +
-                " m"
-            )
+            .text(yScale.invert(newYPosition).toFixed(0) + " m")
 
-          textDraggableLineYear
-            .attr("y", newYPosition + marginTextY / 4)
+          textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
         }
       }
 
       function dragended() {
         if (!props.showAnswer) {
           select(this).classed("active-d3-item", false)
+          select(".draggable-line-text-meter").classed("active-text", false)
+          select(".draggable-line-text-year").classed("active-text", false)
         }
       }
     }
 
     function animationLineText() {
       svg
-        .select(".draggable-line-text")
+        .select(".draggable-line-text-year")
         .transition()
         .delay(3000)
         .duration(600)
@@ -273,6 +326,8 @@ const SnowLineDraggableGraph = props => {
     createSnowLine()
   }, [props.showAnswer])
 
+  useEffect(() => {}, [props])
+
   /**
    * Handle submission of result
    */
@@ -284,7 +339,7 @@ const SnowLineDraggableGraph = props => {
   return (
     <React.Fragment>
       <div className="snowline-container">
-        <svg className="snowline-graph" width={width + 2 * margin}>
+        <svg className="snowline-graph" width={width + 2 * marginLeft}>
           <g ref={svgRef}></g>
         </svg>
         {showSubmitButton ? (

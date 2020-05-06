@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -8,11 +8,9 @@ function SnowLineOverview() {
   const { t } = useTranslation()
 
   const [showAnswer, setShowAnswer] = useState(false)
-  console.log(showAnswer)
   const [nextPage, setNextPage] = useState(false)
 
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
-  //   let data = [{ year: 1960, snowline: 900 }]
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -26,7 +24,12 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-start">
-          <p className="bubble-box-text">{t("Climate2_Bubble.1")}</p>
+          <p className="bubble-box-text">
+            {t("Climate2_Bubble.1")}
+            <b>{t("Climate2_Bubble.2")}</b>
+            {t("Climate2_Bubble.3")}
+          </p>
+
         </div>
       </CSSTransition>
     )
@@ -41,7 +44,10 @@ function SnowLineOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-answer">
-          <p className="bubble-box-text">{t("Climate2_Bubble.2")}</p>
+          <p className="bubble-box-text">
+            <b>{t("Climate2_Bubble.4")}</b>
+            {t("Climate2_Bubble.5")}
+          </p>
           <button id="next-button" onClick={() => setShowAnswer(true)}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
@@ -58,6 +64,7 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <div className="snowline-wrapper">
+      <h6 className="source-climate2">{t("Climate2_Source")}</h6>
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <SnowLineDraggableGraph

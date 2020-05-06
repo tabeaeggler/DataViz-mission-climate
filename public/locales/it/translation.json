@@ -14,20 +14,29 @@
   },
   "Climate1_Location": "La mia posizione",
   "Climate1_Bubble": {
-    "1": "Gli aumenti di temperatura del 2019 sono mostrati in tutto il mondo. Per una migliore visione d'insieme, puoi ruotare il globo o eseguire lo zoom con due dita.",
-    "2": "Fai clic su un paese specifico nel globo in modo da poter vedere la sua variazione di temperatura relativa nel corso degli anni. Per descrivere le variazioni di temperatura relative, le medie delle temperature nazionali o globali vengono confrontate con la temperatura media degli anni 1950-81. Cosa significa questo enorme aumento di temperatura per la Svizzera?"
+    "1": "Aumenti di temperatura nel 2019: ",
+    "2": "Girare il mappamondo o zoomare con due dita. ",
+    "3": "Cliccare su un paese per vedere il relativo cambiamento di temperatura nel corso degli anni. ",
+    "4": "Per descrivere le variazioni di temperatura relative, le medie delle temperature nazionali o globali vengono confrontate con la temperatura media degli anni 1950 - 81. ",
+    "5": "Cosa significa questo per la Svizzera?"
   },
-  "Climate1_Source": "Quelle: NASA-GISS",
+  "Climate1_Source": "Fonte: NASA-GISS",
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
-  },  "Climate2_Bubble":{
-    "1": "A causa del riscaldamento globale, il livello di congelamento si sta spostando verso l'alto e nelle aree inferiori rimane meno neve. Cosa ne pensi, qual è stato il livello di congelamento nel 2018? Dai un suggerimento e conferma il tuo preventivo!",
-    "2": "Come puoi vedere, il livello di congelamento è di 350 metri più alto nel 2018 rispetto al 1960. Aumenta di circa 200 metri per grado di riscaldamento globale. Ma non solo il limite di zero gradi e quindi le nevicate sono influenzate dal riscaldamento globale, ma anche dai ghiacciai. Scopri di più!"
-
+  },  "Climate2_Bubble": {
+    "1": "Il livello di congelamento si sposta sempre più in alto e nelle aree più basse rimane meno neve.",
+    "2":" Qual è stato il livello di congelamento nel 2018?",
+    "3": " Stimare e confermare!",
+    "4": "La linea di zero gradi è salita di 350 metri negli ultimi 60 anni - ",
+    "5": "per grado di riscaldamento circa 200 metri. Anche i ghiacciai ne sono colpiti, scopritene di più!"
   }, "Climate2_Submit_Button": "Conferma",
   "Climate2_Title": {
-    "1": "2. Die Schweiz wird wärmer",
-    "2": "Die Nullgradgrenze steigt"
-  }
+    "1": "2. Anche la Svizzera è interessata",
+    "2": "- Il livello di congelamento aumenta -"
+  },"Climate2_Graph": {
+    "1": "2018: Soluzione",
+    "2": "2018: Il tuo preventivo"
+  },
+  "Climate2_Source": "Fonte: OcCC & ProClim"
 }

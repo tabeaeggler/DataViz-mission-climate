@@ -9,7 +9,7 @@ import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.c
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
-import history from '../../routing/history';
+import history from "../../routing/history"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -154,12 +154,11 @@ const World = () => {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate1-globe">
-          <p className="bubble-box-text">{t("Climate1_Bubble.1")}</p>
-          <button
-            id="next-button"
-            onClick={() =>
-              setShowInitialBubble(false)
-            }>
+          <p className="bubble-box-text">
+            <b>{t("Climate1_Bubble.1")}</b>
+            {t("Climate1_Bubble.2")}
+          </p>
+          <button id="next-button" onClick={() => setShowInitialBubble(false)}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
@@ -178,17 +177,20 @@ const World = () => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-          <div className="bubble-box bubble-box-climate1-linegraph">
-            <p className="bubble-box-text">{t("Climate1_Bubble.2")}</p>
-            <button
+        <div className="bubble-box bubble-box-climate1-linegraph">
+          <p className="bubble-box-text">
+            <b>{t("Climate1_Bubble.3")}</b>
+            {t("Climate1_Bubble.4")}
+            {t("Climate1_Bubble.5")}
+          </p>
+          <button
             id="next-button"
             onClick={() => {
-              history.push('/Climate2')
-            }
-              }>
+              history.push("/Climate2")
+            }}>
             <img src={ButtonRight} alt="continue"></img>
-            </button>
-          </div>
+          </button>
+        </div>
       </CSSTransition>
     )
   }

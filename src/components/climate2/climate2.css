@@ -1,3 +1,5 @@
+/*Draggable Graph*/
+
 .climate2-title {
   padding-bottom: 1%;
   margin-top: 7%
@@ -20,6 +22,12 @@
   stroke-dasharray: 5.5;
 }
 
+.difference-line{
+  stroke:#6A8ADF; 
+  stroke-width: 0.5;
+  stroke-linecap: round;
+}
+
 .snowline-wrapper {
   position:absolute;
     width:100%;
@@ -28,7 +36,7 @@
 }
 
 .snowline-enter {
-  stroke: #bbb9b9;
+  stroke: #6A8ADF;
   stroke-dasharray: 5.5;
   stroke-linecap: round;
   stroke-width: 3;
@@ -41,7 +49,7 @@
 }
 .snowline-container {
   width: auto;
-  height: 550px;
+  height: 596px;
   background-image: url("../../assets/img/mountains.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -50,7 +58,12 @@
 }
 
 .snowline-graph {
-  height: 550px;
+  height: 596px;
+}
+
+.snowline-text {
+  font-size: 0.7em;
+  fill: #6A8ADF;
 }
 
 .active-d3-item {
@@ -59,12 +72,20 @@
   opacity: 0.6;
 }
 
-.rect-difference{
+.active-text {
+  opacity: 0.6;
+}
+
+.draggable-line-text-meter, .draggable-line-text-year{
+  fill:  #FFD763;
+}
+
+.difference-rect{
   fill: #6A8ADF;
   opacity: 0.1;
 }
 .submit-button {
-  background-color:#6A8ADF;
+  background-color:#bbb9b9;
   color: #141416;
   position:absolute;
   margin-bottom: 20px;
@@ -73,12 +94,23 @@
 }
 
 .difference-text {
-  font-size: 1em;
+  fill: #6A8ADF;
+  font-size: 0.7em;
 }
 
-.snowline-text {
-  font-size: 0.7em;
-  fill: #bbb9b9;
+.answer-text {
+  fill: #6A8ADF
+}
+
+.draggable-text {
+  fill: #FFD763;
+}
+
+.source-climate2{
+  position:absolute;
+    width:100%;
+    bottom:0;
+    text-align:center;
 }
 
 /*Bubble Textbox*/
