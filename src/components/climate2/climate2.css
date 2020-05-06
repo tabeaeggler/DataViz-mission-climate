@@ -136,3 +136,20 @@
   width: 30%;
   text-align: left;
 }
+.rc-slider-handle {
+  border: #6a8adf !important;
+  background-color: white !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: -7px !important;
+}
+
+.rc-slider-rail {
+  background-color: #bbb9b9 !important;
+  height: 6px !important;
+}
+
+.rc-slider-track {
+  background-color: #ffd763 !important;
+  height: 6px !important;
+}

@@ -29,8 +29,8 @@ function GlacierMeltOverview() {
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
-    percentage: 10,
-    volumePercentage: 13,
+    percentage: 5,
+    volumePercentage: 6.5,
   })
   const [dataVolume, setDataVolume] = useState({
     data_1850: 130,
@@ -47,15 +47,21 @@ function GlacierMeltOverview() {
   function showPercentageLabel() {
     return (
       <div>
-        <p>{percentageLabel.percentage} % Rückgang</p>
         <p>
-          {percentageLabel.volumePercentage} km<sup>3</sup> Rückgang
+          {(100 - percentageLabel.percentage).toFixed(0)} % des Volumens von
+          1850.
         </p>
+        <p>
+          Dies entspricht einem Gesamtvolument von{" "}
+          {(dataVolume.data_1850 - percentageLabel.volumePercentage).toFixed(0)}{" "}
+          km <sup>3</sup>
+        </p>
+        <button className="submit-button" onClick={() => ""}>
+          {t("Climate2_Submit_Button")}
+        </button>
       </div>
     )
   }
-
-  function showVolumeLabel() {}
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -74,11 +80,11 @@ function GlacierMeltOverview() {
             Jahr 2019 seit 1850 zurückgegeangen?
           </p>
           <Slider
+            max={80}
             value={percentageLabel.percentage}
             onChange={handleSliderChange}
           />
           {showPercentageLabel()}
-          {showVolumeLabel()}
         </div>
       </CSSTransition>
     )
