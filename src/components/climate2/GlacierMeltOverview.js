@@ -64,8 +64,9 @@ function GlacierMeltOverview() {
           1850.
         </p>
         <p>
-          Dies entspricht einer Eismasse von{" "}
-          {percentageLabel.currentVolume.toFixed(0)} km <sup>3</sup>
+          Geschmolzene Eismasse{" "}
+          {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)} km{" "}
+          <sup>3</sup>
         </p>
         <button className="submit-button" onClick={() => ""}>
           {t("Climate2_Submit_Button")}
