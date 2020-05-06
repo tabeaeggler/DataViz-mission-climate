@@ -13,14 +13,11 @@ function GlacierMeltOverview() {
   //transaltion
   const { t } = useTranslation()
 
-  //svg sizing
-  const svgRef = useRef()
-
   //state
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
-    percentage: 0,
+    percentageDecrease: 0,
     currentVolume: 130,
   })
   const [scaleFactor, setScaleFactor] = useState(1)
@@ -32,7 +29,7 @@ function GlacierMeltOverview() {
 
   function handleSliderChange(p) {
     setPercentageLabel({
-      percentage: p,
+      percentageDecrease: p,
       currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100,
     })
     setScaleFactor(calculateScaleFactor(p))
@@ -56,25 +53,6 @@ function GlacierMeltOverview() {
     return scaleFactor
   }
 
-  function showPercentageLabel() {
-    return (
-      <div>
-        <p>
-          {(100 - percentageLabel.percentage).toFixed(0)} % des Volumens von
-          1850.
-        </p>
-        <p>
-          Geschmolzene Eismasse{" "}
-          {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)} km{" "}
-          <sup>3</sup>
-        </p>
-        <button className="submit-button" onClick={() => ""}>
-          {t("Climate2_Submit_Button")}
-        </button>
-      </div>
-    )
-  }
-
   /**
    * Adds Speach Bubble with text for Globe
    */
@@ -91,14 +69,42 @@ function GlacierMeltOverview() {
             Die Gletscher schmelzen immer mehr. Um wieviel ist der Gletscher im
             Jahr 2019 seit 1850 zurückgegeangen?
           </p>
-          <Slider
-            max={80}
-            value={percentageLabel.percentage}
-            onChange={handleSliderChange}
-          />
-          {showPercentageLabel()}
         </div>
       </CSSTransition>
+    )
+  }
+
+  function showSliderAndNumbers() {
+    return (
+      <div className="slider-container-glacier">
+        <Slider
+          max="80"
+          value={percentageLabel.percentageDecrease}
+          onChange={handleSliderChange}
+        />
+        <div className="slider-text-volume">
+          <p className="slider-text-bold">
+            {percentageLabel.percentageDecrease.toFixed(0)} %
+          </p>
+          <p className="slider-text-small">Rückgang Volumen</p>
+        </div>
+        <div className="slider-text-ice">
+          <p className="slider-text-bold">
+            {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)}{" "}
+            km <sup>3</sup>
+          </p>
+          <p className="slider-text-small">Geschmolzenes Eis</p>
+        </div>
+        <div className="slider-text-scaleFactor">
+          <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
+          <p className="slider-text-small">Vierwald- stättersee</p>
+        </div>
+        <div className="slider-button-container">
+          <button className="submit-button" onClick={() => ""}>
+            {t("Climate2_Submit_Button")}
+          </button>
+        </div>
+      </div>
     )
   }
 
@@ -106,7 +112,7 @@ function GlacierMeltOverview() {
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        {console.log(scaleFactor)}
+        {showSliderAndNumbers()}
         <LakeGraph scaleFactor={scaleFactor}></LakeGraph>
         <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>

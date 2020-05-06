@@ -138,20 +138,66 @@
 .rc-slider-handle {
   border: #6a8adf !important;
   background-color: white !important;
-  /*width: 18px !important;
+  width: 18px !important;
   height: 18px !important;
-  margin-top: -7px !important;*/
+  margin-top: -7px !important;
 }
 
 .rc-slider-rail {
   background-color: #bbb9b9 !important;
-  height: 6px !important;
+  height: 4px !important;
 }
 
 .rc-slider-track {
   background-color: #ffd763 !important;
-  height: 6px !important;
+  height: 4px !important;
 }
+
+.slider-container-glacier {
+  position: absolute;
+  width: 22%;
+  left: 39%;
+  bottom: 36%;
+  z-index: 100;
+}
+
+.slider-text-volume {
+  position: absolute;
+  width: 32%;
+  left: 0%;
+  text-align: center;
+}
+
+.slider-text-ice {
+  position: absolute;
+  width: 32%;
+  left: 34%;
+  text-align: center;
+}
+
+.slider-text-scaleFactor {
+  position: absolute;
+  width: 32%;
+  left: 68%;
+  text-align: center;
+}
+
+.slider-button-container {
+  position: absolute;
+  top: 1100%;
+  left: 39%;
+}
+
+.slider-text-bold {
+  font-size: 1.5em;
+  margin-bottom: -8%;
+}
+
+.slider-text-small {
+  font-size: 0.8em;
+}
+
+
 
 /* Lake */
 .original-lake {
@@ -159,7 +205,7 @@
   z-index: 5;
 }
 
-.scaled-lake{
+.scaled-lake {
   position: absolute;
 }
 
@@ -167,5 +213,5 @@
   margin-top: 25%;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
