@@ -63,7 +63,7 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <div className="snowline-wrapper">
-        <h6 className="source-climate2">{t("Climate2_Source")}</h6>
+        <h6 className="source-climate2">{t("Climate2_Source_Snow")}</h6>
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <SnowLineDraggableGraph

@@ -86,6 +86,7 @@ function GlacierMeltOverview() {
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         <LakeGraph props={6}></LakeGraph>
+        <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
     </React.Fragment>
   )
