@@ -10,14 +10,44 @@ function GlacierMeltOverview() {
 
   //svg sizing
   const svgRef = useRef()
-  const width = 700
-  const height = 550
-  const margin = 98
-  const mountainHeight = 2200
 
   //state
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
+  const [percentageLabel, setPercentageLabel] = useState({
+    percentage: 5,
+    volumePercentage: 6.5,
+  })
+  const [dataVolume, setDataVolume] = useState({
+    data_1850: 130,
+    data_2019: 50.645,
+  })
+
+  function handleSliderChange(p) {
+    setPercentageLabel({
+      percentage: p,
+      volumePercentage: (dataVolume.data_1850 * p) / 100,
+    })
+  }
+
+  function showPercentageLabel() {
+    return (
+      <div>
+        <p>
+          {(100 - percentageLabel.percentage).toFixed(0)} % des Volumens von
+          1850.
+        </p>
+        <p>
+          Dies entspricht einem Gesamtvolument von{" "}
+          {(dataVolume.data_1850 - percentageLabel.volumePercentage).toFixed(0)}{" "}
+          km <sup>3</sup>
+        </p>
+        <button className="submit-button" onClick={() => ""}>
+          {t("Climate2_Submit_Button")}
+        </button>
+      </div>
+    )
+  }
 
   /**
    * Adds Speach Bubble with text for Globe
@@ -35,7 +65,12 @@ function GlacierMeltOverview() {
             Die Gletscher schmelzen immer mehr. Um wieviel ist der Gletscher im
             Jahr 2019 seit 1850 zurückgegeangen?
           </p>
-          
+          <Slider
+            max={80}
+            value={percentageLabel.percentage}
+            onChange={handleSliderChange}
+          />
+          {showPercentageLabel()}
         </div>
       </CSSTransition>
     )
