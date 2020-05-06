@@ -67,11 +67,16 @@ function GlacierMeltOverview() {
           Dies entspricht einer Eismasse von{" "}
           {percentageLabel.currentVolume.toFixed(0)} km <sup>3</sup>
         </p>
-        <button className="submit-button" onClick={() => ""}>
+        <button className="submit-button" onClick={() => showResult()}>
           {t("Climate2_Submit_Button")}
         </button>
       </div>
     )
+  }
+
+  function showResult() {
+    setShowAnswer(true)
+    setScaleFactor(6.2)
   }
 
   /**
@@ -101,11 +106,32 @@ function GlacierMeltOverview() {
     )
   }
 
+  function createBubbleShowAnswer() {
+    return (
+      <CSSTransition
+        in={showAnswer}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div className="bubble-box bubble-box-climate2-snow-answer">
+          <p className="bubble-box-text">
+            <b>{t("Climate2_Bubble.4")}</b>
+            {t("Climate2_Bubble.5")}
+          </p>
+          <button id="next-button">
+            <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
+
   return (
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        {console.log(scaleFactor)}
+        {createBubbleShowAnswer()}
         <LakeGraph scaleFactor={scaleFactor}></LakeGraph>
         <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
