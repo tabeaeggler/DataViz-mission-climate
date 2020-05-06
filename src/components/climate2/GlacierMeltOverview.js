@@ -2,7 +2,12 @@ import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
+import Slider from "rc-slider"
+import Tooltip from "rc-slider"
+import SliderWithTooltip from "rc-slider"
 import LakeGraph from "./LakeGraph"
+import "rc-slider/assets/index.css"
+import "rc-tooltip/assets/bootstrap.css"
 
 function GlacierMeltOverview() {
   //transaltion
@@ -80,7 +85,7 @@ function GlacierMeltOverview() {
     <React.Fragment>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
-        <LakeGraph scaleFactor={6}></LakeGraph>
+        <LakeGraph props={6}></LakeGraph>
       </div>
     </React.Fragment>
   )
