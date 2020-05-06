@@ -1,6 +1,6 @@
 import React from "react"
 import Lake from "../../assets/img/lakeOfLucern.svg"
-import filledLake from "../../assets/img/filledLakeOfLucern.svg"
+import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
 
 const LakeGraph = props => {
   const originalScale = 6
@@ -20,7 +20,7 @@ const LakeGraph = props => {
           <img
             width={(screenWidth / originalScale) * props.scaleFactor}
             height={(screenHeight / originalScale) * props.scaleFactor}
-            src={filledLake}></img>
+            src={FilledLake}></img>
         </div>
       </div>
     </React.Fragment>
