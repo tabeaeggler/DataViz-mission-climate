@@ -3,10 +3,10 @@ import Lake from "../../assets/img/lakeOfLucern.svg"
 import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
 
 const LakeGraph = props => {
-  const originalScale = 6
+  const originalScale = 6.2
   const screenWidth = window.innerWidth
     const screenHeight = window.innerHeight
-    
+
   return (
     <React.Fragment>
       <div className="lake-graph-container">
