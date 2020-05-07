@@ -139,7 +139,7 @@ function GlacierMeltOverview() {
           <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
           <button
             className="submit-button submit-button-glacier"
-            onClick={() => ""}>
+            onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}
           </button>
         </div>

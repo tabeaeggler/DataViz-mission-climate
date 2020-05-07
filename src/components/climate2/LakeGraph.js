@@ -46,10 +46,10 @@ const LakeGraph = props => {
             classNames="lake-animation-result"
             unmountOnExit
             appear>
-            {getScaledLake(props.scaleFactor, Lake)}
+            {getScaledLake(props.scaleFactor, FilledLake)}
           </CSSTransition>
         }
-        {!props.showAnswer ? getScaledLake(props.scaleFactor, Lake) : null}
+        {!props.showAnswer ? getScaledLake(props.scaleFactor, FilledLake) : null}
       </div>
     </React.Fragment>
   )
