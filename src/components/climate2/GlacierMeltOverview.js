@@ -96,6 +96,26 @@ function GlacierMeltOverview() {
       </CSSTransition>
     )
   }
+  function createBubbleShowAnswer() {
+    return (
+      <CSSTransition
+        in={showAnswer}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div className="bubble-box bubble-box-climate2-snow-answer">
+          <p className="bubble-box-text">
+            <b>{t("Climate2_Bubble.4")}</b>
+            {t("Climate2_Bubble.5")}
+          </p>
+          <button id="next-button">
+            <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
 
   function showSliderAndNumbers() {
     return (
@@ -138,7 +158,10 @@ function GlacierMeltOverview() {
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
-        <LakeGraph scaleFactor={scaleFactor} showAnswer={showAnswer} scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
+        <LakeGraph
+          scaleFactor={scaleFactor}
+          showAnswer={showAnswer}
+          scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
         {showSliderAndNumbers()}
         <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
