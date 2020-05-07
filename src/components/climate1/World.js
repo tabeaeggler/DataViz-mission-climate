@@ -186,7 +186,7 @@ const World = () => {
           <button
             id="next-button"
             onClick={() => {
-              history.push("/Climate2")
+              history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>

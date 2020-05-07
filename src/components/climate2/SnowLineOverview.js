@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
+import Snow from "react-snowstorm"
+import "./climate2.css"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 import history from "../../routing/history"
 
@@ -69,16 +71,34 @@ function SnowLineOverview() {
 
   return (
     <React.Fragment>
-      <div className="snowline-wrapper">
-        <h6 className="source-climate2">{t("Climate2_Source_Snow")}</h6>
-        {createBubbleStartQuizz()}
-        {createBubbleShowAnswer()}
-        <SnowLineDraggableGraph
-          showAnswer={showAnswer}
-          data={data}
-          showQuizzResult={showQuizzResult}
-        />
-      </div>
+      <CSSTransition
+        in={true}
+        timeout={100000}
+        classNames="fade"
+        unmountOnExit
+        appear>
+        <div>
+          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+          <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
+          <div className="snowline-wrapper">
+            <h6 className="source-climate2">{t("Climate2_Source_Snow")}</h6>
+            {createBubbleStartQuizz()}
+            {createBubbleShowAnswer()}
+            <SnowLineDraggableGraph
+              showAnswer={showAnswer}
+              data={data}
+              showQuizzResult={showQuizzResult}
+            />
+          </div>
+        </div>
+      </CSSTransition>
+      <Snow
+        animationInterval={50}
+        followMouse={false}
+        vMaxY={1.5}
+        vMaxX={3}
+        flakesMaxActive={90}
+        flakesMax={150}></Snow>
     </React.Fragment>
   )
 }
