@@ -26,6 +26,9 @@ function GlacierMeltOverview() {
     data_2019: 50.645,
   })
 
+  const solutionVolume = 39
+  const solutionIce = 51
+
   function handleSliderChange(p) {
     setPercentageLabel({
       percentageDecrease: p,
@@ -87,9 +90,14 @@ function GlacierMeltOverview() {
         unmountOnExit
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-answer">
-          <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble_Glacier.3")}</b>
+          <p className="bubble-box-text extra-line-spacing">
+            {t("Climate2_Bubble_Glacier.3")}
+            <span className="climate2_solution_bold">{solutionVolume} % </span>
             {t("Climate2_Bubble_Glacier.4")}
+            <span className="climate2_solution_bold">
+              {solutionIce} km&sup3;
+            </span>
+            . {t("Climate2_Bubble_Glacier.5")}
           </p>
           <button id="next-button">
             <img src={ButtonRight} alt="continue"></img>
@@ -124,7 +132,7 @@ function GlacierMeltOverview() {
               {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
                 0
               )}{" "}
-              km <sup>3</sup>
+              km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
             <button
