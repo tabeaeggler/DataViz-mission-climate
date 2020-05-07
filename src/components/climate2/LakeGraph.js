@@ -62,7 +62,9 @@ const LakeGraph = props => {
             : null}
         </div>
         <div className="scaled-lake">
-          <p className="original-text-lake">Vierwaldstättersee</p>
+          {!props.showAnswer ? (
+            <p className="original-text-lake">Vierwaldstättersee</p>
+          ) : null}
           {!props.showAnswer ? getScaledLake(1, OriginalLake) : null}
         </div>
       </div>
