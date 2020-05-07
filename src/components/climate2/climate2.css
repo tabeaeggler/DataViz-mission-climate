@@ -201,6 +201,10 @@
   line-height: 1.4;
 }
 
+.question-style {
+  color: #ffd763;
+}
+
 /* Lake */
 .original-lake {
   position: absolute;
@@ -253,8 +257,7 @@
 .lake-animation-estimation-enter-done {
   opacity: 0;
   visibility: hidden;
-  transition: visibility 2s linear,
-  opacity 2s linear;
+  transition: visibility 2s linear, opacity 2s linear;
 }
 
 .original-text-lake {
@@ -264,7 +267,6 @@
   right: -60px;
   bottom: -5px;
   color: #6a8adf;
-
 }
 
 .estimation-text-lake {

@@ -74,7 +74,9 @@ function GlacierMeltOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-start">
           <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble_Glacier.1")} </b>
+            <span className="question-style">
+              {t("Climate2_Bubble_Glacier.1")}
+            </span>{" "}
             {t("Climate2_Bubble_Glacier.2")}
           </p>
         </div>
