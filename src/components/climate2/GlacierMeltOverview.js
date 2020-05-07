@@ -52,24 +52,6 @@ function GlacierMeltOverview() {
     return scaleFactor
   }
 
-  function showPercentageLabel() {
-    return (
-      <div>
-        <p>
-          {(100 - percentageLabel.percentage).toFixed(0)} % des Volumens von
-          1850.
-        </p>
-        <p>
-          Dies entspricht einer Eismasse von{" "}
-          {percentageLabel.currentVolume.toFixed(0)} km <sup>3</sup>
-        </p>
-        <button className="submit-button" onClick={() => showResult()}>
-          {t("Climate2_Submit_Button")}
-        </button>
-      </div>
-    )
-  }
-
   function showResult() {
     setShowAnswer(true)
     setScaleFactorEstimation(scaleFactor)
@@ -104,10 +86,10 @@ function GlacierMeltOverview() {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-snow-answer">
+        <div className="bubble-box bubble-box-climate2-glacier-answer">
           <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble.4")}</b>
-            {t("Climate2_Bubble.5")}
+            <b>{t("Climate2_Bubble_Glacier.3")}</b>
+            {t("Climate2_Bubble_Glacier.4")}
           </p>
           <button id="next-button">
             <img src={ButtonRight} alt="continue"></img>
@@ -119,35 +101,44 @@ function GlacierMeltOverview() {
 
   function showSliderAndNumbers() {
     return (
-      <div className="slider-container-glacier">
-        <Slider
-          max="80"
-          value={percentageLabel.percentageDecrease}
-          onChange={handleSliderChange}
-        />
-        <div className="slider-text-volume">
-          <p className="slider-text-bold">
-            {percentageLabel.percentageDecrease.toFixed(0)} %
-          </p>
-          <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
+      <CSSTransition
+        in={!showAnswer}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
+        <div className="slider-container-glacier">
+          <Slider
+            max="80"
+            value={percentageLabel.percentageDecrease}
+            onChange={handleSliderChange}
+          />
+          <div className="slider-text-volume">
+            <p className="slider-text-bold">
+              {percentageLabel.percentageDecrease.toFixed(0)} %
+            </p>
+            <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
+          </div>
+          <div className="slider-text-ice">
+            <p className="slider-text-bold">
+              {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
+                0
+              )}{" "}
+              km <sup>3</sup>
+            </p>
+            <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
+            <button
+              className="submit-button submit-button-glacier"
+              onClick={() => showResult()}>
+              {t("Climate2_Submit_Button")}
+            </button>
+          </div>
+          <div className="slider-text-scaleFactor">
+            <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
+            <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
+          </div>
         </div>
-        <div className="slider-text-ice">
-          <p className="slider-text-bold">
-            {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)}{" "}
-            km <sup>3</sup>
-          </p>
-          <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
-          <button
-            className="submit-button submit-button-glacier"
-            onClick={() => showResult()}>
-            {t("Climate2_Submit_Button")}
-          </button>
-        </div>
-        <div className="slider-text-scaleFactor">
-          <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
-          <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
-        </div>
-      </div>
+      </CSSTransition>
     )
   }
 
