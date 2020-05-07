@@ -26,8 +26,10 @@ function SnowLineOverview() {
         <div className="bubble-box bubble-box-climate2-snow-start">
           <p className="bubble-box-text">
             {t("Climate2_Bubble_Snowline.1")}
-            <b>{t("Climate2_Bubble_Snowline.2")}</b>
-            {t("Climate2_Bubble_Snowline.3")}
+            <span className="question-style">
+              {t("Climate2_Bubble_Snowline.2")}
+            </span>
+            {/*{t("Climate2_Bubble_Snowline.3")}*/}
           </p>
         </div>
       </CSSTransition>
