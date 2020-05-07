@@ -25,9 +25,9 @@ function SnowLineOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-snow-start">
           <p className="bubble-box-text">
-            {t("Climate2_Bubble.1")}
-            <b>{t("Climate2_Bubble.2")}</b>
-            {t("Climate2_Bubble.3")}
+            {t("Climate2_Bubble_Snowline.1")}
+            <b>{t("Climate2_Bubble_Snowline.2")}</b>
+            {t("Climate2_Bubble_Snowline.3")}
           </p>
         </div>
       </CSSTransition>
@@ -44,8 +44,8 @@ function SnowLineOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-snow-answer">
           <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble.4")}</b>
-            {t("Climate2_Bubble.5")}
+            <b>{t("Climate2_Bubble_Snowline.4")}</b>
+            {t("Climate2_Bubble_Snowline.5")}
           </p>
           <button id="next-button" onClick={() => setShowAnswer(true)}>
             <img src={ButtonRight} alt="continue"></img>

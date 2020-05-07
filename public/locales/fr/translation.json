@@ -24,20 +24,32 @@
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
-  },  "Climate2_Bubble": {
+  },
+  "Climate2_Bubble_Snowline": {
     "1": "Le niveau de congélation change de plus en plus et il reste moins de neige dans les zones inférieures.",
-    "2":" Quel était le niveau de gel en 2018?",
+    "2": " Quel était le niveau de gel en 2018?",
     "3": " Estimez et confirmez!",
     "4": "La ligne du zéro degré s'est élevée de 350 mètres au cours des 60 dernières années - ",
     "5": "par degré de réchauffement d'environ 200 mètres. Les glaciers sont également touchés, en savoir plus !"
   },
+  "Climate2_Bubble_Glacier": {
+    "1": "Die Gletscher schmelzen immer mehr.",
+    "2": "Um wieviel ist der Gletscher im Jahr 2019 seit 1850 zurückgegeangen?"
+  },
   "Climate2_Submit_Button": "Confirmer",
   "Climate2_Title": {
     "1": "2. La Suisse est également touchée",
-    "2": "- Le niveau de congélation augmente -"
-  },"Climate2_Graph": {
+    "2": "- Le niveau de congélation augmente -",
+    "3": "- Les glaciers fondent -"
+  },
+  "Climate2_Graph": {
     "1": "2018: Solution",
     "2": "2018: Votre estimation"
+  },
+  "Climate2_Slider": {
+    "1": "Diminution du volume",
+    "2": "Glace fondue",
+    "3": "Le lac des Quatre-Cantons"
   },
   "Climate2_Source": "Source: OcCC & ProClim",
   "Climate2_Source_Glacier": "Source: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"

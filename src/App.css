@@ -2,6 +2,7 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: #141416;
   color: #bbb9b9;
+  overflow: hidden;
 }
 
 /*headings and fonts*/
@@ -36,6 +37,20 @@ p {
   font-size: 1em;
 }
 
+.title {
+  z-index: 100000;
+  position: relative;
+  padding-bottom: 1%;
+  margin-top: 95px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 100000;
+  opacity: 0.7;
+}
+
 /* infobox style*/
 .infobox-enter,
 .infobox-exit {
@@ -68,6 +83,15 @@ button {
 
 button:focus {
   outline: 0;
+}
+
+.submit-button {
+  background-color: #bbb9b9;
+  color: #141416;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  padding: 5px 15px;
 }
 
 /* languague button style*/

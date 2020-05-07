@@ -17,8 +17,8 @@ function Climate2() {
         unmountOnExit
         appear>
         <div>
-          <h1 className="climate2-title"> {t("Climate2_Title.1")}</h1>
-          <h2 className="climate2-subtitle">{t("Climate2_Title.2")}</h2>
+          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+          <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
           <SnowLineOverview />
         </div>
       </CSSTransition>

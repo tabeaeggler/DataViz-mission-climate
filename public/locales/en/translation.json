@@ -24,19 +24,32 @@
   "Climate1_Button": {
     "1": "Weiter",
     "2": "Was bedeutet das für die Schweiz?"
-  },  "Climate2_Bubble": {
+  },
+  "Climate2_Bubble_Snowline": {
     "1": "The freezing level shifts ever higher and less snow remains in lower areas.",
-    "2":" What was the freezing level in 2018?",
+    "2": " What was the freezing level in 2018?",
     "3": " Estimate and confirm!",
     "4": "The zero degree line has risen 350 meters in the last 60 years - ",
     "5": "per degree of warming about 200 meters. Also the glaciers are affected, learn more!"
-  }, "Climate2_Submit_Button": "Submit",
+  },
+  "Climate2_Bubble_Glacier": {
+    "1": "Die Gletscher schmelzen immer mehr.",
+    "2": "Um wieviel ist der Gletscher im Jahr 2019 seit 1850 zurückgegeangen?"
+  },
+  "Climate2_Submit_Button": "Submit",
   "Climate2_Title": {
     "1": " 2. Switzerland is also affected",
-    "2": "- The freezing level rises -"
-  },"Climate2_Graph": {
+    "2": "- The freezing level rises -",
+    "3": "- The glaciers are melting -"
+  },
+  "Climate2_Graph": {
     "1": "2018: Solution",
     "2": "2018: Your estimate"
+  },
+  "Climate2_Slider": {
+    "1": "Decrease in volume",
+    "2": "Molten ice",
+    "3": "Lake Lucerne"
   },
   "Climate2_Source": "Source: OcCC & ProClim",
   "Climate2_Source_Glacier": "Source: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"

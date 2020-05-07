@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import Slider from "rc-slider"
-import Tooltip from "rc-slider"
-import SliderWithTooltip from "rc-slider"
 import LakeGraph from "./LakeGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
@@ -13,14 +11,11 @@ function GlacierMeltOverview() {
   //transaltion
   const { t } = useTranslation()
 
-  //svg sizing
-  const svgRef = useRef()
-
   //state
   const [showAnswer, setShowAnswer] = useState(false)
   const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
-    percentage: 0,
+    percentageDecrease: 0,
     currentVolume: 130,
   })
   const [scaleFactor, setScaleFactor] = useState(0)
@@ -33,7 +28,7 @@ function GlacierMeltOverview() {
 
   function handleSliderChange(p) {
     setPercentageLabel({
-      percentage: p,
+      percentageDecrease: p,
       currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100,
     })
     setScaleFactor(calculateScaleFactor(p))
@@ -94,47 +89,57 @@ function GlacierMeltOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-start">
           <p className="bubble-box-text">
-            Die Gletscher schmelzen immer mehr. Um wieviel ist der Gletscher im
-            Jahr 2019 seit 1850 zurückgegeangen?
+            {t("Climate2_Bubble_Glacier.1")}{" "}
+            <b>{t("Climate2_Bubble_Glacier.2")}</b>
           </p>
-          <Slider
-            max={80}
-            value={percentageLabel.percentage}
-            onChange={handleSliderChange}
-          />
-          {showPercentageLabel()}
         </div>
       </CSSTransition>
     )
   }
 
-  function createBubbleShowAnswer() {
+  function showSliderAndNumbers() {
     return (
-      <CSSTransition
-        in={showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
-        <div className="bubble-box bubble-box-climate2-snow-answer">
-          <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble.4")}</b>
-            {t("Climate2_Bubble.5")}
+      <div className="slider-container-glacier">
+        <Slider
+          max="80"
+          value={percentageLabel.percentageDecrease}
+          onChange={handleSliderChange}
+        />
+        <div className="slider-text-volume">
+          <p className="slider-text-bold">
+            {percentageLabel.percentageDecrease.toFixed(0)} %
           </p>
-          <button id="next-button">
-            <img src={ButtonRight} alt="continue"></img>
+          <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
+        </div>
+        <div className="slider-text-ice">
+          <p className="slider-text-bold">
+            {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)}{" "}
+            km <sup>3</sup>
+          </p>
+          <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
+          <button
+            className="submit-button submit-button-glacier"
+            onClick={() => ""}>
+            {t("Climate2_Submit_Button")}
           </button>
         </div>
-      </CSSTransition>
+        <div className="slider-text-scaleFactor">
+          <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
+          <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
+        </div>
+      </div>
     )
   }
 
   return (
     <React.Fragment>
+      <h1 className="title"> {t("Climate2_Title.1")}</h1>
+      <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
         <LakeGraph scaleFactor={scaleFactor} showAnswer={showAnswer} scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
+        {showSliderAndNumbers()}
         <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
     </React.Fragment>
