@@ -243,6 +243,7 @@
   opacity: 0;
   transition: opacity 2s linear;
 }
+
 .lake-animation-estimation-enter-active,
 .lake-animation-estimation-appear-active {
   opacity: 1;
@@ -255,18 +256,35 @@
   transition: visibility 2s linear, opacity 2s linear;
 }
 
+.lake-animation-orginal-enter,
+.lake-animation-orginal-appear {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 2s linear;
+}
+.lake-animation-orginal-enter-active,
+.lake-animation-orginal-appear-active {
+  opacity: 0;
+  transition-timing-function: ease-out;
+}
+
+.lake-animation-orginal-exit {
+  opacity: 1;
+  transition-timing-function: ease-out;
+}
+
+.lake-animation-orginal-enter-done {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 2s linear, opacity 2s linear;
+}
+
 .original-text-lake {
   font-size: 0.6em;
   margin: 0;
   position: absolute;
-  right: -60px;
+  left: 225px;
   bottom: -5px;
   color: #6a8adf;
-}
-
-.estimation-text-lake {
-  color: #ffd763;
-  font-size: 0.6em;
-  position: absolute;
-  right: 35%;
+  width: 150px;
 }
