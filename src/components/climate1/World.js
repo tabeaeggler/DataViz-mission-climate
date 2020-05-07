@@ -212,10 +212,7 @@ const World = () => {
                 globalData={globalData}
               />
             )}
-            <div className="info-box-linegraph">
-              <h6>{t("Climate1_Source")}</h6>
-              {createBubbleLineGraph()}
-            </div>
+            <div className="info-box-linegraph">{createBubbleLineGraph()}</div>
           </div>
         </div>
       </CSSTransition>

@@ -18,6 +18,7 @@ function Climate1() {
         <h1 className="climate-1-title"> {t("Climate1_Title.1")}</h1>
       </CSSTransition>
       <World />
+      <h6 className="source">{t("Climate1_Source")}</h6>
     </React.Fragment>
   )
 }

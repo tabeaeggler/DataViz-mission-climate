@@ -83,7 +83,6 @@ function SnowLineOverview() {
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
           <div className="snowline-wrapper">
-            <h6 className="source-climate2">{t("Climate2_Source_Snow")}</h6>
             {createBubbleStartQuizz()}
             {createBubbleShowAnswer()}
             <SnowLineDraggableGraph
@@ -92,6 +91,7 @@ function SnowLineOverview() {
               showQuizzResult={showQuizzResult}
             />
           </div>
+          <h6 className="source">{t("Climate2_Source_Snow")}</h6>
         </div>
       </CSSTransition>
       <Snow

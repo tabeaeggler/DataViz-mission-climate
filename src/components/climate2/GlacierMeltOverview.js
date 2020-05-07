@@ -163,18 +163,27 @@ function GlacierMeltOverview() {
 
   return (
     <React.Fragment>
-      <h1 className="title"> {t("Climate2_Title.1")}</h1>
-      <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
-      <div className="glacier-container">
-        {createBubbleStartQuizz()}
-        {createBubbleShowAnswer()}
-        <LakeGraph
-          scaleFactor={scaleFactor}
-          showAnswer={showAnswer}
-          scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
-        {showSliderAndNumbers()}
-        <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
-      </div>
+      <CSSTransition
+        in={true}
+        timeout={100000}
+        classNames="fade"
+        unmountOnExit
+        appear>
+        <div>
+          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+          <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
+          <div className="glacier-container">
+            {createBubbleStartQuizz()}
+            {createBubbleShowAnswer()}
+            <LakeGraph
+              scaleFactor={scaleFactor}
+              showAnswer={showAnswer}
+              scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
+            {showSliderAndNumbers()}
+            <h6 className="source">{t("Climate2_Source_Glacier")}</h6>
+          </div>
+        </div>
+      </CSSTransition>
     </React.Fragment>
   )
 }

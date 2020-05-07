@@ -169,3 +169,10 @@ button.language-button,
   opacity: 1;
   transition: opacity 4000ms;
 }
+
+/*Source*/
+.source {
+  position: absolute;
+  right: 1%;
+  top: 0%;
+}
