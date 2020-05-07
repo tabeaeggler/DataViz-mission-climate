@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
+import history from "../../routing/history"
 
 function SnowLineOverview() {
   const { t } = useTranslation()
@@ -49,7 +50,11 @@ function SnowLineOverview() {
             <b>{t("Climate2_Bubble_Snowline.4")}</b>
             {t("Climate2_Bubble_Snowline.5")}
           </p>
-          <button id="next-button" onClick={() => setShowAnswer(true)}>
+          <button
+            id="next-button"
+            onClick={() => {
+              history.push("/glacier")
+            }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
