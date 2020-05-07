@@ -41,9 +41,6 @@ const LakeGraph = props => {
           unmountOnExit
           appear>
           <div className="scaled-lake">
-                      <p top={props.scaleFactorEstimation * 5} left={props.scaleFactorEstimation * -45} className="estimation-text-lake climate2_solution_bold">
-              <b>Schätzung: {props.scaleFactorEstimation.toFixed(0)} x</b>
-            </p>
             {getScaledLake(props.scaleFactorEstimation, EstimationLake)}
           </div>
         </CSSTransition>
@@ -55,9 +52,6 @@ const LakeGraph = props => {
             unmountOnExit
             appear>
             <div className="scaled-lake">
-              <p className="solution-text-lake climate2_solution_bold">
-                <b>Lösung: 6.2 x</b>
-              </p>
               {getScaledLake(props.scaleFactor, ResultLake)}
             </div>
           </CSSTransition>
