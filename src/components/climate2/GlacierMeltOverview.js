@@ -94,15 +94,15 @@ function GlacierMeltOverview() {
             km <sup>3</sup>
           </p>
           <p className="slider-text-small">Geschmolzenes Eis</p>
+          <button
+            className="submit-button submit-button-glacier"
+            onClick={() => ""}>
+            {t("Climate2_Submit_Button")}
+          </button>
         </div>
         <div className="slider-text-scaleFactor">
           <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
           <p className="slider-text-small">Vierwald- stättersee</p>
-        </div>
-        <div className="slider-button-container">
-          <button className="submit-button" onClick={() => ""}>
-            {t("Climate2_Submit_Button")}
-          </button>
         </div>
       </div>
     )
@@ -110,6 +110,8 @@ function GlacierMeltOverview() {
 
   return (
     <React.Fragment>
+      <h1 className="title"> {t("Climate2_Title.1")}</h1>
+      <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         {showSliderAndNumbers()}

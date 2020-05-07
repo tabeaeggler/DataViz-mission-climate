@@ -1,12 +1,4 @@
 /*Snowline*/
-.climate2-title {
-  padding-bottom: 1%;
-  margin-top: 7%;
-}
-
-.climate2-subtitle {
-  opacity: 0.7;
-}
 
 .draggable-line,
 .draggable-line-static {
@@ -84,13 +76,8 @@
   fill: #6a8adf;
   opacity: 0.1;
 }
-.submit-button {
-  background-color: #bbb9b9;
-  color: #141416;
+.submit-button-snowline {
   position: absolute;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  font-size: 0.9em;
 }
 
 .difference-text {
@@ -126,8 +113,9 @@
 
 /* Glacier */
 .bubble-box-climate2-glacier-start {
-  left: 5%;
-  width: 30%;
+  left: 65%;
+  bottom: 60%;
+  width: 18%;
   text-align: left;
 }
 .bubble-box-climate2-glacier-answer {
@@ -183,21 +171,23 @@
 }
 
 .slider-button-container {
-  position: absolute;
-  top: 1100%;
-  left: 39%;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .slider-text-bold {
   font-size: 1.5em;
   margin-bottom: -8%;
+  color: #ffd763;
 }
 
 .slider-text-small {
   font-size: 0.8em;
 }
 
-
+.submit-button-glacier {
+  margin-top: 15px;
+}
 
 /* Lake */
 .original-lake {

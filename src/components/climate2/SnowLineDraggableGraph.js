@@ -32,8 +32,10 @@ const SnowLineDraggableGraph = props => {
    * Main code for SnowLineDraggable
    */
   function createSnowLine() {
-    const svg = select(svgRef.current)
-      .attr("transform", `translate(${marginLeft},${marginTop})`)
+    const svg = select(svgRef.current).attr(
+      "transform",
+      `translate(${marginLeft},${marginTop})`
+    )
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
@@ -343,7 +345,7 @@ const SnowLineDraggableGraph = props => {
         </svg>
         {showSubmitButton ? (
           <button
-            className="submit-button"
+            className="submit-button submit-button-snowline"
             style={{
               bottom: (draggableLinePosition * height) / mountainHeight,
             }}
