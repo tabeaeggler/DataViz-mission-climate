@@ -1,5 +1,5 @@
 import React from "react"
-import Lake from "../../assets/img/lakeOfLucern.svg"
+import OriginalLake from "../../assets/img/lakeOfLucern.svg"
 import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
 import EstimationLake from "../../assets/img/estimationLakeOfLucern.svg"
 import ResultLake from "../../assets/img/resultLakeOfLucern.svg"
@@ -31,7 +31,7 @@ const LakeGraph = props => {
           appear>
           <div className="original-lake">
             <p className="original-text-lake">Vierwaldstättersee</p>
-            {getScaledLake(1, Lake)}
+            {getScaledLake(1, OriginalLake)}
           </div>
         </CSSTransition>
         <CSSTransition
@@ -41,8 +41,8 @@ const LakeGraph = props => {
           unmountOnExit
           appear>
           <div className="scaled-lake">
-            <p className="estimation-text-lake">
-              Deine Schätzung: {props.scaleFactorEstimation.toFixed(0)} x
+                      <p top={props.scaleFactorEstimation * 5} left={props.scaleFactorEstimation * -45} className="estimation-text-lake climate2_solution_bold">
+              <b>Schätzung: {props.scaleFactorEstimation.toFixed(0)} x</b>
             </p>
             {getScaledLake(props.scaleFactorEstimation, EstimationLake)}
           </div>
@@ -55,8 +55,8 @@ const LakeGraph = props => {
             unmountOnExit
             appear>
             <div className="scaled-lake">
-              <p className="solution-text-lake">
-                Lösung: {props.scaleFactor.toFixed(0)} x
+              <p className="solution-text-lake climate2_solution_bold">
+                <b>Lösung: 6.2 x</b>
               </p>
               {getScaledLake(props.scaleFactor, ResultLake)}
             </div>
@@ -66,6 +66,10 @@ const LakeGraph = props => {
           {!props.showAnswer
             ? getScaledLake(props.scaleFactor, FilledLake)
             : null}
+        </div>
+        <div className="scaled-lake">
+          <p className="original-text-lake">Vierwaldstättersee</p>
+          {!props.showAnswer ? getScaledLake(1, OriginalLake) : null}
         </div>
       </div>
     </React.Fragment>
