@@ -95,20 +95,16 @@ function GlacierMeltOverview() {
           <p className="bubble-box-text extra-line-spacing">
             <b>
               {t("Climate2_Bubble_Glacier.3")}
-              <span className="climate2_solution_bold">
-                {solutionVolume} %{" "}
-              </span>
+              <span className="text-solution-bold">{solutionVolume} % </span>
               {t("Climate2_Bubble_Glacier.4")}
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="climate2_solution_bold">
-                {solutionIce} km&sup3;
-              </span>
+              <span className="text-solution-bold">{solutionIce} km&sup3;</span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="climate2_solution_bold">{scaleFactor} x</span>
+              <span className="text-solution-bold">{scaleFactor} x</span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 

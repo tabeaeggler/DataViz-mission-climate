@@ -108,7 +108,8 @@
 }
 .bubble-box-climate2-snow-answer {
   right: 5%;
-  width: 30%;
+  top: 11%;
+  width: 25%;
   text-align: left;
 }
 
@@ -193,7 +194,7 @@
   margin-top: 15px;
 }
 
-.climate2_solution_bold {
+.text-solution-bold {
   font-size: 1.1em;
   color: #6a8adf;
 }

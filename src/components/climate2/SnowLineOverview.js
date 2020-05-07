@@ -11,7 +11,6 @@ function SnowLineOverview() {
   const { t } = useTranslation()
 
   const [showAnswer, setShowAnswer] = useState(false)
-  const [nextPage, setNextPage] = useState(false)
 
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
 
@@ -50,7 +49,10 @@ function SnowLineOverview() {
         <div className="bubble-box bubble-box-climate2-snow-answer">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.4")}</b>
-            {t("Climate2_Bubble_Snowline.5")}
+            <span className="text-solution-bold">
+              <b>{t("Climate2_Bubble_Snowline.5")}</b>
+            </span>
+            {t("Climate2_Bubble_Snowline.6")}
           </p>
           <button
             id="next-button"
