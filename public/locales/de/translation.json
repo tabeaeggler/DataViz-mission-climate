@@ -29,8 +29,9 @@
     "1": "Die Nullgradgrenze verschiebt sich immer weiter nach oben und weniger Schnee bleibt in tieferen Lagen liegen.",
     "2": " Auf welcher Höhe befand sich die Nullgradgrenze im Jahr 2018?",
     "3": " Schätze und bestätige!",
-    "4": "Die Nullgradgrenze stieg in den letzten 60 Jahre um 350 Meter - ",
-    "5": "pro Grad Erwärmung ca. 200 Meter. Auch die Gletscher sind betroffen, erfahre mehr!"
+    "4": "Lösung: Die Nullgradgrenze stieg in den letzten 60 Jahre um ",
+    "5": "350 Meter",
+    "6": " - pro Grad Erwärmung ca. 200 Meter. Auch die Gletscher sind betroffen, erfahre mehr!"
   },
   "Climate2_Bubble_Glacier": {
     "1": "Um wieviel Prozent hat sich das Gletschervolumen seit 1850 reduziert?",
@@ -57,6 +58,6 @@
     "2": "Geschmolzenes Eis",
     "3": "Vierwald- stättersee"
   },
-  "Climate2_Source": "Quelle: OcCC & ProClim",
+  "Climate2_Source_Snow": "Quelle: OcCC & ProClim",
   "Climate2_Source_Glacier": "Quelle: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"
 }

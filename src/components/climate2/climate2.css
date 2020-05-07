@@ -101,20 +101,22 @@
 }
 
 .bubble-box-climate2-snow-start {
-  left: 5%;
-  width: 30%;
+  left: 3%;
+  bottom: 45.5%;
+  width: 20%;
   text-align: left;
 }
 .bubble-box-climate2-snow-answer {
   right: 5%;
-  width: 30%;
+  top: 11%;
+  width: 25%;
   text-align: left;
 }
 
 /* Glacier */
 .bubble-box-climate2-glacier-start {
-  left: 65%;
-  bottom: 55%;
+  left: 19%;
+  bottom: 12.8%;
   width: 18%;
   text-align: left;
 }
@@ -192,7 +194,7 @@
   margin-top: 15px;
 }
 
-.climate2_solution_bold {
+.text-solution-bold {
   font-size: 1.1em;
   color: #6a8adf;
 }
