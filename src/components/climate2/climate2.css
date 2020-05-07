@@ -244,6 +244,7 @@
   opacity: 0;
   transition: opacity 2s linear;
 }
+
 .lake-animation-estimation-enter-active,
 .lake-animation-estimation-appear-active {
   opacity: 1;
@@ -255,6 +256,24 @@
   visibility: hidden;
   transition: visibility 2s linear,
   opacity 2s linear;
+}
+
+.lake-animation-orginal-enter,
+.lake-animation-orginal-appear {
+  visibility: hidden;
+}
+.lake-animation-orginal-enter-active,
+.lake-animation-orginal-appear-active {
+}
+
+.lake-animation-orginal-exit {
+  opacity: 1;
+}
+
+.lake-animation-orginal-exit-active {
+  visibility: visible;
+  transition-timing-function: ease-in;
+  transition: visibility 2s linear;
 }
 
 .original-text-lake {

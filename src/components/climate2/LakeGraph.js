@@ -23,15 +23,20 @@ const LakeGraph = props => {
   return (
     <React.Fragment>
       <div className="lake-graph-container">
-        <div className="original-lake">
-          <p className="original-text-lake">
-            Vierwaldstättersee
-          </p>
-          {getScaledLake(1, Lake)}
-        </div>
+        <CSSTransition
+          in={props.showAnswer}
+          timeout={6000}
+          classNames="lake-animation-orginal"
+          unmountOnExit
+          appear>
+          <div className="original-lake">
+            <p className="original-text-lake">Vierwaldstättersee</p>
+            {getScaledLake(1, Lake)}
+          </div>
+        </CSSTransition>
         <CSSTransition
           in={props.scaleFactorEstimation != 0}
-          timeout={3000}
+          timeout={4000}
           classNames="lake-animation-estimation"
           unmountOnExit
           appear>
@@ -45,7 +50,7 @@ const LakeGraph = props => {
         {
           <CSSTransition
             in={props.showAnswer}
-            timeout={5000}
+            timeout={3000}
             classNames="lake-animation-result"
             unmountOnExit
             appear>
