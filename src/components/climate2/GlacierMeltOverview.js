@@ -74,8 +74,8 @@ function GlacierMeltOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-start">
           <p className="bubble-box-text">
-            {t("Climate2_Bubble_Glacier.1")}{" "}
-            <b>{t("Climate2_Bubble_Glacier.2")}</b>
+            <b>{t("Climate2_Bubble_Glacier.1")} </b>
+            {t("Climate2_Bubble_Glacier.2")}
           </p>
         </div>
       </CSSTransition>
@@ -97,12 +97,20 @@ function GlacierMeltOverview() {
                 {solutionVolume} %{" "}
               </span>
               {t("Climate2_Bubble_Glacier.4")}
+            </b>
+            {t("Climate2_Bubble_Glacier.5")}
+            <b>
               <span className="climate2_solution_bold">
                 {solutionIce} km&sup3;
               </span>
-              .{" "}
             </b>
-            {t("Climate2_Bubble_Glacier.5")}
+            {t("Climate2_Bubble_Glacier.6")}
+            <b>
+              <span className="climate2_solution_bold">{scaleFactor} x</span>
+            </b>
+            {t("Climate2_Bubble_Glacier.7")}
+
+            {t("Climate2_Bubble_Glacier.8")}
           </p>
           <button id="next-button">
             <img src={ButtonRight} alt="continue"></img>
