@@ -58,5 +58,6 @@
     "3": "Lago dei Quattro Cantoni"
   },
   "Climate2_Source_Snow": "Fonte: OcCC & ProClim",
-  "Climate2_Source_Glacier": "Fonte: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"
+  "Climate2_Source_Glacier": "Fonte: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
+  "Climate2_Lake": "Lago dei Quattro Cantoni"
 }

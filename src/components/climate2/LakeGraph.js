@@ -3,9 +3,11 @@ import OriginalLake from "../../assets/img/lakeOfLucern.svg"
 import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
 import EstimationLake from "../../assets/img/estimationLakeOfLucern.svg"
 import ResultLake from "../../assets/img/resultLakeOfLucern.svg"
+import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
 const LakeGraph = props => {
+  const { t } = useTranslation()
   const originalScale = 6.2
   const screenWidth = window.innerWidth
   const screenHeight = window.innerHeight
@@ -36,7 +38,7 @@ const LakeGraph = props => {
         </CSSTransition>
         <CSSTransition
           in={props.scaleFactorEstimation != 0}
-          timeout={4000}
+          timeout={3000}
           classNames="lake-animation-estimation"
           unmountOnExit
           appear>
@@ -63,7 +65,7 @@ const LakeGraph = props => {
         </div>
         <div className="scaled-lake">
           {!props.showAnswer ? (
-            <p className="original-text-lake">Vierwaldstättersee</p>
+            <p className="original-text-lake">{t("Climate2_Lake")}</p>
           ) : null}
           {!props.showAnswer ? getScaledLake(1, OriginalLake) : null}
         </div>

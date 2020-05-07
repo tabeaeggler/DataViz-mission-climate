@@ -290,7 +290,8 @@
   font-size: 0.6em;
   margin: 0;
   position: absolute;
-  right: -60px;
+  left: 225px;
   bottom: -5px;
   color: #6a8adf;
+  width: 150px;
 }

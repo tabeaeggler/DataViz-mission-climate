@@ -59,5 +59,6 @@
     "3": "Vierwald- stättersee"
   },
   "Climate2_Source_Snow": "Quelle: OcCC & ProClim",
-  "Climate2_Source_Glacier": "Quelle: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik"
+  "Climate2_Source_Glacier": "Quelle: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
+  "Climate2_Lake": "Vierwaldstättersee"
 }
