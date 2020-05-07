@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import Slider from "rc-slider"
-import Tooltip from "rc-slider"
-import SliderWithTooltip from "rc-slider"
 import LakeGraph from "./LakeGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
@@ -66,8 +64,8 @@ function GlacierMeltOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-start">
           <p className="bubble-box-text">
-            Die Gletscher schmelzen immer mehr. Um wieviel ist der Gletscher im
-            Jahr 2019 seit 1850 zurückgegeangen?
+            {t("Climate2_Bubble_Glacier.1")}{" "}
+            <b>{t("Climate2_Bubble_Glacier.2")}</b>
           </p>
         </div>
       </CSSTransition>
@@ -86,14 +84,14 @@ function GlacierMeltOverview() {
           <p className="slider-text-bold">
             {percentageLabel.percentageDecrease.toFixed(0)} %
           </p>
-          <p className="slider-text-small">Rückgang Volumen</p>
+          <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
         </div>
         <div className="slider-text-ice">
           <p className="slider-text-bold">
             {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0)}{" "}
             km <sup>3</sup>
           </p>
-          <p className="slider-text-small">Geschmolzenes Eis</p>
+          <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
           <button
             className="submit-button submit-button-glacier"
             onClick={() => ""}>
@@ -102,7 +100,7 @@ function GlacierMeltOverview() {
         </div>
         <div className="slider-text-scaleFactor">
           <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
-          <p className="slider-text-small">Vierwald- stättersee</p>
+          <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
         </div>
       </div>
     )
