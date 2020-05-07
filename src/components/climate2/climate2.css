@@ -119,10 +119,12 @@
   text-align: left;
 }
 .bubble-box-climate2-glacier-answer {
-  right: 5%;
-  width: 30%;
+  left: 30%;
+  width: 25%;
+  bottom: 15%;
   text-align: left;
 }
+
 .rc-slider-handle {
   border: #6a8adf !important;
   background-color: white !important;
@@ -177,8 +179,9 @@
 
 .slider-text-bold {
   font-size: 1.5em;
-  margin-bottom: -8%;
+  margin-bottom: -12px;
   color: #ffd763;
+  margin-top: 1px;
 }
 
 .slider-text-small {
@@ -187,6 +190,15 @@
 
 .submit-button-glacier {
   margin-top: 15px;
+}
+
+.climate2_solution_bold {
+  font-size: 1.1em;
+  color: #6a8adf;
+}
+
+.extra-line-spacing {
+  line-height: 1.4;
 }
 
 /* Lake */
@@ -221,7 +233,7 @@
   opacity: 1;
 }
 
-.lake-animation-estimation-exit-active { 
+.lake-animation-estimation-exit-active {
   opacity: 0;
   transition-timing-function: ease-in;
   transition: opacity 2s linear;
@@ -239,7 +251,7 @@
 }
 
 .lake-animation-estimation-enter-done {
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
   transition: visibility 2s linear,
   opacity 2s linear;
@@ -261,4 +273,3 @@
   position: absolute;
   right: 35%;
 }
-
