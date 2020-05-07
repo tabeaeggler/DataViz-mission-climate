@@ -33,8 +33,14 @@
     "5": "per degree of warming about 200 meters. Also the glaciers are affected, learn more!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Die Gletscher schmelzen immer mehr.",
-    "2": "Um wieviel ist der Gletscher im Jahr 2019 seit 1850 zurückgegeangen?"
+    "1": "By what percentage has the glacier volume decreased since 1850?",
+    "2": " The melted ice is compared with the volume of Lake Lucerne.",
+    "3": "Solution: The glaciers have receded by ",
+    "4": ". ",
+    "5": " This corresponds to an ice mass of ",
+    "6": ", which fills Lake Lucerne ",
+    "7": " times.",
+    "8": " What are the reasons for these changes?"
   },
   "Climate2_Submit_Button": "Submit",
   "Climate2_Title": {
