@@ -114,7 +114,7 @@
 /* Glacier */
 .bubble-box-climate2-glacier-start {
   left: 65%;
-  bottom: 60%;
+  bottom: 55%;
   width: 18%;
   text-align: left;
 }
@@ -199,6 +199,10 @@
 
 .extra-line-spacing {
   line-height: 1.4;
+}
+
+.question-style {
+  color: #ffd763;
 }
 
 /* Lake */
