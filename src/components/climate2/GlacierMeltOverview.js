@@ -23,7 +23,8 @@ function GlacierMeltOverview() {
     percentage: 0,
     currentVolume: 130,
   })
-  const [scaleFactor, setScaleFactor] = useState(1)
+  const [scaleFactor, setScaleFactor] = useState(0)
+  const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
 
   const [dataVolume, setDataVolume] = useState({
     data_1850: 130,
@@ -76,6 +77,7 @@ function GlacierMeltOverview() {
 
   function showResult() {
     setShowAnswer(true)
+    setScaleFactorEstimation(scaleFactor)
     setScaleFactor(6.2)
   }
 
@@ -132,7 +134,7 @@ function GlacierMeltOverview() {
       <div className="glacier-container">
         {createBubbleStartQuizz()}
         {createBubbleShowAnswer()}
-        <LakeGraph scaleFactor={scaleFactor}></LakeGraph>
+        <LakeGraph scaleFactor={scaleFactor} showAnswer={showAnswer} scaleFactorEstimation={scaleFactorEstimation}></LakeGraph>
         <h6 className="source-climate2">{t("Climate2_Source_Glacier")}</h6>
       </div>
     </React.Fragment>

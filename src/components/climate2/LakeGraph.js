@@ -1,11 +1,25 @@
 import React from "react"
 import Lake from "../../assets/img/lakeOfLucern.svg"
 import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
+import EstimationLake from "../../assets/img/estimationLakeOfLucern.svg"
+import { CSSTransition } from "react-transition-group"
 
 const LakeGraph = props => {
   const originalScale = 6.2
   const screenWidth = window.innerWidth
-    const screenHeight = window.innerHeight
+  const screenHeight = window.innerHeight
+
+  function getScaledLake(scaleFactor, image) {
+    return (
+      <div className="scaled-lake">
+        <img
+          width={(screenWidth / originalScale) * scaleFactor}
+          height={(screenHeight / originalScale) * scaleFactor}
+          src={image}
+          alt="scaled lake"></img>
+      </div>
+    )
+  }
 
   return (
     <React.Fragment>
@@ -17,13 +31,25 @@ const LakeGraph = props => {
             src={Lake}
             alt="original lake"></img>
         </div>
-        <div className="scaled-lake">
-          <img
-            width={(screenWidth / originalScale) * props.scaleFactor}
-            height={(screenHeight / originalScale) * props.scaleFactor}
-            src={FilledLake}
-            alt="scaled lake"></img>
-        </div>
+        <CSSTransition
+          in={props.scaleFactorEstimation != 0}
+          timeout={2000}
+          classNames="lake-animation-estimation"
+          unmountOnExit
+          appear>
+          {getScaledLake(props.scaleFactorEstimation, EstimationLake)}
+        </CSSTransition>
+        {
+          <CSSTransition
+            in={props.showAnswer}
+            timeout={5000}
+            classNames="lake-animation-result"
+            unmountOnExit
+            appear>
+            {getScaledLake(props.scaleFactor, Lake)}
+          </CSSTransition>
+        }
+        {!props.showAnswer ? getScaledLake(props.scaleFactor, Lake) : null}
       </div>
     </React.Fragment>
   )
