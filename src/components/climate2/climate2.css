@@ -254,26 +254,30 @@
 .lake-animation-estimation-enter-done {
   opacity: 0;
   visibility: hidden;
-  transition: visibility 2s linear,
-  opacity 2s linear;
+  transition: visibility 2s linear, opacity 2s linear;
 }
 
 .lake-animation-orginal-enter,
 .lake-animation-orginal-appear {
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 2s linear;
 }
 .lake-animation-orginal-enter-active,
 .lake-animation-orginal-appear-active {
+  opacity: 0;
+  transition-timing-function: ease-out;
 }
 
 .lake-animation-orginal-exit {
   opacity: 1;
+  transition-timing-function: ease-out;
 }
 
-.lake-animation-orginal-exit-active {
+.lake-animation-orginal-enter-done {
+  opacity: 1;
   visibility: visible;
-  transition-timing-function: ease-in;
-  transition: visibility 2s linear;
+  transition: visibility 2s linear, opacity 2s linear;
 }
 
 .original-text-lake {
@@ -283,7 +287,6 @@
   right: -60px;
   bottom: -5px;
   color: #6a8adf;
-
 }
 
 .estimation-text-lake {
