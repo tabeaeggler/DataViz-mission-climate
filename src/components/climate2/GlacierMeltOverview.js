@@ -91,13 +91,18 @@ function GlacierMeltOverview() {
         appear>
         <div className="bubble-box bubble-box-climate2-glacier-answer">
           <p className="bubble-box-text extra-line-spacing">
-            {t("Climate2_Bubble_Glacier.3")}
-            <span className="climate2_solution_bold">{solutionVolume} % </span>
-            {t("Climate2_Bubble_Glacier.4")}
-            <span className="climate2_solution_bold">
-              {solutionIce} km&sup3;
-            </span>
-            . {t("Climate2_Bubble_Glacier.5")}
+            <b>
+              {t("Climate2_Bubble_Glacier.3")}
+              <span className="climate2_solution_bold">
+                {solutionVolume} %{" "}
+              </span>
+              {t("Climate2_Bubble_Glacier.4")}
+              <span className="climate2_solution_bold">
+                {solutionIce} km&sup3;
+              </span>
+              .{" "}
+            </b>
+            {t("Climate2_Bubble_Glacier.5")}
           </p>
           <button id="next-button">
             <img src={ButtonRight} alt="continue"></img>
