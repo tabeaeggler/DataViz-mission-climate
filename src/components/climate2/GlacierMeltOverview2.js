@@ -18,7 +18,7 @@ function GlacierMeltOverview2() {
     percentageDecrease: 0,
     currentVolume: 130,
   })
-  const [scaleFactor, setScaleFactor] = useState(0)
+  const [scaleLake, setScaleLake] = useState(0)
   const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
 
   const [dataVolume, setDataVolume] = useState({
@@ -34,7 +34,7 @@ function GlacierMeltOverview2() {
       percentageDecrease: p,
       currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100,
     })
-    setScaleFactor(calculateScaleFactor(p))
+    setScaleLake(calculateScaleFactor(p))
   }
 
   function calculateScaleFactor(p) {
@@ -57,8 +57,7 @@ function GlacierMeltOverview2() {
 
   function showResult() {
     setShowAnswer(true)
-    setScaleFactorEstimation(scaleFactor)
-    setScaleFactor(6.2)
+    setScaleFactorEstimation(scaleLake)
   }
 
   /**
@@ -104,7 +103,7 @@ function GlacierMeltOverview2() {
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="text-solution-bold">{scaleFactor} x</span>
+              <span className="text-solution-bold">{scaleLake} x</span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 
@@ -153,7 +152,7 @@ function GlacierMeltOverview2() {
             </button>
           </div>
           <div className="slider-text-scaleFactor">
-            <p className="slider-text-bold">{scaleFactor.toFixed(1)} x</p>
+            <p className="slider-text-bold">{scaleLake.toFixed(1)} x</p>
             <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
           </div>
         </div>
@@ -176,7 +175,7 @@ function GlacierMeltOverview2() {
             {createBubbleStartQuizz()}
             {createBubbleShowAnswer()}
             <GlacierGraph
-              scaleFactor={scaleFactor}
+              scaleFactor={(100 - percentageLabel.percentageDecrease) * 0.01}
               showAnswer={showAnswer}
               scaleFactorEstimation={scaleFactorEstimation}></GlacierGraph>
             {showSliderAndNumbers()}
