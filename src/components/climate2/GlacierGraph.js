@@ -8,8 +8,8 @@ import { CSSTransition } from "react-transition-group"
 
 const GlacierGraph = props => {
   const { t } = useTranslation()
-  const width = 436
-  const height = 695
+  const width = 346
+  const height = 551
 
   function getScaledLake(scaleFactor, image) {
     return (

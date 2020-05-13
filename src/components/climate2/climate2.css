@@ -108,8 +108,8 @@
 
 /* Glacier */
 .bubble-box-climate2-glacier-start {
-  left: 19%;
-  bottom: 12.8%;
+  left: 10%;
+  bottom: 45%;
   width: 18%;
   text-align: left;
 }
@@ -141,9 +141,8 @@
 .slider-container-glacier {
   position: absolute;
   width: 22%;
-  left: 39%;
+  left: 10%;
   bottom: 36%;
-  z-index: 100;
 }
 
 .slider-text-volume {
