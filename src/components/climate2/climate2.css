@@ -107,16 +107,10 @@
 }
 
 /* Glacier */
-.bubble-box-climate2-glacier-start {
-  left: 10%;
-  bottom: 45%;
-  width: 18%;
-  text-align: left;
-}
-.bubble-box-climate2-glacier-answer {
-  left: 10%;
-  bottom: 45%;
-  width: 18%;
+.bubble-box-glacier-start, .bubble-box-glacier-answer {
+  left: 8%;
+  top: 43%;
+  width: 25%;
   text-align: left;
 }
 
@@ -140,9 +134,9 @@
 
 .slider-container-glacier {
   position: absolute;
-  width: 22%;
-  left: 10%;
-  bottom: 36%;
+  width: 20%;
+  left: 11.5%;
+  bottom: 35%;
 }
 
 .slider-text-volume {
@@ -172,18 +166,20 @@
 }
 
 .slider-text-bold {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-bottom: -12px;
   color: #ffd763;
   margin-top: 1px;
 }
 
 .slider-text-small {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .submit-button-glacier {
   margin-top: 15px;
+  position: absolute;
+  left: -10%;
 }
 
 .text-solution-bold {
@@ -199,13 +195,7 @@
   color: #ffd763;
 }
 
-/* Glacier */
-.original-lake {
-  position: absolute;
-  z-index: 5;
-}
-
-.glacier-scaled{
+.glacier-scaled {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -244,15 +234,22 @@
   opacity: 0.2;
 }
 
-.glacier-text, .glacier-estimation-text, .glacier-original-text {
+.glacier-text,
+.glacier-estimation-text,
+.glacier-original-text {
   margin: 0;
   font-size: 0.7em;
 }
 
 .glacier-estimation-line {
-  margin:5px 0;
-  height:1px;
+  margin: 5px 0;
+  height: 1px;
   width: 160px;
-  background:
-    repeating-linear-gradient(to right,#ffd763 0,#ffd763 5px,transparent 5px,transparent 7px)
+  background: repeating-linear-gradient(
+    to right,
+    #ffd763 0,
+    #ffd763 5px,
+    transparent 5px,
+    transparent 7px
+  );
 }

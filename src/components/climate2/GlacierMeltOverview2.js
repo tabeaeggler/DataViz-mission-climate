@@ -59,7 +59,7 @@ function GlacierMeltOverview2() {
     setShowAnswer(true)
     setScaleFactorEstimation((100 - percentageLabel.percentageDecrease) * 0.01)
     setPercentageLabel({
-      percentageDecrease: 61
+      percentageDecrease: 61,
     })
     setScaleLake(6.2)
   }
@@ -75,11 +75,13 @@ function GlacierMeltOverview2() {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-glacier-start">
+        <div className="bubble-box bubble-box-glacier-start">
           <p className="bubble-box-text">
-            <span className="question-style">
-              {t("Climate2_Bubble_Glacier.1")}
-            </span>{" "}
+            <b>
+              <span className="question-style">
+                {t("Climate2_Bubble_Glacier.1")}
+              </span>
+            </b>
             {t("Climate2_Bubble_Glacier.2")}
           </p>
         </div>
@@ -94,7 +96,7 @@ function GlacierMeltOverview2() {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-glacier-answer">
+        <div className="bubble-box bubble-box-glacier-answer">
           <p className="bubble-box-text extra-line-spacing">
             <b>
               {t("Climate2_Bubble_Glacier.3")}
@@ -107,7 +109,9 @@ function GlacierMeltOverview2() {
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
+              <span className="text-solution-bold">
+                {scaleLake.toFixed(1)} x
+              </span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 
@@ -145,7 +149,7 @@ function GlacierMeltOverview2() {
             <p className="slider-text-bold">
               {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
                 0
-              )}{" "}
+              )}
               km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
