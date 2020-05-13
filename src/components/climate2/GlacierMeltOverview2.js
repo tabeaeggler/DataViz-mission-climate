@@ -26,7 +26,7 @@ function GlacierMeltOverview2() {
     data_2019: 50.645,
   })
 
-  const solutionVolume = 39
+  const solutionVolume = 61
   const solutionIce = 51
 
   function handleSliderChange(p) {
@@ -57,7 +57,11 @@ function GlacierMeltOverview2() {
 
   function showResult() {
     setShowAnswer(true)
-    setScaleFactorEstimation(scaleLake)
+    setScaleFactorEstimation((100 - percentageLabel.percentageDecrease) * 0.01)
+    setPercentageLabel({
+      percentageDecrease: 61
+    })
+    setScaleLake(6.2)
   }
 
   /**
@@ -103,7 +107,7 @@ function GlacierMeltOverview2() {
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="text-solution-bold">{scaleLake} x</span>
+              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 

@@ -1,21 +1,19 @@
 import React from "react"
 import GlacierOriginal from "../../assets/img/glacierOriginal.svg"
-import FilledLake from "../../assets/img/filledLakeOfLucern.svg"
-import EstimationLake from "../../assets/img/estimationLakeOfLucern.svg"
-import ResultLake from "../../assets/img/resultLakeOfLucern.svg"
+import GlacierTransparent from "../../assets/img/glacierTransparent.svg"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
 const GlacierGraph = props => {
   const { t } = useTranslation()
-  const width = 346
-  const height = 551
+  const glacierWidth = 346
+  const glacierHeight = 551
 
   function getScaledLake(scaleFactor, image) {
     return (
       <img
-        width={width}
-        height={height * scaleFactor}
+        width={glacierWidth}
+        height={glacierHeight * scaleFactor}
         src={image}
         alt="scaled lake"></img>
     )
@@ -23,46 +21,66 @@ const GlacierGraph = props => {
 
   return (
     <React.Fragment>
-      <div className="lake-graph-container">
-        {/* <CSSTransition
+      <div className="glacier-scaled">
+        <CSSTransition
           in={props.showAnswer}
-          timeout={6000}
-          classNames="lake-animation-orginal"
+          timeout={5000}
+          classNames="glacier-animation-appear"
           unmountOnExit
           appear>
-          <div className="original-lake">
-            <p className="original-text-lake">Vierwaldstättersee</p>
-            {getScaledLake(1, OriginalLake)}
-          </div>
-        </CSSTransition> */}
-        {/* <CSSTransition
-          in={props.scaleFactorEstimation != 0}
-          timeout={3000}
-          classNames="lake-animation-estimation"
-          unmountOnExit
-          appear>
-          <div className="scaled-lake">
-            {getScaledLake(props.scaleFactorEstimation, EstimationLake)}
-          </div>
+          <p className="glacier-original-text">1850</p>
         </CSSTransition>
-        {
-          <CSSTransition
-            in={props.showAnswer}
-            timeout={3000}
-            classNames="lake-animation-result"
-            unmountOnExit
-            appear>
-            <div className="scaled-lake">
-              {getScaledLake(props.scaleFactor, ResultLake)}
-            </div>
-          </CSSTransition>
-        } */}
-        <div className="scaled-lake">
-          {!props.showAnswer
-            ? getScaledLake(props.scaleFactor, GlacierOriginal)
-            : null}
-        </div>
+        {getScaledLake(1, GlacierTransparent)}
+        
       </div>
+      {!props.showAnswer ? (
+        <div className="glacier-scaled">
+          {getScaledLake(props.scaleFactor, GlacierOriginal)}
+        </div>
+      ) : null}
+
+      <CSSTransition
+        in={props.showAnswer}
+        timeout={500}
+        classNames="glacier-animation-appear"
+        unmountOnExit
+        appear>
+        <div
+          style={{
+            bottom: props.scaleFactorEstimation * glacierHeight,
+            position: "absolute",
+            textAlign: "right",
+            left: window.innerWidth / 2 + glacierWidth / 2 - 20,
+          }}>
+          <p className="glacier-estimation-text">
+            {t("Climate2_Glacier_Graph")}
+          </p>
+          <div className="glacier-estimation-line"></div>
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={props.showAnswer}
+        timeout={2000}
+        classNames="glacier-animation-fade"
+        unmountOnExit
+        appear>
+        <div className="glacier-scaled">
+          {getScaledLake(props.scaleFactorEstimation, GlacierOriginal)}
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={props.showAnswer}
+        timeout={5000}
+        classNames="glacier-animation-appear"
+        unmountOnExit
+        appear>
+        <div className="glacier-scaled">
+          <p className="glacier-text">2019</p>
+          {getScaledLake(props.scaleFactor, GlacierOriginal)}
+        </div>
+      </CSSTransition>
     </React.Fragment>
   )
 }

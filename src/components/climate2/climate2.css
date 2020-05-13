@@ -114,9 +114,9 @@
   text-align: left;
 }
 .bubble-box-climate2-glacier-answer {
-  left: 30%;
-  width: 25%;
-  bottom: 15%;
+  left: 10%;
+  bottom: 45%;
+  width: 18%;
   text-align: left;
 }
 
@@ -199,94 +199,60 @@
   color: #ffd763;
 }
 
-/* Lake */
+/* Glacier */
 .original-lake {
   position: absolute;
   z-index: 5;
 }
 
-.scaled-lake {
+.glacier-scaled{
   position: absolute;
   width: 100%;
   bottom: 0;
   text-align: center;
 }
 
-.lake-graph-container {
-  margin-top: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.lake-animation-result-enter,
-.lake-animation-result-appear {
-  opacity: 0;
-  transition-property: 1s;
-  transition: opacity 3s ease-in;
-}
-.lake-animation-result-enter-active,
-.lake-animation-result-appear-active {
-  opacity: 1;
-}
-
-.lake-animation-result-exit {
-  opacity: 1;
-}
-
-.lake-animation-estimation-exit-active {
-  opacity: 0;
-  transition-timing-function: ease-in;
-  transition: opacity 2s linear;
-}
-
-.lake-animation-estimation-enter,
-.lake-animation-estimation-appear {
-  opacity: 0;
-  transition: opacity 2s linear;
-}
-
-.lake-animation-estimation-enter-active,
-.lake-animation-estimation-appear-active {
+.glacier-animation-fade-enter-active,
+.glacier-animation-fade-appear-active {
   opacity: 1;
   transition-timing-function: ease-out;
 }
 
-.lake-animation-estimation-enter-done {
+.glacier-animation-fade-enter-done {
   opacity: 0;
   visibility: hidden;
   transition: visibility 2s linear, opacity 2s linear;
 }
 
-.lake-animation-orginal-enter,
-.lake-animation-orginal-appear {
+.glacier-animation-appear-enter,
+.glacier-animation-appear-appear {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 2s linear;
-}
-.lake-animation-orginal-enter-active,
-.lake-animation-orginal-appear-active {
-  opacity: 0;
-  transition-timing-function: ease-out;
 }
 
-.lake-animation-orginal-exit {
-  opacity: 1;
-  transition-timing-function: ease-out;
-}
-
-.lake-animation-orginal-enter-done {
+.glacier-animation-appear-enter-done {
   opacity: 1;
   visibility: visible;
-  transition: visibility 2s linear, opacity 2s linear;
+  transition: visibility 3s ease-in, opacity 3s ease-in;
 }
 
-.original-text-lake {
-  font-size: 0.6em;
+.glacier-estimation-text {
+  color: #ffd763;
+}
+
+.glacier-original-text {
+  opacity: 0.2;
+}
+
+.glacier-text, .glacier-estimation-text, .glacier-original-text {
   margin: 0;
-  position: absolute;
-  left: 225px;
-  bottom: -5px;
-  color: #6a8adf;
-  width: 150px;
+  font-size: 0.7em;
+}
+
+.glacier-estimation-line {
+  margin:5px 0;
+  height:1px;
+  width: 160px;
+  background:
+    repeating-linear-gradient(to right,#ffd763 0,#ffd763 5px,transparent 5px,transparent 7px)
 }
