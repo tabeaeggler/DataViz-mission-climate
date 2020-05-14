@@ -5,23 +5,27 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
 /**
- * Creates a scalable glacier grafic
+ * Creates a scalable glacier graph
+ * @param {boolean} props.showAnswer indicates whether submission has occured
+ * @param {number} props.scaleFactor scale factor for scaling the svg glacier
+ * @param {number} props.scaleFactorEstimation scale factor of submitted estimation for scaling the glacier svg
  */
 const GlacierGraph = props => {
+  //translation
   const { t } = useTranslation()
+
+  //layout 
   const glacierWidth = 346
   const glacierHeight = 551
   const margin = 20
 
   /**
-   * Scales an image container for glacier svg
+   * Scales the image container for the glacier svg
    * @param {number} scaleFactor
-   * @param {svg} image
-   * @returns dom element
+   * @param {string} image 
+   * @returns dom element containing scaled glacier graphic
    */
   function getScaledGlacier(scaleFactor, image) {
-    console.log(image)
-
     return (
       <img
         width={glacierWidth}
@@ -57,7 +61,7 @@ const GlacierGraph = props => {
         unmountOnExit
         appear>
         <div className="glacier-scaled">
-          <p className="glacier-text">2019</p>
+          <p className="glacier-text glacier-result-text">2019</p>
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       </CSSTransition>

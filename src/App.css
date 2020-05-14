@@ -158,6 +158,10 @@ button.language-button,
   float: right;
 }
 
+.question-style {
+  color: #ffd763;
+}
+
 /*Fade for titles and linegraph*/
 .fade-enter,
 .fade-appear {

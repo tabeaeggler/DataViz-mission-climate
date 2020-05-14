@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, {useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -7,6 +7,9 @@ import GlacierGraph from "./GlacierGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
+/**
+ * Creates context for a scalable glacier graph with speech bubbles and slider
+ */
 function GlacierMeltOverview2() {
   //transaltion
   const { t } = useTranslation()
@@ -26,18 +29,28 @@ function GlacierMeltOverview2() {
     data_2019: 50.645,
   })
 
+  //solutions
   const solutionVolume = 61
   const solutionIce = 51
 
-  function handleSliderChange(p) {
+  /**
+   * Handles slider interaction. Sets new percentage and scale of lake.
+   * @param {number} percentage
+   */
+  function handleSliderChange(percentage) {
     setPercentageLabel({
-      percentageDecrease: p,
-      currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100,
+      percentageDecrease: percentage,
+      currentVolume:
+        dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100,
     })
-    setScaleLake(calculateScaleFactor(p))
+    setScaleLake(calculateScaleFactor(percentage))
   }
 
-  function calculateScaleFactor(p) {
+  /**
+   * Calculates scale of lake
+   * @returns {number} scale of lake
+   */
+  function calculateScaleFactor(percentage) {
     //Source: https://en.wikipedia.org/wiki/Water
     const densityWater = 997
     //Source: https://de.wikipedia.org/wiki/Eis
@@ -46,8 +59,7 @@ function GlacierMeltOverview2() {
     const volumeLakeLucern = 11.8
 
     var newCurrentVolume =
-      dataVolume.data_1850 - (dataVolume.data_1850 * p) / 100
-
+      dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100
     var difference = dataVolume.data_1850 - newCurrentVolume
     var conversionIceToWater = (densityIce * difference) / densityWater
     var scaleFactor = conversionIceToWater / volumeLakeLucern
@@ -55,17 +67,31 @@ function GlacierMeltOverview2() {
     return scaleFactor
   }
 
+  /**
+   * Handles submit event
+   */
   function showResult() {
+    const resultPercentage = 61
+
     setShowAnswer(true)
-    setScaleFactorEstimation((100 - percentageLabel.percentageDecrease) * 0.01)
+    setScaleFactorEstimation(calculatePercentage())
     setPercentageLabel({
-      percentageDecrease: 61,
+      percentageDecrease: resultPercentage,
     })
-    setScaleLake(6.2)
+    setScaleLake(calculateScaleFactor(resultPercentage))
   }
 
   /**
-   * Adds Speach Bubble with text for Globe
+   * Calculates percentage of remaining glacier volume according to the current volume decrease
+   * @returns {number} perscentage of remaining glacier volume
+   */
+  function calculatePercentage() {
+    return (100 - percentageLabel.percentageDecrease) * 0.01
+  }
+
+  /**
+   * Adds Speach Bubble for showing glacier quizz question
+   * @returns dom element with speech bubble
    */
   function createBubbleStartQuizz() {
     return (
@@ -88,6 +114,11 @@ function GlacierMeltOverview2() {
       </CSSTransition>
     )
   }
+
+  /**
+   * Adds Speach Bubble for showing glacier quizz answer
+   * @returns dom element with speech bubble
+   */
   function createBubbleShowAnswer() {
     return (
       <CSSTransition
@@ -105,7 +136,9 @@ function GlacierMeltOverview2() {
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="text-solution-bold">{solutionIce} km&sup3;</span>
+              <span className="text-solution-bold">
+                {solutionIce} km&sup3;
+              </span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
@@ -125,6 +158,10 @@ function GlacierMeltOverview2() {
     )
   }
 
+  /**
+   * Adds slider and glacier attributes
+   * @returns dom element with slider and glacier attributes
+   */
   function showSliderAndNumbers() {
     return (
       <CSSTransition
@@ -135,7 +172,7 @@ function GlacierMeltOverview2() {
         appear>
         <div className="slider-container-glacier">
           <Slider
-            max="80"
+            max="90"
             value={percentageLabel.percentageDecrease}
             onChange={handleSliderChange}
           />
@@ -149,8 +186,8 @@ function GlacierMeltOverview2() {
             <p className="slider-text-bold">
               {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
                 0
-              )}
-              km&sup3;
+              ) + " "}
+               km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
             <button
@@ -183,7 +220,7 @@ function GlacierMeltOverview2() {
             {createBubbleStartQuizz()}
             {createBubbleShowAnswer()}
             <GlacierGraph
-              scaleFactor={(100 - percentageLabel.percentageDecrease) * 0.01}
+              scaleFactor={calculatePercentage()}
               showAnswer={showAnswer}
               scaleFactorEstimation={scaleFactorEstimation}></GlacierGraph>
             {showSliderAndNumbers()}
