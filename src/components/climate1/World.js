@@ -16,8 +16,19 @@ import history from "../../routing/history"
  * and renders TemperatureLineGraph for selected country.
  */
 const World = () => {
+  //translation
   const { t } = useTranslation()
+  //globe
   const globeElement = useRef()
+  const currentLocationMarker = [
+    {
+      text: t("Climate1_Location"),
+      latitude: 46.85048,
+      longitude: 8.20635,
+      coutry: "Switzerland",
+    },
+  ]
+  //data
   const [countries, setCountries] = useState({
     features: [],
   })
@@ -27,16 +38,10 @@ const World = () => {
     filteredCountry: [],
   })
   const [globalData, setGlobalData] = useState()
-  const currentLocationMarker = [
-    {
-      text: t("Climate1_Location"),
-      latitude: 46.85048,
-      longitude: 8.20635,
-      coutry: "Switzerland",
-    },
-  ]
+  //color scale
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
+  //speech bubbles
   const [showInitialBubble, setShowInitialBubble] = useState(true)
 
   /**
@@ -65,50 +70,61 @@ const World = () => {
    */
   function createGlobe() {
     return (
-      <Globe
-        //global config
-        ref={globeElement}
-        showGraticules={true}
-        backgroundColor={"#141416"}
-        showAtmosphere={false}
-        width={window.innerWidth / 2}
-        //country config
-        polygonsData={countries.features}
-        polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
-        polygonCapColor={d => colorScaleGlobe(getVal(d))}
-        polygonSideColor={d =>
-          d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)"
-        }
-        polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
-        polygonLabel={({ properties: d }) => `
+      <div className="globe-container">
+        <Globe
+          //global config
+          ref={globeElement}
+          showGraticules={true}
+          backgroundColor={"#141416"}
+          showAtmosphere={false}
+          width={window.innerWidth / 2}
+          //country config
+          polygonsData={countries.features}
+          polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
+          polygonCapColor={d => colorScaleGlobe(getVal(d))}
+          polygonSideColor={d =>
+            d === clickedCountry.country
+              ? "rgba(0, 0, 0, 1)"
+              : "rgba(0, 0, 0, 0)"
+          }
+          polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
+          polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
-          d.TEMP === "NO_DATA" || d.TEMP === "nan"
-            ? t("Climate1_TooltipTemperature.2")
-            : Number(d.TEMP).toFixed(1) + "°C"
-        }<br/>
+            d.TEMP === "NO_DATA" || d.TEMP === "nan"
+              ? t("Climate1_TooltipTemperature.2")
+              : Number(d.TEMP).toFixed(1) + "°C"
+          }<br/>
       `}
-        onPolygonClick={d => updateCountry(d)}
-        polygonsTransitionDuration={300}
-        //position-marker config
-        labelTypeFace={OpenSans}
-        labelsData={currentLocationMarker}
-        labelLat={d => d.latitude}
-        labelLng={d => d.longitude}
-        labelText={d => d.text}
-        labelAltitude={d => {
-          if (clickedCountry.country !== undefined) {
-            return clickedCountry.country.properties.ADMIN === d.coutry
-              ? 0.12
-              : 0.06
-          }
-          return 0.06
-        }}
-        labelSize={1}
-        labelDotRadius={0.5}
-        labelColor={() => "rgba(187, 185, 185, 1)"}
-        labelResolution={6}
-      />
+          onPolygonClick={d => updateCountry(d)}
+          polygonsTransitionDuration={300}
+          //position-marker config
+          labelTypeFace={OpenSans}
+          labelsData={currentLocationMarker}
+          labelLat={d => d.latitude}
+          labelLng={d => d.longitude}
+          labelText={d => d.text}
+          labelAltitude={d => {
+            if (clickedCountry.country !== undefined) {
+              return clickedCountry.country.properties.ADMIN === d.coutry
+                ? 0.12
+                : 0.06
+            }
+            return 0.06
+          }}
+          labelSize={1}
+          labelDotRadius={0.5}
+          labelColor={() => "rgba(187, 185, 185, 1)"}
+          labelResolution={6}
+        />
+        {createBubbleGlobe()}
+        <div className="location-button">
+          <button onClick={handleZoom}>
+            <img src={LocationButton} alt="location"></img>
+            {t("Climate1_Location")}
+          </button>
+        </div>
+      </div>
     )
   }
 
@@ -143,7 +159,8 @@ const World = () => {
   }
 
   /**
-   * Adds Speach Bubble with text for Globe
+   * Adds speach bubble with text for globe
+   * @returns dom element with speech bubble for globe
    */
   function createBubbleGlobe() {
     return (
@@ -167,7 +184,8 @@ const World = () => {
   }
 
   /**
-   * Adds Speach Bubble with text for Linegraph
+   * Adds speach bubble with text for linegraph
+   * @returns dom element with speech bubble for linegraph
    */
   function createBubbleLineGraph() {
     return (
@@ -195,6 +213,10 @@ const World = () => {
     )
   }
 
+  /**
+   * Creates linegraph
+   * @returns dom element linegraph
+   */
   function createLinegraph() {
     return (
       <CSSTransition
@@ -229,16 +251,7 @@ const World = () => {
 
   return (
     <React.Fragment>
-      <div className="globe-container">
-        {createGlobe()}
-        {createBubbleGlobe()}
-        <div className="location-button">
-          <button onClick={handleZoom}>
-            <img src={LocationButton} alt="location"></img>
-            {t("Climate1_Location")}
-          </button>
-        </div>
-      </div>
+      {createGlobe()}
       {createLinegraph()}
     </React.Fragment>
   )

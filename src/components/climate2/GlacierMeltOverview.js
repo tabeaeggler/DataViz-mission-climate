@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, {useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -13,7 +13,7 @@ function GlacierMeltOverview() {
 
   //state
   const [showAnswer, setShowAnswer] = useState(false)
-  const [nextPage, setNextPage] = useState(false)
+  //const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentageDecrease: 0,
     currentVolume: 130,
@@ -21,10 +21,10 @@ function GlacierMeltOverview() {
   const [scaleFactor, setScaleFactor] = useState(0)
   const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
 
-  const [dataVolume, setDataVolume] = useState({
+  const dataVolume = {
     data_1850: 130,
     data_2019: 50.645,
-  })
+  }
 
   const solutionVolume = 39
   const solutionIce = 51

@@ -37,7 +37,7 @@ const LakeGraph = props => {
           </div>
         </CSSTransition>
         <CSSTransition
-          in={props.scaleFactorEstimation != 0}
+          in={props.scaleFactorEstimation !== 0}
           timeout={3000}
           classNames="lake-animation-estimation"
           unmountOnExit

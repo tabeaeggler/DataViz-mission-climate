@@ -16,7 +16,7 @@ function GlacierMeltOverview2() {
 
   //state
   const [showAnswer, setShowAnswer] = useState(false)
-  const [nextPage, setNextPage] = useState(false)
+  // const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentageDecrease: 0,
     currentVolume: 130,
@@ -24,10 +24,10 @@ function GlacierMeltOverview2() {
   const [scaleLake, setScaleLake] = useState(0)
   const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
 
-  const [dataVolume, setDataVolume] = useState({
+  const dataVolume = {
     data_1850: 130,
     data_2019: 50.645,
-  })
+  }
 
   //solutions
   const solutionVolume = 61
