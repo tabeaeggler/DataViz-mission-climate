@@ -25,6 +25,7 @@ const TemperatureLineGraph = props => {
   const svgRef = useRef()
   const svgLinesRef = useRef()
   const svgRefLegend = useRef()
+  const scaleSvg = 0.93
 
 
   /**
@@ -75,7 +76,8 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const width = (window.innerWidth / 2) * 0.8
+    const scaleGroup = 0.8
+    const width = (window.innerWidth / 2) * scaleGroup
     const height = 250
     const margin = 40
     //wrapper, so that the svg is available for d3
@@ -240,7 +242,7 @@ const TemperatureLineGraph = props => {
       <div className="temperature-graph-container">
         <svg
           className="temperature-graph"
-          width={(window.innerWidth / 2)*0.93}>
+          width={(window.innerWidth / 2)*scaleSvg}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
