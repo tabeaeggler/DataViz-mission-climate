@@ -37,19 +37,19 @@ const GlacierGraph = props => {
 
   return (
     <React.Fragment>
-      <div className="glacier-scaled">
+      <div className="glacier-img-container">
         <CSSTransition
           in={props.showAnswer}
           timeout={5000}
-          classNames="glacier-animation-appear"
+          classNames="glacier-animation-fade-in"
           unmountOnExit
           appear>
-          <p className="glacier-original-text">1850</p>
+          <p className="glacier-original-text">Volumen 1850</p>
         </CSSTransition>
         {getScaledGlacier(1, GlacierTransparent)}
       </div>
       {!props.showAnswer ? (
-        <div className="glacier-scaled">
+        <div className="glacier-img-container">
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       ) : null}
@@ -57,11 +57,11 @@ const GlacierGraph = props => {
       <CSSTransition
         in={props.showAnswer}
         timeout={5000}
-        classNames="glacier-animation-appear"
+        classNames="glacier-animation-scale-up"
         unmountOnExit
         appear>
-        <div className="glacier-scaled">
-          <p className="glacier-text glacier-result-text">2019</p>
+        <div className="glacier-img-container">
+          <p className="glacier-text glacier-result-text">Volumen 2019</p>
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       </CSSTransition>
@@ -69,7 +69,7 @@ const GlacierGraph = props => {
       <CSSTransition
         in={props.showAnswer}
         timeout={500}
-        classNames="glacier-animation-appear"
+        classNames="glacier-animation-fade-in"
         unmountOnExit
         appear>
         <div
@@ -89,10 +89,10 @@ const GlacierGraph = props => {
       <CSSTransition
         in={props.showAnswer}
         timeout={2000}
-        classNames="glacier-animation-fade"
+        classNames="glacier-animation-scale-down"
         unmountOnExit
         appear>
-        <div className="glacier-scaled">
+        <div className="glacier-img-container">
           {getScaledGlacier(props.scaleFactorEstimation, GlacierOriginal)}
         </div>
       </CSSTransition>
