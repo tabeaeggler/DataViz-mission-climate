@@ -4,7 +4,7 @@ import "./climate1.css"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
-function Climate1() {
+function Climate1Overview() {
   const { t } = useTranslation()
 
   return (
@@ -23,4 +23,4 @@ function Climate1() {
   )
 }
 
-export default Climate1
+export default Climate1Overview
