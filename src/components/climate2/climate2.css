@@ -8,6 +8,11 @@
   stroke-width: 5;
 }
 
+.draggable-area {
+  stroke: transparent;
+  stroke-width: 30;
+}
+
 .draggable-line-static {
   stroke-width: 3;
   stroke-dasharray: 5.5;

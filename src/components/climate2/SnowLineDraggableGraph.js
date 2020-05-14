@@ -214,20 +214,29 @@ const SnowLineDraggableGraph = props => {
         .text("1960")
 
       //render draggable line
-      svg
+      var draggableGroup = svg.append("g")
+
+      draggableGroup
+        .append("line")
+        .attr("class", "draggable-area")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", yScale(draggableLinePosition))
+        .attr("y2", yScale(draggableLinePosition))
+
+      draggableGroup
         .append("line")
         .attr("class", "draggable-line")
         .attr("x1", 0)
         .attr("x2", width)
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
-        .call(
-          drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended)
-        )
+
+      draggableGroup.call(
+        drag().on("start", dragstarted).on("drag", dragged).on("end", dragended)
+      )
       animationLine()
+
 
       var textDraggableLineMeter = svg
         .append("text")
@@ -254,6 +263,7 @@ const SnowLineDraggableGraph = props => {
           select(".draggable-line-text-meter").classed("active-text", true)
           select(".draggable-line-text-year").classed("active-text", true)
           svg.select(".draggable-line").interrupt()
+          svg.select(".draggable-area").interrupt()
           svg.select(".draggable-line-text-year").interrupt()
         }
       }
@@ -264,7 +274,8 @@ const SnowLineDraggableGraph = props => {
       function dragged() {
         if (!props.showAnswer) {
           var y = event.dy
-          var currentLine = select(this)
+          var currentLine = select(".draggable-line")
+          var currentDragArea = select(".draggable-area")
           var newYPosition = parseInt(currentLine.attr("y1")) + y
 
           //Check boundaries of drag area
@@ -275,6 +286,7 @@ const SnowLineDraggableGraph = props => {
 
           //Update the line properties
           currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
+          currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
 
           //Update text
           textDraggableLineMeter
@@ -321,7 +333,7 @@ const SnowLineDraggableGraph = props => {
      */
     function animationLine() {
       svg
-        .select(".draggable-line")
+        .selectAll(".draggable-line, .draggable-area")
         .transition()
         .delay(3000)
         .duration(600)
@@ -348,7 +360,6 @@ const SnowLineDraggableGraph = props => {
     createSnowLine()
   }, [props.showAnswer])
 
-  
   /**
    * Handle submission of result
    */
