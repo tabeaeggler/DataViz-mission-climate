@@ -6,6 +6,7 @@ import Slider from "rc-slider"
 import GlacierGraph from "./GlacierGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
+import "./climate2.css"
 
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider

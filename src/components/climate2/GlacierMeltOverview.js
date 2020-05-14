@@ -6,6 +6,7 @@ import Slider from "rc-slider"
 import LakeGraph from "./LakeGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
+import "./climate2.css"
 
 function GlacierMeltOverview() {
   //transaltion

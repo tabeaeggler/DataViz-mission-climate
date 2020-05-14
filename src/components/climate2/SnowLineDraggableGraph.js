@@ -10,6 +10,12 @@ import {
   easeLinear,
 } from "d3"
 
+/**
+ * Creates a draggable snowline graph
+ * @param {boolean} props.showAnswer indicates whether submission has occured
+ * @param {array} props.data height of snowline of specific year
+ * @param {function} props.showQuizzResult handles submit event
+ */
 const SnowLineDraggableGraph = props => {
   //transaltion
   const { t } = useTranslation()
@@ -23,6 +29,7 @@ const SnowLineDraggableGraph = props => {
   const mountainHeight = 2128
   const marginTextY = 60
   const marginTextX = 50
+  const offset = 75
 
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
@@ -40,7 +47,7 @@ const SnowLineDraggableGraph = props => {
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
     if (props.showAnswer) {
-      //create distance rectangle and answer text
+      //create rectangle, line and text to show difference between original and solution
       svg
         .append("rect")
         .attr("class", "difference-rect")
@@ -110,7 +117,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", 8)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < 75 &&
+          props.data[1].snowline - draggableLinePosition < offset &&
             props.data[1].snowline - draggableLinePosition > 0
             ? yScale(props.data[1].snowline + marginTextY / 2)
             : yScale(props.data[1].snowline - marginTextY)
@@ -123,7 +130,7 @@ const SnowLineDraggableGraph = props => {
         .ease(easeLinear)
         .style("opacity", 1)
 
-      //render draggable line and text STATIC
+      //render draggable line and text statically
       svg.select(".draggable-line-text-year").remove()
       svg.select(".draggable-line-text-meter").remove()
       svg.select(".draggable-line").remove()
@@ -142,7 +149,7 @@ const SnowLineDraggableGraph = props => {
         .attr(
           "y",
           props.data[1].snowline - draggableLinePosition < 0 &&
-            props.data[1].snowline - draggableLinePosition > -75
+            props.data[1].snowline - draggableLinePosition > -offset
             ? yScale(draggableLinePosition) - 5
             : yScale(draggableLinePosition - marginTextY)
         )
@@ -155,7 +162,7 @@ const SnowLineDraggableGraph = props => {
         .attr(
           "y",
           props.data[1].snowline - draggableLinePosition < 0 &&
-            props.data[1].snowline - draggableLinePosition > -75
+            props.data[1].snowline - draggableLinePosition > -offset
             ? yScale(draggableLinePosition) - 5
             : yScale(draggableLinePosition - marginTextY)
         )
@@ -168,7 +175,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", width - marginTextX)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < 75 &&
+          props.data[1].snowline - draggableLinePosition < offset &&
             props.data[1].snowline - draggableLinePosition > 0
             ? yScale(props.data[1].snowline + marginTextY / 2)
             : yScale(props.data[1].snowline - marginTextY)
@@ -237,6 +244,9 @@ const SnowLineDraggableGraph = props => {
         .text(t("Climate2_Graph.2"))
       animationLineText()
 
+      /**
+       * Handle drag start event
+       */
       function dragstarted() {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
@@ -248,6 +258,9 @@ const SnowLineDraggableGraph = props => {
         }
       }
 
+      /**
+       * Handle drag event
+       */
       function dragged() {
         if (!props.showAnswer) {
           var y = event.dy
@@ -267,11 +280,13 @@ const SnowLineDraggableGraph = props => {
           textDraggableLineMeter
             .attr("y", newYPosition + marginTextY / 4)
             .text(yScale.invert(newYPosition).toFixed(0) + " m")
-
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
         }
       }
 
+      /**
+       * Handle drag end event
+       */
       function dragended() {
         if (!props.showAnswer) {
           select(this).classed("active-d3-item", false)
@@ -281,6 +296,9 @@ const SnowLineDraggableGraph = props => {
       }
     }
 
+    /**
+     * Handle animation of text
+     */
     function animationLineText() {
       svg
         .select(".draggable-line-text-year")
@@ -288,16 +306,19 @@ const SnowLineDraggableGraph = props => {
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y", yScale(draggableLinePosition - marginTextY + 60))
+        .attr("y", yScale(draggableLinePosition))
         .transition()
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextY + 60))
+        .attr("y", yScale(draggableLinePosition))
         .transition()
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .on("end", animationLineText)
     }
 
+    /**
+     * Handle animation of draggable line
+     */
     function animationLine() {
       svg
         .select(".draggable-line")
@@ -305,14 +326,14 @@ const SnowLineDraggableGraph = props => {
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y1", d => yScale(draggableLinePosition + 60))
-        .attr("y2", d => yScale(draggableLinePosition + 60))
+        .attr("y1", d => yScale(draggableLinePosition + marginTextY))
+        .attr("y2", d => yScale(draggableLinePosition + marginTextY))
         .transition()
         .attr("y1", d => yScale(draggableLinePosition))
         .attr("y2", d => yScale(draggableLinePosition))
         .transition()
-        .attr("y1", d => yScale(draggableLinePosition + 60))
-        .attr("y2", d => yScale(draggableLinePosition + 60))
+        .attr("y1", d => yScale(draggableLinePosition + marginTextY))
+        .attr("y2", d => yScale(draggableLinePosition + marginTextY))
         .transition()
         .attr("y1", d => yScale(draggableLinePosition))
         .attr("y2", d => yScale(draggableLinePosition))
@@ -327,8 +348,7 @@ const SnowLineDraggableGraph = props => {
     createSnowLine()
   }, [props.showAnswer])
 
-  useEffect(() => {}, [props])
-
+  
   /**
    * Handle submission of result
    */

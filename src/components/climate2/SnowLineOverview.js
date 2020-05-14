@@ -3,19 +3,24 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import Snow from "react-snowstorm"
-import "./climate2.css"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 import history from "../../routing/history"
+import "./climate2.css"
 
+/**
+ * Creates context for the snowline graph 
+ */
 function SnowLineOverview() {
+  //translation
   const { t } = useTranslation()
-
+  //speech bubbles
   const [showAnswer, setShowAnswer] = useState(false)
-
+  //data
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
 
-  /**
-   * Adds Speach Bubble with text for Globe
+   /**
+   * Adds Speach Bubble for showing snowline quizz question
+   * @returns dom element with speech bubble
    */
   function createBubbleStartQuizz() {
     return (
@@ -38,6 +43,10 @@ function SnowLineOverview() {
     )
   }
 
+   /**
+   * Adds Speach Bubble for showing snowline quizz answer
+   * @returns dom element with speech bubble
+   */
   function createBubbleShowAnswer() {
     return (
       <CSSTransition
@@ -66,6 +75,9 @@ function SnowLineOverview() {
     )
   }
 
+  /**
+   * Handles submit event
+   */
   function showQuizzResult() {
     setData(prevState => [...prevState, { year: 2020, snowline: 1250 }])
     setShowAnswer(true)
