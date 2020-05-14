@@ -213,7 +213,7 @@ const SnowLineDraggableGraph = props => {
         .attr("y", yScale(props.data[0].snowline - marginTextY))
         .text("1960")
 
-      //render draggable line
+      //render draggable line and its extended drag area
       var draggableGroup = svg.append("g")
 
       draggableGroup
@@ -237,7 +237,6 @@ const SnowLineDraggableGraph = props => {
       )
       animationLine()
 
-
       var textDraggableLineMeter = svg
         .append("text")
         .attr("class", "draggable-line-text-meter snowline-text")
@@ -259,12 +258,14 @@ const SnowLineDraggableGraph = props => {
       function dragstarted() {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
-          select(this).classed("active-d3-item", true)
-          select(".draggable-line-text-meter").classed("active-text", true)
-          select(".draggable-line-text-year").classed("active-text", true)
-          svg.select(".draggable-line").interrupt()
-          svg.select(".draggable-area").interrupt()
-          svg.select(".draggable-line-text-year").interrupt()
+          svg
+            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
+            .classed("active-text", true)
+          svg
+            .selectAll(
+              ".draggable-line, .draggable-area, .draggable-line-text-year"
+            )
+            .interrupt()
         }
       }
 
@@ -301,9 +302,9 @@ const SnowLineDraggableGraph = props => {
        */
       function dragended() {
         if (!props.showAnswer) {
-          select(this).classed("active-d3-item", false)
-          select(".draggable-line-text-meter").classed("active-text", false)
-          select(".draggable-line-text-year").classed("active-text", false)
+          svg
+            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
+            .classed("active-text", false)
         }
       }
     }
