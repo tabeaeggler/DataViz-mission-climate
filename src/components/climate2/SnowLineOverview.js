@@ -8,7 +8,7 @@ import history from "../../routing/history"
 import "./climate2.css"
 
 /**
- * Creates context for the snowline graph 
+ * Creates context for the snowline graph
  */
 function SnowLineOverview() {
   //translation
@@ -18,7 +18,7 @@ function SnowLineOverview() {
   //data
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
 
-   /**
+  /**
    * Adds Speach Bubble for showing snowline quizz question
    * @returns dom element with speech bubble
    */
@@ -34,7 +34,7 @@ function SnowLineOverview() {
           <p className="bubble-box-text">
             {t("Climate2_Bubble_Snowline.1")}
             <span className="question-style">
-              {t("Climate2_Bubble_Snowline.2")}
+              <b>{t("Climate2_Bubble_Snowline.2")}</b>
             </span>
             {/*{t("Climate2_Bubble_Snowline.3")}*/}
           </p>
@@ -43,7 +43,7 @@ function SnowLineOverview() {
     )
   }
 
-   /**
+  /**
    * Adds Speach Bubble for showing snowline quizz answer
    * @returns dom element with speech bubble
    */
