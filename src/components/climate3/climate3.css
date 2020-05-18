@@ -1,0 +1,34 @@
+.svg-container {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.bubble-CH4 {
+    fill: #40B79B;
+}
+
+.bubble-N20 {
+    fill: #FFD763;
+}
+
+.bubble-FGAS {
+    fill: #6A8ADF;
+}
+
+.bubble-C02-Electricity,
+.bubble-C02-Industry,
+.bubble-C02-Agriculture,
+.bubble-C02-Transport,
+.bubble-C02-Buildings,
+.bubble-C02-Other
+ {
+    fill: #D14AA7;
+}
+
+.bubble-C02-Electricity2
+{
+    opacity: 0.5;
+    fill: #D14AA7;
+}
