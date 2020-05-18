@@ -130,7 +130,7 @@ function Climate3() {
         .append("text")
         .attr("class", "bubble-title bubble-CH4")
         .attr("x", width * 0.88)
-        .attr("y", 185)
+        .attr("y", 180)
         .text("Methan CH4")
         .style("opacity", 0)
         .transition()
@@ -140,15 +140,13 @@ function Climate3() {
         .style("opacity", 1)
     })
 
-    if (textboxes.splitC02) {
-      console.log("gu")
-    }
-
     //Split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
       console.log("by sector") //Doesn't work
       d3.selectAll(".bubble-CH4").remove()
     })
+
+    //remove hide-class
   }
 
   /**
@@ -158,7 +156,7 @@ function Climate3() {
     d3.csv(BubbleObjectsPath).then(data => {
       createBubbleChart(data)
     })
-  }, textboxes)
+  }, [])
 
   function createBubble1() {
     return (
@@ -176,9 +174,10 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-gas"
-            onClick={() =>
+            onClick={() => {
+              //createbuble2 einblenden -> hide-textbox remove
               setTextboxes({ random: false, splitGas: true, splitC02: false })
-            }>
+            }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
@@ -188,12 +187,7 @@ function Climate3() {
 
   function createBubble2() {
     return (
-      <CSSTransition
-        in={textboxes.splitGas}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox2">
           <p className="bubble-box-text">
             Dabei wird das Gas C02 am Meisten ausgestossen...
@@ -202,24 +196,18 @@ function Climate3() {
             id="next-button"
             id="split-bubbles-by-sector"
             onClick={() => {
-              console.log("Bubble2 clicked")
               setTextboxes({ random: false, splitGas: false, splitC02: true })
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
-      </CSSTransition>
+      </div>
     )
   }
 
   function createBubble3() {
     return (
-      <CSSTransition
-        in={textboxes.splitC02}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <div className={textboxes.splitC02 ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
           <p className="bubble-box-text">Co2-Ausstoss nach Sektor...</p>
           <button
@@ -230,7 +218,7 @@ function Climate3() {
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
-      </CSSTransition>
+      </div>
     )
   }
 
@@ -247,7 +235,7 @@ function Climate3() {
           <h2 className="climate2-subtitle">{t("Climate2_Title.2")}</h2>
           {createBubble1()}
           {createBubble2()}
-          {createBubble3()}
+
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>

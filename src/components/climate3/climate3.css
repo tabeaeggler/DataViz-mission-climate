@@ -32,7 +32,15 @@
   fill: #d14aa7;
 }
 
-.bubble-title {
+.bubble-title-gas {
   font-size: 1.4em;
   font-family: "Inconsolata", monospace;
+}
+
+.hide-textbox {
+  visibility: hidden;
+}
+
+.show-textbox {
+  visibility: visible;
 }
