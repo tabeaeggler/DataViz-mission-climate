@@ -17,7 +17,7 @@ function Climate3() {
     splitC02: false,
   })
   const svgRef = useRef()
-  var width = 1200,
+  var width = 1400,
     height = 550
 
   function createBubbleChart(data) {
@@ -89,7 +89,7 @@ function Climate3() {
 
       svg
         .append("text")
-        .attr("class", "bubble-title bubble-FGAS")
+        .attr("class", "bubble-title-gas bubble-FGAS")
         .attr("x", width * 0.03)
         .attr("y", 235)
         .text("F-Gas")
@@ -102,7 +102,7 @@ function Climate3() {
 
       svg
         .append("text")
-        .attr("class", "bubble-title bubble-N20")
+        .attr("class", "bubble-title-gas bubble-N20")
         .attr("x", width * 0.23)
         .attr("y", 210)
         .text("N20")
@@ -115,7 +115,7 @@ function Climate3() {
 
       svg
         .append("text")
-        .attr("class", "bubble-title bubble-C02")
+        .attr("class", "bubble-title-gas bubble-C02")
         .attr("x", width * 0.53)
         .attr("y", 90)
         .text("C02")
@@ -128,7 +128,7 @@ function Climate3() {
 
       svg
         .append("text")
-        .attr("class", "bubble-title bubble-CH4")
+        .attr("class", "bubble-title-gas bubble-CH4")
         .attr("x", width * 0.88)
         .attr("y", 180)
         .text("Methan CH4")
@@ -142,8 +142,37 @@ function Climate3() {
 
     //Split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
-      console.log("by sector") //Doesn't work
+      console.log("by sector")
+      //TODO: Fadeout
       d3.selectAll(".bubble-CH4").remove()
+      d3.selectAll(".bubble-FGAS").remove()
+      d3.selectAll(".bubble-N20").remove()
+
+      //Split C02 bubbles
+      var forceXSplitedBySector = d3Force
+        .forceX(function (d) {
+          if (d.type === "C02-Electricity") {
+            return width * 0.1
+          } else if (d.type === "C02-Agriculture") {
+            return width * 0.3
+          } else if (d.type === "C02-Industry") {
+            return width * 0.5
+          } else if (d.type === "C02-Transport") {
+            return width * 0.68
+          } else if (d.type === "C02-Other") {
+            return width * 0.82
+          } else if (d.type === "C02-Buildings") {
+            return width * 0.95
+          }
+        })
+        .strength(0.08)
+
+      simulation
+        .force("x", forceXSplitedBySector) //center bubbles on x-axis
+        .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
+        .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
+        .alphaTarget(0.2) //move speed
+        .restart() //restart simulatin with new force
     })
 
     //remove hide-class
@@ -175,7 +204,6 @@ function Climate3() {
             id="next-button"
             id="split-bubbles-by-gas"
             onClick={() => {
-              //createbuble2 einblenden -> hide-textbox remove
               setTextboxes({ random: false, splitGas: true, splitC02: false })
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -235,7 +263,7 @@ function Climate3() {
           <h2 className="climate2-subtitle">{t("Climate2_Title.2")}</h2>
           {createBubble1()}
           {createBubble2()}
-
+          {createBubble3()}
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
