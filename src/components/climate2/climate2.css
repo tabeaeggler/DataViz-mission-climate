@@ -40,6 +40,12 @@
   left: 20%;
 }
 
+.glacier-title-wrapper {
+  position: absolute;
+  bottom: 37.5%;
+  right: 17.0%
+}
+
 .zoom-in-landscape-enter-done {
   transform-origin: 0% 100%;
   transform: scale(1.6);
@@ -52,15 +58,16 @@
 }
 
 .zoom-in-landscape-exit-active {
-  transform-origin: 100% 100%;
-  transform: scale(2);
+  transform-origin: 94% 100%;
+  transform: scale(1.6);
   transition: all 2s;
 }
 
 .zoom-in-landscape-exit-done {
-  transform-origin: 100% 100%;
-  transform: scale(2);
+  transform-origin: 94% 100%;
+  transform: scale(2.15);
   transition: transform 2s;
+  background-image:  url("../../assets/img/background2.svg")!important;
 }
 
 .snowline-enter {
@@ -156,12 +163,18 @@
 
 /* Glacier */
 
-.bubble-box-glacier-start,
-.bubble-box-glacier-answer {
-  right: 36%;
-  top: 43%;
-  width: 25%;
+.bubble-box-glacier-start {
+  left: -30%;
+  bottom: -200%;
+  width: 50%;
   text-align: left;
+}
+
+.bubble-box-glacier-answer {
+  right: 100px;
+  bottom: 320px;
+  text-align: left;
+  width: 400px;
 }
 
 .rc-slider-handle {
@@ -184,9 +197,9 @@
 
 .slider-container-glacier {
   position: absolute;
-  width: 20%;
-  right: 39%;
-  bottom: 35%;
+  left: -28%;
+  bottom: -220%;
+  width: 50%;
 }
 
 .slider-text-volume,
@@ -240,11 +253,7 @@
   position: absolute;
   bottom: 0;
   text-align: center;
-}
-
-.glacier-img {
-  position: absolute;
-  bottom: 0;
+  width: 100%;
 }
 
 .glacier-animation-fade-in-enter,
@@ -286,7 +295,7 @@
 }
 
 .glacier-result-text {
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .glacier-estimation-text {
@@ -296,7 +305,8 @@
 .glacier-original-text,
 .glacier-result-text {
   transform: rotate(-2.7deg);
-  padding-right: 25px;
+  width: 100px;
+  padding-left: 110px;
 }
 
 .glacier-estimation-line {
@@ -313,7 +323,7 @@
 }
 
 .glacier-zoom {
-  zoom: 60%
+  zoom: 45%
 }
 
 .zoom-mountain {
@@ -328,4 +338,10 @@
   background-image: url("../../assets/img/background.svg");
   background-repeat: no-repeat;
   background-position: bottom;
+}
+
+.glacier-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 31%;
 }

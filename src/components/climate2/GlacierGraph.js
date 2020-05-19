@@ -14,7 +14,7 @@ const GlacierGraph = props => {
   //translation
   const { t } = useTranslation()
 
-  //layout 
+  //layout
   const glacierWidth = 346
   const glacierHeight = 551
   const margin = 20
@@ -22,7 +22,7 @@ const GlacierGraph = props => {
   /**
    * Scales the image container for the glacier svg
    * @param {number} scaleFactor
-   * @param {string} image 
+   * @param {string} image
    * @returns dom element containing scaled glacier graphic
    */
   function getScaledGlacier(scaleFactor, image) {
@@ -31,8 +31,7 @@ const GlacierGraph = props => {
         width={glacierWidth}
         height={glacierHeight * scaleFactor}
         src={image}
-        alt="scaled glacier"
-      className="glacier-img"></img>
+        alt="scaled glacier"></img>
     )
   }
 
@@ -78,7 +77,7 @@ const GlacierGraph = props => {
             bottom: props.scaleFactorEstimation * glacierHeight,
             position: "absolute",
             textAlign: "right",
-            left: window.innerWidth / 2 + glacierWidth / 2 - margin,
+            left: glacierWidth,
           }}>
           <p className="glacier-estimation-text">
             {t("Climate2_Glacier_Graph")}

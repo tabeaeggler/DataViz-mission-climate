@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
@@ -11,7 +11,7 @@ import "./climate2.css"
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider
  */
-function GlacierMeltOverview2() {
+const GlacierMeltOverview2 = props => {
   //transaltion
   const { t } = useTranslation()
 
@@ -137,9 +137,7 @@ function GlacierMeltOverview2() {
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="text-solution-bold">
-                {solutionIce} km&sup3;
-              </span>
+              <span className="text-solution-bold">{solutionIce} km&sup3;</span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
@@ -188,7 +186,7 @@ function GlacierMeltOverview2() {
               {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
                 0
               ) + " "}
-               km&sup3;
+              km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
             <button
@@ -209,26 +207,26 @@ function GlacierMeltOverview2() {
   return (
     <React.Fragment>
       <CSSTransition
-        in={true}
-        timeout={100000}
-        classNames="fade"
+        in={props.showInteraction}
+        timeout={{ enter: 3000, exit: 0 }}
+        classNames="fade-climate2"
         unmountOnExit
         appear>
-        <div>
+        <div className="glacier-zoom glacier-title-wrapper">
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
-          <div className="glacier-container">
-            {createBubbleStartQuizz()}
-            {createBubbleShowAnswer()}
-            <GlacierGraph
-              scaleFactor={calculatePercentage()}
-              showAnswer={showAnswer}
-              scaleFactorEstimation={scaleFactorEstimation}></GlacierGraph>
-            {showSliderAndNumbers()}
-            <h6 className="source">{t("Climate2_Source_Glacier")}</h6>
-          </div>
+          <h6 className="source source-climate2">{t("Climate2_Source_Glacier")}</h6>
+          {createBubbleStartQuizz()}
+          {showSliderAndNumbers()}
         </div>
       </CSSTransition>
+      <div className="glacier-wrapper glacier-zoom">
+        <GlacierGraph
+          scaleFactor={calculatePercentage()}
+          showAnswer={showAnswer}
+          scaleFactorEstimation={scaleFactorEstimation}></GlacierGraph>
+        {createBubbleShowAnswer()}
+      </div>
     </React.Fragment>
   )
 }
