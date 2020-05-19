@@ -59,7 +59,7 @@
 
 .zoom-in-landscape-exit-active {
   transform-origin: 94% 100%;
-  transform: scale(1.6);
+  transform: scale(2.15);
   transition: all 2s;
 }
 
