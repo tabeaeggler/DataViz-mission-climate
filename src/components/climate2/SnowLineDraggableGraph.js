@@ -189,7 +189,7 @@ const SnowLineDraggableGraph = props => {
         .style("opacity", 1)
     }
 
-    if (!props.showAnswer) {
+    if (!props.showAnswer && props.showInteraction) {
       //add static line and text for 1960
       svg
         .append("line")
@@ -359,7 +359,7 @@ const SnowLineDraggableGraph = props => {
    */
   useEffect(() => {
     createSnowLine()
-  }, [props.showAnswer])
+  }, [props.showAnswer, props.showInteraction])
 
   /**
    * Handle submission of result

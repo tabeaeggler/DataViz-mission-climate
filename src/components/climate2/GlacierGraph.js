@@ -31,7 +31,8 @@ const GlacierGraph = props => {
         width={glacierWidth}
         height={glacierHeight * scaleFactor}
         src={image}
-        alt="scaled lake"></img>
+        alt="scaled glacier"
+      className="glacier-img"></img>
     )
   }
 

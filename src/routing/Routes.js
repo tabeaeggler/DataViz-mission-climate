@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Router, Switch, Route } from "react-router-dom"
 
-import Snowline from "../components/climate2/SnowLineOverview"
+import Snowline from "../components/climate2/Climate2Overview"
 import Climate1 from "../components/climate1/Climate1Overview"
 import Glacier from "../components/climate2/GlacierMeltOverview"
 import Glacier2 from "../components/climate2/GlacierMeltOverview2"

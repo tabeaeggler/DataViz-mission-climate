@@ -10,7 +10,7 @@ import "./climate2.css"
 /**
  * Creates context for the snowline graph
  */
-function SnowLineOverview() {
+const SnowLineOverview = props => {
   //translation
   const { t } = useTranslation()
   //speech bubbles
@@ -86,26 +86,27 @@ function SnowLineOverview() {
   return (
     <React.Fragment>
       <CSSTransition
-        in={true}
-        timeout={100000}
-        classNames="fade"
+        in={props.showInteraction}
+        timeout={3000}
+        classNames="fade-climate2"
         unmountOnExit
         appear>
-        <div>
-          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+        <div className="snowline-title-wrapper zoom-mountain">
+          <h1 className="title title-climate2"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
-          <div className="snowline-wrapper">
-            {createBubbleStartQuizz()}
-            {createBubbleShowAnswer()}
-            <SnowLineDraggableGraph
-              showAnswer={showAnswer}
-              data={data}
-              showQuizzResult={showQuizzResult}
-            />
-          </div>
-          <h6 className="source">{t("Climate2_Source_Snow")}</h6>
+          <h6 className="source source-climate2">{t("Climate2_Source_Snow")}</h6>
+          {createBubbleStartQuizz()}
         </div>
       </CSSTransition>
+      <div className="snowline-wrapper zoom-mountain">
+        <SnowLineDraggableGraph
+          showAnswer={showAnswer}
+          data={data}
+          showQuizzResult={showQuizzResult}
+          showInteraction={props.showInteraction}
+        />
+        {createBubbleShowAnswer()}
+      </div>
       <Snow
         animationInterval={50}
         followMouse={false}

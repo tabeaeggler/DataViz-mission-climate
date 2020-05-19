@@ -38,7 +38,6 @@ p {
 }
 
 .title {
-  z-index: 100000;
   position: relative;
   padding-bottom: 1%;
   margin-top: 95px;
@@ -47,7 +46,6 @@ p {
 
 .subtitle {
   position: relative;
-  z-index: 100000;
   opacity: 0.7;
 }
 
