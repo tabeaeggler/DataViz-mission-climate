@@ -7,19 +7,28 @@ import GlacierMeltOverview2 from "./GlacierMeltOverview2"
 function Climate1Overview() {
   const { t } = useTranslation()
   const [showInteraction, setShowInteraction] = useState(false)
+  const [showMountain, setShowMountain] = useState(true)
+
+  function showGlacier() {
+    setShowInteraction(false)
+    setShowMountain(false)
+  }
 
   return (
     <React.Fragment>
       <CSSTransition
-        in={true}
-        timeout={1500}
+        in={showMountain}
+        timeout={{enter:1500, exit:2000}}
         classNames="zoom-in-landscape"
-        unmountOnExit
+        unmountOnExit={false}
         appear
-        onEntered={() => setShowInteraction(true)}>
+        onEntered={() => setShowInteraction(true)}
+        onExit={() => setShowInteraction(false)}>
         <div className={"landscape-container"}>
           <SnowLineOverview
-            showInteraction={showInteraction}></SnowLineOverview>
+            showInteraction={showInteraction}
+            showGlacier={showGlacier}></SnowLineOverview>
+          <GlacierMeltOverview2></GlacierMeltOverview2>
         </div>
       </CSSTransition>
     </React.Fragment>

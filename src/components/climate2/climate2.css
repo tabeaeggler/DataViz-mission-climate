@@ -27,14 +27,14 @@
   stroke-linecap: round;
 }
 
-.snowline-wrapper{
+.snowline-wrapper {
   position: absolute;
   bottom: 0;
   text-align: center;
   left: 17%;
 }
 
-.snowline-title-wrapper{
+.snowline-title-wrapper {
   position: absolute;
   bottom: 50%;
   left: 20%;
@@ -43,7 +43,24 @@
 .zoom-in-landscape-enter-done {
   transform-origin: 0% 100%;
   transform: scale(1.6);
-  transition: transform 3s, filter 3s ease-out;
+  transition: transform 3s;
+}
+
+.zoom-in-landscape-exit {
+  transform-origin: 0% 100%;
+  transform: scale(1.6);
+}
+
+.zoom-in-landscape-exit-active {
+  transform-origin: 100% 100%;
+  transform: scale(2);
+  transition: all 2s;
+}
+
+.zoom-in-landscape-exit-done {
+  transform-origin: 100% 100%;
+  transform: scale(2);
+  transition: transform 2s;
 }
 
 .snowline-enter {
@@ -139,12 +156,6 @@
 
 /* Glacier */
 
-.glacier-container {
-  float: right;
-  width: 500px;
-  height: 500px;
-}
-
 .bubble-box-glacier-start,
 .bubble-box-glacier-answer {
   right: 36%;
@@ -229,7 +240,6 @@
   position: absolute;
   bottom: 0;
   text-align: center;
-  right: 30%;
 }
 
 .glacier-img {
@@ -302,8 +312,8 @@
   );
 }
 
-.zoom-glacier {
-  zoom: 30%;
+.glacier-zoom {
+  zoom: 60%
 }
 
 .zoom-mountain {

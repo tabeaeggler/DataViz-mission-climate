@@ -50,7 +50,7 @@ const SnowLineOverview = props => {
   function createBubbleShowAnswer() {
     return (
       <CSSTransition
-        in={showAnswer}
+        in={showAnswer && props.showInteraction}
         timeout={4000}
         classNames="bubble-fade"
         unmountOnExit
@@ -66,7 +66,7 @@ const SnowLineOverview = props => {
           <button
             id="next-button"
             onClick={() => {
-              history.push("/glacier")
+              props.showGlacier()
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
@@ -87,7 +87,7 @@ const SnowLineOverview = props => {
     <React.Fragment>
       <CSSTransition
         in={props.showInteraction}
-        timeout={3000}
+        timeout={{enter:3000, exit:0}}
         classNames="fade-climate2"
         unmountOnExit
         appear>
