@@ -66,8 +66,9 @@
 .zoom-in-landscape-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
-  transition: transform 2s;
   background-image:  url("../../assets/img/background2.svg")!important;
+  transition: all 2s;
+
 }
 
 .snowline-enter {
