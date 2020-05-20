@@ -1,0 +1,47 @@
+.svg-container {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  /*background-color: blue;*/
+}
+
+.bubble-CH4 {
+  fill: #40b79b;
+}
+
+.bubble-N02 {
+  fill: #ffd763;
+}
+
+.bubble-FGAS {
+  fill: #6a8adf;
+}
+
+.bubble-C02,
+.bubble-C02-Electricity,
+.bubble-C02-Industry,
+.bubble-C02-Agriculture,
+.bubble-C02-Transport,
+.bubble-C02-Buildings,
+.bubble-C02-Other {
+  fill: #d14aa7;
+}
+
+.bubble-C02-Electricity2 {
+  opacity: 0.5;
+  fill: #d14aa7;
+}
+
+.bubble-title-gas {
+  font-size: 1.4em;
+  font-family: "Inconsolata", monospace;
+}
+
+.hide-textbox {
+  visibility: hidden;
+}
+
+.show-textbox {
+  visibility: visible;
+}
