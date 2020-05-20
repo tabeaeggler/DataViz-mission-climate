@@ -70,7 +70,7 @@ function Climate3() {
         .forceX(function (d) {
           if (d.type === "FGAS") {
             return width * 0.05
-          } else if (d.type === "N20") {
+          } else if (d.type === "N02") {
             return width * 0.24
           } else if (d.type === "CH4") {
             return width * 0.9
@@ -87,66 +87,23 @@ function Climate3() {
         .alphaTarget(0.2) //move speed
         .restart() //restart simulatin with new force
 
-      svg
-        .append("text")
-        .attr("class", "bubble-title-gas bubble-FGAS")
-        .attr("x", width * 0.03)
-        .attr("y", 235)
-        .text("F-Gas")
-        .style("opacity", 0)
-        .transition()
-        .delay(3500)
-        .duration(1000)
-        .ease(d3.easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "bubble-title-gas bubble-N20")
-        .attr("x", width * 0.23)
-        .attr("y", 210)
-        .text("N20")
-        .style("opacity", 0)
-        .transition()
-        .delay(3500)
-        .duration(1000)
-        .ease(d3.easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "bubble-title-gas bubble-C02")
-        .attr("x", width * 0.53)
-        .attr("y", 90)
-        .text("C02")
-        .style("opacity", 0)
-        .transition()
-        .delay(3500)
-        .duration(1000)
-        .ease(d3.easeLinear)
-        .style("opacity", 1)
-
-      svg
-        .append("text")
-        .attr("class", "bubble-title-gas bubble-CH4")
-        .attr("x", width * 0.88)
-        .attr("y", 180)
-        .text("Methan CH4")
-        .style("opacity", 0)
-        .transition()
-        .delay(3500)
-        .duration(1000)
-        .ease(d3.easeLinear)
-        .style("opacity", 1)
+      //Add gastext labels
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.03, 235, "F-Gas")
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.23, 210, "N02")
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.53, 90, "C02")
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.88, 180, "CH4")
     })
 
     //Split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
       console.log("by sector")
+
       //TODO: Fadeout
+      //Remove Gas text labels
       d3.selectAll(".bubble-CH4").remove()
       d3.selectAll(".bubble-FGAS").remove()
-      d3.selectAll(".bubble-N20").remove()
+      d3.selectAll(".bubble-N02").remove()
+      d3.select(".bubble-title-gas").remove()
 
       //Split C02 bubbles
       var forceXSplitedBySector = d3Force
@@ -173,9 +130,31 @@ function Climate3() {
         .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
         .alphaTarget(0.2) //move speed
         .restart() //restart simulatin with new force
+
+      //Add sector text labels
+      addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.08, 250, "Electricity")
+      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.28, 250, "Agriculture")
+      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.48, 250, "Industry")
+      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.66, 250, "Transport")
+      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.8, 250, "Other")
+      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.93, 250, "Buildings")
     })
 
-    //remove hide-class
+    //Function to display textlabels
+    function addTextLabel(cssClass, xPos, yPos, text) {
+      svg
+        .append("text")
+        .attr("class", cssClass)
+        .attr("x", xPos)
+        .attr("y", yPos)
+        .text(text)
+        .style("opacity", 0)
+        .transition()
+        .delay(3500)
+        .duration(1000)
+        .ease(d3.easeLinear)
+        .style("opacity", 1)
+    }
   }
 
   /**
@@ -189,16 +168,10 @@ function Climate3() {
 
   function createBubble1() {
     return (
-      <CSSTransition
-        in={textboxes.random}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={textboxes.random} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate3-txtbox1">
           <p className="bubble-box-text">
-            Hauptsächlich sind die Treibhausgase verantowrtlich für den
-            Klimawandel...
+            Hauptsächlich sind die Treibhausgase verantowrtlich für den Klimawandel...
           </p>
           <button
             id="next-button"
@@ -217,9 +190,7 @@ function Climate3() {
     return (
       <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox2">
-          <p className="bubble-box-text">
-            Dabei wird das Gas C02 am Meisten ausgestossen...
-          </p>
+          <p className="bubble-box-text">Dabei wird das Gas C02 am Meisten ausgestossen...</p>
           <button
             id="next-button"
             id="split-bubbles-by-sector"
@@ -252,12 +223,7 @@ function Climate3() {
 
   return (
     <React.Fragment>
-      <CSSTransition
-        in={true}
-        timeout={100000}
-        classNames="fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
           <h1 className="climate2-title"> {t("Climate2_Title.1")}</h1>
           <h2 className="climate2-subtitle">{t("Climate2_Title.2")}</h2>
