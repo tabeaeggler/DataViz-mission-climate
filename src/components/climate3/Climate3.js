@@ -16,6 +16,7 @@ function Climate3() {
     splitGas: false,
     splitC02: false,
   })
+  const [subTitle1, subSubTitle1] = useState(true)
   const svgRef = useRef()
   var width = 1400,
     height = 680
@@ -70,12 +71,12 @@ function Climate3() {
         .forceX(function (d) {
           if (d.type === "FGAS") {
             return width * 0.05
-          } else if (d.type === "N02") {
-            return width * 0.25
           } else if (d.type === "CH4") {
+            return width * 0.29
+          } else if (d.type === "N02") {
             return width * 0.9
           } else {
-            return width * 0.55
+            return width * 0.6
           }
         })
         .strength(0.08)
@@ -88,10 +89,10 @@ function Climate3() {
         .restart() //restart simulatin with new force
 
       //Add gastext labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.0, 420, "Fluorierte Gase")
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.18, 420, "Stickstoffdioxid N02")
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.47, 530, "Kohlenstoffdioxid C02")
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.85, 480, "Methan CH4")
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.0, 410, "Fluorierte Gase")
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.25, 470, "Methan CH4")
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.52, 560, "Kohlenstoffdioxid C02")
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.82, 440, "Stickstoffdioxid N02")
     })
 
     var zoomed = false
@@ -263,6 +264,7 @@ function Climate3() {
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
           <h1 className="climate2-title"> {t("Climate3_Title.1")}</h1>
+          <h2 className="climate2-title"> {subTitle1 ? t("Climate3_Title.2") : t("Climate3_Title.3")}</h2>
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
