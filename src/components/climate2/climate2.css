@@ -66,7 +66,7 @@
 .zoom-in-landscape-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
-  /* background-image:  url("../../assets/img/background2.svg")!important; */
+  background-image:  url("../../assets/img/background2.svg")!important;
   transition: all 2s;
 
 }
@@ -287,16 +287,26 @@
   transition: transform 2s linear;
 }
 
+
+.glacier-img {
+  position: absolute;
+  bottom: 0;
+}
+
 .glacier-text,
 .glacier-estimation-text,
 .glacier-original-text {
   margin: 0;
   font-size: 0.7em;
-  color: #6a8adf;
 }
 
 .glacier-result-text {
   margin-bottom: 12px;
+  bottom: 210px;
+}
+
+.glacier-original-text {
+  bottom: 550px;
 }
 
 .glacier-estimation-text {
@@ -305,9 +315,12 @@
 
 .glacier-original-text,
 .glacier-result-text {
+  color: #6a8adf;
   transform: rotate(-2.7deg);
   width: 100px;
   padding-left: 110px;
+  z-index: 100;
+  position: absolute;
 }
 
 .glacier-estimation-line {
@@ -346,3 +359,4 @@
   bottom: 0;
   right: 31%;
 }
+
