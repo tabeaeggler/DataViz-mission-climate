@@ -132,12 +132,12 @@ function Climate3() {
         .restart() //restart simulatin with new force
 
       //Add sector text labels
-      addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.08, 250, "Electricity")
-      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.28, 250, "Agriculture")
-      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.48, 250, "Industry")
-      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.66, 250, "Transport")
-      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.8, 250, "Other")
-      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.93, 250, "Buildings")
+      addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.06, 150, "Electricity")
+      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.26, 150, "Agriculture")
+      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.47, 150, "Industry")
+      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport")
+      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.79, 150, "Other")
+      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings")
     })
 
     //Function to display textlabels
@@ -225,8 +225,7 @@ function Climate3() {
     <React.Fragment>
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
-          <h1 className="climate2-title"> {t("Climate2_Title.1")}</h1>
-          <h2 className="climate2-subtitle">{t("Climate2_Title.2")}</h2>
+          <h1 className="climate2-title"> {t("Climate3_Title.1")}</h1>
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
