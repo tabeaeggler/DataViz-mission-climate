@@ -1,9 +1,8 @@
 .svg-container {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  /*background-color: blue;*/
 }
 
 .bubble-CH4 {
@@ -44,4 +43,132 @@
 
 .show-textbox {
   visibility: visible;
+}
+
+.zoom {
+  animation-duration: 3s;
+  animation-delay: 0.3s;
+  animation-name: fadeAndScale;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeAndScale {
+  0% {
+    transform: scale(1, 1);
+    transform-origin: center;
+  }
+  40% {
+    transform: scale(2, 2);
+    transform-origin: center;
+  }
+  60% {
+    transform: scale(2, 2);
+    transform-origin: center;
+  }
+  100% {
+    transform: scale(1, 1);
+    transform-origin: center;
+  }
+}
+
+.bubble-C02-electricty-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorElectricty;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorElectricty {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #d14aa7;
+  }
+}
+
+.bubble-C02-agriculture-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorAgriculture;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorAgriculture {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #bd5ebe;
+  }
+}
+
+.bubble-C02-industry-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorIndustry;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorIndustry {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #a36fd0;
+  }
+}
+
+.bubble-C02-transport-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorTransport;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorTransport {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #877edb;
+  }
+}
+
+.bubble-C02-other-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorOther;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorOther {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #6a8adf;
+  }
+}
+
+.bubble-C02-buildings-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorBuildings;
+  animation-fill-mode: forwards;
+}
+
+@keyframes changeColorBuildings {
+  0% {
+    fill: #d14aa7;
+  }
+  100% {
+    fill: #4571e8;
+  }
 }

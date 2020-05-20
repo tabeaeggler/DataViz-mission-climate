@@ -18,7 +18,7 @@ function Climate3() {
   })
   const svgRef = useRef()
   var width = 1400,
-    height = 550
+    height = 680
 
   function createBubbleChart(data) {
     const svg = d3.select(svgRef.current)
@@ -71,7 +71,7 @@ function Climate3() {
           if (d.type === "FGAS") {
             return width * 0.05
           } else if (d.type === "N02") {
-            return width * 0.24
+            return width * 0.25
           } else if (d.type === "CH4") {
             return width * 0.9
           } else {
@@ -88,22 +88,44 @@ function Climate3() {
         .restart() //restart simulatin with new force
 
       //Add gastext labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.03, 235, "F-Gas")
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.23, 210, "N02")
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.53, 90, "C02")
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.88, 180, "CH4")
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.0, 420, "Fluorierte Gase")
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.18, 420, "Stickstoffdioxid N02")
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.47, 530, "Kohlenstoffdioxid C02")
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.85, 480, "Methan CH4")
     })
+
+    var zoomed = false
 
     //Split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
-      console.log("by sector")
+      svg.attr("class", "zoom")
 
-      //TODO: Fadeout
       //Remove Gas text labels
-      d3.selectAll(".bubble-CH4").remove()
-      d3.selectAll(".bubble-FGAS").remove()
-      d3.selectAll(".bubble-N02").remove()
-      d3.select(".bubble-title-gas").remove()
+      d3.selectAll(".bubble-CH4")
+        .style("opacity", 1)
+        .transition()
+        .delay(0.5)
+        .duration(500)
+        .style("opacity", 0)
+      d3.selectAll(".bubble-FGAS")
+        .style("opacity", 1)
+        .transition()
+        .delay(0.5)
+        .duration(500)
+        .style("opacity", 0)
+      d3.selectAll(".bubble-N02")
+        .style("opacity", 1)
+        .transition()
+        .delay(0.5)
+        .duration(500)
+        .style("opacity", 0)
+
+      d3.selectAll(".bubble-title-gas")
+        .style("opacity", 1)
+        .transition()
+        .delay(1.5)
+        .duration(500)
+        .style("opacity", 0)
 
       //Split C02 bubbles
       var forceXSplitedBySector = d3Force
@@ -117,7 +139,7 @@ function Climate3() {
           } else if (d.type === "C02-Transport") {
             return width * 0.68
           } else if (d.type === "C02-Other") {
-            return width * 0.82
+            return width * 0.83
           } else if (d.type === "C02-Buildings") {
             return width * 0.95
           }
@@ -129,19 +151,34 @@ function Climate3() {
         .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
         .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
         .alphaTarget(0.2) //move speed
-        .restart() //restart simulatin with new force
+        .stop() //restart simulatin with new force
 
-      //Add sector text labels
+      setTimeout(function () {
+        simulation.restart()
+      }, 2200)
+
+      //Add sector text labels and change color
       addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.06, 150, "Electricity")
-      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.26, 150, "Agriculture")
-      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.47, 150, "Industry")
-      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport")
-      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.79, 150, "Other")
-      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings")
+      d3.selectAll(".bubble-C02-Electricity").attr("class", "bubble-C02-electricty-split-color")
+
+      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.26, 150, "Agriculture", 5000)
+      d3.selectAll(".bubble-C02-Agriculture").attr("class", "bubble-C02-agriculture-split-color")
+
+      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.47, 150, "Industry", 6000)
+      d3.selectAll(".bubble-C02-Industry").attr("class", "bubble-C02-industry-split-color")
+
+      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport", 7000)
+      d3.selectAll(".bubble-C02-Transport").attr("class", "bubble-C02-transport-split-color")
+
+      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.79, 150, "Other", 8000)
+      d3.selectAll(".bubble-C02-Other").attr("class", "bubble-C02-other-split-color")
+
+      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings", 9000)
+      d3.selectAll(".bubble-C02-Buildings").attr("class", "bubble-C02-buildings-split-color")
     })
 
     //Function to display textlabels
-    function addTextLabel(cssClass, xPos, yPos, text) {
+    function addTextLabel(cssClass, xPos, yPos, text, delay = 3500) {
       svg
         .append("text")
         .attr("class", cssClass)
@@ -150,7 +187,7 @@ function Climate3() {
         .text(text)
         .style("opacity", 0)
         .transition()
-        .delay(3500)
+        .delay(delay)
         .duration(1000)
         .ease(d3.easeLinear)
         .style("opacity", 1)
@@ -239,59 +276,3 @@ function Climate3() {
 }
 
 export default Climate3
-
-//Zoom tries
-
-/*
-
-       const zoom = d3.zoom()
-      //.translate([0, 0])
-      //.scale(1)
-      //.scaleExtent([.5, 20])
-      .on("zoom", zoomed);
-      
-  svg.call(zoom);
-  
-  function zoomed() {
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-  }
-
-    d3.select("#split-bubbles-by-sector").on("click", function() {
-      svg.transition()
-        .call(zoom
-              .translate([400, 200])
-              .scale(5).event
-        );
-    })
-
-
-
-     const zoom = d3Zoom.zoom()
-                  .scaleExtent([1, 10])
-                  .translate([0, 0])
-                  .scale(1)
-                  .on("zoom", zoomed);
-
-      svg.call(zoom)
-
-      function zoomed() {
-        svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    }
-    
-        //Zoom
-    var zoom = d3.zoom()
-    .on("zoom", zoomed)
-
-    let zoomTrandform = null
-
-    function zoomed(){
-      zoomTrandform = d3.event.transform
-    }
-
-    d3.select("#split-bubbles-by-sector").on("click", function() {
-      svg.call(zoom.translateTo, 50, 50)
-      .transition()
-      .duration(2000)
-      .call(zoom.scaleTo, 2)
-    })
-    */
