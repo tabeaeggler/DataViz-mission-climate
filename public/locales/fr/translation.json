@@ -59,5 +59,8 @@
   },
   "Climate2_Source": "Source: OcCC & ProClim",
   "Climate2_Source_Glacier": "Source: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
-  "Climate2_Glacier_Graph": "Votre estimation"
+  "Climate2_Glacier_Graph": {
+    "1": "Votre estimation",
+    "2": "Volume"
+  }
 }
