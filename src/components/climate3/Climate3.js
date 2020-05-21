@@ -96,9 +96,9 @@ function Climate3() {
     d3.select("#split-bubbles-by-sector").on("click", function () {
       //center all bubbles
       simulation
-        .force("x", d3Force.forceX(width / 2).strength(0.04))
-        .force("y", d3Force.forceY(height / 2).strength(0.04))
-        .alphaTarget(0.2)
+        .force("x", d3Force.forceX(width / 2).strength(0.06))
+        .force("y", d3Force.forceY(height / 2).strength(0.06))
+        .alphaTarget(0.15)
         .restart()
 
       //remove gas text labels
@@ -110,7 +110,12 @@ function Climate3() {
         .style("opacity", 0)
 
       //all bubble white stroke
-      d3.selectAll("circle").transition().delay(2000).duration(1000).style("fill", "#535354")
+      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "white")
+      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#f6e4df")
+      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#edcabf")
+      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#e4afa0")
+      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#db9580")
+      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#d37b61")
 
       //split bubbles by sector
       var forceXSplitedBySector = d3Force
@@ -129,20 +134,19 @@ function Climate3() {
             return width * 0.95
           }
         })
-        .strength(0.04)
+        .strength(0.06)
 
       setTimeout(function () {
-        simulation.force("x", forceXSplitedBySector).alphaTarget(0.2).restart()
-      }, 3000)
+        simulation.force("x", forceXSplitedBySector).alphaTarget(0.25).restart()
+      }, 4000)
 
-      //Add sector labels and change stroke color
-
-      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 150, "Electricity", 4000)
-      addTextLabel("bubble-title-gas label-agriculture", width * 0.26, 150, "Agriculture", 4000)
-      addTextLabel("bubble-title-gas label-industry", width * 0.47, 150, "Industry", 4000)
-      addTextLabel("bubble-title-gas label-transport", width * 0.64, 150, "Transport", 4000)
-      addTextLabel("bubble-title-gas label-other", width * 0.8, 150, "Other", 4000)
-      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 150, "Buildings", 4000)
+      //Add sector labels and change bubble color
+      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 500, "Electricity", 4000)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.26, 500, "Agriculture", 4000)
+      addTextLabel("bubble-title-gas label-industry", width * 0.47, 500, "Industry", 4000)
+      addTextLabel("bubble-title-gas label-transport", width * 0.64, 500, "Transport", 4000)
+      addTextLabel("bubble-title-gas label-other", width * 0.8, 500, "Other", 4000)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 500, "Buildings", 4000)
 
       /* d3.selectAll(".bubble-Electricity").attr("class", "bubble-electricty-split-color")
 
