@@ -1,7 +1,7 @@
 .svg-container {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 47%;
   transform: translate(-50%, -50%);
 }
 
@@ -35,22 +35,22 @@
 }
 
 .bubble-box-climate3-txtbox1 {
-  left: 16%;
-  bottom: 18%;
+  left: 20%;
+  bottom: 16%;
   width: 18%;
   text-align: left;
 }
 
 .bubble-box-climate3-txtbox2 {
-  left: 13.5%;
+  left: 22%;
   bottom: 8%;
   width: 25%;
   text-align: left;
 }
 
 .bubble-box-climate3-txtbox3 {
-  right: 19%;
-  bottom: 12.8%;
+  right: 25%;
+  bottom: 9%;
   width: 18%;
   text-align: left;
 }
@@ -77,102 +77,4 @@
 
 .label-buildings {
   fill: #d37b61;
-}
-
-.bubble-electricty-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorElectricty;
-  animation-fill-mode: forwards;
-}
-
-.bubble-agriculture-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorAgriculture;
-  animation-fill-mode: forwards;
-}
-
-.bubble-industry-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorIndustry;
-  animation-fill-mode: forwards;
-}
-
-.bubble-transport-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorTransport;
-  animation-fill-mode: forwards;
-}
-
-.bubble-other-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorOther;
-  animation-fill-mode: forwards;
-}
-
-.bubble-buildings-split-color {
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorBuildings;
-  animation-fill-mode: forwards;
-}
-
-/*Animations*/
-
-@keyframes changeColorElectricty {
-  0% {
-    stroke: white;
-  }
-  100% {
-    stroke: #d14aa7;
-  }
-}
-
-@keyframes changeColorAgriculture {
-  0% {
-    stroke: white;
-  }
-  100% {
-    stroke: #bd5ebe;
-  }
-}
-
-@keyframes changeColorIndustry {
-  0% {
-    stroke: white;
-  }
-  100% {
-    stroke: #a36fd0;
-  }
-}
-
-@keyframes changeColorTransport {
-  0% {
-    stroke: stroke;
-  }
-  100% {
-    stroke: #877edb;
-  }
-}
-
-@keyframes changeColorOther {
-  0% {
-    stroke: stroke;
-  }
-  100% {
-    stroke: #6a8adf;
-  }
-}
-
-@keyframes changeColorBuildings {
-  0% {
-    stroke: stroke;
-  }
-  100% {
-    stroke: #4571e8;
-  }
 }

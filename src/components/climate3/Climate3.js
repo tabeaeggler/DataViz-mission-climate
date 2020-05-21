@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
-import * as d3Zoom from "d3-zoom"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 import "./climate3.css"
-import { transition } from "d3"
 
 function Climate3() {
   const { t } = useTranslation()
@@ -77,12 +75,13 @@ function Climate3() {
             return width * 0.6
           }
         })
-        .strength(0.08)
+        .strength(0.27)
 
       simulation
         .force("x", forceXSplitedByGas) //center bubbles on x-axis
-        .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
-        .alphaTarget(0.2) //move speed
+        .force("y", d3Force.forceY(height / 2).strength(0.27)) //center bubbles on y-axis
+        .force("charge", d3Force.forceManyBody())
+        .alphaTarget(0.07) //move speed
         .restart() //restart simulatin with new force
 
       //Add gastext labels
@@ -99,9 +98,10 @@ function Climate3() {
         simulation
           .force("x", d3Force.forceX(width / 2).strength(0.06))
           .force("y", d3Force.forceY(height / 2).strength(0.06))
+          .force("charge", null)
           .alphaTarget(0.15)
           .restart()
-      }, 1000)
+      }, 500)
 
       //remove gas text labels
       d3.selectAll(".bubble-title-gas")
@@ -136,10 +136,14 @@ function Climate3() {
             return width * 0.95
           }
         })
-        .strength(0.07)
+        .strength(0.06)
 
       setTimeout(function () {
-        simulation.force("x", forceXSplitedBySector).alphaTarget(0.25).restart()
+        simulation
+          .force("x", forceXSplitedBySector)
+          .force("y", d3Force.forceY(height / 2).strength(0.06))
+          .alphaTarget(0.25)
+          .restart()
       }, 4000)
 
       //Add sector labels and change bubble color
