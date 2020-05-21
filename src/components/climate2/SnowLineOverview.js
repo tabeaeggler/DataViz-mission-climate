@@ -24,12 +24,7 @@ const SnowLineOverview = props => {
    */
   function createBubbleStartQuizz() {
     return (
-      <CSSTransition
-        in={!showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate2-snow-start">
           <p className="bubble-box-text">
             {t("Climate2_Bubble_Snowline.1")}
@@ -63,13 +58,20 @@ const SnowLineOverview = props => {
             </span>
             {t("Climate2_Bubble_Snowline.6")}
           </p>
-          <button
-            id="next-button"
-            onClick={() => {
-              props.showGlacier()
-            }}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
+          <CSSTransition
+            in={true}
+            timeout={3600}
+            classNames="show-button"
+            unmountOnExit
+            appear>
+            <button
+              id="next-button"
+              onClick={() => {
+                props.showGlacier()
+              }}>
+              <img src={ButtonRight} alt="continue"></img>
+            </button>
+          </CSSTransition>
         </div>
       </CSSTransition>
     )
@@ -87,7 +89,7 @@ const SnowLineOverview = props => {
     <React.Fragment>
       <CSSTransition
         in={props.showInteraction}
-        timeout={{enter:3000, exit:0}}
+        timeout={{ enter: 3000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
         appear>
