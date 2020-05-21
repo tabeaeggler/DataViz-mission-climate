@@ -1,5 +1,5 @@
 /*Snowline*/
-.source-climate2 {
+.source-snowline {
   left: 146.5%;
   width: 250px;
 }
@@ -43,7 +43,7 @@
 .glacier-title-wrapper {
   position: absolute;
   bottom: 37.5%;
-  right: 17.0%
+  right: 16.6%
 }
 
 .zoom-in-landscape-enter-done {
@@ -358,5 +358,10 @@
   position: absolute;
   bottom: 0;
   right: 31%;
+}
+
+.source-glacier {
+  left: 132%;
+  width: 250px;
 }
 

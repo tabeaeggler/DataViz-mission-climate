@@ -215,7 +215,7 @@ const GlacierMeltOverview2 = props => {
         <div className="glacier-zoom glacier-title-wrapper">
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
-          <h6 className="source source-climate2">{t("Climate2_Source_Glacier")}</h6>
+          <h6 className="source source-glacier">{t("Climate2_Source_Glacier")}</h6>
           {createBubbleStartQuizz()}
           {showSliderAndNumbers()}
         </div>
