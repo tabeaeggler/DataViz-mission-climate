@@ -4,6 +4,7 @@ import * as d3Force from "d3-force"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
+import ButtonInvisible from "../../assets/img/buttonInvisible.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 import "./climate3.css"
 
@@ -14,6 +15,7 @@ function Climate3() {
     splitGas: false,
     splitC02: false,
   })
+  const [buttonDelay, setButtonDelay] = useState(false)
   const svgRef = useRef()
   var width = 1400,
     height = 680
@@ -192,6 +194,7 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-gas"
+            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: true, splitC02: false })
             }}>
@@ -211,14 +214,21 @@ function Climate3() {
             verschiedener Treibhausgase vergleichbar zu machen, wurde die Einheit der CO₂-Äquivalente
             eingeführt. Beispielsweise ist No2 300 mal wirksamer als Co2.
           </p>
-          <button
-            id="next-button"
-            id="split-bubbles-by-sector"
-            onClick={() => {
-              setTextboxes({ random: false, splitGas: false, splitC02: true })
-            }}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
+          {textboxes.splitGas ? (
+            <button
+              id="next-button"
+              id="split-bubbles-by-sector"
+              className="button-animation"
+              onClick={() => {
+                setTextboxes({ random: false, splitGas: false, splitC02: true })
+              }}>
+              <img src={ButtonRight} alt="continue"></img>
+            </button>
+          ) : (
+            <button id="split-bubbles-by-sector">
+              <img src={ButtonInvisible} alt="continue"></img>
+            </button>
+          )}
         </div>
       </div>
     )
@@ -234,6 +244,7 @@ function Climate3() {
           </p>
           <button
             id="next-button"
+            className="button-animation"
             onClick={() => {
               console.log("Go to next page")
             }}>

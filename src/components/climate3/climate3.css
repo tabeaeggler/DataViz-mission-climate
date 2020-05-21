@@ -57,6 +57,22 @@
   }
 }
 
+.button-animation {
+  animation-duration: 1s;
+  animation-delay: 2.5s;
+  animation-name: buttonAnimation;
+  animation-fill-mode: backwards;
+}
+
+@keyframes buttonAnimation {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
 .bubble-box-climate3-txtbox1 {
   left: 20%;
   bottom: 16%;
@@ -100,4 +116,10 @@
 
 .label-buildings {
   fill: #d37b61;
+}
+
+#split-bubbles-by-gas,
+#split-bubbles-by-sector {
+  padding: 0;
+  float: right;
 }
