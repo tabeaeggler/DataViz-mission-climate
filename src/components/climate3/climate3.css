@@ -27,11 +27,34 @@
 }
 
 .hide-textbox {
-  visibility: hidden;
+  animation-duration: 1s;
+  animation-name: fadeOutTextBox;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOutTextBox {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
 }
 
 .show-textbox {
-  visibility: visible;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
+  animation-name: fadeInTextBox;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeInTextBox {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 .bubble-box-climate3-txtbox1 {
