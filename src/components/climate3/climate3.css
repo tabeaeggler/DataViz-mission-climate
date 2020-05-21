@@ -17,18 +17,7 @@
   fill: #6a8adf;
 }
 
-.bubble-C02,
-.bubble-C02-Electricity,
-.bubble-C02-Industry,
-.bubble-C02-Agriculture,
-.bubble-C02-Transport,
-.bubble-C02-Buildings,
-.bubble-C02-Other {
-  fill: #d14aa7;
-}
-
-.bubble-C02-Electricity2 {
-  opacity: 0.5;
+.bubble-C02 {
   fill: #d14aa7;
 }
 
@@ -66,48 +55,66 @@
   text-align: left;
 }
 
-.bubble-C02-electricty-split-color {
-  fill: #d14aa7;
+.label-electricity {
+  fill: #fff;
+}
+
+.label-agriculture {
+  fill: #f6e4df;
+}
+
+.label-industry {
+  fill: #edcabf;
+}
+
+.label-transport {
+  fill: #e4afa0;
+}
+
+.label-other {
+  fill: #db9580;
+}
+
+.label-buildings {
+  fill: #d37b61;
+}
+
+.bubble-electricty-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorElectricty;
   animation-fill-mode: forwards;
 }
 
-.bubble-C02-agriculture-split-color {
-  fill: #d14aa7;
+.bubble-agriculture-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorAgriculture;
   animation-fill-mode: forwards;
 }
 
-.bubble-C02-industry-split-color {
-  fill: #d14aa7;
+.bubble-industry-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorIndustry;
   animation-fill-mode: forwards;
 }
 
-.bubble-C02-transport-split-color {
-  fill: #d14aa7;
+.bubble-transport-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorTransport;
   animation-fill-mode: forwards;
 }
 
-.bubble-C02-other-split-color {
-  fill: #d14aa7;
+.bubble-other-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorOther;
   animation-fill-mode: forwards;
 }
 
-.bubble-C02-buildings-split-color {
-  fill: #d14aa7;
+.bubble-buildings-split-color {
   animation-duration: 0.5s;
   animation-delay: 6s;
   animation-name: changeColorBuildings;
@@ -118,54 +125,54 @@
 
 @keyframes changeColorElectricty {
   0% {
-    fill: #d14aa7;
+    stroke: white;
   }
   100% {
-    fill: #d14aa7;
+    stroke: #d14aa7;
   }
 }
 
 @keyframes changeColorAgriculture {
   0% {
-    fill: #d14aa7;
+    stroke: white;
   }
   100% {
-    fill: #bd5ebe;
+    stroke: #bd5ebe;
   }
 }
 
 @keyframes changeColorIndustry {
   0% {
-    fill: #d14aa7;
+    stroke: white;
   }
   100% {
-    fill: #a36fd0;
+    stroke: #a36fd0;
   }
 }
 
 @keyframes changeColorTransport {
   0% {
-    fill: #d14aa7;
+    stroke: stroke;
   }
   100% {
-    fill: #877edb;
+    stroke: #877edb;
   }
 }
 
 @keyframes changeColorOther {
   0% {
-    fill: #d14aa7;
+    stroke: stroke;
   }
   100% {
-    fill: #6a8adf;
+    stroke: #6a8adf;
   }
 }
 
 @keyframes changeColorBuildings {
   0% {
-    fill: #d14aa7;
+    stroke: stroke;
   }
   100% {
-    fill: #4571e8;
+    stroke: #4571e8;
   }
 }

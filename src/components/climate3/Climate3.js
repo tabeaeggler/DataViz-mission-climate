@@ -16,7 +16,6 @@ function Climate3() {
     splitGas: false,
     splitC02: false,
   })
-  const [subTitle1, subSubTitle1] = useState(true)
   const svgRef = useRef()
   var width = 1400,
     height = 680
@@ -39,7 +38,7 @@ function Climate3() {
       .enter()
       .append("circle")
       .attr("class", function (d) {
-        return "bubble-" + d.type
+        return `bubble-${d.sector} bubble-${d.type} `
       })
       .attr("r", function (d) {
         return d.radius
@@ -94,7 +93,6 @@ function Climate3() {
     })
 
     //Split bubbles by sector
-
     d3.select("#split-bubbles-by-sector").on("click", function () {
       //center all bubbles
       simulation
@@ -112,13 +110,7 @@ function Climate3() {
         .style("opacity", 0)
 
       //all bubble white stroke
-      d3.selectAll("circle")
-        .style("stroke", "#141416")
-        .transition()
-        .delay(2000)
-        .duration(1000)
-        .style("stroke", "white")
-      d3.selectAll("circle").transition().delay(3000).duration(1000).style("fill", "#141416")
+      d3.selectAll("circle").transition().delay(2000).duration(1000).style("fill", "#535354")
 
       //split bubbles by sector
       var forceXSplitedBySector = d3Force
@@ -137,11 +129,40 @@ function Climate3() {
             return width * 0.95
           }
         })
-        .strength(0.08)
+        .strength(0.04)
 
       setTimeout(function () {
         simulation.force("x", forceXSplitedBySector).alphaTarget(0.2).restart()
-      }, 5000)
+      }, 3000)
+
+      //Add sector labels and change stroke color
+
+      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 150, "Electricity", 4000)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.26, 150, "Agriculture", 4000)
+      addTextLabel("bubble-title-gas label-industry", width * 0.47, 150, "Industry", 4000)
+      addTextLabel("bubble-title-gas label-transport", width * 0.64, 150, "Transport", 4000)
+      addTextLabel("bubble-title-gas label-other", width * 0.8, 150, "Other", 4000)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 150, "Buildings", 4000)
+
+      /* d3.selectAll(".bubble-Electricity").attr("class", "bubble-electricty-split-color")
+
+      
+      d3.selectAll(".bubble-Agriculture").attr("class", "bubble-agriculture-split-color")
+
+      
+      d3.selectAll(".bubble-Agriculture").attr("class", "bubble-agriculture-split-color")
+
+      
+      d3.selectAll(".bubble-Industry").attr("class", "bubble-industry-split-color")
+
+     
+      d3.selectAll(".bubble-Transport").attr("class", "bubble-transport-split-color")
+
+      
+      d3.selectAll(".bubble-Other").attr("class", "bubble-other-split-color")
+
+      
+      d3.selectAll(".bubble-Buildings").attr("class", "bubble-buildings-split-color") */
     })
 
     //Function to display textlabels
