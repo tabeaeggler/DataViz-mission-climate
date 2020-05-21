@@ -279,6 +279,8 @@ const SnowLineDraggableGraph = props => {
           var currentDragArea = select(".draggable-area")
           var newYPosition = parseInt(currentLine.attr("y1")) + y
 
+          console.log(newYPosition)
+
           //Check boundaries of drag area
           if (newYPosition > height) newYPosition = height
           else if (newYPosition < 0) newYPosition = 0
