@@ -66,7 +66,6 @@ function Climate3() {
 
     //Split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
-      console.log("by gas")
       var forceXSplitedByGas = d3Force
         .forceX(function (d) {
           if (d.type === "FGAS") {
@@ -84,7 +83,6 @@ function Climate3() {
       simulation
         .force("x", forceXSplitedByGas) //center bubbles on x-axis
         .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
-        .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
         .alphaTarget(0.2) //move speed
         .restart() //restart simulatin with new force
 
@@ -95,32 +93,17 @@ function Climate3() {
       addTextLabel("bubble-title-gas bubble-N02", width * 0.82, 440, "Stickstoffdioxid N02")
     })
 
-    var zoomed = false
-
     //Split bubbles by sector
+
     d3.select("#split-bubbles-by-sector").on("click", function () {
-      svg.attr("class", "zoom")
+      //center all bubbles
+      simulation
+        .force("x", d3Force.forceX(width / 2).strength(0.04))
+        .force("y", d3Force.forceY(height / 2).strength(0.04))
+        .alphaTarget(0.2)
+        .restart()
 
-      //Remove Gas text labels
-      d3.selectAll(".bubble-CH4")
-        .style("opacity", 1)
-        .transition()
-        .delay(0.5)
-        .duration(500)
-        .style("opacity", 0)
-      d3.selectAll(".bubble-FGAS")
-        .style("opacity", 1)
-        .transition()
-        .delay(0.5)
-        .duration(500)
-        .style("opacity", 0)
-      d3.selectAll(".bubble-N02")
-        .style("opacity", 1)
-        .transition()
-        .delay(0.5)
-        .duration(500)
-        .style("opacity", 0)
-
+      //remove gas text labels
       d3.selectAll(".bubble-title-gas")
         .style("opacity", 1)
         .transition()
@@ -128,54 +111,37 @@ function Climate3() {
         .duration(500)
         .style("opacity", 0)
 
-      //Split C02 bubbles
+      //all bubble white stroke
+      d3.selectAll("circle")
+        .style("stroke", "#141416")
+        .transition()
+        .delay(2000)
+        .duration(1000)
+        .style("stroke", "white")
+      d3.selectAll("circle").transition().delay(3000).duration(1000).style("fill", "#141416")
+
+      //split bubbles by sector
       var forceXSplitedBySector = d3Force
         .forceX(function (d) {
-          if (d.type === "C02-Electricity") {
+          if (d.sector === "Electricity") {
             return width * 0.1
-          } else if (d.type === "C02-Agriculture") {
-            return [width * 0.3]
-          } else if (d.type === "C02-Industry") {
-            return [width * 0.5]
-          } else if (d.type === "C02-Transport") {
-            return [width * 0.68]
-          } else if (d.type === "C02-Other") {
-            return [width * 0.83]
-          } else if (d.type === "C02-Buildings") {
-            return [width * 0.95]
+          } else if (d.sector === "Agriculture") {
+            return width * 0.3
+          } else if (d.sector === "Industry") {
+            return width * 0.5
+          } else if (d.sector === "Transport") {
+            return width * 0.68
+          } else if (d.sector === "Other") {
+            return width * 0.83
+          } else if (d.sector === "Buildings") {
+            return width * 0.95
           }
         })
         .strength(0.08)
 
-      simulation
-        .force("x", forceXSplitedBySector) //center bubbles on x-axis
-        .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
-        .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
-        .alphaTarget(0.2) //move speed
-        .stop() //restart simulatin with new force
-
       setTimeout(function () {
-        simulation.restart()
-      }, 2200)
-
-      //Add sector text labels and change color
-      addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.06, 150, "Electricity")
-      d3.selectAll(".bubble-C02-Electricity").attr("class", "bubble-C02-electricty-split-color")
-
-      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.26, 150, "Agriculture", 5000)
-      d3.selectAll(".bubble-C02-Agriculture").attr("class", "bubble-C02-agriculture-split-color")
-
-      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.47, 150, "Industry", 6000)
-      d3.selectAll(".bubble-C02-Industry").attr("class", "bubble-C02-industry-split-color")
-
-      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport", 7000)
-      d3.selectAll(".bubble-C02-Transport").attr("class", "bubble-C02-transport-split-color")
-
-      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.8, 150, "Other", 8000)
-      d3.selectAll(".bubble-C02-Other").attr("class", "bubble-C02-other-split-color")
-
-      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings", 9000)
-      d3.selectAll(".bubble-C02-Buildings").attr("class", "bubble-C02-buildings-split-color")
+        simulation.force("x", forceXSplitedBySector).alphaTarget(0.2).restart()
+      }, 5000)
     })
 
     //Function to display textlabels

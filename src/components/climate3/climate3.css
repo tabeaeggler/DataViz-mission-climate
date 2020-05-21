@@ -53,9 +53,9 @@
 }
 
 .bubble-box-climate3-txtbox2 {
-  left: 19%;
+  left: 13.5%;
   bottom: 8%;
-  width: 18%;
+  width: 25%;
   text-align: left;
 }
 
@@ -64,13 +64,6 @@
   bottom: 12.8%;
   width: 18%;
   text-align: left;
-}
-
-.zoom {
-  animation-duration: 3s;
-  animation-delay: 0.3s;
-  animation-name: fadeAndScale;
-  animation-fill-mode: forwards;
 }
 
 .bubble-C02-electricty-split-color {
@@ -122,24 +115,6 @@
 }
 
 /*Animations*/
-@keyframes fadeAndScale {
-  0% {
-    transform: scale(1, 1);
-    transform-origin: center;
-  }
-  40% {
-    transform: scale(2, 2);
-    transform-origin: center;
-  }
-  60% {
-    transform: scale(2, 2);
-    transform-origin: center;
-  }
-  100% {
-    transform: scale(1, 1);
-    transform-origin: center;
-  }
-}
 
 @keyframes changeColorElectricty {
   0% {
