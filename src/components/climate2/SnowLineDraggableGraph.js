@@ -11,7 +11,6 @@ import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear } fro
 const SnowLineDraggableGraph = props => {
   //transaltion
   const { t } = useTranslation()
-
   //svg sizing
   const svgRef = useRef()
   const width = 700
@@ -22,11 +21,11 @@ const SnowLineDraggableGraph = props => {
   const marginTextY = 60
   const marginTextX = 50
   const offset = 75
-
+  //factor for handling zoom
+  const zoomFactor = 1.6
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
-  var [counter, setCounter] = useState(0)
 
   /**
    * Main code for SnowLineDraggable
@@ -252,15 +251,10 @@ const SnowLineDraggableGraph = props => {
        */
       function dragged() {
         if (!props.showAnswer) {
-          var y = event.dy * 1.66
-          setCounter((counter += y))
+          var y = event.dy * zoomFactor
           var currentLine = select(".draggable-line")
           var currentDragArea = select(".draggable-area")
           var newYPosition = parseInt(currentLine.attr("y1")) + y
-
-          console.log(event + "event")
-          console.log(newYPosition + "parsed y position")
-          console.log(counter + "counter summe")
 
           //Check boundaries of drag area
           if (newYPosition > height) newYPosition = height
