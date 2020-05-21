@@ -134,15 +134,15 @@ function Climate3() {
           if (d.type === "C02-Electricity") {
             return width * 0.1
           } else if (d.type === "C02-Agriculture") {
-            return width * 0.3
+            return [width * 0.3]
           } else if (d.type === "C02-Industry") {
-            return width * 0.5
+            return [width * 0.5]
           } else if (d.type === "C02-Transport") {
-            return width * 0.68
+            return [width * 0.68]
           } else if (d.type === "C02-Other") {
-            return width * 0.83
+            return [width * 0.83]
           } else if (d.type === "C02-Buildings") {
-            return width * 0.95
+            return [width * 0.95]
           }
         })
         .strength(0.08)
@@ -171,7 +171,7 @@ function Climate3() {
       addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport", 7000)
       d3.selectAll(".bubble-C02-Transport").attr("class", "bubble-C02-transport-split-color")
 
-      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.79, 150, "Other", 8000)
+      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.8, 150, "Other", 8000)
       d3.selectAll(".bubble-C02-Other").attr("class", "bubble-C02-other-split-color")
 
       addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings", 9000)
@@ -206,10 +206,11 @@ function Climate3() {
 
   function createBubble1() {
     return (
-      <CSSTransition in={textboxes.random} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <div className={textboxes.random ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox1">
           <p className="bubble-box-text">
-            Hauptsächlich sind die Treibhausgase verantowrtlich für den Klimawandel...
+            Der Mensch ist hauptverantwortlich für den Klimawandel. Hierbei spielen Treibhausgase die
+            wichtigste Rolle, welche unter anderem beim Verbrauch von Strom, Gas und Benzin entstehen.
           </p>
           <button
             id="next-button"
@@ -220,7 +221,7 @@ function Climate3() {
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
-      </CSSTransition>
+      </div>
     )
   }
 
@@ -228,7 +229,11 @@ function Climate3() {
     return (
       <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox2">
-          <p className="bubble-box-text">Dabei wird das Gas C02 am Meisten ausgestossen...</p>
+          <p className="bubble-box-text">
+            Die verschiedenen Gase tragen nicht in gleichem Masse zum Treibhauseffekt bei. Um die Wirkung
+            verschiedener Treibhausgase vergleichbar zu machen, wurde die Einheit der CO₂-Äquivalente
+            eingeführt. Beispielsweise ist No2 300 mal wirksamer als Co2.
+          </p>
           <button
             id="next-button"
             id="split-bubbles-by-sector"
@@ -246,7 +251,10 @@ function Climate3() {
     return (
       <div className={textboxes.splitC02 ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
-          <p className="bubble-box-text">Co2-Ausstoss nach Sektor...</p>
+          <p className="bubble-box-text">
+            In der vorhergehenden Betrachtung wurden die Anteile der verschiedenen Treibhausgase aller
+            menschengemachten Emissionen gezeigt. Der Ausstoss lässt sich auch nach Sektoren aufschlüsseln.
+          </p>
           <button
             id="next-button"
             onClick={() => {
@@ -263,8 +271,12 @@ function Climate3() {
     <React.Fragment>
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
-          <h1 className="climate2-title"> {t("Climate3_Title.1")}</h1>
-          <h2 className="climate2-title"> {subTitle1 ? t("Climate3_Title.2") : t("Climate3_Title.3")}</h2>
+          <h1 className="title"> {t("Climate3_Title.1")}</h1>
+          <h2 className="subtitle">
+            {textboxes.splitC02
+              ? "- Auf welche Sektoren sind die Treibhausgase zurückzuführen? -"
+              : "- Welche Treibhausgase werden ausgestossen? -"}
+          </h2>
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}

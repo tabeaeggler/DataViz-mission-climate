@@ -45,6 +45,27 @@
   visibility: visible;
 }
 
+.bubble-box-climate3-txtbox1 {
+  left: 16%;
+  bottom: 18%;
+  width: 18%;
+  text-align: left;
+}
+
+.bubble-box-climate3-txtbox2 {
+  left: 19%;
+  bottom: 8%;
+  width: 18%;
+  text-align: left;
+}
+
+.bubble-box-climate3-txtbox3 {
+  right: 19%;
+  bottom: 12.8%;
+  width: 18%;
+  text-align: left;
+}
+
 .zoom {
   animation-duration: 3s;
   animation-delay: 0.3s;
@@ -52,6 +73,55 @@
   animation-fill-mode: forwards;
 }
 
+.bubble-C02-electricty-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorElectricty;
+  animation-fill-mode: forwards;
+}
+
+.bubble-C02-agriculture-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorAgriculture;
+  animation-fill-mode: forwards;
+}
+
+.bubble-C02-industry-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorIndustry;
+  animation-fill-mode: forwards;
+}
+
+.bubble-C02-transport-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorTransport;
+  animation-fill-mode: forwards;
+}
+
+.bubble-C02-other-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorOther;
+  animation-fill-mode: forwards;
+}
+
+.bubble-C02-buildings-split-color {
+  fill: #d14aa7;
+  animation-duration: 0.5s;
+  animation-delay: 6s;
+  animation-name: changeColorBuildings;
+  animation-fill-mode: forwards;
+}
+
+/*Animations*/
 @keyframes fadeAndScale {
   0% {
     transform: scale(1, 1);
@@ -71,14 +141,6 @@
   }
 }
 
-.bubble-C02-electricty-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorElectricty;
-  animation-fill-mode: forwards;
-}
-
 @keyframes changeColorElectricty {
   0% {
     fill: #d14aa7;
@@ -86,14 +148,6 @@
   100% {
     fill: #d14aa7;
   }
-}
-
-.bubble-C02-agriculture-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorAgriculture;
-  animation-fill-mode: forwards;
 }
 
 @keyframes changeColorAgriculture {
@@ -105,14 +159,6 @@
   }
 }
 
-.bubble-C02-industry-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorIndustry;
-  animation-fill-mode: forwards;
-}
-
 @keyframes changeColorIndustry {
   0% {
     fill: #d14aa7;
@@ -120,14 +166,6 @@
   100% {
     fill: #a36fd0;
   }
-}
-
-.bubble-C02-transport-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorTransport;
-  animation-fill-mode: forwards;
 }
 
 @keyframes changeColorTransport {
@@ -139,14 +177,6 @@
   }
 }
 
-.bubble-C02-other-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorOther;
-  animation-fill-mode: forwards;
-}
-
 @keyframes changeColorOther {
   0% {
     fill: #d14aa7;
@@ -154,14 +184,6 @@
   100% {
     fill: #6a8adf;
   }
-}
-
-.bubble-C02-buildings-split-color {
-  fill: #d14aa7;
-  animation-duration: 0.5s;
-  animation-delay: 6s;
-  animation-name: changeColorBuildings;
-  animation-fill-mode: forwards;
 }
 
 @keyframes changeColorBuildings {
