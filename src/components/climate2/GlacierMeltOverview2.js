@@ -102,7 +102,7 @@ const GlacierMeltOverview2 = props => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-glacier-start">
+        <div className="glacier-zoom bubble-box bubble-box-glacier-start">
           <p className="bubble-box-text">
             <b>
               <span className="question-style">
@@ -175,13 +175,13 @@ const GlacierMeltOverview2 = props => {
             value={percentageLabel.percentageDecrease}
             onChange={handleSliderChange}
           />
-          <div className="slider-text-volume">
+          <div className="glacier-zoom slider-text-volume">
             <p className="slider-text-bold">
               {percentageLabel.percentageDecrease.toFixed(0)} %
             </p>
             <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
           </div>
-          <div className="slider-text-ice">
+          <div className="glacier-zoom slider-text-ice">
             <p className="slider-text-bold">
               {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
                 0
@@ -195,7 +195,7 @@ const GlacierMeltOverview2 = props => {
               {t("Climate2_Submit_Button")}
             </button>
           </div>
-          <div className="slider-text-scaleFactor">
+          <div className="glacier-zoom slider-text-scaleFactor">
             <p className="slider-text-bold">{scaleLake.toFixed(1)} x</p>
             <p className="slider-text-small">{t("Climate2_Slider.3")}</p>
           </div>
@@ -212,10 +212,10 @@ const GlacierMeltOverview2 = props => {
         classNames="fade-climate2"
         unmountOnExit
         appear>
-        <div className="glacier-zoom glacier-title-wrapper">
-          <h1 className="title"> {t("Climate2_Title.1")}</h1>
-          <h2 className="subtitle">{t("Climate2_Title.3")}</h2>
-          <h6 className="source source-glacier">{t("Climate2_Source_Glacier")}</h6>
+        <div className="glacier-title-wrapper">
+          <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
+          <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
+          <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
           {createBubbleStartQuizz()}
           {showSliderAndNumbers()}
         </div>

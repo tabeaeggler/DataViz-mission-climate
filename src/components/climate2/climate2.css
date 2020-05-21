@@ -181,19 +181,19 @@
 .rc-slider-handle {
   border: #6a8adf !important;
   background-color: white !important;
-  width: 18px !important;
-  height: 18px !important;
-  margin-top: -7px !important;
+  width: 9px !important;
+  height: 9px !important;
+  margin-top: -4px !important;
 }
 
 .rc-slider-rail {
   background-color: #bbb9b9 !important;
-  height: 4px !important;
+  height: 2px !important;
 }
 
 .rc-slider-track {
   background-color: #ffd763 !important;
-  height: 4px !important;
+  height: 2px !important;
 }
 
 .slider-container-glacier {
