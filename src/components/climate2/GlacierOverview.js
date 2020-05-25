@@ -19,7 +19,7 @@ const GlacierOverview = props => {
   const [showAnswer, setShowAnswer] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentageDecrease: 0,
-    currentVolume: 130,
+    volumeDecrease: 0,
   })
   const [scaleLake, setScaleLake] = useState(0)
   const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
@@ -29,10 +29,6 @@ const GlacierOverview = props => {
     data_2019: 50.645,
   }
 
-  //solutions
-  const solutionPercentageVolume = 61
-  const solutionVolumeIce = 79
-
   /**
    * Handles slider interaction. Sets new percentage and scale of lake.
    * @param {number} percentage
@@ -40,8 +36,7 @@ const GlacierOverview = props => {
   function handleSliderChange(percentage) {
     setPercentageLabel({
       percentageDecrease: percentage,
-      currentVolume:
-        dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100,
+      volumeDecrease: (dataVolume.data_1850 / 100) * percentage,
     })
     setScaleLake(calculateScaleFactor(percentage))
   }
@@ -58,22 +53,19 @@ const GlacierOverview = props => {
     //Source: https://en.wikipedia.org/wiki/Lake_Lucerne
     const volumeLakeLucern = 11.8
 
-    var newCurrentVolume =
-      dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100
-    var difference = dataVolume.data_1850 - newCurrentVolume
-    var conversionIceToWater = (densityIce * difference) / densityWater
-    var scaleFactor = conversionIceToWater / volumeLakeLucern
-
-    return scaleFactor
+    var conversionIceToWater = (dataVolume.data_1850 / 100) * percentage * (densityIce / densityWater)
+    return conversionIceToWater / volumeLakeLucern
   }
 
   /**
    * Handles submit event
    */
   function showResult() {
+    const solutionPercentageVolumeDecrease = 61
+
     setShowAnswer(true)
     setScaleFactorEstimation(calculatePercentage())
-    handleSliderChange(solutionPercentageVolume)
+    handleSliderChange(solutionPercentageVolumeDecrease)
   }
 
   /**
@@ -90,18 +82,11 @@ const GlacierOverview = props => {
    */
   function createBubbleStartQuizz() {
     return (
-      <CSSTransition
-        in={!showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="glacier-zoom bubble-box bubble-box-glacier-start">
           <p className="bubble-box-text">
             <b>
-              <span className="question-style">
-                {t("Climate2_Bubble_Glacier.1")}
-              </span>
+              <span className="question-style">{t("Climate2_Bubble_Glacier.1")}</span>
             </b>
             {t("Climate2_Bubble_Glacier.2")}
           </p>
@@ -116,28 +101,21 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-glacier-answer">
           <p className="bubble-box-text extra-line-spacing">
             <b>
               {t("Climate2_Bubble_Glacier.3")}
-              <span className="text-solution-bold">{solutionPercentageVolume} % </span>
+              <span className="text-solution-bold">{percentageLabel.percentageDecrease} % </span>
               {t("Climate2_Bubble_Glacier.4")}
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="text-solution-bold">{solutionVolumeIce} km&sup3;</span>
+              <span className="text-solution-bold">{percentageLabel.volumeDecrease.toFixed(0)} km&sup3;</span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="text-solution-bold">
-                {scaleLake.toFixed(1)} x
-              </span>
+              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 
@@ -157,35 +135,20 @@ const GlacierOverview = props => {
    */
   function showSliderAndNumbers() {
     return (
-      <CSSTransition
-        in={!showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="slider-container-glacier">
-          <Slider
-            max="90"
-            value={percentageLabel.percentageDecrease}
-            onChange={handleSliderChange}
-          />
+          <Slider max="90" value={percentageLabel.percentageDecrease} onChange={handleSliderChange} />
           <div className="glacier-zoom slider-text-volume">
-            <p className="slider-text-bold">
-              {percentageLabel.percentageDecrease.toFixed(0)} %
-            </p>
+            <p className="slider-text-bold">{percentageLabel.percentageDecrease.toFixed(0)} %</p>
             <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
           </div>
           <div className="glacier-zoom slider-text-ice">
             <p className="slider-text-bold">
-              {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
-                0
-              ) + " "}
+              {percentageLabel.volumeDecrease.toFixed(0) + " "}
               km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
-            <button
-              className="submit-button submit-button-glacier"
-              onClick={() => showResult()}>
+            <button className="submit-button submit-button-glacier" onClick={() => showResult()}>
               {t("Climate2_Submit_Button")}
             </button>
           </div>
@@ -214,6 +177,7 @@ const GlacierOverview = props => {
           {showSliderAndNumbers()}
         </div>
       </CSSTransition>
+
       <div className="glacier-wrapper glacier-zoom">
         <GlacierGraph
           scaleFactor={calculatePercentage()}
