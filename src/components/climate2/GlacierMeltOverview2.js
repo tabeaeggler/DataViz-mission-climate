@@ -110,7 +110,7 @@ const GlacierMeltOverview2 = props => {
 
   /**
    * Adds Speach Bubble for showing glacier quizz answer
-   * @returns dom element with speech bubble
+   * @returns dom element with speech bubble text
    */
   function createBubbleShowAnswer() {
     return (
