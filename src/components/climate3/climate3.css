@@ -1,9 +1,8 @@
 .svg-container {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 47%;
   transform: translate(-50%, -50%);
-  /*background-color: blue;*/
 }
 
 .bubble-CH4 {
@@ -18,18 +17,7 @@
   fill: #6a8adf;
 }
 
-.bubble-C02,
-.bubble-C02-Electricity,
-.bubble-C02-Industry,
-.bubble-C02-Agriculture,
-.bubble-C02-Transport,
-.bubble-C02-Buildings,
-.bubble-C02-Other {
-  fill: #d14aa7;
-}
-
-.bubble-C02-Electricity2 {
-  opacity: 0.5;
+.bubble-C02 {
   fill: #d14aa7;
 }
 
@@ -39,9 +27,99 @@
 }
 
 .hide-textbox {
-  visibility: hidden;
+  animation-duration: 1s;
+  animation-name: fadeOutTextBox;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOutTextBox {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
 }
 
 .show-textbox {
-  visibility: visible;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
+  animation-name: fadeInTextBox;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeInTextBox {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.button-animation {
+  animation-duration: 1s;
+  animation-delay: 2.5s;
+  animation-name: buttonAnimation;
+  animation-fill-mode: backwards;
+}
+
+@keyframes buttonAnimation {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.bubble-box-climate3-txtbox1 {
+  left: 20%;
+  bottom: 16%;
+  width: 18%;
+  text-align: left;
+}
+
+.bubble-box-climate3-txtbox2 {
+  left: 22%;
+  bottom: 8%;
+  width: 25%;
+  text-align: left;
+}
+
+.bubble-box-climate3-txtbox3 {
+  right: 25%;
+  bottom: 9%;
+  width: 18%;
+  text-align: left;
+}
+
+.label-electricity {
+  fill: #fff;
+}
+
+.label-agriculture {
+  fill: #f6e4df;
+}
+
+.label-industry {
+  fill: #edcabf;
+}
+
+.label-transport {
+  fill: #e4afa0;
+}
+
+.label-other {
+  fill: #db9580;
+}
+
+.label-buildings {
+  fill: #d37b61;
+}
+
+#split-bubbles-by-gas,
+#split-bubbles-by-sector {
+  padding: 0;
+  float: right;
 }

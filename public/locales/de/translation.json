@@ -65,6 +65,35 @@
     "2": "Volumen"
   },
   "Climate3_Title": {
-    "1": "3. Es ist der Mensch"
+    "1": "3. Es ist der Mensch",
+    "2": "- Welche Treibhausgase werden ausgestossen? -",
+    "3": "- Auf welche Sektoren sind die Treibhausgase zurückzuführen? -"
+  },
+  "Climate3_Bubble_1": {
+    "1": "Der Mensch ist hauptverantwortlich für den Klimawandel.",
+    "2": " Hierbei spielen Treibhausgase die wichtigste Rolle, welche unter anderem beim Verbrauch von Strom, Gas und Benzin entstehen."
+  },
+  "Climate3_Bubble_2": {
+    "1": "Die verschiedenen Gase tragen nicht in gleichem Masse zum Treibhauseffekt bei. Um die Wirkung verschiedener Treibhausgase vergleichbar zu machen, wurde die Einheit der ",
+    "2": "CO₂-Äquivalente",
+    "3": " eingeführt. Beispielsweise ist NO₂ 300 mal wirksamer als CO₂."
+  },
+  "Climate3_Bubble_3": {
+    "1": "In der vorhergehenden Betrachtung wurden die Anteile der verschiedenen Treibhausgase aller menschengemachten Emissionen gezeigt.",
+    "2": " Hier wird der Ausstoss nach Sektoren aufgeschlüsselt."
+  },
+  "Climate3_Gas": {
+    "1": "Fluorierte Gase",
+    "2": "Methan CH4",
+    "3": "Kohlenstoffdioxid CO₂",
+    "4": "Stickstoffdioxid NO₂"
+  },
+  "Climate3_Sector": {
+    "1": "Energie",
+    "2": "Landwirtschaft",
+    "3": "Industrie",
+    "4": "Transport",
+    "5": "Andere",
+    "6": "Gebäude"
   }
 }

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
-import * as d3Zoom from "d3-zoom"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
+import ButtonInvisible from "../../assets/img/buttonInvisible.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 import "./climate3.css"
-import { transition } from "d3"
 
 function Climate3() {
   const { t } = useTranslation()
@@ -16,9 +15,10 @@ function Climate3() {
     splitGas: false,
     splitC02: false,
   })
+  const [buttonDelay, setButtonDelay] = useState(false)
   const svgRef = useRef()
   var width = 1400,
-    height = 550
+    height = 680
 
   function createBubbleChart(data) {
     const svg = d3.select(svgRef.current)
@@ -38,7 +38,7 @@ function Climate3() {
       .enter()
       .append("circle")
       .attr("class", function (d) {
-        return "bubble-" + d.type
+        return `bubble-${d.sector} bubble-${d.type} `
       })
       .attr("r", function (d) {
         return d.radius
@@ -65,83 +65,100 @@ function Climate3() {
 
     //Split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
-      console.log("by gas")
       var forceXSplitedByGas = d3Force
         .forceX(function (d) {
           if (d.type === "FGAS") {
             return width * 0.05
-          } else if (d.type === "N02") {
-            return width * 0.24
           } else if (d.type === "CH4") {
-            return width * 0.9
+            return width * 0.29
+          } else if (d.type === "N02") {
+            return width * 0.88
           } else {
-            return width * 0.55
+            return width * 0.6
           }
         })
-        .strength(0.08)
+        .strength(0.27)
 
       simulation
         .force("x", forceXSplitedByGas) //center bubbles on x-axis
-        .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
-        .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
-        .alphaTarget(0.2) //move speed
+        .force("y", d3Force.forceY(height / 2).strength(0.27)) //center bubbles on y-axis
+        .force("charge", d3Force.forceManyBody())
+        .alphaTarget(0.07) //move speed
         .restart() //restart simulatin with new force
 
       //Add gastext labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.03, 235, "F-Gas")
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.23, 210, "N02")
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.53, 90, "C02")
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.88, 180, "CH4")
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.0, 410, t("Climate3_Gas.1"))
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.235, 470, t("Climate3_Gas.2"))
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.52, 560, t("Climate3_Gas.3"))
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.82, 440, t("Climate3_Gas.4"))
     })
 
     //Split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
-      console.log("by sector")
+      //center all bubbles
+      setTimeout(function () {
+        simulation
+          .force("x", d3Force.forceX(width / 2).strength(0.05))
+          .force("y", d3Force.forceY(height / 2).strength(0.05))
+          .force("charge", null)
+          .alphaTarget(0.15)
+          .restart()
+      }, 500)
 
-      //TODO: Fadeout
-      //Remove Gas text labels
-      d3.selectAll(".bubble-CH4").remove()
-      d3.selectAll(".bubble-FGAS").remove()
-      d3.selectAll(".bubble-N02").remove()
-      d3.select(".bubble-title-gas").remove()
+      //remove gas text labels
+      d3.selectAll(".bubble-title-gas")
+        .style("opacity", 1)
+        .transition()
+        .delay(0.5)
+        .duration(2000)
+        .style("opacity", 0)
 
-      //Split C02 bubbles
+      //change color of bubbles by sector
+      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "white")
+      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#f6e4df")
+      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#edcabf")
+      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#e4afa0")
+      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#db9580")
+      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#d37b61")
+
+      //split bubbles by sector
       var forceXSplitedBySector = d3Force
         .forceX(function (d) {
-          if (d.type === "C02-Electricity") {
+          if (d.sector === "Electricity") {
             return width * 0.1
-          } else if (d.type === "C02-Agriculture") {
+          } else if (d.sector === "Agriculture") {
             return width * 0.3
-          } else if (d.type === "C02-Industry") {
+          } else if (d.sector === "Industry") {
             return width * 0.5
-          } else if (d.type === "C02-Transport") {
+          } else if (d.sector === "Transport") {
             return width * 0.68
-          } else if (d.type === "C02-Other") {
-            return width * 0.82
-          } else if (d.type === "C02-Buildings") {
+          } else if (d.sector === "Other") {
+            return width * 0.83
+          } else if (d.sector === "Buildings") {
             return width * 0.95
           }
         })
-        .strength(0.08)
+        .strength(0.06)
 
-      simulation
-        .force("x", forceXSplitedBySector) //center bubbles on x-axis
-        .force("y", d3Force.forceY(height / 2).strength(0.08)) //center bubbles on y-axis
-        .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
-        .alphaTarget(0.2) //move speed
-        .restart() //restart simulatin with new force
+      setTimeout(function () {
+        simulation
+          .force("x", forceXSplitedBySector)
+          .force("y", d3Force.forceY(height / 2).strength(0.06))
+          .alphaTarget(0.25)
+          .restart()
+      }, 4000)
 
-      //Add sector text labels
-      addTextLabel("bubble-title-gas bubble-C02-Electricity", width * 0.06, 150, "Electricity")
-      addTextLabel("bubble-title-gas bubble-C02-Agriculture", width * 0.26, 150, "Agriculture")
-      addTextLabel("bubble-title-gas bubble-C02-Industry", width * 0.47, 150, "Industry")
-      addTextLabel("bubble-title-gas bubble-C02-Transport", width * 0.64, 150, "Transport")
-      addTextLabel("bubble-title-gas bubble-C02-Other", width * 0.79, 150, "Other")
-      addTextLabel("bubble-title-gas bubble-C02-Buildings", width * 0.92, 150, "Buildings")
+      //Add sector labels and change bubble color
+      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 500, t("Climate3_Sector.1"), 6000)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.24, 500, t("Climate3_Sector.2"), 6000)
+      addTextLabel("bubble-title-gas label-industry", width * 0.47, 500, t("Climate3_Sector.3"), 6000)
+      addTextLabel("bubble-title-gas label-transport", width * 0.64, 500, t("Climate3_Sector.4"), 6000)
+      addTextLabel("bubble-title-gas label-other", width * 0.8, 500, t("Climate3_Sector.5"), 6000)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 500, t("Climate3_Sector.6"), 6000)
     })
 
     //Function to display textlabels
-    function addTextLabel(cssClass, xPos, yPos, text) {
+    function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
       svg
         .append("text")
         .attr("class", cssClass)
@@ -150,8 +167,8 @@ function Climate3() {
         .text(text)
         .style("opacity", 0)
         .transition()
-        .delay(3500)
-        .duration(1000)
+        .delay(delay)
+        .duration(1500)
         .ease(d3.easeLinear)
         .style("opacity", 1)
     }
@@ -168,21 +185,23 @@ function Climate3() {
 
   function createBubble1() {
     return (
-      <CSSTransition in={textboxes.random} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <div className={textboxes.random ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox1">
           <p className="bubble-box-text">
-            Hauptsächlich sind die Treibhausgase verantowrtlich für den Klimawandel...
+            <b>{t("Climate3_Bubble_1.1")}</b>
+            {t("Climate3_Bubble_1.2")}
           </p>
           <button
             id="next-button"
             id="split-bubbles-by-gas"
+            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: true, splitC02: false })
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
-      </CSSTransition>
+      </div>
     )
   }
 
@@ -190,10 +209,15 @@ function Climate3() {
     return (
       <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox2">
-          <p className="bubble-box-text">Dabei wird das Gas C02 am Meisten ausgestossen...</p>
+          <p className="bubble-box-text">
+            {t("Climate3_Bubble_2.1")}
+            <b>{t("Climate3_Bubble_2.2")}</b>
+            {t("Climate3_Bubble_2.3")}
+          </p>
           <button
             id="next-button"
             id="split-bubbles-by-sector"
+            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: false, splitC02: true })
             }}>
@@ -208,9 +232,13 @@ function Climate3() {
     return (
       <div className={textboxes.splitC02 ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
-          <p className="bubble-box-text">Co2-Ausstoss nach Sektor...</p>
+          <p className="bubble-box-text">
+            {t("Climate3_Bubble_3.1")}
+            <b>{t("Climate3_Bubble_3.2")}</b>
+          </p>
           <button
             id="next-button"
+            className="button-animation"
             onClick={() => {
               console.log("Go to next page")
             }}>
@@ -225,7 +253,13 @@ function Climate3() {
     <React.Fragment>
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
-          <h1 className="climate2-title"> {t("Climate3_Title.1")}</h1>
+          <h1 className="title"> {t("Climate3_Title.1")}</h1>
+
+          {textboxes.splitC02 ? (
+            <h2 className="subtitle">{t("Climate3_Title.2")}</h2>
+          ) : (
+            <h2 className="subtitle">{t("Climate3_Title.3")}</h2>
+          )}
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
@@ -239,59 +273,3 @@ function Climate3() {
 }
 
 export default Climate3
-
-//Zoom tries
-
-/*
-
-       const zoom = d3.zoom()
-      //.translate([0, 0])
-      //.scale(1)
-      //.scaleExtent([.5, 20])
-      .on("zoom", zoomed);
-      
-  svg.call(zoom);
-  
-  function zoomed() {
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-  }
-
-    d3.select("#split-bubbles-by-sector").on("click", function() {
-      svg.transition()
-        .call(zoom
-              .translate([400, 200])
-              .scale(5).event
-        );
-    })
-
-
-
-     const zoom = d3Zoom.zoom()
-                  .scaleExtent([1, 10])
-                  .translate([0, 0])
-                  .scale(1)
-                  .on("zoom", zoomed);
-
-      svg.call(zoom)
-
-      function zoomed() {
-        svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    }
-    
-        //Zoom
-    var zoom = d3.zoom()
-    .on("zoom", zoomed)
-
-    let zoomTrandform = null
-
-    function zoomed(){
-      zoomTrandform = d3.event.transform
-    }
-
-    d3.select("#split-bubbles-by-sector").on("click", function() {
-      svg.call(zoom.translateTo, 50, 50)
-      .transition()
-      .duration(2000)
-      .call(zoom.scaleTo, 2)
-    })
-    */
