@@ -1,6 +1,6 @@
 /*Snowline*/
 .source-snowline {
-  left: 88%;
+  right: 67px !important;
 }
 .draggable-line,
 .draggable-line-static {
@@ -41,7 +41,7 @@
 
 .glacier-title-wrapper {
   position: absolute;
-  bottom: 37.5%;
+  bottom: 37%;
   right: 16.6%;
 }
 
@@ -175,17 +175,17 @@
 /* Glacier */
 
 .bubble-box-glacier-start {
-  left: -30%;
-  bottom: -200%;
-  width: 50%;
+  right: 600px;
+  bottom: -420px;
+  width: 350px;
   text-align: left;
 }
 
 .bubble-box-glacier-answer {
-  right: 100px;
-  bottom: 320px;
+  right: 65px;
+  top: -530px;
   text-align: left;
-  width: 400px;
+  width: 370px;
 }
 
 .rc-slider-handle {
@@ -208,9 +208,9 @@
 
 .slider-container-glacier {
   position: absolute;
-  left: -28%;
-  bottom: -220%;
-  width: 50%;
+  right: 279px;
+  bottom: -240%;
+  width: 150px;
 }
 
 .slider-text-volume,
@@ -364,6 +364,6 @@
 }
 
 .source-glacier {
-  left: 132%;
-  width: 250px;
+width: 250px;
+right: -490px!important;
 }
