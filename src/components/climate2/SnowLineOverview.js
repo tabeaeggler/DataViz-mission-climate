@@ -51,18 +51,13 @@ const SnowLineOverview = props => {
         appear>
         <div className="bubble-box bubble-box-climate2-snow-answer">
           <p className="bubble-box-text">
-            <b>{t("Climate2_Bubble_Snowline.4")}</b>
+            <b>{t("Climate2_Bubble_Snowline.3")}</b>
             <span className="text-solution-bold">
-              <b>{t("Climate2_Bubble_Snowline.5")}</b>
+              <b>{t("Climate2_Bubble_Snowline.4")}</b>
             </span>
-            {t("Climate2_Bubble_Snowline.6")}
+            {t("Climate2_Bubble_Snowline.5")}
           </p>
-          <CSSTransition
-            in={true}
-            timeout={3600}
-            classNames="show-button"
-            unmountOnExit
-            appear>
+          <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
             <button
               id="next-button"
               onClick={() => {
@@ -95,10 +90,11 @@ const SnowLineOverview = props => {
         <div className="snowline-title-wrapper zoom-mountain">
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
-          <h6 className="source source-snowline">{t("Climate2_Source_Snow")}</h6>
+          <h6 className="source source-snowline">{t("Climate2_Source_Snowline")}</h6>
           {createBubbleStartQuizz()}
         </div>
       </CSSTransition>
+
       <div className="snowline-wrapper zoom-mountain">
         <SnowLineDraggableGraph
           showAnswer={showAnswer}
@@ -108,6 +104,7 @@ const SnowLineOverview = props => {
         />
         {createBubbleShowAnswer()}
       </div>
+
       <Snow
         animationInterval={50}
         followMouse={false}
