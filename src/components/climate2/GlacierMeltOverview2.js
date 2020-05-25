@@ -4,6 +4,7 @@ import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
 import Slider from "rc-slider"
 import GlacierGraph from "./GlacierGraph"
+import history from "../../routing/history"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 import "./climate2.css"
@@ -41,8 +42,7 @@ const GlacierMeltOverview2 = props => {
   function handleSliderChange(percentage) {
     setPercentageLabel({
       percentageDecrease: percentage,
-      currentVolume:
-        dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100,
+      currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100,
     })
     setScaleLake(calculateScaleFactor(percentage))
   }
@@ -59,8 +59,7 @@ const GlacierMeltOverview2 = props => {
     //Source: https://en.wikipedia.org/wiki/Lake_Lucerne
     const volumeLakeLucern = 11.8
 
-    var newCurrentVolume =
-      dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100
+    var newCurrentVolume = dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100
     var difference = dataVolume.data_1850 - newCurrentVolume
     var conversionIceToWater = (densityIce * difference) / densityWater
     var scaleFactor = conversionIceToWater / volumeLakeLucern
@@ -96,18 +95,11 @@ const GlacierMeltOverview2 = props => {
    */
   function createBubbleStartQuizz() {
     return (
-      <CSSTransition
-        in={!showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="glacier-zoom bubble-box bubble-box-glacier-start">
           <p className="bubble-box-text">
             <b>
-              <span className="question-style">
-                {t("Climate2_Bubble_Glacier.1")}
-              </span>
+              <span className="question-style">{t("Climate2_Bubble_Glacier.1")}</span>
             </b>
             {t("Climate2_Bubble_Glacier.2")}
           </p>
@@ -122,12 +114,7 @@ const GlacierMeltOverview2 = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-glacier-answer">
           <p className="bubble-box-text extra-line-spacing">
             <b>
@@ -141,15 +128,17 @@ const GlacierMeltOverview2 = props => {
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
-              <span className="text-solution-bold">
-                {scaleLake.toFixed(1)} x
-              </span>
+              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
             </b>
             {t("Climate2_Bubble_Glacier.7")}
 
             {t("Climate2_Bubble_Glacier.8")}
           </p>
-          <button id="next-button">
+          <button
+            id="next-button"
+            onClick={() => {
+              history.push("/Cause")
+            }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
         </div>
@@ -163,35 +152,20 @@ const GlacierMeltOverview2 = props => {
    */
   function showSliderAndNumbers() {
     return (
-      <CSSTransition
-        in={!showAnswer}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="slider-container-glacier">
-          <Slider
-            max="90"
-            value={percentageLabel.percentageDecrease}
-            onChange={handleSliderChange}
-          />
+          <Slider max="90" value={percentageLabel.percentageDecrease} onChange={handleSliderChange} />
           <div className="glacier-zoom slider-text-volume">
-            <p className="slider-text-bold">
-              {percentageLabel.percentageDecrease.toFixed(0)} %
-            </p>
+            <p className="slider-text-bold">{percentageLabel.percentageDecrease.toFixed(0)} %</p>
             <p className="slider-text-small"> {t("Climate2_Slider.1")}</p>
           </div>
           <div className="glacier-zoom slider-text-ice">
             <p className="slider-text-bold">
-              {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(
-                0
-              ) + " "}
+              {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0) + " "}
               km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
-            <button
-              className="submit-button submit-button-glacier"
-              onClick={() => showResult()}>
+            <button className="submit-button submit-button-glacier" onClick={() => showResult()}>
               {t("Climate2_Submit_Button")}
             </button>
           </div>

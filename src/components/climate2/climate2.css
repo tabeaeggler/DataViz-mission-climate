@@ -43,7 +43,7 @@
 .glacier-title-wrapper {
   position: absolute;
   bottom: 37.5%;
-  right: 16.6%
+  right: 16.6%;
 }
 
 .zoom-in-landscape-enter-done {
@@ -66,9 +66,8 @@
 .zoom-in-landscape-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
-  background-image:  url("../../assets/img/background2.svg")!important;
+  background-image: url("../../assets/img/background2.svg") !important;
   transition: all 2s;
-
 }
 
 .show-button-enter,
@@ -146,7 +145,6 @@
   fill: #6a8adf;
 }
 
-
 .draggable-text {
   fill: #ffd763;
 }
@@ -178,7 +176,7 @@
 /* Glacier */
 
 .bubble-box-glacier-start {
-  left: -30%;
+  left: -60%;
   bottom: -200%;
   width: 50%;
   text-align: left;
@@ -211,7 +209,7 @@
 
 .slider-container-glacier {
   position: absolute;
-  left: -28%;
+  left: -60%;
   bottom: -220%;
   width: 50%;
 }
@@ -300,7 +298,6 @@
   transition: transform 2s linear;
 }
 
-
 .glacier-img {
   position: absolute;
   bottom: 0;
@@ -340,17 +337,11 @@
   margin: 5px 0;
   height: 1px;
   width: 160px;
-  background: repeating-linear-gradient(
-    to right,
-    #ffd763 0,
-    #ffd763 5px,
-    transparent 5px,
-    transparent 7px
-  );
+  background: repeating-linear-gradient(to right, #ffd763 0, #ffd763 5px, transparent 5px, transparent 7px);
 }
 
 .glacier-zoom {
-  zoom: 45%
+  zoom: 45%;
 }
 
 .zoom-mountain {
@@ -377,4 +368,3 @@
   left: 132%;
   width: 250px;
 }
-
