@@ -1,7 +1,6 @@
 /*Snowline*/
 .source-snowline {
-  left: 146.5%;
-  width: 250px;
+  left: 88%;
 }
 .draggable-line,
 .draggable-line-static {
@@ -37,7 +36,7 @@
 .snowline-title-wrapper {
   position: absolute;
   bottom: 50%;
-  left: 18.3%;
+  width: 66%;
 }
 
 .glacier-title-wrapper {
@@ -47,13 +46,13 @@
 }
 
 .zoom-in-landscape-enter-done {
-  transform-origin: 0% 100%;
+  transform-origin: 4.5% 100%;
   transform: scale(1.6);
   transition: transform 3s;
 }
 
 .zoom-in-landscape-exit {
-  transform-origin: 0% 100%;
+  transform-origin: 4.5% 100%;
   transform: scale(1.6);
 }
 
@@ -150,14 +149,14 @@
 }
 
 .bubble-box-climate2-snow-start {
-  left: -52%;
-  width: 50%;
-  top: 250%;
+  width: 20%;
+  left: 5%;
+  top: 270%;
   text-align: left;
 }
 .bubble-box-climate2-snow-answer {
-  left: 93%;
-  top: 12%;
+  left: 97%;
+  top: 36%;
   width: 40%;
   text-align: left;
 }
