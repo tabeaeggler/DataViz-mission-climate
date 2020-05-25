@@ -17,7 +17,6 @@ const GlacierGraph = props => {
   //layout
   const glacierWidth = 346
   const glacierHeight = 551
-  const margin = 20
 
   /**
    * Scales the image container for the glacier svg

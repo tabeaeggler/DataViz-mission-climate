@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear } from "d3"
+import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mouse } from "d3"
 
 /**
  * Creates a draggable snowline graph
@@ -21,8 +21,6 @@ const SnowLineDraggableGraph = props => {
   const marginTextY = 60
   const marginTextX = 50
   const offset = 75
-  //factor for handling zoom
-  const zoomFactor = 1.6
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
@@ -250,15 +248,21 @@ const SnowLineDraggableGraph = props => {
        * Handle drag event
        */
       function dragged() {
-        if (!props.showAnswer) {
-          var deltaY = event.dy * zoomFactor
+        //y position of mouse for checking boundaries
+        var yMouse = mouse(this)[1]
+        const upperLimit = -174
+        const lowerLimit = 159
+
+        if (!props.showAnswer && yMouse > upperLimit && yMouse < lowerLimit) {
+          const zoomFactor = 1.6
+
+          //select lines and dragabble area
           var currentLine = select(".draggable-line")
           var currentDragArea = select(".draggable-area")
-          var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
 
-          //Check boundaries of drag area
-          if (newYPosition > height) newYPosition = height
-          else if (newYPosition < 0) newYPosition = 0
+          //calculate new position
+          var deltaY = event.dy * zoomFactor
+          var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
 
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
