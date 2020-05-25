@@ -60,7 +60,10 @@
   },
   "Climate2_Source_Snow": "Quelle: OcCC & ProClim",
   "Climate2_Source_Glacier": "Quelle: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
-  "Climate2_Lake": "Vierwaldstättersee",
+  "Climate2_Glacier_Graph": {
+    "1": "Deine Schätzung",
+    "2": "Volumen"
+  },
   "Climate3_Title": {
     "1": "3. Es ist der Mensch"
   }
