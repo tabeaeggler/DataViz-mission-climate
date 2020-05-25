@@ -278,8 +278,7 @@
   width: 100%;
 }
 
-.glacier-animation-fade-in-enter,
-.glacier-animation-fade-in-appear {
+.glacier-animation-fade-in-enter{
   visibility: hidden;
   opacity: 0;
 }

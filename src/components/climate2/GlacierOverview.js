@@ -17,7 +17,6 @@ const GlacierOverview = props => {
 
   //state
   const [showAnswer, setShowAnswer] = useState(false)
-  // const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentageDecrease: 0,
     currentVolume: 130,
@@ -31,8 +30,8 @@ const GlacierOverview = props => {
   }
 
   //solutions
-  const solutionVolume = 61
-  const solutionIce = 51
+  const solutionPercentageVolume = 61
+  const solutionVolumeIce = 79
 
   /**
    * Handles slider interaction. Sets new percentage and scale of lake.
@@ -72,14 +71,9 @@ const GlacierOverview = props => {
    * Handles submit event
    */
   function showResult() {
-    const resultPercentage = 61
-
     setShowAnswer(true)
     setScaleFactorEstimation(calculatePercentage())
-    setPercentageLabel({
-      percentageDecrease: resultPercentage,
-    })
-    setScaleLake(calculateScaleFactor(resultPercentage))
+    handleSliderChange(solutionPercentageVolume)
   }
 
   /**
@@ -132,12 +126,12 @@ const GlacierOverview = props => {
           <p className="bubble-box-text extra-line-spacing">
             <b>
               {t("Climate2_Bubble_Glacier.3")}
-              <span className="text-solution-bold">{solutionVolume} % </span>
+              <span className="text-solution-bold">{solutionPercentageVolume} % </span>
               {t("Climate2_Bubble_Glacier.4")}
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="text-solution-bold">{solutionIce} km&sup3;</span>
+              <span className="text-solution-bold">{solutionVolumeIce} km&sup3;</span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
