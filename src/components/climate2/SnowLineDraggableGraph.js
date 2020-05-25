@@ -7,6 +7,7 @@ import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mous
  * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
+ * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  */
 const SnowLineDraggableGraph = props => {
   //transaltion
@@ -170,7 +171,7 @@ const SnowLineDraggableGraph = props => {
         .style("opacity", 1)
     }
 
-    if (!props.showAnswer && props.showInteraction) {
+    if (!props.showAnswer && props.showSnowlineInteraction) {
       //add static line and text for 1960
       svg
         .append("line")
@@ -340,7 +341,7 @@ const SnowLineDraggableGraph = props => {
    */
   useEffect(() => {
     createSnowLine()
-  }, [props.showAnswer, props.showInteraction])
+  }, [props.showAnswer, props.showSnowlineInteraction])
 
   /**
    * Handle submission of result

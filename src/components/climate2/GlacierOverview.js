@@ -6,12 +6,12 @@ import Slider from "rc-slider"
 import GlacierGraph from "./GlacierGraph"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
-import "./climate2.css"
 
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider
+ * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  */
-const GlacierMeltOverview2 = props => {
+const GlacierOverview = props => {
   //transaltion
   const { t } = useTranslation()
 
@@ -207,7 +207,7 @@ const GlacierMeltOverview2 = props => {
   return (
     <React.Fragment>
       <CSSTransition
-        in={props.showInteraction}
+        in={props.showGlacierInteraction}
         timeout={{ enter: 3000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
@@ -231,4 +231,4 @@ const GlacierMeltOverview2 = props => {
   )
 }
 
-export default GlacierMeltOverview2
+export default GlacierOverview
