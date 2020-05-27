@@ -92,13 +92,13 @@ function Climate3() {
       addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 410, t("Climate3_Gas.1"))
       addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 470, t("Climate3_Gas.2"))
       addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 560, t("Climate3_Gas.3"))
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.91, 440, t("Climate3_Gas.4"))
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.9, 440, t("Climate3_Gas.4"))
 
       //add percentage labels
       addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 440, "2%", 5500)
       addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 500, "16%", 5500)
       addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 590, "76%", 5500)
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.91, 470, "6%", 5500)
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.9, 470, "6%", 5500)
     })
 
     //split bubbles by sector
