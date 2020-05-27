@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
+import "./climate3.css"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonRight.svg"
-import ButtonInvisible from "../../assets/img/buttonInvisible.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
-import "./climate3.css"
 
+/**
+ * Assembles all elements of climate3 screen
+ */
 function Climate3() {
   const { t } = useTranslation()
   const [textboxes, setTextboxes] = useState({
@@ -23,7 +25,7 @@ function Climate3() {
   function createBubbleChart(data) {
     const svg = d3.select(svgRef.current)
 
-    //set bubble position and radius
+    //set bubble initial position and radius
     var padding = 4
     for (var i = 0; i < data.length; i++) {
       data[i].radius = 11
@@ -171,9 +173,11 @@ function Climate3() {
       addTextLabel("bubble-title-gas label-buildings", width * 0.95, 530, "6%", 8500)
     })
 
-    //function to display textlabels
+    /**
+     * function to add textlabel to a specific position
+     */
     function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
-      return svg
+      svg
         .append("text")
         .attr("class", cssClass)
         .attr("x", xPos)
@@ -197,6 +201,10 @@ function Climate3() {
     })
   }, [])
 
+  /**
+   * Adds Speach Bubble 1: overview
+   * @returns dom element with speech bubble
+   */
   function createBubble1() {
     return (
       <div className={textboxes.random ? "show-textbox" : "hide-textbox"}>
@@ -218,6 +226,10 @@ function Climate3() {
     )
   }
 
+  /**
+   * Adds Speach Bubble 2: split by gas
+   * @returns dom element with speech bubble
+   */
   function createBubble2() {
     return (
       <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
@@ -240,6 +252,10 @@ function Climate3() {
     )
   }
 
+  /**
+   * Adds Speach Bubble 1: split by sector
+   * @returns dom element with speech bubble
+   */
   function createBubble3() {
     return (
       <div className={textboxes.splitC02 ? "show-textbox-3" : "hide-textbox"}>
