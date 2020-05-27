@@ -28,9 +28,9 @@
   "Climate2_Bubble_Snowline": {
     "1": "Le niveau de congélation change de plus en plus et il reste moins de neige dans les zones inférieures.",
     "2": " Quel était le niveau de gel en 2018?",
-    "3": " Estimez et confirmez!",
-    "4": "Solution: La ligne du zéro degré s'est élevée de 350 mètres au cours des 60 dernières années - ",
-    "5": "par degré de réchauffement d'environ 200 mètres. Les glaciers sont également touchés, en savoir plus !"
+    "3": "Solution: Au cours des 60 dernières années, la ligne zéro degré a augmenté de ",
+    "4":"350 mètres",
+    "5": " - par degré de réchauffement d'environ 200 mètres. Les glaciers sont également touchés, en savoir plus !"
   },
   "Climate2_Bubble_Glacier": {
     "1": "De quel pourcentage le volume des glaciers suisses a-t-il diminué depuis 1850 ?",
@@ -57,7 +57,7 @@
     "2": "Glace fondue",
     "3": "Le lac des Quatre-Cantons"
   },
-  "Climate2_Source": "Source: OcCC & ProClim",
+  "Climate2_Source_Snowline": "Source: OcCC & ProClim",
   "Climate2_Source_Glacier": "Source: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
   "Climate2_Glacier_Graph": {
     "1": "Votre estimation",

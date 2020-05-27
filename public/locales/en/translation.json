@@ -28,9 +28,9 @@
   "Climate2_Bubble_Snowline": {
     "1": "The freezing level shifts ever higher and less snow remains in lower areas.",
     "2": " What was the freezing level in 2018?",
-    "3": " Estimate and confirm!",
-    "4": "Solution: The zero degree line has risen 350 meters in the last 60 years - ",
-    "5": "per degree of warming about 200 meters. Also the glaciers are affected, learn more!"
+    "3": "Solution: In the last 60 years the zero degree line has risen ",
+    "4": "350 meters",
+    "5": " - per degree of warming about 200 meters. Also the glaciers are affected, learn more!"
   },
   "Climate2_Bubble_Glacier": {
     "1": "By what percentage has the glacier volume of Switzerland decreased since 1850?",
@@ -57,7 +57,7 @@
     "2": "Molten ice",
     "3": "Lake Lucerne"
   },
-  "Climate2_Source": "Source: OcCC & ProClim",
+  "Climate2_Source_Snowline": "Source: OcCC & ProClim",
   "Climate2_Source_Glacier": "Source: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
   "Climate2_Glacier_Graph": {
     "1": "Your estimate",

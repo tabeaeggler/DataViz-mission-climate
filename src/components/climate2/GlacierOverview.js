@@ -7,21 +7,20 @@ import GlacierGraph from "./GlacierGraph"
 import history from "../../routing/history"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
-import "./climate2.css"
 
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider
+ * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  */
-const GlacierMeltOverview2 = props => {
+const GlacierOverview = props => {
   //transaltion
   const { t } = useTranslation()
 
   //state
   const [showAnswer, setShowAnswer] = useState(false)
-  // const [nextPage, setNextPage] = useState(false)
   const [percentageLabel, setPercentageLabel] = useState({
     percentageDecrease: 0,
-    currentVolume: 130,
+    volumeDecrease: 0,
   })
   const [scaleLake, setScaleLake] = useState(0)
   const [scaleFactorEstimation, setScaleFactorEstimation] = useState(0)
@@ -31,10 +30,6 @@ const GlacierMeltOverview2 = props => {
     data_2019: 50.645,
   }
 
-  //solutions
-  const solutionVolume = 61
-  const solutionIce = 51
-
   /**
    * Handles slider interaction. Sets new percentage and scale of lake.
    * @param {number} percentage
@@ -42,7 +37,7 @@ const GlacierMeltOverview2 = props => {
   function handleSliderChange(percentage) {
     setPercentageLabel({
       percentageDecrease: percentage,
-      currentVolume: dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100,
+      volumeDecrease: (dataVolume.data_1850 / 100) * percentage,
     })
     setScaleLake(calculateScaleFactor(percentage))
   }
@@ -59,26 +54,19 @@ const GlacierMeltOverview2 = props => {
     //Source: https://en.wikipedia.org/wiki/Lake_Lucerne
     const volumeLakeLucern = 11.8
 
-    var newCurrentVolume = dataVolume.data_1850 - (dataVolume.data_1850 * percentage) / 100
-    var difference = dataVolume.data_1850 - newCurrentVolume
-    var conversionIceToWater = (densityIce * difference) / densityWater
-    var scaleFactor = conversionIceToWater / volumeLakeLucern
-
-    return scaleFactor
+    var conversionIceToWater = (dataVolume.data_1850 / 100) * percentage * (densityIce / densityWater)
+    return conversionIceToWater / volumeLakeLucern
   }
 
   /**
    * Handles submit event
    */
   function showResult() {
-    const resultPercentage = 61
+    const solutionPercentageVolumeDecrease = 61
 
     setShowAnswer(true)
     setScaleFactorEstimation(calculatePercentage())
-    setPercentageLabel({
-      percentageDecrease: resultPercentage,
-    })
-    setScaleLake(calculateScaleFactor(resultPercentage))
+    handleSliderChange(solutionPercentageVolumeDecrease)
   }
 
   /**
@@ -119,12 +107,12 @@ const GlacierMeltOverview2 = props => {
           <p className="bubble-box-text extra-line-spacing">
             <b>
               {t("Climate2_Bubble_Glacier.3")}
-              <span className="text-solution-bold">{solutionVolume} % </span>
+              <span className="text-solution-bold">{percentageLabel.percentageDecrease} % </span>
               {t("Climate2_Bubble_Glacier.4")}
             </b>
             {t("Climate2_Bubble_Glacier.5")}
             <b>
-              <span className="text-solution-bold">{solutionIce} km&sup3;</span>
+              <span className="text-solution-bold">{percentageLabel.volumeDecrease.toFixed(0)} km&sup3;</span>
             </b>
             {t("Climate2_Bubble_Glacier.6")}
             <b>
@@ -161,7 +149,7 @@ const GlacierMeltOverview2 = props => {
           </div>
           <div className="glacier-zoom slider-text-ice">
             <p className="slider-text-bold">
-              {(dataVolume.data_1850 - percentageLabel.currentVolume).toFixed(0) + " "}
+              {percentageLabel.volumeDecrease.toFixed(0) + " "}
               km&sup3;
             </p>
             <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
@@ -181,7 +169,7 @@ const GlacierMeltOverview2 = props => {
   return (
     <React.Fragment>
       <CSSTransition
-        in={props.showInteraction}
+        in={props.showGlacierInteraction}
         timeout={{ enter: 3000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
@@ -194,6 +182,7 @@ const GlacierMeltOverview2 = props => {
           {showSliderAndNumbers()}
         </div>
       </CSSTransition>
+
       <div className="glacier-wrapper glacier-zoom">
         <GlacierGraph
           scaleFactor={calculatePercentage()}
@@ -205,4 +194,4 @@ const GlacierMeltOverview2 = props => {
   )
 }
 
-export default GlacierMeltOverview2
+export default GlacierOverview

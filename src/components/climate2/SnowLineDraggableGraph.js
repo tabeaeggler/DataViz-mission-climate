@@ -1,25 +1,17 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import {
-  select,
-  scaleLinear,
-  drag,
-  event,
-  easeQuad,
-  easeCubic,
-  easeLinear,
-} from "d3"
+import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mouse } from "d3"
 
 /**
  * Creates a draggable snowline graph
  * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
+ * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  */
 const SnowLineDraggableGraph = props => {
   //transaltion
   const { t } = useTranslation()
-
   //svg sizing
   const svgRef = useRef()
   const width = 700
@@ -30,7 +22,6 @@ const SnowLineDraggableGraph = props => {
   const marginTextY = 60
   const marginTextX = 50
   const offset = 75
-
   //state
   const [draggableLinePosition, setDraggableLinePosition] = useState(1000)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
@@ -39,10 +30,7 @@ const SnowLineDraggableGraph = props => {
    * Main code for SnowLineDraggable
    */
   function createSnowLine() {
-    const svg = select(svgRef.current).attr(
-      "transform",
-      `translate(${marginLeft},${marginTop})`
-    )
+    const svg = select(svgRef.current).attr("transform", `translate(${marginLeft},${marginTop})`)
 
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
@@ -56,13 +44,7 @@ const SnowLineDraggableGraph = props => {
         .attr("ry", 5)
         .attr("y", yScale(props.data[1].snowline))
         .attr("width", width + 2)
-        .attr(
-          "height",
-          Math.abs(
-            yScale(props.data[0].snowline - 10) -
-              yScale(props.data[1].snowline - 10)
-          )
-        )
+        .attr("height", Math.abs(yScale(props.data[0].snowline - 10) - yScale(props.data[1].snowline - 10)))
         .style("opacity", "0")
         .transition()
         .delay(3500)
@@ -189,7 +171,7 @@ const SnowLineDraggableGraph = props => {
         .style("opacity", 1)
     }
 
-    if (!props.showAnswer && props.showInteraction) {
+    if (!props.showAnswer && props.showSnowlineInteraction) {
       //add static line and text for 1960
       svg
         .append("line")
@@ -232,9 +214,7 @@ const SnowLineDraggableGraph = props => {
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
 
-      draggableGroup.call(
-        drag().on("start", dragstarted).on("drag", dragged).on("end", dragended)
-      )
+      draggableGroup.call(drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
       animationLine()
 
       var textDraggableLineMeter = svg
@@ -261,11 +241,7 @@ const SnowLineDraggableGraph = props => {
           svg
             .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
             .classed("active-text", true)
-          svg
-            .selectAll(
-              ".draggable-line, .draggable-area, .draggable-line-text-year"
-            )
-            .interrupt()
+          svg.selectAll(".draggable-line, .draggable-area, .draggable-line-text-year").interrupt()
         }
       }
 
@@ -273,17 +249,21 @@ const SnowLineDraggableGraph = props => {
        * Handle drag event
        */
       function dragged() {
-        if (!props.showAnswer) {
-          var y = event.dy
+        //y position of mouse for checking boundaries
+        var yMouse = mouse(this)[1]
+        const upperLimit = -174
+        const lowerLimit = 159
+
+        if (!props.showAnswer && yMouse > upperLimit && yMouse < lowerLimit) {
+          const zoomFactor = 1.6
+
+          //select lines and dragabble area
           var currentLine = select(".draggable-line")
           var currentDragArea = select(".draggable-area")
-          var newYPosition = parseInt(currentLine.attr("y1")) + y
 
-          console.log(newYPosition)
-
-          //Check boundaries of drag area
-          if (newYPosition > height) newYPosition = height
-          else if (newYPosition < 0) newYPosition = 0
+          //calculate new position
+          var deltaY = event.dy * zoomFactor
+          var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
 
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
@@ -361,7 +341,7 @@ const SnowLineDraggableGraph = props => {
    */
   useEffect(() => {
     createSnowLine()
-  }, [props.showAnswer, props.showInteraction])
+  }, [props.showAnswer, props.showSnowlineInteraction])
 
   /**
    * Handle submission of result
