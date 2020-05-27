@@ -86,13 +86,13 @@ function Climate3() {
         .alphaTarget(0.07) //move speed
         .restart() //restart simulatin with new force
 
-      //Add gastext labels
+      //add gas labels
       addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 410, t("Climate3_Gas.1"))
       addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 470, t("Climate3_Gas.2"))
       addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 560, t("Climate3_Gas.3"))
       addTextLabel("bubble-title-gas bubble-N02", width * 0.91, 440, t("Climate3_Gas.4"))
 
-      //Add percentage labels
+      //add percentage labels
       addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 440, "2%", 5500)
       addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 500, "16%", 5500)
       addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 590, "76%", 5500)
@@ -154,7 +154,7 @@ function Climate3() {
           .restart()
       }, 4000)
 
-      //add sector labels and change bubble color
+      //add sector labels
       addTextLabel("bubble-title-gas label-electricity", width * 0.09, 500, t("Climate3_Sector.1"), 6000)
       addTextLabel("bubble-title-gas label-agriculture", width * 0.3, 500, t("Climate3_Sector.2"), 6000)
       addTextLabel("bubble-title-gas label-industry", width * 0.5, 500, t("Climate3_Sector.3"), 6000)

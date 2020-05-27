@@ -15,6 +15,15 @@
   transition: transform 3s;
 }
 
+.zoom-in-landscape-appear {
+  opacity: 0;
+}
+
+.zoom-in-landscape-appear-active {
+  opacity: 1;
+  transition: opacity 1500ms;
+}
+
 .zoom-in-landscape-exit {
   transform-origin: 4.5% 100%;
   transform: scale(1.6);
