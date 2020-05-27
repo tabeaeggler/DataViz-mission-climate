@@ -22,7 +22,7 @@ function Climate2() {
         appear
         onEntered={() => setShowSnowlineInteraction(true)}
         onExit={() => setShowSnowlineInteraction(false)}>
-        <div className={"landscape-container"}>
+        <div className="landscape-container">
           <SnowLineOverview
             showSnowlineInteraction={showSnowlineInteraction}
             setShowSnowlineGraph={setShowSnowlineGraph}></SnowLineOverview>
