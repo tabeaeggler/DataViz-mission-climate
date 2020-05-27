@@ -65,8 +65,9 @@
   },
   "Climate3_Title": {
     "1": "3. Es ist der Mensch",
-    "2": "- Welche Treibhausgase werden ausgestossen? -",
-    "3": "- Auf welche Sektoren sind die Treibhausgase zurückzuführen? -"
+    "2": "- Treibhausgase -",
+    "3": "- Welche Treibhausgase werden ausgestossen? -",
+    "4": "- Auf welche Sektoren sind die Treibhausgase zurückzuführen? -"
   },
   "Climate3_Bubble_1": {
     "1": "Der Mensch ist hauptverantwortlich für den Klimawandel.",
@@ -83,7 +84,7 @@
   },
   "Climate3_Gas": {
     "1": "Fluorierte Gase",
-    "2": "Methan CH4",
+    "2": "Methan CH₄",
     "3": "Kohlenstoffdioxid CO₂",
     "4": "Stickstoffdioxid NO₂"
   },
@@ -94,5 +95,6 @@
     "4": "Transport",
     "5": "Andere",
     "6": "Gebäude"
-  }
+  },
+  "Climate3_Source": "Quelle: IPCC"
 }

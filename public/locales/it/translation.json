@@ -66,8 +66,9 @@
   "Climate2_Lake": "Lago dei Quattro Cantoni",
   "Climate3_Title": {
     "1": "3. è l'uomo",
-    "2": "- Quali gas serra vengono emessi? -",
-    "3": "- Quali settori sono responsabili dei gas a effetto serra? -"
+    "2": "- Gas a effetto serra -",
+    "3": "- Quali gas serra vengono emessi? -",
+    "4": "- Quali settori sono responsabili dei gas a effetto serra? -"
   },
   "Climate3_Bubble_1": {
     "1": "Gli esseri umani sono i principali responsabili del cambiamento climatico.",
@@ -84,7 +85,7 @@
   },
   "Climate3_Gas": {
     "1": "Gas fluorurati",
-    "2": "Metano CH4",
+    "2": "Metano CH₄",
     "3": "Anidride carbonica CO₂",
     "4": "Biossido di azoto NO₂"
   },
@@ -95,5 +96,6 @@
     "4": "Trasporto",
     "5": "Altri",
     "6": "Edificio"
-  }
+  },
+  "Climate3_Source": "Fonte: IPCC"
 }

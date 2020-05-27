@@ -10,11 +10,11 @@
 }
 
 .bubble-N02 {
-  fill: #ffd763;
+  fill: #d37b61;
 }
 
 .bubble-FGAS {
-  fill: #6a8adf;
+  fill: #ffd763;
 }
 
 .bubble-C02 {
@@ -24,6 +24,7 @@
 .bubble-title-gas {
   font-size: 1.4em;
   font-family: "Inconsolata", monospace;
+  text-anchor: middle;
 }
 
 .hide-textbox {
@@ -42,8 +43,15 @@
 }
 
 .show-textbox {
-  animation-duration: 1s;
-  animation-delay: 0.8s;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-name: fadeInTextBox;
+  animation-fill-mode: backwards;
+}
+
+.show-textbox-3 {
+  animation-duration: 2s;
+  animation-delay: 5s;
   animation-name: fadeInTextBox;
   animation-fill-mode: backwards;
 }
@@ -76,7 +84,7 @@
 .bubble-box-climate3-txtbox1 {
   left: 20%;
   bottom: 16%;
-  width: 18%;
+  width: 25%;
   text-align: left;
 }
 
@@ -90,32 +98,32 @@
 .bubble-box-climate3-txtbox3 {
   right: 25%;
   bottom: 9%;
-  width: 18%;
+  width: 25%;
   text-align: left;
 }
 
 .label-electricity {
-  fill: #fff;
+  fill: #fff5fa;
 }
 
 .label-agriculture {
-  fill: #f6e4df;
+  fill: #fac8df;
 }
 
 .label-industry {
-  fill: #edcabf;
+  fill: #f4a8ed;
 }
 
 .label-transport {
-  fill: #e4afa0;
+  fill: #cf7cff;
 }
 
 .label-other {
-  fill: #db9580;
+  fill: #9685e5;
 }
 
 .label-buildings {
-  fill: #d37b61;
+  fill: #6a8adf;
 }
 
 #split-bubbles-by-gas,

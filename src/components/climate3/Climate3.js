@@ -63,18 +63,18 @@ function Climate3() {
         })
     }
 
-    //Split bubbles by gas
+    //split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
       var forceXSplitedByGas = d3Force
         .forceX(function (d) {
           if (d.type === "FGAS") {
-            return width * 0.05
+            return width * 0.1
           } else if (d.type === "CH4") {
-            return width * 0.29
+            return width * 0.33
           } else if (d.type === "N02") {
             return width * 0.88
           } else {
-            return width * 0.6
+            return width * 0.61
           }
         })
         .strength(0.27)
@@ -87,13 +87,19 @@ function Climate3() {
         .restart() //restart simulatin with new force
 
       //Add gastext labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.0, 410, t("Climate3_Gas.1"))
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.235, 470, t("Climate3_Gas.2"))
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.52, 560, t("Climate3_Gas.3"))
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.82, 440, t("Climate3_Gas.4"))
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 410, t("Climate3_Gas.1"))
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 470, t("Climate3_Gas.2"))
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 560, t("Climate3_Gas.3"))
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.91, 440, t("Climate3_Gas.4"))
+
+      //Add percentage labels
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 440, "2%", 5500)
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 500, "16%", 5500)
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 590, "76%", 5500)
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.91, 470, "6%", 5500)
     })
 
-    //Split bubbles by sector
+    //split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
       //center all bubbles
       setTimeout(function () {
@@ -114,12 +120,12 @@ function Climate3() {
         .style("opacity", 0)
 
       //change color of bubbles by sector
-      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "white")
-      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#f6e4df")
-      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#edcabf")
-      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#e4afa0")
-      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#db9580")
-      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#d37b61")
+      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "#FFF5FA")
+      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#FAC8DF")
+      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#F4A8ED")
+      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#CF7CFF")
+      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#9685e5")
+      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#6a8adf")
 
       //split bubbles by sector
       var forceXSplitedBySector = d3Force
@@ -148,18 +154,26 @@ function Climate3() {
           .restart()
       }, 4000)
 
-      //Add sector labels and change bubble color
-      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 500, t("Climate3_Sector.1"), 6000)
-      addTextLabel("bubble-title-gas label-agriculture", width * 0.24, 500, t("Climate3_Sector.2"), 6000)
-      addTextLabel("bubble-title-gas label-industry", width * 0.47, 500, t("Climate3_Sector.3"), 6000)
-      addTextLabel("bubble-title-gas label-transport", width * 0.64, 500, t("Climate3_Sector.4"), 6000)
-      addTextLabel("bubble-title-gas label-other", width * 0.8, 500, t("Climate3_Sector.5"), 6000)
-      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 500, t("Climate3_Sector.6"), 6000)
+      //add sector labels and change bubble color
+      addTextLabel("bubble-title-gas label-electricity", width * 0.09, 500, t("Climate3_Sector.1"), 6000)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.3, 500, t("Climate3_Sector.2"), 6000)
+      addTextLabel("bubble-title-gas label-industry", width * 0.5, 500, t("Climate3_Sector.3"), 6000)
+      addTextLabel("bubble-title-gas label-transport", width * 0.68, 500, t("Climate3_Sector.4"), 6000)
+      addTextLabel("bubble-title-gas label-other", width * 0.83, 500, t("Climate3_Sector.5"), 6000)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.95, 500, t("Climate3_Sector.6"), 6000)
+
+      //add percentage label
+      addTextLabel("bubble-title-gas label-electricity", width * 0.09, 530, "25%", 8500)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.3, 530, "24%", 8500)
+      addTextLabel("bubble-title-gas label-industry", width * 0.5, 530, "21%", 8500)
+      addTextLabel("bubble-title-gas label-transport", width * 0.68, 530, "14%", 8500)
+      addTextLabel("bubble-title-gas label-other", width * 0.83, 530, "10%", 8500)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.95, 530, "6%", 8500)
     })
 
-    //Function to display textlabels
+    //function to display textlabels
     function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
-      svg
+      return svg
         .append("text")
         .attr("class", cssClass)
         .attr("x", xPos)
@@ -194,7 +208,6 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-gas"
-            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: true, splitC02: false })
             }}>
@@ -217,7 +230,6 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-sector"
-            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: false, splitC02: true })
             }}>
@@ -230,7 +242,7 @@ function Climate3() {
 
   function createBubble3() {
     return (
-      <div className={textboxes.splitC02 ? "show-textbox" : "hide-textbox"}>
+      <div className={textboxes.splitC02 ? "show-textbox-3" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
           <p className="bubble-box-text">
             {t("Climate3_Bubble_3.1")}
@@ -238,7 +250,6 @@ function Climate3() {
           </p>
           <button
             id="next-button"
-            className="button-animation"
             onClick={() => {
               console.log("Go to next page")
             }}>
@@ -255,17 +266,16 @@ function Climate3() {
         <div>
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
 
-          {textboxes.splitC02 ? (
-            <h2 className="subtitle">{t("Climate3_Title.2")}</h2>
-          ) : (
-            <h2 className="subtitle">{t("Climate3_Title.3")}</h2>
-          )}
+          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
+          {textboxes.splitGas ? <h2 className="subtitle">{t("Climate3_Title.3")}</h2> : ""}
+          {textboxes.splitC02 ? <h2 className="subtitle">{t("Climate3_Title.4")}</h2> : ""}
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
+          <h6 className="source">{t("Climate3_Source")}</h6>
         </div>
       </CSSTransition>
     </React.Fragment>
