@@ -42,29 +42,20 @@
 }
 
 .show-textbox {
-  animation-duration: 1s;
-  animation-delay: 0.8s;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-name: fadeInTextBox;
+  animation-fill-mode: backwards;
+}
+
+.show-textbox-3 {
+  animation-duration: 2s;
+  animation-delay: 5s;
   animation-name: fadeInTextBox;
   animation-fill-mode: backwards;
 }
 
 @keyframes fadeInTextBox {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
-.button-animation {
-  animation-duration: 1s;
-  animation-delay: 2.5s;
-  animation-name: buttonAnimation;
-  animation-fill-mode: backwards;
-}
-
-@keyframes buttonAnimation {
   from {
     opacity: 0%;
   }

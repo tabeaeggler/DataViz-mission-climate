@@ -80,7 +80,7 @@
   },
   "Climate3_Gas": {
     "1": "Gaz fluorés",
-    "2": "Méthane CH4",
+    "2": "Méthane CH₄",
     "3": "dioxyde d'azote CO₂",
     "4": "Stickstoffdioxid NO₂"
   },
@@ -91,5 +91,6 @@
     "4": "Transport",
     "5": "Autres",
     "6": "Bâtiment"
-  }
+  },
+  "Climate3_Source": "Source: IPCC"
 }

@@ -80,7 +80,7 @@
   },
   "Climate3_Gas": {
     "1": "Fluorinated gases",
-    "2": "Methane CH4",
+    "2": "Methane CH₄",
     "3": "Carbon dioxide CO₂",
     "4": "Nitrogen dioxide N0₂"
   },
@@ -91,5 +91,6 @@
     "4": "Transport",
     "5": "Other",
     "6": "Buildings"
-  }
+  },
+  "Climate3_Source": "Source: IPCC"
 }

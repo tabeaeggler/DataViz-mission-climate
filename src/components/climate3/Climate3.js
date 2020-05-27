@@ -63,7 +63,7 @@ function Climate3() {
         })
     }
 
-    //Split bubbles by gas
+    //split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
       var forceXSplitedByGas = d3Force
         .forceX(function (d) {
@@ -93,7 +93,7 @@ function Climate3() {
       addTextLabel("bubble-title-gas bubble-N02", width * 0.82, 440, t("Climate3_Gas.4"))
     })
 
-    //Split bubbles by sector
+    //split bubbles by sector
     d3.select("#split-bubbles-by-sector").on("click", function () {
       //center all bubbles
       setTimeout(function () {
@@ -194,7 +194,6 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-gas"
-            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: true, splitC02: false })
             }}>
@@ -217,7 +216,6 @@ function Climate3() {
           <button
             id="next-button"
             id="split-bubbles-by-sector"
-            className="button-animation"
             onClick={() => {
               setTextboxes({ random: false, splitGas: false, splitC02: true })
             }}>
@@ -230,7 +228,7 @@ function Climate3() {
 
   function createBubble3() {
     return (
-      <div className={textboxes.splitC02 ? "show-textbox" : "hide-textbox"}>
+      <div className={textboxes.splitC02 ? "show-textbox-3" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
           <p className="bubble-box-text">
             {t("Climate3_Bubble_3.1")}
@@ -238,7 +236,6 @@ function Climate3() {
           </p>
           <button
             id="next-button"
-            className="button-animation"
             onClick={() => {
               console.log("Go to next page")
             }}>
@@ -256,9 +253,9 @@ function Climate3() {
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
 
           {textboxes.splitC02 ? (
-            <h2 className="subtitle">{t("Climate3_Title.2")}</h2>
-          ) : (
             <h2 className="subtitle">{t("Climate3_Title.3")}</h2>
+          ) : (
+            <h2 className="subtitle">{t("Climate3_Title.2")}</h2>
           )}
           {createBubble1()}
           {createBubble2()}
@@ -266,6 +263,7 @@ function Climate3() {
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
+          <h6 className="source">{t("Climate3_Source")}</h6>
         </div>
       </CSSTransition>
     </React.Fragment>

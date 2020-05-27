@@ -81,7 +81,7 @@
   },
   "Climate3_Gas": {
     "1": "Fluorierte Gase",
-    "2": "Methan CH4",
+    "2": "Methan CH₄",
     "3": "Kohlenstoffdioxid CO₂",
     "4": "Stickstoffdioxid NO₂"
   },
@@ -92,5 +92,6 @@
     "4": "Transport",
     "5": "Andere",
     "6": "Gebäude"
-  }
+  },
+  "Climate3_Source": "Quelle: IPCC"
 }

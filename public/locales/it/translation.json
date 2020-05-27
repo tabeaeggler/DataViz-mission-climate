@@ -80,7 +80,7 @@
   },
   "Climate3_Gas": {
     "1": "Gas fluorurati",
-    "2": "Metano CH4",
+    "2": "Metano CH₄",
     "3": "Anidride carbonica CO₂",
     "4": "Biossido di azoto NO₂"
   },
@@ -91,5 +91,6 @@
     "4": "Trasporto",
     "5": "Altri",
     "6": "Edificio"
-  }
+  },
+  "Climate3_Source": "Fonte: IPCC"
 }
