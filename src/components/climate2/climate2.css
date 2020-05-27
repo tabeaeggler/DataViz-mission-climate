@@ -186,7 +186,7 @@
 
 /* Glacier */
 .bubble-box-glacier-start {
-  right: 600px;
+  right: 680px;
   bottom: -420px;
   width: 350px;
   text-align: left;
@@ -219,7 +219,7 @@
 
 .slider-container-glacier {
   position: absolute;
-  right: 279px;
+  right: 315px;
   bottom: -250%;
   width: 150px;
 }
@@ -278,7 +278,7 @@
   width: 100%;
 }
 
-.glacier-animation-fade-in-enter{
+.glacier-animation-fade-in-enter {
   visibility: hidden;
   opacity: 0;
 }
@@ -366,6 +366,6 @@
 }
 
 .source-glacier {
-width: 250px;
-right: -490px!important;
+  width: 250px;
+  right: -490px !important;
 }
