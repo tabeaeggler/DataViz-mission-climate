@@ -148,18 +148,28 @@ function Climate3() {
           .restart()
       }, 4000)
 
-      //Add sector labels and change bubble color
-      addTextLabel("bubble-title-gas label-electricity", width * 0.06, 500, t("Climate3_Sector.1"), 6000)
-      addTextLabel("bubble-title-gas label-agriculture", width * 0.24, 500, t("Climate3_Sector.2"), 6000)
-      addTextLabel("bubble-title-gas label-industry", width * 0.47, 500, t("Climate3_Sector.3"), 6000)
-      addTextLabel("bubble-title-gas label-transport", width * 0.64, 500, t("Climate3_Sector.4"), 6000)
-      addTextLabel("bubble-title-gas label-other", width * 0.8, 500, t("Climate3_Sector.5"), 6000)
-      addTextLabel("bubble-title-gas label-buildings", width * 0.92, 500, t("Climate3_Sector.6"), 6000)
+      //add sector labels and change bubble color
+      addTextLabel("bubble-title-gas label-electricity", width * 0.09, 500, t("Climate3_Sector.1"), 6000)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.3, 500, t("Climate3_Sector.2"), 6000)
+      addTextLabel("bubble-title-gas label-industry", width * 0.5, 500, t("Climate3_Sector.3"), 6000)
+      addTextLabel("bubble-title-gas label-transport", width * 0.68, 500, t("Climate3_Sector.4"), 6000)
+      addTextLabel("bubble-title-gas label-other", width * 0.83, 500, t("Climate3_Sector.5"), 6000)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.95, 500, t("Climate3_Sector.6"), 6000)
+
+      console.log(d3.select(".label-electricity").node().getComputedTextLength())
+
+      //add percentage label
+      addTextLabel("bubble-title-gas label-electricity", width * 0.09, 530, "25%", 8500)
+      addTextLabel("bubble-title-gas label-agriculture", width * 0.3, 530, "24%", 8500)
+      addTextLabel("bubble-title-gas label-industry", width * 0.5, 530, "21%", 8500)
+      addTextLabel("bubble-title-gas label-transport", width * 0.68, 530, "14%", 8500)
+      addTextLabel("bubble-title-gas label-other", width * 0.83, 530, "10%", 8500)
+      addTextLabel("bubble-title-gas label-buildings", width * 0.95, 530, "6%", 8500)
     })
 
-    //Function to display textlabels
+    //function to display textlabels
     function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
-      svg
+      return svg
         .append("text")
         .attr("class", cssClass)
         .attr("x", xPos)
