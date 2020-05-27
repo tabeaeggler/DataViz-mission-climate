@@ -62,8 +62,9 @@
   "Climate2_Lake": "Lake Lucerne",
   "Climate3_Title": {
     "1": "3. it is the human being",
-    "2": "- Which greenhouse gases are emitted? -",
-    "3": "- Which sectors are responsible for greenhouse gases? -"
+    "2": "- Greenhouse gases -",
+    "3": "- Which greenhouse gases are emitted? -",
+    "4": "- Which sectors are responsible for greenhouse gases? -"
   },
   "Climate3_Bubble_1": {
     "1": "Humans are mainly responsible for climate change.",

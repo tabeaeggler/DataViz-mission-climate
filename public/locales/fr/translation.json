@@ -62,8 +62,9 @@
   "Climate2_Lake": "Le lac des Quatre-Cantons",
   "Climate3_Title": {
     "1": "3. c'est l'homme",
-    "2": "- Quels sont les gaz à effet de serre émis ? -",
-    "3": "- Quels sont les secteurs responsables des gaz à effet de serre ? -"
+    "2": "- Gaz à effet de serre émis -",
+    "3": "- Quels sont les gaz à effet de serre émis ? -",
+    "4": "- Quels sont les secteurs responsables des gaz à effet de serre ? -"
   },
   "Climate3_Bubble_1": {
     "1": "Les humains sont les principaux responsables du changement climatique.",

@@ -266,11 +266,9 @@ function Climate3() {
         <div>
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
 
-          {textboxes.splitC02 ? (
-            <h2 className="subtitle">{t("Climate3_Title.3")}</h2>
-          ) : (
-            <h2 className="subtitle">{t("Climate3_Title.2")}</h2>
-          )}
+          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
+          {textboxes.splitGas ? <h2 className="subtitle">{t("Climate3_Title.3")}</h2> : ""}
+          {textboxes.splitC02 ? <h2 className="subtitle">{t("Climate3_Title.4")}</h2> : ""}
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
