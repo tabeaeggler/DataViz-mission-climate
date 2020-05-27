@@ -42,20 +42,29 @@
 }
 
 .show-textbox {
-  animation-duration: 2s;
-  animation-delay: 2s;
-  animation-name: fadeInTextBox;
-  animation-fill-mode: backwards;
-}
-
-.show-textbox-3 {
-  animation-duration: 2s;
-  animation-delay: 5s;
+  animation-duration: 1s;
+  animation-delay: 0.8s;
   animation-name: fadeInTextBox;
   animation-fill-mode: backwards;
 }
 
 @keyframes fadeInTextBox {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.button-animation {
+  animation-duration: 1s;
+  animation-delay: 2.5s;
+  animation-name: buttonAnimation;
+  animation-fill-mode: backwards;
+}
+
+@keyframes buttonAnimation {
   from {
     opacity: 0%;
   }
@@ -86,27 +95,27 @@
 }
 
 .label-electricity {
-  fill: #fff;
+  fill: #fff5fa;
 }
 
 .label-agriculture {
-  fill: #f6e4df;
+  fill: #fac8df;
 }
 
 .label-industry {
-  fill: #edcabf;
+  fill: #f4a8ed;
 }
 
 .label-transport {
-  fill: #e4afa0;
+  fill: #cf7cff;
 }
 
 .label-other {
-  fill: #db9580;
+  fill: #9685e5;
 }
 
 .label-buildings {
-  fill: #d37b61;
+  fill: #6a8adf;
 }
 
 #split-bubbles-by-gas,

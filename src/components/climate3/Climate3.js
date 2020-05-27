@@ -114,12 +114,12 @@ function Climate3() {
         .style("opacity", 0)
 
       //change color of bubbles by sector
-      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "white")
-      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#f6e4df")
-      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#edcabf")
-      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#e4afa0")
-      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#db9580")
-      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#d37b61")
+      d3.selectAll(".bubble-Electricity").transition().delay(1600).duration(2000).style("fill", "#FFF5FA")
+      d3.selectAll(".bubble-Agriculture").transition().delay(1600).duration(2000).style("fill", "#FAC8DF")
+      d3.selectAll(".bubble-Industry").transition().delay(1600).duration(2000).style("fill", "#F4A8ED")
+      d3.selectAll(".bubble-Transport").transition().delay(1600).duration(2000).style("fill", "#CF7CFF")
+      d3.selectAll(".bubble-Other").transition().delay(1600).duration(2000).style("fill", "#9685e5")
+      d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#6a8adf")
 
       //split bubbles by sector
       var forceXSplitedBySector = d3Force
