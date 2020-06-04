@@ -119,6 +119,10 @@ font-weight: bold;
   opacity: 0.6;
 }
 
+.hidden-elements {
+  visibility: hidden;
+}
+
 .difference-rect {
   fill: #6a8adf;
   opacity: 0.1;
@@ -135,9 +139,9 @@ font-weight: bold;
 }
 
 .bubble-box-climate2-snow-start {
-  width: 20%;
-  left: 5%;
-  top: 270%;
+  width: 450px;
+  left: 24.5%;
+  bottom: 40px;
   text-align: left;
 }
 
