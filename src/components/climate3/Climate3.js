@@ -18,9 +18,10 @@ function Climate3() {
     splitC02: false,
   })
   const [buttonDelay, setButtonDelay] = useState(false)
+  const [showBubbleBox, setShowBubbleBox] = useState(true)
   const svgRef = useRef()
-  var width = 1600,
-    height = 800
+  const width = window.innerWidth
+  const height = window.innerHeight
 
   function createBubbleChart(data) {
     const svg = d3.select(svgRef.current)
@@ -47,7 +48,7 @@ function Climate3() {
       })
 
     //initial force
-    var simulation = d3Force.forceSimulation().force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
+    var simulation = d3Force.forceSimulation()
 
     //update position after tick (pos change)
     simulation.nodes(data).on("tick", ticked)
@@ -64,62 +65,53 @@ function Climate3() {
     //initial animation cluster1 simulation
     simulation
       .force("x", d3Force.forceX(d => width * d.cluster1X).strength(0.01))
-      .force("y", d3Force.forceY(d => width * d.cluster1Y).strength(0.01))
+      .force("y", d3Force.forceY(d => height * d.cluster1Y).strength(0.01))
       .force("charge", d3Force.forceManyBody())
       .force("collide", d3Force.forceCollide(25))
       .alphaTarget(0.09)
-      .restart()
-
-    //initial animation cluster2 simulation
-    setTimeout(function () {
-      simulation
-        .force("x", d3Force.forceX(d => width * d.cluster2X).strength(0.01))
-        .force("y", d3Force.forceX(d => width * d.cluster2Y).strength(0.01))
-        .force("charge", d3Force.forceManyBody())
-        .force("collide", d3Force.forceCollide(33))
-        .alphaTarget(0.09)
-        .restart()
-    }, 12000)
-
-    //initial animation cluster3 simulation
-    setTimeout(function () {
-      simulation
-        .force("x", d3Force.forceX(d => width * d.cluster3X).strength(0.02))
-        .force("y", d3Force.forceY(d => width * d.cluster3Y).strength(0.02))
-        .force("charge", d3Force.forceManyBody())
-        .force("collide", d3Force.forceCollide(30))
-        .alphaTarget(0.09)
-        .restart()
-    }, 24000)
 
     //split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
+      //center all bubbles
+      setTimeout(function () {
+        simulation
+          .force("collide", d3Force.forceCollide(17))
+          .force("charge", null)
+          .force("x", d3Force.forceX(width / 2).strength(0.015))
+          .force("y", d3Force.forceY(height / 2).strength(0.015))
+          .alphaTarget(0.75)
+          .restart()
+      }, 500)
+
       var forceXSplitedByGas = d3Force
         .forceX(function (d) {
           if (d.type === "FGAS") {
-            return width * 0.1
+            return width * 0.15
           } else if (d.type === "CH4") {
-            return width * 0.33
+            return width * 0.35
           } else if (d.type === "N02") {
-            return width * 0.88
+            return width * 0.83
           } else {
-            return width * 0.61
+            return width * 0.6
           }
         })
-        .strength(0.27)
+        .strength(0.02)
 
-      simulation
-        .force("x", forceXSplitedByGas) //center bubbles on x-axis
-        .force("y", d3Force.forceY(height / 2).strength(0.27)) //center bubbles on y-axis
-        .force("charge", d3Force.forceManyBody())
-        .alphaTarget(0.07) //move speed
-        .restart() //restart simulatin with new force
+      setTimeout(function () {
+        simulation
+          .force("x", forceXSplitedByGas)
+          .force("y", d3Force.forceY(height / 2).strength(0.02))
+          .force("collide", d3Force.forceCollide(17))
+          .force("charge", null)
+          .alphaTarget(0.7)
+          .restart()
+      }, 3500)
 
       //add gas labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 410, t("Climate3_Gas.1"))
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.31, 470, t("Climate3_Gas.2"))
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.62, 560, t("Climate3_Gas.3"))
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.9, 440, t("Climate3_Gas.4"))
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.14, 410, t("Climate3_Gas.1"))
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.36, 470, t("Climate3_Gas.2"))
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.67, 560, t("Climate3_Gas.3"))
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.85, 440, t("Climate3_Gas.4"))
 
       //add percentage labels
       addTextLabel("bubble-title-gas bubble-FGAS", width * 0.09, 440, "2%", 5500)
@@ -234,22 +226,25 @@ function Climate3() {
    */
   function createBubble1() {
     return (
-      <div className={textboxes.random ? "show-textbox" : "hide-textbox"}>
-        <div className="bubble-box bubble-box-climate3-txtbox1">
-          <p className="bubble-box-text">
-            <b>{t("Climate3_Bubble_1.1")}</b>
-            {t("Climate3_Bubble_1.2")}
-          </p>
-          <button
-            id="next-button"
-            id="split-bubbles-by-gas"
-            onClick={() => {
-              setTextboxes({ random: false, splitGas: true, splitC02: false })
-            }}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
+      <CSSTransition in={showBubbleBox} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+        <div className="bubble-box-outer">
+          <div className="bubble-box bubble-box-climate3-txtbox1">
+            <p className="bubble-box-text">
+              <b>{t("Climate3_Bubble_1.1")}</b>
+              {t("Climate3_Bubble_1.2")}
+            </p>
+            <button
+              id="next-button"
+              id="split-bubbles-by-gas"
+              onClick={() => {
+                setShowBubbleBox(false)
+                setTextboxes({ random: false, splitGas: true, splitC02: false })
+              }}>
+              <img src={ButtonRight} alt="continue"></img>
+            </button>
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     )
   }
 
@@ -261,11 +256,6 @@ function Climate3() {
     return (
       <div className={textboxes.splitGas ? "show-textbox" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox2">
-          <p className="bubble-box-text">
-            {t("Climate3_Bubble_2.1")}
-            <b>{t("Climate3_Bubble_2.2")}</b>
-            {t("Climate3_Bubble_2.3")}
-          </p>
           <button
             id="next-button"
             id="split-bubbles-by-sector"
@@ -287,10 +277,6 @@ function Climate3() {
     return (
       <div className={textboxes.splitC02 ? "show-textbox-3" : "hide-textbox"}>
         <div className="bubble-box bubble-box-climate3-txtbox3">
-          <p className="bubble-box-text">
-            {t("Climate3_Bubble_3.1")}
-            <b>{t("Climate3_Bubble_3.2")}</b>
-          </p>
           <button
             id="next-button"
             onClick={() => {
@@ -307,17 +293,16 @@ function Climate3() {
     <React.Fragment>
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
-          <h1 className="title"> {t("Climate3_Title.1")}</h1>
-
-          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
-          {textboxes.splitGas ? <h2 className="subtitle">{t("Climate3_Title.3")}</h2> : ""}
-          {textboxes.splitC02 ? <h2 className="subtitle">{t("Climate3_Title.4")}</h2> : ""}
           {createBubble1()}
           {createBubble2()}
           {createBubble3()}
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
+          <h1 className="title"> {t("Climate3_Title.1")}</h1>
+          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
+          {textboxes.splitGas ? <h2 className="subtitle">{t("Climate3_Title.3")}</h2> : ""}
+          {textboxes.splitC02 ? <h2 className="subtitle">{t("Climate3_Title.4")}</h2> : ""}
           <h6 className="source">{t("Climate3_Source")}</h6>
         </div>
       </CSSTransition>
