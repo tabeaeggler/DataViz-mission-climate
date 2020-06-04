@@ -364,8 +364,11 @@ margin-bottom: 0;
   color: #ffd763;
 }
 
+.glacier-estimation-text {
+  margin-bottom: 5px;
+}
+
 .glacier-estimation-line {
-  margin: 5px 0;
   height: 1px;
   width: 160px;
   background: repeating-linear-gradient(to right, #ffd763 0, #ffd763 5px, transparent 5px, transparent 7px);

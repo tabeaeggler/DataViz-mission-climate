@@ -1,10 +1,8 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
-import ButtonRight from "../../assets/img/buttonRight.svg"
 import Slider from "rc-slider"
 import GlacierGraph from "./GlacierGraph"
-import history from "../../routing/history"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
@@ -74,7 +72,6 @@ const GlacierOverview = props => {
    * @returns {number} perscentage of remaining glacier volume
    */
   function calculatePercentage() {
-    console.log((100 - percentageLabel.percentageDecrease) * 0.01)
     return (100 - percentageLabel.percentageDecrease) * 0.01
   }
 
