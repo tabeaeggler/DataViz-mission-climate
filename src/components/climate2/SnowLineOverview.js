@@ -60,6 +60,8 @@ const SnowLineOverview = props => {
               <b>{t("Climate2_Bubble_Snowline.4")}</b>
             </span>
             {t("Climate2_Bubble_Snowline.5")}
+            <b>{t("Climate2_Bubble_Snowline.6")}</b>
+            {t("Climate2_Bubble_Snowline.7")}
           </p>
           <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
             <button

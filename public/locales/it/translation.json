@@ -27,10 +27,12 @@
   },
   "Climate2_Bubble_Snowline": {
     "1": "Il livello di congelamento si sposta sempre più in alto e nelle aree più basse rimane meno neve.",
-    "2": " Qual è stato il livello di congelamento nel 2018?",
+    "2": " Come buona linea guida: spesso ci si aspetta neve da 200 a 400 metri al di sotto del livello di congelamento.",
     "3": "Soluzione: Negli ultimi 60 anni la linea di zero gradi è salita a ",
     "4":"350 metri",
-    "5": " - per grado di riscaldamento circa 200 metri. Anche i ghiacciai ne sono colpiti, scopritene di più!"
+    "5": " - per grado di riscaldamento circa 200 metri. Questo corrisponde a!",
+    "6": " un quinto dell'altezza del Rigi.",
+    "7": " Anche i ghiacciai ne sono colpiti, scopritene di più! nella pagina successiva."
   },
   "Climate2_Bubble_Glacier": {
     "1": "Di quale percentuale è diminuito il volume del ghiacciaio svizzero dal 1850?",
@@ -50,7 +52,8 @@
   },
   "Climate2_Graph": {
     "1": "2018: Soluzione",
-    "2": "2018: Il tuo preventivo"
+    "2": "2018: Il tuo preventivo",
+    "3": "Stimare e confermare!"
   },
   "Climate2_Slider": {
     "1": "Diminuzione di volume",

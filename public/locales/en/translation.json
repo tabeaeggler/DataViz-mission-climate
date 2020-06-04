@@ -27,10 +27,12 @@
   },
   "Climate2_Bubble_Snowline": {
     "1": "The freezing level shifts ever higher and less snow remains in lower areas.",
-    "2": " What was the freezing level in 2018?",
+    "2": " As a good guideline: Snow is often to be expected 200 to 400 meters below the freezing level.",
     "3": "Solution: In the last 60 years the zero degree line has risen ",
     "4": "350 meters",
-    "5": " - per degree of warming about 200 meters. Also the glaciers are affected, learn more!"
+    "5": " - per degree of warming about 200 meters. This corresponds to",
+    "6": " a fifth of the height of the Mount Rigi.",
+    "7": " Also the glaciers are affected, learn more on the next page!"
   },
   "Climate2_Bubble_Glacier": {
     "1": "By what percentage has the glacier volume of Switzerland decreased since 1850?",
@@ -50,7 +52,8 @@
   },
   "Climate2_Graph": {
     "1": "2018: Solution",
-    "2": "2018: Your estimate"
+    "2": "2018: Your estimate",
+    "3": "Estimate and confirm!"
   },
   "Climate2_Slider": {
     "1": "Decrease in volume",
