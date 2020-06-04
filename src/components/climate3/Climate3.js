@@ -79,7 +79,7 @@ function Climate3() {
           .force("charge", null)
           .force("x", d3Force.forceX(width / 2).strength(0.015))
           .force("y", d3Force.forceY(height / 2).strength(0.015))
-          .alphaTarget(0.75)
+          .alphaTarget(0.7)
           .restart()
       }, 500)
 
@@ -103,7 +103,7 @@ function Climate3() {
           .force("y", d3Force.forceY(height / 2).strength(0.02))
           .force("collide", d3Force.forceCollide(17))
           .force("charge", null)
-          .alphaTarget(0.7)
+          .alphaTarget(0.64)
           .restart()
       }, 3500)
 
@@ -135,10 +135,10 @@ function Climate3() {
       //center all bubbles
       setTimeout(function () {
         simulation
-          .force("x", d3Force.forceX(width / 2).strength(0.04))
-          .force("y", d3Force.forceY(height / 2).strength(0.04))
+          .force("x", d3Force.forceX(width / 2).strength(0.03))
+          .force("y", d3Force.forceY(height / 2).strength(0.03))
           .force("charge", null)
-          .alphaTarget(0.1)
+          .alphaTarget(0.01)
           .restart()
       }, 500)
 
