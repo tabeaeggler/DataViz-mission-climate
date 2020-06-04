@@ -89,18 +89,24 @@
 
 .snowline-text {
   font-size: 0.7em;
-  font-weight: bold;
   fill: #6a8adf;
 }
 
 .difference-text {
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .draggable-line-text-meter,
 .draggable-line-text-year,
-.draggable-text {
+.draggable-text,
+.draggable-line-text-question {
   fill: #ffd763;
+}
+
+.draggable-line-text-question {
+font-size: 0.9em;
+font-weight: bold;
 }
 
 .active-d3-item {

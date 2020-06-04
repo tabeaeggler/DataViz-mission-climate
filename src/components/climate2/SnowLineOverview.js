@@ -28,9 +28,6 @@ const SnowLineOverview = props => {
         <div className="bubble-box bubble-box-climate2-snow-start">
           <p className="bubble-box-text">
             {t("Climate2_Bubble_Snowline.1")}
-            <span className="question-style">
-              <b>{t("Climate2_Bubble_Snowline.2")}</b>
-            </span>
           </p>
         </div>
       </CSSTransition>

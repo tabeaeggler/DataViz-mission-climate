@@ -115,7 +115,9 @@ const SnowLineDraggableGraph = props => {
       //render draggable line and text statically
       svg.select(".draggable-line-text-year").remove()
       svg.select(".draggable-line-text-meter").remove()
+      svg.select(".draggable-line-text-question").remove()
       svg.select(".draggable-line").remove()
+      
       svg
         .append("line")
         .attr("class", "draggable-line-static")
@@ -150,7 +152,6 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(t("Climate2_Graph.2"))
-      animationLineText()
 
       svg
         .append("text")
@@ -231,7 +232,15 @@ const SnowLineDraggableGraph = props => {
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .text(t("Climate2_Graph.2"))
-      animationLineText()
+      animationLineText(-marginTextY, ".draggable-line-text-year")
+
+      var textDraggableLineQuestion = svg
+        .append("text")
+        .attr("class", "draggable-line-text-question snowline-text")
+        .attr("x", 65)
+        .attr("y", yScale(draggableLinePosition + marginTextY))
+        .text(t("Climate2_Bubble_Snowline.2"))
+      animationLineText(marginTextY, ".draggable-line-text-question")
 
       /**
        * Handle drag start event
@@ -240,9 +249,9 @@ const SnowLineDraggableGraph = props => {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
           svg
-            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
+            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter, .draggable-line-text-question")
             .classed("active-text", true)
-          svg.selectAll(".draggable-line, .draggable-area, .draggable-line-text-year").interrupt()
+          svg.selectAll(".draggable-line, .draggable-area, .draggable-line-text-year, .draggable-line-text-question").interrupt()
         }
       }
 
@@ -277,6 +286,7 @@ const SnowLineDraggableGraph = props => {
             .attr("y", newYPosition + marginTextY / 4)
             .text(yScale.invert(newYPosition).toFixed(0) + " m")
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
+          textDraggableLineQuestion.attr("y", newYPosition - marginTextY / 4 )
         }
       }
 
@@ -286,7 +296,7 @@ const SnowLineDraggableGraph = props => {
       function dragended() {
         if (!props.showAnswer) {
           svg
-            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
+            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter, .draggable-line-text-question")
             .classed("active-text", false)
         }
       }
@@ -295,21 +305,21 @@ const SnowLineDraggableGraph = props => {
     /**
      * Handle animation of text
      */
-    function animationLineText() {
+    function animationLineText(offset, selector) {
       svg
-        .select(".draggable-line-text-year")
+        .select(selector)
         .transition()
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y", yScale(draggableLinePosition))
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextY))
+        .attr("y", yScale(draggableLinePosition + offset))
         .transition()
-        .attr("y", yScale(draggableLinePosition))
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextY))
-        .on("end", animationLineText)
+        .attr("y", yScale(draggableLinePosition + offset))
+        .on("end", function() { animationLineText(offset,selector) })
     }
 
     /**
@@ -362,7 +372,7 @@ const SnowLineDraggableGraph = props => {
           <button
             className="submit-button submit-button-snowline"
             style={{
-              bottom: (draggableLinePosition * height) / mountainHeight,
+              bottom: (draggableLinePosition * height) / mountainHeight - 70,
             }}
             onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}
