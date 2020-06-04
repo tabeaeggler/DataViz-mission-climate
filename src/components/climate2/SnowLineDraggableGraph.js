@@ -117,7 +117,7 @@ const SnowLineDraggableGraph = props => {
       svg.select(".draggable-line-text-meter").remove()
       svg.select(".draggable-line-text-question").remove()
       svg.select(".draggable-line").remove()
-      
+
       svg
         .append("line")
         .attr("class", "draggable-line-static")
@@ -237,7 +237,7 @@ const SnowLineDraggableGraph = props => {
       var textDraggableLineQuestion = svg
         .append("text")
         .attr("class", "draggable-line-text-question snowline-text")
-        .attr("x", 65)
+        .attr("x", marginTextY + 5)
         .attr("y", yScale(draggableLinePosition + marginTextY))
         .text(t("Climate2_Bubble_Snowline.2"))
       animationLineText(marginTextY, ".draggable-line-text-question")
@@ -261,8 +261,10 @@ const SnowLineDraggableGraph = props => {
       function dragged() {
         //y position of mouse for checking boundaries
         var yMouse = mouse(this)[1]
-        const upperLimit = -174
-        const lowerLimit = 159
+        const upperLimit = -170
+        const lowerLimit = 135
+
+        console.log(yMouse)
 
         if (!props.showAnswer && yMouse > upperLimit && yMouse < lowerLimit) {
           const zoomFactor = 1.6
