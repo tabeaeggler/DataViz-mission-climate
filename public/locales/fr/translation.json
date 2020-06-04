@@ -35,20 +35,18 @@
     "7": " Les glaciers sont également touchés, en savoir plussur la page suivante!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Estimez et confirmez",
-    "2": " La glace fondue est comparée au volume du lac des Quatre-Cantons",
-    "3": "Solution : les glaciers ont reculé de ",
-    "4": ". ",
-    "5": " Cela correspond à une masse de glace de ",
-    "6": ", qui remplit ",
-    "7": " fois le lac des Quatre-Cantons.",
-    "8": " Quelles sont les raisons de ces changements ?"
+    "1": "Solution : les glaciers ont reculé de ",
+    "2": ". ",
+    "3": " Cela correspond à une masse de glace de ",
+    "4": ", qui remplit ",
+    "5": " fois le lac des Quatre-Cantons.",
+    "6": " Quelles sont les raisons de ces changements ?"
   },
   "Climate2_Submit_Button": "Confirmer",
   "Climate2_Title": {
     "1": "2. La Suisse est également touchée",
     "2": "- Quel était le niveau de congélation en 2018? -",
-    "3": "- De quel pourcentage le volume des glaciers suisses a-t-il diminué depuis 1850? -"
+    "3": "- De quel pourcentage le volume des glaciers a-t-il diminué depuis 1850? -"
   },
   "Climate2_Graph": {
     "1": "2018: Solution",

@@ -91,7 +91,7 @@ const GlacierGraph = props => {
             position: "absolute",
             textAlign: "right",
             left: glacierWidth,
-          }}>
+          }} className="estimation-container">
           <p className="glacier-estimation-text">{t("Climate2_Glacier_Graph.1")}</p>
           <div className="glacier-estimation-line"></div>
         </div>

@@ -35,14 +35,12 @@
     "7": " Auch die Gletscher sind betroffen, erfahre mehr auf der nächsten Seite!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Schätze und bestätige",
-    "2": " ",
-    "3": "Lösung: Die Gletscher sind um ",
-    "4": " zurückgegeangen.",
-    "5": " Dies entspricht einer Eismasse von ",
-    "6": ", welche den Vierwaldstättersee ",
-    "7": " füllt.",
-    "8": " Was sind die Ursachen für diese Veränderungen?"
+    "1": "Lösung: Die Gletscher sind um ",
+    "2": " zurückgegeangen.",
+    "3": " Dies entspricht einer Eismasse von ",
+    "4": ", welche den Vierwaldstättersee ",
+    "5": " füllt.",
+    "6": " Was sind die Ursachen für diese Veränderungen?"
   },
   "Climate2_Submit_Button": "Bestätigen",
   "Climate2_Title": {

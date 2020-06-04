@@ -85,21 +85,21 @@ const GlacierOverview = props => {
         <div className="bubble-box bubble-box-glacier-answer">
           <p className="bubble-box-text extra-line-spacing">
             <b>
-              {t("Climate2_Bubble_Glacier.3")}
+              {t("Climate2_Bubble_Glacier.1")}
               <span className="text-solution-bold">{percentageLabel.percentageDecrease} % </span>
-              {t("Climate2_Bubble_Glacier.4")}
+              {t("Climate2_Bubble_Glacier.2")}
             </b>
-            {t("Climate2_Bubble_Glacier.5")}
+            {t("Climate2_Bubble_Glacier.3")}
             <b>
               <span className="text-solution-bold">{percentageLabel.volumeDecrease.toFixed(0)} km&sup3;</span>
             </b>
-            {t("Climate2_Bubble_Glacier.6")}
+            {t("Climate2_Bubble_Glacier.4")}
             <b>
               <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
             </b>
-            {t("Climate2_Bubble_Glacier.7")}
+            {t("Climate2_Bubble_Glacier.5")}
 
-            {t("Climate2_Bubble_Glacier.8")}
+            {t("Climate2_Bubble_Glacier.6")}
           </p>
         </div>
       </CSSTransition>

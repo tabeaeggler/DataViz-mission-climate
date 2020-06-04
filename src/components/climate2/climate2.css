@@ -374,6 +374,10 @@ margin-bottom: 0;
   background: repeating-linear-gradient(to right, #ffd763 0, #ffd763 5px, transparent 5px, transparent 7px);
 }
 
+.estimation-container {
+  height: 30px;
+}
+
 .glacier-zoom {
   zoom: 45%;
 }
