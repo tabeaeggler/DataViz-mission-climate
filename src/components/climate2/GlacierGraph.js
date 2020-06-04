@@ -58,6 +58,7 @@ const GlacierGraph = props => {
               style={{
                 bottom: props.scaleFactor * glacierHeight,
                 position: "absolute",
+                transform: `rotate(${-4 * props.scaleFactor}deg)`,
               }}>
               {"2019: " + t("Climate2_Glacier_Graph.1")}
             </p>
