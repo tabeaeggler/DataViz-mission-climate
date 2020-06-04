@@ -88,6 +88,16 @@
     "3": "Kohlenstoffdioxid CO₂",
     "4": "Stickstoffdioxid NO₂"
   },
+  "Climate3_Gas_Cause": {
+    "1": "Entstehung: Kälte- und Klimaanlagen,",
+    "2": "Sprays, Dämmstoffe, Feuerlöschmittel",
+    "3": "Entstehung: Mülldeponien, Klärwerke,",
+    "4": "Rülpse von Kühen, Reisfelder",
+    "5": "Entstehung: Verbrennung fossiler",
+    "6": "Energieträger wie Kohle, Erdgas & Erdöl",
+    "7": "Entstehung: chemische Industrie, Dünger,",
+    "8": "Gärreste, Verbrennung fossiler Brennstoffe"
+  },
   "Climate3_Sector": {
     "1": "Energie",
     "2": "Landwirtschaft",

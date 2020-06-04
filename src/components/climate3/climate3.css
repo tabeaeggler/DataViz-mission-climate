@@ -5,6 +5,16 @@
   transform: translate(-50%, -50%);
 }
 
+.bubble-source {
+  fill: #868585;
+  font-size: 0.7em;
+  text-anchor: middle;
+}
+
+.bubble-source-bold {
+  font-weight: bold;
+}
+
 .bubble-CH4 {
   fill: #40b79b;
 }
