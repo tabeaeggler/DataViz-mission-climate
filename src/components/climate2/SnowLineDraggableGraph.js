@@ -68,9 +68,9 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "difference-text")
+        .attr("class", "snowline-text difference-text")
         .attr("x", width + 20)
-        .attr("y", yScale(props.data[1].snowline - 175))
+        .attr("y", yScale(props.data[1].snowline - 190))
         .text("350 m")
         .style("opacity", 0)
         .transition()
@@ -95,7 +95,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text answer-text")
+        .attr("class", "snowline-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -136,6 +136,7 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(draggableLinePosition + " m")
+      
 
       svg
         .append("text")
@@ -153,7 +154,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text answer-text")
+        .attr("class", "snowline-text")
         .attr("x", width - marginTextX)
         .attr(
           "y",
