@@ -199,13 +199,6 @@ font-weight: bold;
 }
 
 /* Glacier */
-.bubble-box-glacier-start {
-  left: 270px;
-  bottom: -150px;
-  width: 330px;
-  text-align: left;
-}
-
 .bubble-box-glacier-answer {
   right: 20px;
   bottom: 210px;
@@ -358,14 +351,12 @@ margin-bottom: 0;
   width: 250px;
   transform: rotate(-4deg);
   padding-left: 30px;
-}
-
-.glacier-estimation-text, .glacier-input-text {
   color: #ffd763;
 }
 
 .glacier-estimation-text {
   margin-bottom: 5px;
+  color: #ffd763;
 }
 
 .glacier-estimation-line {
