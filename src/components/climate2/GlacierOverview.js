@@ -74,6 +74,7 @@ const GlacierOverview = props => {
    * @returns {number} perscentage of remaining glacier volume
    */
   function calculatePercentage() {
+    console.log((100 - percentageLabel.percentageDecrease) * 0.01)
     return (100 - percentageLabel.percentageDecrease) * 0.01
   }
 
@@ -166,7 +167,8 @@ const GlacierOverview = props => {
         <GlacierGraph
           scaleFactor={calculatePercentage()}
           showAnswer={showAnswer}
-          scaleFactorEstimation={scaleFactorEstimation}></GlacierGraph>
+          scaleFactorEstimation={scaleFactorEstimation}
+          showGlacierInteraction={props.showGlacierInteraction}></GlacierGraph>
         {createBubbleShowAnswer()}
       </div>
     </React.Fragment>

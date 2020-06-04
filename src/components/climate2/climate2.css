@@ -223,12 +223,12 @@ font-weight: bold;
 
 .rc-slider-rail {
   background-color: #bbb9b9 !important;
-  height: 1px !important;
+  height: 1.5px !important;
 }
 
 .rc-slider-track {
   background-color: #ffd763 !important;
-  height: 1px !important;
+  height: 1.5px !important;
 }
 
 .slider-container-glacier {
@@ -344,10 +344,6 @@ margin-bottom: 0;
   bottom: 550px;
 }
 
-.glacier-estimation-text {
-  color: #ffd763;
-}
-
 .glacier-original-text,
 .glacier-result-text {
   color: #6a8adf;
@@ -356,6 +352,16 @@ margin-bottom: 0;
   padding-left: 110px;
   z-index: 100;
   position: absolute;
+}
+
+.glacier-input-text{
+  width: 250px;
+  transform: rotate(-4deg);
+  padding-left: 30px;
+}
+
+.glacier-estimation-text, .glacier-input-text {
+  color: #ffd763;
 }
 
 .glacier-estimation-line {

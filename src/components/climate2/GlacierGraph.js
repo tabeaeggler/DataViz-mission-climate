@@ -15,8 +15,8 @@ const GlacierGraph = props => {
   const { t } = useTranslation()
 
   //layout
-  const glacierWidth = 400
-  const glacierHeight = 655
+  const glacierWidth = 345
+  const glacierHeight = 551
 
   /**
    * Scales the image container for the glacier svg
@@ -39,7 +39,7 @@ const GlacierGraph = props => {
     <React.Fragment>
       <div className="glacier-img-container">
         <CSSTransition
-          in={props.showAnswer}
+          in={props.showGlacierInteraction}
           timeout={5000}
           classNames="glacier-animation-fade-in"
           unmountOnExit
@@ -48,9 +48,19 @@ const GlacierGraph = props => {
         </CSSTransition>
         {getScaledGlacier(1, GlacierTransparent)}
       </div>
-      
+
       {!props.showAnswer ? (
         <div className="glacier-img-container">
+          {props.scaleFactor < 1 ? (
+            <p
+              className="glacier-text glacier-input-text"
+              style={{
+                bottom: props.scaleFactor * glacierHeight,
+                position: "absolute",
+              }}>
+              {"2019: " + t("Climate2_Glacier_Graph.1")}
+            </p>
+          ) : null}
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       ) : null}
@@ -62,7 +72,9 @@ const GlacierGraph = props => {
         unmountOnExit
         appear>
         <div className="glacier-img-container">
-          <p className="glacier-text glacier-result-text">{t("Climate2_Glacier_Graph.2") + " 2019"} 51 km&sup3;</p>
+          <p className="glacier-text glacier-result-text">
+            {t("Climate2_Glacier_Graph.2") + " 2019"} 51 km&sup3;
+          </p>
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       </CSSTransition>
@@ -80,9 +92,7 @@ const GlacierGraph = props => {
             textAlign: "right",
             left: glacierWidth,
           }}>
-          <p className="glacier-estimation-text">
-            {t("Climate2_Glacier_Graph.1")}
-          </p>
+          <p className="glacier-estimation-text">{t("Climate2_Glacier_Graph.1")}</p>
           <div className="glacier-estimation-line"></div>
         </div>
       </CSSTransition>
