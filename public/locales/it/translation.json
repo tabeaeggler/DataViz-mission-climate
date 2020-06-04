@@ -35,7 +35,7 @@
     "7": " Anche i ghiacciai ne sono colpiti, scopritene di più! nella pagina successiva."
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Di quale percentuale è diminuito il volume del ghiacciaio svizzero dal 1850?",
+    "1": "Stimare e confermare!",
     "2": " Il ghiaccio sciolto viene confrontato con il volume del Lago dei Quattro Cantoni.",
     "3": "Soluzione: i ghiacciai si sono ritirati di ",
     "4": ". ",
@@ -47,8 +47,8 @@
   "Climate2_Submit_Button": "Conferma",
   "Climate2_Title": {
     "1": "2. Anche la Svizzera è interessata",
-    "2": "- Il livello di congelamento aumenta -",
-    "3": "- I ghiacciai si stanno sciogliendo -"
+    "2": "- Qual è stato il livello di congelamento nel 2018? -",
+    "3": "- Di quale percentuale è diminuito il volume del ghiacciaio svizzero dal 1850? -"
   },
   "Climate2_Graph": {
     "1": "2018: Soluzione",

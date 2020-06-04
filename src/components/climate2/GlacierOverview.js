@@ -78,25 +78,6 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds Speach Bubble for showing glacier quizz question
-   * @returns dom element with speech bubble
-   */
-  function createBubbleStartQuizz() {
-    return (
-      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="glacier-zoom bubble-box bubble-box-glacier-start">
-          <p className="bubble-box-text">
-            <b>
-              <span className="question-style">{t("Climate2_Bubble_Glacier.1")}</span>
-            </b>
-            {t("Climate2_Bubble_Glacier.2")}
-          </p>
-        </div>
-      </CSSTransition>
-    )
-  }
-
-  /**
    * Adds Speach Bubble for showing glacier quizz answer
    * @returns dom element with speech bubble text
    */
@@ -122,13 +103,6 @@ const GlacierOverview = props => {
 
             {t("Climate2_Bubble_Glacier.8")}
           </p>
-          <button
-            id="next-button"
-            onClick={() => {
-              history.push("/Cause")
-            }}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
         </div>
       </CSSTransition>
     )
@@ -140,7 +114,12 @@ const GlacierOverview = props => {
    */
   function showSliderAndNumbers() {
     return (
-      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition
+        in={props.showGlacierInteraction && !showAnswer}
+        timeout={{ enter: 3000, exit: 0 }}
+        classNames="fade-climate2"
+        unmountOnExit
+        appear>
         <div className="slider-container-glacier">
           <Slider max="90" value={percentageLabel.percentageDecrease} onChange={handleSliderChange} />
           <div className="glacier-zoom slider-text-volume">
@@ -152,7 +131,7 @@ const GlacierOverview = props => {
               {percentageLabel.volumeDecrease.toFixed(0) + " "}
               km&sup3;
             </p>
-            <p className="slider-text-small">{t("Climate2_Slider.2")}</p>
+            <p className="slider-text-small slider-text-small-ice">{t("Climate2_Slider.2")}</p>
             <button className="submit-button submit-button-glacier" onClick={() => showResult()}>
               {t("Climate2_Submit_Button")}
             </button>
@@ -178,10 +157,10 @@ const GlacierOverview = props => {
           <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
           <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
           <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
-          {createBubbleStartQuizz()}
-          {showSliderAndNumbers()}
         </div>
       </CSSTransition>
+
+      {showSliderAndNumbers()}
 
       <div className="glacier-wrapper glacier-zoom">
         <GlacierGraph

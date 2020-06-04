@@ -35,7 +35,7 @@
     "7": " Also the glaciers are affected, learn more on the next page!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "By what percentage has the glacier volume of Switzerland decreased since 1850?",
+    "1": "Estimate and confirm!",
     "2": " The melted ice is compared with the volume of Lake Lucerne.",
     "3": "Solution: The glaciers have receded by ",
     "4": ". ",
@@ -47,8 +47,8 @@
   "Climate2_Submit_Button": "Submit",
   "Climate2_Title": {
     "1": " 2. Switzerland is also affected",
-    "2": "- The freezing level rises -",
-    "3": "- The glaciers are melting -"
+    "2": "- What was the freezing level in 2018? -",
+    "3": "- By what percentage has the glacier volume of Switzerland decreased since 1850? -"
   },
   "Climate2_Graph": {
     "1": "2018: Solution",

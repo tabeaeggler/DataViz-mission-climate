@@ -35,8 +35,8 @@
     "7": " Auch die Gletscher sind betroffen, erfahre mehr auf der nächsten Seite!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Um wieviel Prozent hat sich das Gletschervolumen der Schweiz seit 1850 reduziert?",
-    "2": "Das geschmolzene Eis wird mit dem Volumen des Vierwaldstättersees verglichen.",
+    "1": "Schätze und bestätige!",
+    "2": " ",
     "3": "Lösung: Die Gletscher sind um ",
     "4": " zurückgegeangen.",
     "5": " Dies entspricht einer Eismasse von ",
@@ -48,7 +48,7 @@
   "Climate2_Title": {
     "1": "2. Auch die Schweiz ist betroffen",
     "2": "- Auf welcher Höhe befand sich die Nullgradgrenze im Jahr 2018? -",
-    "3": "- Die Gletscher schmelzen -"
+    "3": "- Um wieviel Prozent hat sich das Gletschervolumen seit 1850 reduziert? -"
   },
   "Climate2_Graph": {
     "1": "2018: Lösung",

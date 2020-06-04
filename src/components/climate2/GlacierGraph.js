@@ -15,8 +15,8 @@ const GlacierGraph = props => {
   const { t } = useTranslation()
 
   //layout
-  const glacierWidth = 346
-  const glacierHeight = 551
+  const glacierWidth = 400
+  const glacierHeight = 655
 
   /**
    * Scales the image container for the glacier svg
