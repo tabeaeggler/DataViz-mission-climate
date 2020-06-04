@@ -35,7 +35,7 @@
     "7": " Also the glaciers are affected, learn more on the next page!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Estimate and confirm!",
+    "1": "Estimate and confirm",
     "2": " The melted ice is compared with the volume of Lake Lucerne.",
     "3": "Solution: The glaciers have receded by ",
     "4": ". ",
@@ -53,7 +53,7 @@
   "Climate2_Graph": {
     "1": "2018: Solution",
     "2": "2018: Your estimate",
-    "3": "Estimate and confirm!"
+    "3": "Estimate and confirm"
   },
   "Climate2_Slider": {
     "1": "Decrease in volume",

@@ -4,7 +4,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/img/mountainLandscape.svg");
+  background-image: url("../../assets/img/mountainsLandscape.svg");
   background-repeat: no-repeat;
   background-position: bottom;
 }
@@ -38,7 +38,7 @@
 .zoom-in-landscape-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
-  background-image: url("../../assets/img/mountainLandscapeTransparent.svg") !important;
+  background-image: url("../../assets/img/mountainsLandscapeTransparent.svg") !important;
   transition: all 2s;
 }
 

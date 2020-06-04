@@ -35,7 +35,7 @@
     "7": " Les glaciers sont également touchés, en savoir plussur la page suivante!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Estimez et confirmez!",
+    "1": "Estimez et confirmez",
     "2": " La glace fondue est comparée au volume du lac des Quatre-Cantons",
     "3": "Solution : les glaciers ont reculé de ",
     "4": ". ",
@@ -53,7 +53,7 @@
   "Climate2_Graph": {
     "1": "2018: Solution",
     "2": "2018: Votre estimation",
-    "3": "Estimez et confirmez!"
+    "3": "Estimez et confirmez"
   },
   "Climate2_Slider": {
     "1": "Diminution du volume",

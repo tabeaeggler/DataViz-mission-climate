@@ -26,7 +26,7 @@ function Climate2() {
           <SnowLineOverview
             showSnowlineInteraction={showSnowlineInteraction}
             setShowSnowlineGraph={setShowSnowlineGraph}></SnowLineOverview>
-          <GlacierOverview showGlacierInteraction={!showSnowlineInteraction}></GlacierOverview>
+          <GlacierOverview showGlacierInteraction={!showSnowlineGraph}></GlacierOverview>
         </div>
       </CSSTransition>
     </React.Fragment>

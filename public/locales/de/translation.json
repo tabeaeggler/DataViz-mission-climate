@@ -35,7 +35,7 @@
     "7": " Auch die Gletscher sind betroffen, erfahre mehr auf der nächsten Seite!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "Schätze und bestätige!",
+    "1": "Schätze und bestätige",
     "2": " ",
     "3": "Lösung: Die Gletscher sind um ",
     "4": " zurückgegeangen.",
@@ -53,7 +53,7 @@
   "Climate2_Graph": {
     "1": "2018: Lösung",
     "2": "2018: Deine Schätzung",
-    "3": "Schätze und bestätige!"
+    "3": "Schätze und bestätige"
   },
   "Climate2_Slider": {
     "1": "Rückgang Volumen",
