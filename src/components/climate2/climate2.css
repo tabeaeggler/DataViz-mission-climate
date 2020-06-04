@@ -138,17 +138,10 @@ font-weight: bold;
   position: absolute;
 }
 
-.bubble-box-climate2-snow-start {
+.bubble-box-climate2-snow-start, .bubble-box-climate2-snow-answer {
   width: 450px;
   left: 24.5%;
-  bottom: 40px;
-  text-align: left;
-}
-
-.bubble-box-climate2-snow-answer {
-  left: 97%;
-  top: 36%;
-  width: 40%;
+  bottom: 20px;
   text-align: left;
 }
 
@@ -173,6 +166,15 @@ font-weight: bold;
   opacity: 1;
   transition-delay: 1s;
   transition: opacity 4000ms;
+}
+
+.fade-climate2-exit {
+  opacity: 1;
+}
+
+.fade-climate2-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
 }
 
 .source-snowline {

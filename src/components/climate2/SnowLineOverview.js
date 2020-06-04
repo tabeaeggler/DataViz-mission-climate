@@ -27,7 +27,7 @@ const SnowLineOverview = props => {
     return (
       <CSSTransition
         in={props.showSnowlineInteraction && !hideStartBubble}
-        timeout={{ enter: 3000, exit: 0 }}
+        timeout={{ enter: 3000, exit: 500 }}
         classNames="fade-climate2"
         unmountOnExit
         appear>
@@ -53,7 +53,7 @@ const SnowLineOverview = props => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-snow-answer">
+        <div className="bubble-box bubble-box-climate2-snow-answer zoom-mountain">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.3")}</b>
             <span className="text-solution-bold">
@@ -106,9 +106,9 @@ const SnowLineOverview = props => {
           showSnowlineInteraction={props.showSnowlineInteraction}
           setHideStartBubble={setHideStartBubble}
         />
-        {createBubbleShowAnswer()}
       </div>
 
+      {createBubbleShowAnswer()}
       {createBubbleStartQuizz()}
 
       <Snow

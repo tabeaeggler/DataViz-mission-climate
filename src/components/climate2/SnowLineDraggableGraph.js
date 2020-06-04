@@ -8,6 +8,7 @@ import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mous
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
+ * @param {function} props.setHideStartBubble manages visibility of start bubble
  */
 const SnowLineDraggableGraph = props => {
   //transaltion
@@ -247,7 +248,7 @@ const SnowLineDraggableGraph = props => {
         if (!props.showAnswer) {
           setShowSubmitButton(false)
           props.setHideStartBubble(true)
-          
+
           svg
             .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
             .classed("active-text", true)
