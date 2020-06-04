@@ -29,7 +29,7 @@
     "1": "Il livello di congelamento si sposta sempre più in alto e nelle aree più basse rimane meno neve.",
     "2": " Qual è stato il livello di congelamento nel 2018?",
     "3": "Soluzione: Negli ultimi 60 anni la linea di zero gradi è salita a ",
-    "4":"350 metri",
+    "4": "350 metri",
     "5": " - per grado di riscaldamento circa 200 metri. Anche i ghiacciai ne sono colpiti, scopritene di più!"
   },
   "Climate2_Bubble_Glacier": {
@@ -67,8 +67,8 @@
   "Climate3_Title": {
     "1": "3. è l'uomo",
     "2": "- Gas a effetto serra -",
-    "3": "- Quali gas serra vengono emessi? -",
-    "4": "- Quali settori sono responsabili dei gas a effetto serra? -"
+    "3": "- Quali gas a effetto serra vengono emessi in tutto il mondo? -",
+    "4": "- Quali settori sono responsabili delle emissioni globali? -"
   },
   "Climate3_Bubble_1": {
     "1": "Gli esseri umani sono i principali responsabili del cambiamento climatico.",
@@ -88,6 +88,30 @@
     "2": "Metano CH₄",
     "3": "Anidride carbonica CO₂",
     "4": "Biossido di azoto NO₂"
+  },
+  "Climate3_Gas_Cause": {
+    "1": "Origine: Impianti di refrigerazione e di condizionamento",
+    "2": "d'aria Sprays, materiali isolanti, agenti estinguenti",
+    "3": "Origine: Discariche di rifiuti, impianti di",
+    "4": "depurazione delle acque reflue Rutti di mucche, risaie",
+    "5": "Origine: Combustione di combustibili fossili",
+    "6": "come carbone, gas naturale e petrolio greggio",
+    "7": "Origine: industria chimica, fertilizzanti, residui",
+    "8": "di fermentazione, combustione di combustibili fossili"
+  },
+  "Climate3_Sector_Cause": {
+    "1": "Generazione di",
+    "2": "energia e di calore",
+    "3": "Seminativi, bestiame",
+    "4": "e deforestazione",
+    "5": "Processi",
+    "6": "industriali",
+    "7": "Trasporto stradale,",
+    "8": "ferroviario, aereo e marittimo",
+    "9": "Riscaldamento degli",
+    "10": "edifici e cucina",
+    "11": "Emissioni indirette del",
+    "12": "settore energetico"
   },
   "Climate3_Sector": {
     "1": "Energia",

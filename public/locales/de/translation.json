@@ -66,8 +66,8 @@
   "Climate3_Title": {
     "1": "3. Es ist der Mensch",
     "2": "- Treibhausgase -",
-    "3": "- Welche Treibhausgase werden ausgestossen? -",
-    "4": "- Auf welche Sektoren sind die Treibhausgase zurückzuführen? -"
+    "3": "- Welche Treibhausgase werden weltweit ausgestossen? -",
+    "4": "- Auf welche Sektoren sind die globalen Emissionen zurückzuführen? -"
   },
   "Climate3_Bubble_1": {
     "1": "Der Mensch ist hauptverantwortlich für den Klimawandel.",
@@ -96,7 +96,21 @@
     "5": "Entstehung: Verbrennung fossiler",
     "6": "Energieträger wie Kohle, Erdgas & Erdöl",
     "7": "Entstehung: chemische Industrie, Dünger,",
-    "8": "Gärreste, Verbrennung fossiler Brennstoffe"
+    "8": "Gärreste, Verbrennung fossiler Energieträger"
+  },
+  "Climate3_Sector_Cause": {
+    "1": "Strom- und ",
+    "2": "Wärmeerzeugung",
+    "3": "Ackerbau, Viehzucht",
+    "4": "und Entwaldung",
+    "5": "Industrielle",
+    "6": "Prozesse",
+    "7": "Straßen-, Schienen-, Luft- ",
+    "8": "und Seeverkehr",
+    "9": "Beheizung von Gebäuden",
+    "10": "und Kochen",
+    "11": "Indirekte Emissionen ",
+    "12": "aus dem Energiesektor"
   },
   "Climate3_Sector": {
     "1": "Energie",

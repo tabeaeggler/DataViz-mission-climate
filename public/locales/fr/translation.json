@@ -29,7 +29,7 @@
     "1": "Le niveau de congélation change de plus en plus et il reste moins de neige dans les zones inférieures.",
     "2": " Quel était le niveau de gel en 2018?",
     "3": "Solution: Au cours des 60 dernières années, la ligne zéro degré a augmenté de ",
-    "4":"350 mètres",
+    "4": "350 mètres",
     "5": " - par degré de réchauffement d'environ 200 mètres. Les glaciers sont également touchés, en savoir plus !"
   },
   "Climate2_Bubble_Glacier": {
@@ -67,8 +67,8 @@
   "Climate3_Title": {
     "1": "3. c'est l'homme",
     "2": "- Gaz à effet de serre émis -",
-    "3": "- Quels sont les gaz à effet de serre émis ? -",
-    "4": "- Quels sont les secteurs responsables des gaz à effet de serre ? -"
+    "3": "- Quali gas a effetto serra vengono emessi in tutto il mondo? -",
+    "4": "- Quels sont les secteurs responsables des émissions mondiales ? -"
   },
   "Climate3_Bubble_1": {
     "1": "Les humains sont les principaux responsables du changement climatique.",
@@ -88,6 +88,30 @@
     "2": "Méthane CH₄",
     "3": "dioxyde d'azote CO₂",
     "4": "Stickstoffdioxid NO₂"
+  },
+  "Climate3_Gas_Cause": {
+    "1": "Origine : systèmes de réfrigération et de conditionnement d'air ",
+    "2": "Pulvérisateurs, matériaux isolants, agents extincteurs",
+    "3": "Origine : décharges, stations d'épuration",
+    "4": "des eaux usées, rots de vaches, rizières",
+    "5": "Origine : Combustion de combustibles fossiles tels",
+    "6": "que le charbon, le gaz naturel et le pétrole brut",
+    "7": "Origine : industrie chimique, engrais, résidus de",
+    "8": "fermentation, combustion de combustibles fossiles"
+  },
+  "Climate3_Sector_Cause": {
+    "1": "Production d'électricité",
+    "2": "et de chaleur",
+    "3": "Terres arables,",
+    "4": "bétail et déforestation",
+    "5": "Processus",
+    "6": "industriels",
+    "7": "Le transport routier,",
+    "8": "ferroviaire, aérien et maritime",
+    "9": "Chauffage des bâtiments",
+    "10": "et cuisine",
+    "11": "Émissions indirectes",
+    "12": "du secteur de l'énergie"
   },
   "Climate3_Sector": {
     "1": "Énergie",
