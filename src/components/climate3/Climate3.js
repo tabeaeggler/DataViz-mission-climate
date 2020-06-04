@@ -19,8 +19,8 @@ function Climate3() {
   })
   const [buttonDelay, setButtonDelay] = useState(false)
   const svgRef = useRef()
-  var width = 1400,
-    height = 680
+  var width = 1600,
+    height = 800
 
   function createBubbleChart(data) {
     const svg = d3.select(svgRef.current)
@@ -46,12 +46,8 @@ function Climate3() {
         return d.radius
       })
 
-    //applies forces to every single circle
-    var simulation = d3Force
-      .forceSimulation()
-      .force("x", d3Force.forceX(width / 2).strength(0.035)) //center bubbles on x-axis
-      .force("y", d3Force.forceY(height / 2).strength(0.035)) //center bubbles on y-axis
-      .force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
+    //initial force
+    var simulation = d3Force.forceSimulation().force("collide", d3Force.forceCollide(17)) //no overlapping -> radius of area collision to avoid
 
     //update position after tick (pos change)
     simulation.nodes(data).on("tick", ticked)
@@ -64,6 +60,37 @@ function Climate3() {
           return d.y
         })
     }
+
+    //initial animation cluster1 simulation
+    simulation
+      .force("x", d3Force.forceX(d => width * d.cluster1X).strength(0.01))
+      .force("y", d3Force.forceY(d => width * d.cluster1Y).strength(0.01))
+      .force("charge", d3Force.forceManyBody())
+      .force("collide", d3Force.forceCollide(25))
+      .alphaTarget(0.09)
+      .restart()
+
+    //initial animation cluster2 simulation
+    setTimeout(function () {
+      simulation
+        .force("x", d3Force.forceX(d => width * d.cluster2X).strength(0.01))
+        .force("y", d3Force.forceX(d => width * d.cluster2Y).strength(0.01))
+        .force("charge", d3Force.forceManyBody())
+        .force("collide", d3Force.forceCollide(33))
+        .alphaTarget(0.09)
+        .restart()
+    }, 12000)
+
+    //initial animation cluster3 simulation
+    setTimeout(function () {
+      simulation
+        .force("x", d3Force.forceX(d => width * d.cluster3X).strength(0.02))
+        .force("y", d3Force.forceY(d => width * d.cluster3Y).strength(0.02))
+        .force("charge", d3Force.forceManyBody())
+        .force("collide", d3Force.forceCollide(30))
+        .alphaTarget(0.09)
+        .restart()
+    }, 24000)
 
     //split bubbles by gas
     d3.select("#split-bubbles-by-gas").on("click", function () {
