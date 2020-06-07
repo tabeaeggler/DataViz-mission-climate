@@ -326,8 +326,20 @@ function Climate3() {
           </svg>
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
           {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
-          {textboxes.splitGas ? <h2 className="subtitle">{t("Climate3_Title.3")}</h2> : ""}
-          {textboxes.splitC02 ? <h2 className="subtitle">{t("Climate3_Title.4")}</h2> : ""}
+          {textboxes.splitGas ? (
+            <div className="show-textbox">
+              <h2 className="subtitle show-textbox">{t("Climate3_Title.3")}</h2>
+            </div>
+          ) : (
+            ""
+          )}
+          {textboxes.splitC02 ? (
+            <div className="show-textbox">
+              <h2 className="subtitle">{t("Climate3_Title.4")}</h2>
+            </div>
+          ) : (
+            ""
+          )}
           <h6 className="source">{t("Climate3_Source")}</h6>
         </div>
       </CSSTransition>
