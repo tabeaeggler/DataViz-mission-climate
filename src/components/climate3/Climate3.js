@@ -5,8 +5,8 @@ import "./climate3.css"
 import history from "../../routing/history"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
-import ButtonRight from "../../assets/img/buttonRight.svg"
-import ButtonLeft from "../../assets/img/buttonLeft.svg"
+import ButtonRight from "../../assets/img/buttonNavRight.svg"
+import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
@@ -365,7 +365,7 @@ function Climate3() {
     return (
       <div>
         <div className={textboxes.random ? "show-nav" : "hide-nav"}>
-          <div className="bubble-box navigation-front-button">
+          <div className="navigation-button navigation-front-button">
             <button
               id="split-bubbles-by-gas"
               onClick={() => {
@@ -376,7 +376,7 @@ function Climate3() {
           </div>
         </div>
         <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="bubble-box navigation-front-button">
+          <div className="navigation-button navigation-front-button">
             <button
               id="split-bubbles-by-sector"
               onClick={() => {
@@ -387,7 +387,7 @@ function Climate3() {
           </div>
         </div>
         <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="bubble-box navigation-front-button">
+          <div className="navigation-button navigation-front-button">
             <button
               onClick={() => {
                 console.log("Go to next page")
@@ -408,7 +408,7 @@ function Climate3() {
     return (
       <div>
         <div className={textboxes.random ? "show-nav" : "hide-nav"}>
-          <div className="bubble-box navigation-back-button">
+          <div className="navigation-button navigation-back-button">
             <button
               onClick={() => {
                 history.push("/Snowline")
@@ -419,7 +419,7 @@ function Climate3() {
         </div>
 
         <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="bubble-box navigation-back-button">
+          <div className="navigation-button navigation-back-button">
             <button
               id="inital-bubble-animation-back"
               onClick={() => {
@@ -431,7 +431,7 @@ function Climate3() {
         </div>
 
         <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="bubble-box navigation-back-button">
+          <div className="navigation-button navigation-back-button">
             <button
               id="split-bubbles-by-gas-back"
               onClick={() => {

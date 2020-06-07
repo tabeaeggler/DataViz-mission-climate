@@ -39,41 +39,11 @@
   text-anchor: middle;
 }
 
-.button-animation {
-  animation-duration: 1s;
-  animation-delay: 2.5s;
-  animation-name: buttonAnimation;
-  animation-fill-mode: backwards;
-}
-
-@keyframes buttonAnimation {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
 .bubble-box-climate3 {
   text-align: left;
   top: 40%;
   width: 550px;
   left: 35.1%;
-}
-
-.navigation-front-button {
-  right: 2%;
-  bottom: 48%;
-  width: 2%;
-  text-align: left;
-}
-
-.navigation-back-button {
-  left: 2%;
-  bottom: 48%;
-  width: 2%;
-  text-align: left;
 }
 
 .label-electricity {
