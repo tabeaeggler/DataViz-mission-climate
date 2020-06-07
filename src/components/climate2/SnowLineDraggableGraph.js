@@ -32,7 +32,6 @@ const SnowLineDraggableGraph = props => {
    */
   function createSnowLine() {
     const svg = select(svgRef.current).attr("transform", `translate(${marginLeft},${marginTop})`)
-
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
     if (props.showAnswer) {
@@ -233,6 +232,7 @@ const SnowLineDraggableGraph = props => {
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .text("2018")
       animationLineText(-marginTextY, ".draggable-line-text-year")   
+      
       svg
         .append("text")
         .attr("class", "draggable-line-text-question snowline-text")
