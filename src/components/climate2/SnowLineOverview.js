@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
-import ButtonRight from "../../assets/img/buttonRight.svg"
+import ButtonRightOld from "../../assets/img/buttonRight.svg"
+import ButtonRight from "../../assets/img/buttonNavRight.svg"
+import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
+import history from "../../routing/history"
 import Snow from "react-snowstorm"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 
@@ -63,15 +66,15 @@ const SnowLineOverview = props => {
             <b>{t("Climate2_Bubble_Snowline.6")}</b>
             {t("Climate2_Bubble_Snowline.7")}
           </p>
-          <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
+          {/* <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
             <button
               id="next-button"
               onClick={() => {
                 props.setShowSnowlineGraph(false)
               }}>
-              <img src={ButtonRight} alt="continue"></img>
+              <img src={ButtonRightOld} alt="continue"></img>
             </button>
-          </CSSTransition>
+          </CSSTransition> */}
         </div>
       </CSSTransition>
     )
@@ -83,6 +86,44 @@ const SnowLineOverview = props => {
   function showQuizzResult() {
     setData(prevState => [...prevState, { year: 2020, snowline: 1250 }])
     setShowAnswer(true)
+  }
+
+  /**
+   * Adds next navigation button
+   * @returns dom element with arrow button right
+   */
+  function navigationNext() {
+    return (
+      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-next-button">
+          <button
+            onClick={() => {
+              props.setShowSnowlineGraph(false)
+            }}>
+            <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
+   * Adds back navigation button
+   * @returns dom element with arrow button left
+   */
+  function navigationBack() {
+    return (
+      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-back-button">
+          <button
+            onClick={() => {
+              history.push("/")
+            }}>
+            <img src={ButtonLeft} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
   }
 
   return (
@@ -109,6 +150,9 @@ const SnowLineOverview = props => {
           setHideStartBubble={setHideStartBubble}
         />
       </div>
+
+      {navigationNext()}
+      {navigationBack()}
 
       {createBubbleShowAnswer()}
       {createBubbleStartQuizz()}

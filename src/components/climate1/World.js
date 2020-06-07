@@ -8,7 +8,9 @@ import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
-import ButtonRight from "../../assets/img/buttonRight.svg"
+import ButtonRightOld from "../../assets/img/buttonRight.svg"
+import ButtonRight from "../../assets/img/buttonNavRight.svg"
+import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 
 /**
@@ -82,11 +84,7 @@ const World = () => {
           polygonsData={countries.features}
           polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
           polygonCapColor={d => colorScaleGlobe(getVal(d))}
-          polygonSideColor={d =>
-            d === clickedCountry.country
-              ? "rgba(0, 0, 0, 1)"
-              : "rgba(0, 0, 0, 0)"
-          }
+          polygonSideColor={d => (d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)")}
           polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
           polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
@@ -106,9 +104,7 @@ const World = () => {
           labelText={d => d.text}
           labelAltitude={d => {
             if (clickedCountry.country !== undefined) {
-              return clickedCountry.country.properties.ADMIN === d.coutry
-                ? 0.12
-                : 0.06
+              return clickedCountry.country.properties.ADMIN === d.coutry ? 0.12 : 0.06
             }
             return 0.06
           }}
@@ -150,9 +146,7 @@ const World = () => {
     setClickedCountry({
       country: country,
       filteredCountry: climateData.filter(
-        o =>
-          o.country_code.toLowerCase() ===
-          country.properties.ISO_A2.toLowerCase()
+        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
       ),
     })
     setShowInitialBubble(false)
@@ -164,20 +158,12 @@ const World = () => {
    */
   function createBubbleGlobe() {
     return (
-      <CSSTransition
-        in={showInitialBubble}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate1-globe">
           <p className="bubble-box-text">
             <b>{t("Climate1_Bubble.1")}</b>
             {t("Climate1_Bubble.2")}
           </p>
-          <button id="next-button" onClick={() => setShowInitialBubble(false)}>
-            <img src={ButtonRight} alt="continue"></img>
-          </button>
         </div>
       </CSSTransition>
     )
@@ -189,24 +175,57 @@ const World = () => {
    */
   function createBubbleLineGraph() {
     return (
-      <CSSTransition
-        in={!showInitialBubble}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={!showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate1-linegraph">
           <p className="bubble-box-text">
             <b>{t("Climate1_Bubble.3")}</b>
             {t("Climate1_Bubble.4")}
             {t("Climate1_Bubble.5")}
           </p>
-          <button
+          {/* <button
             id="next-button"
             onClick={() => {
               history.push("/Snowline")
             }}>
+            <img src={ButtonRightOld} alt="continue"></img>
+          </button> */}
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
+   * Adds next navigation button
+   * @returns dom element with arrow button right
+   */
+  function navigationNext() {
+    return (
+      <CSSTransition in={true} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-next-button">
+          <button
+            onClick={() => {
+              history.push("/Snowline")
+            }}>
             <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
+   * Adds back navigation button
+   * @returns dom element with arrow button left
+   */
+  function navigationBack() {
+    return (
+      <CSSTransition in={true} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-back-button">
+          <button
+            onClick={() => {
+              console.log("Go to start page")
+            }}>
+            <img src={ButtonLeft} alt="continue"></img>
           </button>
         </div>
       </CSSTransition>
@@ -219,12 +238,7 @@ const World = () => {
    */
   function createLinegraph() {
     return (
-      <CSSTransition
-        in={true}
-        timeout={200000}
-        classNames="fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={true} timeout={200000} classNames="fade" unmountOnExit appear>
         <div className="linegraph-container">
           <div className="linegraph-text-container">
             {globalData === undefined ? null : (
@@ -253,6 +267,8 @@ const World = () => {
     <React.Fragment>
       {createGlobe()}
       {createLinegraph()}
+      {navigationNext()}
+      {navigationBack()}
     </React.Fragment>
   )
 }

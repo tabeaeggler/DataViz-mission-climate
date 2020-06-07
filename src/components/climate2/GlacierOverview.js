@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import Slider from "rc-slider"
 import GlacierGraph from "./GlacierGraph"
+import history from "../../routing/history"
+import ButtonRight from "../../assets/img/buttonNavRight.svg"
+import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
@@ -143,6 +146,44 @@ const GlacierOverview = props => {
     )
   }
 
+  /**
+   * Adds next navigation button
+   * @returns dom element with arrow button right
+   */
+  function navigationNext() {
+    return (
+      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-next-button">
+          <button
+            onClick={() => {
+              history.push("/Cause")
+            }}>
+            <img src={ButtonRight} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
+   * Adds back navigation button
+   * @returns dom element with arrow button left
+   */
+  function navigationBack() {
+    return (
+      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-back-button">
+          <button
+            onClick={() => {
+              history.push("/Snowline")
+            }}>
+            <img src={ButtonLeft} alt="continue"></img>
+          </button>
+        </div>
+      </CSSTransition>
+    )
+  }
+
   return (
     <React.Fragment>
       <CSSTransition
@@ -159,6 +200,9 @@ const GlacierOverview = props => {
       </CSSTransition>
 
       {showSliderAndNumbers()}
+
+      {navigationNext()}
+      {navigationBack()}
 
       <div className="glacier-wrapper glacier-zoom">
         <GlacierGraph

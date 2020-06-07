@@ -359,13 +359,13 @@ function Climate3() {
 
   /**
    * Adds next navigation button
-   * @returns dom element with speech bubble
+   * @returns dom element with arrow button right
    */
   function navigationNext() {
     return (
       <div>
         <div className={textboxes.random ? "show-nav" : "hide-nav"}>
-          <div className="navigation-button navigation-front-button">
+          <div className="navigation-button navigation-next-button">
             <button
               id="split-bubbles-by-gas"
               onClick={() => {
@@ -376,7 +376,7 @@ function Climate3() {
           </div>
         </div>
         <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="navigation-button navigation-front-button">
+          <div className="navigation-button navigation-next-button">
             <button
               id="split-bubbles-by-sector"
               onClick={() => {
@@ -387,7 +387,7 @@ function Climate3() {
           </div>
         </div>
         <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
-          <div className="navigation-button navigation-front-button">
+          <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
                 console.log("Go to next page")
@@ -402,7 +402,7 @@ function Climate3() {
 
   /**
    * Adds back navigation button
-   * @returns dom element with speech bubble
+   * @returns dom element with arrow button left
    */
   function navigationBack() {
     return (
