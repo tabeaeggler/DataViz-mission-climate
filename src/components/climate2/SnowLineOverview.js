@@ -15,6 +15,7 @@ const SnowLineOverview = props => {
   const { t } = useTranslation()
   //speech bubbles
   const [showAnswer, setShowAnswer] = useState(false)
+  const [hideStartBubble, setHideStartBubble] = useState(false)
   //data
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
 
@@ -24,13 +25,16 @@ const SnowLineOverview = props => {
    */
   function createBubbleStartQuizz() {
     return (
-      <CSSTransition in={!showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate2-snow-start">
+      <CSSTransition
+        in={props.showSnowlineInteraction && !hideStartBubble}
+        timeout={{ enter: 3000, exit: 500 }}
+        classNames="fade-climate2"
+        unmountOnExit
+        appear>
+        <div className="bubble-box bubble-box-climate2-snow-start zoom-mountain">
           <p className="bubble-box-text">
-            {t("Climate2_Bubble_Snowline.1")}
-            <span className="question-style">
-              <b>{t("Climate2_Bubble_Snowline.2")}</b>
-            </span>
+            <b> {t("Climate2_Bubble_Snowline.1")}</b>
+            {t("Climate2_Bubble_Snowline.2")}
           </p>
         </div>
       </CSSTransition>
@@ -49,13 +53,15 @@ const SnowLineOverview = props => {
         classNames="bubble-fade"
         unmountOnExit
         appear>
-        <div className="bubble-box bubble-box-climate2-snow-answer">
+        <div className="bubble-box bubble-box-climate2-snow-answer zoom-mountain">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.3")}</b>
             <span className="text-solution-bold">
               <b>{t("Climate2_Bubble_Snowline.4")}</b>
             </span>
             {t("Climate2_Bubble_Snowline.5")}
+            <b>{t("Climate2_Bubble_Snowline.6")}</b>
+            {t("Climate2_Bubble_Snowline.7")}
           </p>
           <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
             <button
@@ -91,7 +97,6 @@ const SnowLineOverview = props => {
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
           <h6 className="source source-snowline">{t("Climate2_Source_Snowline")}</h6>
-          {createBubbleStartQuizz()}
         </div>
       </CSSTransition>
 
@@ -101,9 +106,12 @@ const SnowLineOverview = props => {
           data={data}
           showQuizzResult={showQuizzResult}
           showSnowlineInteraction={props.showSnowlineInteraction}
+          setHideStartBubble={setHideStartBubble}
         />
-        {createBubbleShowAnswer()}
       </div>
+
+      {createBubbleShowAnswer()}
+      {createBubbleStartQuizz()}
 
       <Snow
         animationInterval={50}

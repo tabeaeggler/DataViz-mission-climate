@@ -27,30 +27,31 @@
   },
   "Climate2_Bubble_Snowline": {
     "1": "Le niveau de congélation change de plus en plus et il reste moins de neige dans les zones inférieures.",
-    "2": " Quel était le niveau de gel en 2018?",
+    "2": " À titre indicatif: il faut souvent s'attendre à de la neige de 200 à 400 mètres sous le niveau de congélation.",
     "3": "Solution: Au cours des 60 dernières années, la ligne zéro degré a augmenté de ",
     "4": "350 mètres",
-    "5": " - par degré de réchauffement d'environ 200 mètres. Les glaciers sont également touchés, en savoir plus !"
+    "5": " - par degré de réchauffement d'environ 200 mètres. Cela correspond à!",
+    "6": " un cinquième de la hauteur du Rigi.",
+    "7": " Les glaciers sont également touchés, en savoir plussur la page suivante!"
   },
   "Climate2_Bubble_Glacier": {
-    "1": "De quel pourcentage le volume des glaciers suisses a-t-il diminué depuis 1850 ?",
-    "2": " La glace fondue est comparée au volume du lac des Quatre-Cantons",
-    "3": "Solution : les glaciers ont reculé de ",
-    "4": ". ",
-    "5": " Cela correspond à une masse de glace de ",
-    "6": ", qui remplit ",
-    "7": " fois le lac des Quatre-Cantons.",
-    "8": " Quelles sont les raisons de ces changements ?"
+    "1": "Solution : les glaciers ont reculé de ",
+    "2": ". ",
+    "3": " Cela correspond à une masse de glace de ",
+    "4": ", qui remplit ",
+    "5": " fois le lac des Quatre-Cantons.",
+    "6": " Quelles sont les raisons de ces changements ?"
   },
   "Climate2_Submit_Button": "Confirmer",
   "Climate2_Title": {
     "1": "2. La Suisse est également touchée",
-    "2": "- Le niveau de congélation augmente -",
-    "3": "- Les glaciers fondent -"
+    "2": "- Quel était le niveau de congélation en 2018? -",
+    "3": "- De quel pourcentage le volume des glaciers a-t-il diminué depuis 1850? -"
   },
   "Climate2_Graph": {
     "1": "2018: Solution",
-    "2": "2018: Votre estimation"
+    "2": "2018: Votre estimation",
+    "3": "Estimez et confirmez"
   },
   "Climate2_Slider": {
     "1": "Diminution du volume",

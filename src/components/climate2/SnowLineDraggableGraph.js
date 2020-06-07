@@ -8,6 +8,7 @@ import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mous
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
+ * @param {function} props.setHideStartBubble manages visibility of start bubble
  */
 const SnowLineDraggableGraph = props => {
   //transaltion
@@ -31,7 +32,6 @@ const SnowLineDraggableGraph = props => {
    */
   function createSnowLine() {
     const svg = select(svgRef.current).attr("transform", `translate(${marginLeft},${marginTop})`)
-
     const yScale = scaleLinear().domain([mountainHeight, 0]).range([0, height])
 
     if (props.showAnswer) {
@@ -68,9 +68,9 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "difference-text")
+        .attr("class", "snowline-text difference-text")
         .attr("x", width + 20)
-        .attr("y", yScale(props.data[1].snowline - 175))
+        .attr("y", yScale(props.data[1].snowline - 190))
         .text("350 m")
         .style("opacity", 0)
         .transition()
@@ -95,7 +95,7 @@ const SnowLineDraggableGraph = props => {
 
       svg
         .append("text")
-        .attr("class", "snowline-text answer-text")
+        .attr("class", "snowline-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -116,6 +116,7 @@ const SnowLineDraggableGraph = props => {
       svg.select(".draggable-line-text-year").remove()
       svg.select(".draggable-line-text-meter").remove()
       svg.select(".draggable-line").remove()
+
       svg
         .append("line")
         .attr("class", "draggable-line-static")
@@ -136,6 +137,7 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(draggableLinePosition + " m")
+      
 
       svg
         .append("text")
@@ -149,11 +151,10 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(t("Climate2_Graph.2"))
-      animationLineText()
 
       svg
         .append("text")
-        .attr("class", "snowline-text answer-text")
+        .attr("class", "snowline-text")
         .attr("x", width - marginTextX)
         .attr(
           "y",
@@ -229,19 +230,30 @@ const SnowLineDraggableGraph = props => {
         .attr("class", "draggable-line-text-year snowline-text")
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
-        .text(t("Climate2_Graph.2"))
-      animationLineText()
+        .text("2018")
+      animationLineText(-marginTextY, ".draggable-line-text-year")   
+      
+      svg
+        .append("text")
+        .attr("class", "draggable-line-text-question snowline-text")
+        .attr("x", width/2 - 100)
+        .attr("y", yScale(draggableLinePosition + marginTextY))
+        .text(t("Climate2_Graph.3"))
+      animationLineText(marginTextY, ".draggable-line-text-question")
 
       /**
        * Handle drag start event
        */
       function dragstarted() {
         if (!props.showAnswer) {
-          setShowSubmitButton(true)
+          setShowSubmitButton(false)
+          props.setHideStartBubble(true)
+
           svg
             .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
             .classed("active-text", true)
           svg.selectAll(".draggable-line, .draggable-area, .draggable-line-text-year").interrupt()
+          svg.select(".draggable-line-text-question").remove()
         }
       }
 
@@ -251,8 +263,8 @@ const SnowLineDraggableGraph = props => {
       function dragged() {
         //y position of mouse for checking boundaries
         var yMouse = mouse(this)[1]
-        const upperLimit = -174
-        const lowerLimit = 159
+        const upperLimit = -170
+        const lowerLimit = 135
 
         if (!props.showAnswer && yMouse > upperLimit && yMouse < lowerLimit) {
           const zoomFactor = 1.6
@@ -284,6 +296,7 @@ const SnowLineDraggableGraph = props => {
        */
       function dragended() {
         if (!props.showAnswer) {
+          setShowSubmitButton(true)
           svg
             .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
             .classed("active-text", false)
@@ -294,21 +307,21 @@ const SnowLineDraggableGraph = props => {
     /**
      * Handle animation of text
      */
-    function animationLineText() {
+    function animationLineText(offset, selector) {
       svg
-        .select(".draggable-line-text-year")
+        .select(selector)
         .transition()
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y", yScale(draggableLinePosition))
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextY))
+        .attr("y", yScale(draggableLinePosition + offset))
         .transition()
-        .attr("y", yScale(draggableLinePosition))
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
         .transition()
-        .attr("y", yScale(draggableLinePosition - marginTextY))
-        .on("end", animationLineText)
+        .attr("y", yScale(draggableLinePosition + offset))
+        .on("end", function() { animationLineText(offset,selector) })
     }
 
     /**
@@ -361,7 +374,7 @@ const SnowLineDraggableGraph = props => {
           <button
             className="submit-button submit-button-snowline"
             style={{
-              bottom: (draggableLinePosition * height) / mountainHeight,
+              bottom: (draggableLinePosition * height) / mountainHeight - 5,
             }}
             onClick={() => showResult()}>
             {t("Climate2_Submit_Button")}

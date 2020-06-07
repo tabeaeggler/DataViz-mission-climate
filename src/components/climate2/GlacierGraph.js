@@ -9,13 +9,14 @@ import { CSSTransition } from "react-transition-group"
  * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactor scale factor for scaling the svg glacier
  * @param {number} props.scaleFactorEstimation scale factor of submitted estimation for scaling the glacier svg
+ * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  */
 const GlacierGraph = props => {
   //translation
   const { t } = useTranslation()
 
   //layout
-  const glacierWidth = 346
+  const glacierWidth = 345
   const glacierHeight = 551
 
   /**
@@ -39,7 +40,7 @@ const GlacierGraph = props => {
     <React.Fragment>
       <div className="glacier-img-container">
         <CSSTransition
-          in={props.showAnswer}
+          in={props.showGlacierInteraction}
           timeout={5000}
           classNames="glacier-animation-fade-in"
           unmountOnExit
@@ -48,9 +49,20 @@ const GlacierGraph = props => {
         </CSSTransition>
         {getScaledGlacier(1, GlacierTransparent)}
       </div>
-      
+
       {!props.showAnswer ? (
         <div className="glacier-img-container">
+          {props.scaleFactor < 1 ? (
+            <p
+              className="glacier-text glacier-input-text"
+              style={{
+                bottom: props.scaleFactor * glacierHeight,
+                position: "absolute",
+                transform: `rotate(${-4 * props.scaleFactor}deg)`,
+              }}>
+              {"2019: " + t("Climate2_Glacier_Graph.1")}
+            </p>
+          ) : null}
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       ) : null}
@@ -62,7 +74,9 @@ const GlacierGraph = props => {
         unmountOnExit
         appear>
         <div className="glacier-img-container">
-          <p className="glacier-text glacier-result-text">{t("Climate2_Glacier_Graph.2") + " 2019"} 51 km&sup3;</p>
+          <p className="glacier-text glacier-result-text">
+            {t("Climate2_Glacier_Graph.2") + " 2019"} 51 km&sup3;
+          </p>
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       </CSSTransition>
@@ -79,10 +93,8 @@ const GlacierGraph = props => {
             position: "absolute",
             textAlign: "right",
             left: glacierWidth,
-          }}>
-          <p className="glacier-estimation-text">
-            {t("Climate2_Glacier_Graph.1")}
-          </p>
+          }} className="estimation-container">
+          <p className="glacier-estimation-text">{t("Climate2_Glacier_Graph.1")}</p>
           <div className="glacier-estimation-line"></div>
         </div>
       </CSSTransition>
