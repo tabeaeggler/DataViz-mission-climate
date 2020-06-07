@@ -5,7 +5,8 @@
   transform: translate(-50%, -50%);
 }
 
-.bubble-source {
+.bubble-source-gas,
+.bubble-source-sector {
   fill: #868585;
   font-size: 0.7em;
   text-anchor: middle;
@@ -31,13 +32,14 @@
   fill: #d14aa7;
 }
 
-.bubble-title-gas {
+.bubble-title-gas,
+.bubble-title-sector {
   font-size: 1.4em;
   font-family: "Inconsolata", monospace;
   text-anchor: middle;
 }
 
-.hide-textbox {
+.hide-nav {
   animation-duration: 1s;
   animation-name: fadeOutTextBox;
   animation-fill-mode: forwards;
@@ -52,15 +54,22 @@
   }
 }
 
-.show-textbox {
+.show-nav {
   animation-duration: 2s;
   animation-name: fadeInTextBox;
   animation-fill-mode: backwards;
 }
 
-.show-textbox-3 {
+.show-nav-delay-7s {
   animation-duration: 2s;
-  animation-delay: 5s;
+  animation-delay: 7.8s;
+  animation-name: fadeInTextBox;
+  animation-fill-mode: backwards;
+}
+
+.show-nav-delay-8s {
+  animation-duration: 2s;
+  animation-delay: 8s;
   animation-name: fadeInTextBox;
   animation-fill-mode: backwards;
 }
@@ -90,22 +99,22 @@
   }
 }
 
-.bubble-box-climate3-txtbox1 {
+.bubble-box-climate3 {
   text-align: left;
   top: 40%;
   width: 550px;
   left: 35.1%;
 }
 
-.bubble-box-climate3-txtbox2 {
+.navigation-front-button {
   right: 2%;
   bottom: 48%;
   width: 2%;
   text-align: left;
 }
 
-.bubble-box-climate3-txtbox3 {
-  right: 2%;
+.navigation-back-button {
+  left: 2%;
   bottom: 48%;
   width: 2%;
   text-align: left;
