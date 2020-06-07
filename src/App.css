@@ -172,6 +172,46 @@ button.language-button,
   transition: opacity 4000ms;
 }
 
+/*Fade for nav*/
+.hide-nav {
+  animation-duration: 1s;
+  animation-name: fadeOutNav;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOutNav {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+.show-nav,
+.show-subtitles {
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-name: fadeInNav;
+  animation-fill-mode: backwards;
+}
+
+.show-nav-delay-8s {
+  animation-duration: 2s;
+  animation-delay: 8s;
+  animation-name: fadeInNav;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeInNav {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
 /*Source*/
 .source {
   position: absolute;

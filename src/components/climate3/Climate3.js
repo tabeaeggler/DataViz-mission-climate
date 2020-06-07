@@ -88,7 +88,7 @@ function Climate3() {
           .force("charge", d3Force.forceManyBody())
           .force("collide", d3Force.forceCollide(25))
           .alphaTarget(0.3)
-      }, 1000)
+      }, 0)
     })
 
     /**
@@ -367,7 +367,6 @@ function Climate3() {
         <div className={textboxes.random ? "show-nav" : "hide-nav"}>
           <div className="bubble-box navigation-front-button">
             <button
-              id="next-button"
               id="split-bubbles-by-gas"
               onClick={() => {
                 setTextboxes({ random: false, splitGas: true, splitC02: false })
@@ -379,7 +378,6 @@ function Climate3() {
         <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="bubble-box navigation-front-button">
             <button
-              id="next-button"
               id="split-bubbles-by-sector"
               onClick={() => {
                 setTextboxes({ random: false, splitGas: false, splitC02: true })
@@ -388,10 +386,9 @@ function Climate3() {
             </button>
           </div>
         </div>
-        <div className={textboxes.splitC02 ? "show-nav-delay-7s" : "hide-nav"}>
+        <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="bubble-box navigation-front-button">
             <button
-              id="next-button"
               onClick={() => {
                 console.log("Go to next page")
               }}>
@@ -413,7 +410,6 @@ function Climate3() {
         <div className={textboxes.random ? "show-nav" : "hide-nav"}>
           <div className="bubble-box navigation-back-button">
             <button
-              id="next-button"
               onClick={() => {
                 history.push("/Snowline")
               }}>
@@ -422,25 +418,21 @@ function Climate3() {
           </div>
         </div>
 
-        <div className={textboxes.splitGas ? "show-nav" : "hide-nav"}>
+        <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="bubble-box navigation-back-button">
             <button
-              id="next-button"
               id="inital-bubble-animation-back"
               onClick={() => {
-                setTimeout(function () {
-                  setTextboxes({ random: true, splitGas: false, splitC02: false })
-                }, 3000)
+                setTextboxes({ random: true, splitGas: false, splitC02: false })
               }}>
               <img src={ButtonLeft} alt="continue"></img>
             </button>
           </div>
         </div>
 
-        <div className={textboxes.splitC02 ? "show-nav" : "hide-nav"}>
+        <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="bubble-box navigation-back-button">
             <button
-              id="next-button"
               id="split-bubbles-by-gas-back"
               onClick={() => {
                 setTextboxes({ random: false, splitGas: true, splitC02: false })
@@ -466,14 +458,14 @@ function Climate3() {
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
           {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
           {textboxes.splitGas ? (
-            <div className="show-textbox">
+            <div className="show-subtitles">
               <h2 className="subtitle show-textbox">{t("Climate3_Title.3")}</h2>
             </div>
           ) : (
             ""
           )}
           {textboxes.splitC02 ? (
-            <div className="show-textbox">
+            <div className="show-subtitles">
               <h2 className="subtitle">{t("Climate3_Title.4")}</h2>
             </div>
           ) : (

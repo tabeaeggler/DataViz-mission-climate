@@ -39,50 +39,6 @@
   text-anchor: middle;
 }
 
-.hide-nav {
-  animation-duration: 1s;
-  animation-name: fadeOutTextBox;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeOutTextBox {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 0%;
-  }
-}
-
-.show-nav {
-  animation-duration: 2s;
-  animation-name: fadeInTextBox;
-  animation-fill-mode: backwards;
-}
-
-.show-nav-delay-7s {
-  animation-duration: 2s;
-  animation-delay: 7.8s;
-  animation-name: fadeInTextBox;
-  animation-fill-mode: backwards;
-}
-
-.show-nav-delay-8s {
-  animation-duration: 2s;
-  animation-delay: 8s;
-  animation-name: fadeInTextBox;
-  animation-fill-mode: backwards;
-}
-
-@keyframes fadeInTextBox {
-  from {
-    opacity: 0%;
-  }
-  to {
-    opacity: 100%;
-  }
-}
-
 .button-animation {
   animation-duration: 1s;
   animation-delay: 2.5s;
