@@ -252,8 +252,11 @@ function Climate3() {
         <div className="bubble-box-outer">
           <div className="bubble-box bubble-box-climate3-txtbox1">
             <p className="bubble-box-text">
-              <b>{t("Climate3_Bubble_1.1")}</b>
-              {t("Climate3_Bubble_1.2")}
+              {t("Climate3_Bubble_1.1")}
+              <span className="question-style">
+                <b>{t("Climate3_Bubble_1.2")}</b>
+              </span>
+              {t("Climate3_Bubble_1.3")}
             </p>
             <button
               id="next-button"
