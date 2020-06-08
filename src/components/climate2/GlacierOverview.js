@@ -175,7 +175,9 @@ const GlacierOverview = props => {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
-              history.push("/Snowline")
+              //Option1: Reload page
+              window.location.reload(true)
+              //Option: Zoom back to snowline
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>
