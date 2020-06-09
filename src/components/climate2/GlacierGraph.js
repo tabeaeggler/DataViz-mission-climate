@@ -24,7 +24,7 @@ const GlacierGraph = props => {
    * Creates a glacier showing the reference volume of 1850 with animation
    * @returns dom element
    */
-  function getReferenceGlacier() {
+  function createReferenceGlacier() {
     return (
       <CSSTransition
         in={props.showGlacierInteraction}
@@ -46,10 +46,11 @@ const GlacierGraph = props => {
    * Creates a glacier with the volume of the users estimation
    * @returns dom element
    */
-  function getEstimationGlacier() {
+  function createEstimationGlacier() {
     var estimationText //dynamic text showing estimated volume
     if (!props.showAnswer) {
       if (props.scaleFactor < 1) {
+        //only show text when estimation started
         estimationText = (
           <p
             className="glacier-text glacier-input-text"
@@ -73,7 +74,7 @@ const GlacierGraph = props => {
    * Creates the animation for showing the result
    * @returns dom element
    */
-  function getResultAnimation() {
+  function createResultAnimation() {
     return (
       <React.Fragment>
         <CSSTransition
@@ -104,7 +105,7 @@ const GlacierGraph = props => {
    * Creates an animated line with the users estimation
    * @returns dom element
    */
-  function getEstimationLine() {
+  function createEstimationLine() {
     return (
       <CSSTransition in={props.showAnswer} timeout={500} classNames="glacier-animation-fade-in" unmountOnExit appear>
         <div
@@ -140,7 +141,7 @@ const GlacierGraph = props => {
   }
 
   /**
-   * calculates volume of user estimation
+   * calculates the volume of the users estimation
    * @returns {number} volume in cubic kilometers
    */
   function calculateEstimatedVolume() {
@@ -149,10 +150,12 @@ const GlacierGraph = props => {
 
   return (
     <React.Fragment>
-      {getReferenceGlacier()}
-      {getEstimationGlacier()}
-      {getResultAnimation()}
-      {getEstimationLine()}
+      <div className="glacier-wrapper glacier-zoom">
+        {createReferenceGlacier()}
+        {createEstimationGlacier()}
+        {createResultAnimation()}
+        {createEstimationLine()}
+      </div>
     </React.Fragment>
   )
 }

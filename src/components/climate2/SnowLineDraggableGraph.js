@@ -8,7 +8,7 @@ import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mous
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
- * @param {function} props.setHideStartBubble manages visibility of start bubble
+ * @param {function} props.setHideIntroductionBubble manages visibility of introduction bubble
  */
 const SnowLineDraggableGraph = props => {
   //transaltion
@@ -99,8 +99,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", 8)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < offset &&
-            props.data[1].snowline - draggableLinePosition > 0
+          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
             ? yScale(props.data[1].snowline + marginTextY / 2)
             : yScale(props.data[1].snowline - marginTextY)
         )
@@ -131,13 +130,11 @@ const SnowLineDraggableGraph = props => {
         .attr("x", width - marginTextX)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < 0 &&
-            props.data[1].snowline - draggableLinePosition > -offset
+          props.data[1].snowline - draggableLinePosition < 0 && props.data[1].snowline - draggableLinePosition > -offset
             ? yScale(draggableLinePosition) - 5
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(draggableLinePosition + " m")
-      
 
       svg
         .append("text")
@@ -145,8 +142,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", 8)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < 0 &&
-            props.data[1].snowline - draggableLinePosition > -offset
+          props.data[1].snowline - draggableLinePosition < 0 && props.data[1].snowline - draggableLinePosition > -offset
             ? yScale(draggableLinePosition) - 5
             : yScale(draggableLinePosition - marginTextY)
         )
@@ -158,8 +154,7 @@ const SnowLineDraggableGraph = props => {
         .attr("x", width - marginTextX)
         .attr(
           "y",
-          props.data[1].snowline - draggableLinePosition < offset &&
-            props.data[1].snowline - draggableLinePosition > 0
+          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
             ? yScale(props.data[1].snowline + marginTextY / 2)
             : yScale(props.data[1].snowline - marginTextY)
         )
@@ -231,12 +226,12 @@ const SnowLineDraggableGraph = props => {
         .attr("x", 8)
         .attr("y", yScale(draggableLinePosition - marginTextY))
         .text("2018")
-      animationLineText(-marginTextY, ".draggable-line-text-year")   
-      
+      animationLineText(-marginTextY, ".draggable-line-text-year")
+
       svg
         .append("text")
         .attr("class", "draggable-line-text-question snowline-text")
-        .attr("x", width/2 - 100)
+        .attr("x", width / 2 - 100)
         .attr("y", yScale(draggableLinePosition + marginTextY))
         .text(t("Climate2_Graph.3"))
       animationLineText(marginTextY, ".draggable-line-text-question")
@@ -247,7 +242,7 @@ const SnowLineDraggableGraph = props => {
       function dragstarted() {
         if (!props.showAnswer) {
           setShowSubmitButton(false)
-          props.setHideStartBubble(true)
+          props.setHideIntroductionBubble(true)
 
           svg
             .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
@@ -314,14 +309,26 @@ const SnowLineDraggableGraph = props => {
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
+        .attr(
+          "y",
+          yScale(
+            selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition
+          )
+        )
         .transition()
         .attr("y", yScale(draggableLinePosition + offset))
         .transition()
-        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2*offset : draggableLinePosition))
+        .attr(
+          "y",
+          yScale(
+            selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition
+          )
+        )
         .transition()
         .attr("y", yScale(draggableLinePosition + offset))
-        .on("end", function() { animationLineText(offset,selector) })
+        .on("end", function () {
+          animationLineText(offset, selector)
+        })
     }
 
     /**
@@ -366,21 +373,21 @@ const SnowLineDraggableGraph = props => {
 
   return (
     <React.Fragment>
-      <div className="snowline-container">
-        <svg className="snowline-graph" width={width + 2 * marginLeft}>
-          <g ref={svgRef}></g>
-        </svg>
-        {showSubmitButton ? (
-          <button
-            className="submit-button submit-button-snowline"
-            style={{
-              bottom: (draggableLinePosition * height) / mountainHeight - 5,
-            }}
-            onClick={() => showResult()}>
-            {t("Climate2_Submit_Button")}
-          </button>
-        ) : null}
-      </div>
+        <div className="snowline-container zoom-mountain">
+          <svg className="snowline-graph" width={width + 2 * marginLeft}>
+            <g ref={svgRef}></g>
+          </svg>
+          {showSubmitButton ? (
+            <button
+              className="submit-button submit-button-snowline"
+              style={{
+                bottom: (draggableLinePosition * height) / mountainHeight - 5,
+              }}
+              onClick={() => showResult()}>
+              {t("Climate2_Submit_Button")}
+            </button>
+          ) : null}
+        </div>
     </React.Fragment>
   )
 }

@@ -79,31 +79,21 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds Speach Bubble for showing glacier quizz answer
-   * @returns dom element with speech bubble text
+   * Creates the header section of the glacier page with animation
+   * @returns dom element with header
    */
-  function createBubbleShowAnswer() {
+  function createHeader() {
     return (
-      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-glacier-answer">
-          <p className="bubble-box-text extra-line-spacing">
-            <b>
-              {t("Climate2_Bubble_Glacier.1")}
-              <span className="text-solution-bold">{percentageLabel.percentageDecrease} % </span>
-              {t("Climate2_Bubble_Glacier.2")}
-            </b>
-            {t("Climate2_Bubble_Glacier.3")}
-            <b>
-              <span className="text-solution-bold">{percentageLabel.volumeDecrease.toFixed(0)} km&sup3;</span>
-            </b>
-            {t("Climate2_Bubble_Glacier.4")}
-            <b>
-              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
-            </b>
-            {t("Climate2_Bubble_Glacier.5")}
-
-            {t("Climate2_Bubble_Glacier.6")}
-          </p>
+      <CSSTransition
+        in={props.showGlacierInteraction}
+        timeout={{ enter: 3000, exit: 0 }}
+        classNames="fade-climate2"
+        unmountOnExit
+        appear>
+        <div className="glacier-title-wrapper">
+          <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
+          <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
+          <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
         </div>
       </CSSTransition>
     )
@@ -113,7 +103,7 @@ const GlacierOverview = props => {
    * Adds slider and glacier attributes
    * @returns dom element with slider and glacier attributes
    */
-  function showSliderAndNumbers() {
+  function createSliderAndNumbers() {
     return (
       <CSSTransition
         in={props.showGlacierInteraction && !showAnswer}
@@ -147,12 +137,48 @@ const GlacierOverview = props => {
   }
 
   /**
+   * Adds speach bubble for showing glacier quizz answer
+   * @returns dom element with speech bubble text
+   */
+  function createBubbleShowAnswer() {
+    return (
+      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+        <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
+          <p className="bubble-box-text extra-line-spacing">
+            <b>
+              {t("Climate2_Bubble_Glacier.1")}
+              <span className="text-solution-bold">{percentageLabel.percentageDecrease} % </span>
+              {t("Climate2_Bubble_Glacier.2")}
+            </b>
+            {t("Climate2_Bubble_Glacier.3")}
+            <b>
+              <span className="text-solution-bold">{percentageLabel.volumeDecrease.toFixed(0)} km&sup3;</span>
+            </b>
+            {t("Climate2_Bubble_Glacier.4")}
+            <b>
+              <span className="text-solution-bold">{scaleLake.toFixed(1)} x</span>
+            </b>
+            {t("Climate2_Bubble_Glacier.5")}
+
+            {t("Climate2_Bubble_Glacier.6")}
+          </p>
+        </div>
+      </CSSTransition>
+    )
+  }
+
+  /**
    * Adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
     return (
-      <CSSTransition in={showAnswer && props.showGlacierInteraction} timeout={6000} classNames="show-button" unmountOnExit appear>
+      <CSSTransition
+        in={showAnswer && props.showGlacierInteraction}
+        timeout={6000}
+        classNames="show-button"
+        unmountOnExit
+        appear>
         <div className="navigation-button navigation-next-button glacier-zoom" id="navigation-button-next-glacier">
           <button
             onClick={() => {
@@ -186,33 +212,18 @@ const GlacierOverview = props => {
 
   return (
     <React.Fragment>
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
-        <div className="glacier-title-wrapper">
-          <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
-          <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
-          <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
-        </div>
-      </CSSTransition>
-
-      {showSliderAndNumbers()}
-
+      {createHeader()}
+      {createSliderAndNumbers()}
+      {createBubbleShowAnswer()}
       {navigationNext()}
       {navigationBack()}
 
-      <div className="glacier-wrapper glacier-zoom">
-        <GlacierGraph
-          scaleFactor={calculatePercentage()}
-          showAnswer={showAnswer}
-          scaleFactorEstimation={scaleFactorEstimation}
-          showGlacierInteraction={props.showGlacierInteraction}
-          glacierData={dataVolume}></GlacierGraph>
-        {createBubbleShowAnswer()}
-      </div>
+      <GlacierGraph
+        scaleFactor={calculatePercentage()}
+        showAnswer={showAnswer}
+        scaleFactorEstimation={scaleFactorEstimation}
+        showGlacierInteraction={props.showGlacierInteraction}
+        glacierData={dataVolume}></GlacierGraph>
     </React.Fragment>
   )
 }
