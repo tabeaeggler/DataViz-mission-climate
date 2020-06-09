@@ -66,15 +66,6 @@ const SnowLineOverview = props => {
             <b>{t("Climate2_Bubble_Snowline.6")}</b>
             {t("Climate2_Bubble_Snowline.7")}
           </p>
-          {/* <CSSTransition in={true} timeout={3600} classNames="show-button" unmountOnExit appear>
-            <button
-              id="next-button"
-              onClick={() => {
-                props.setShowSnowlineGraph(false)
-              }}>
-              <img src={ButtonRightOld} alt="continue"></img>
-            </button>
-          </CSSTransition> */}
         </div>
       </CSSTransition>
     )
@@ -94,8 +85,8 @@ const SnowLineOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
-        <div className="navigation-button navigation-next-button">
+      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={{ enter: 3000, exit:0}} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-next-button zoom-mountain" id="navigation-button-next-mountain">
           <button
             onClick={() => {
               props.setShowSnowlineGraph(false)
@@ -113,8 +104,8 @@ const SnowLineOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
-        <div className="navigation-button navigation-back-button">
+      <CSSTransition in={props.showSnowlineInteraction} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-back-button zoom-mountain" id="navigation-button-back-mountain">
           <button
             onClick={() => {
               history.push("/")

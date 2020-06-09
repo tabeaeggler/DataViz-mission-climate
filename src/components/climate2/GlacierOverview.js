@@ -152,8 +152,8 @@ const GlacierOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
-        <div className="navigation-button navigation-next-button">
+      <CSSTransition in={showAnswer && props.showGlacierInteraction} timeout={6000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-next-button glacier-zoom" id="navigation-button-next-glacier">
           <button
             onClick={() => {
               history.push("/Cause")
@@ -171,13 +171,11 @@ const GlacierOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition in={showAnswer} timeout={2000} classNames="show-button" unmountOnExit appear>
-        <div className="navigation-button navigation-back-button">
+      <CSSTransition in={props.showGlacierInteraction} timeout={2000} classNames="show-button" unmountOnExit appear>
+        <div className="navigation-button navigation-back-button glacier-zoom" id="navigation-button-back-glacier">
           <button
             onClick={() => {
-              //Option1: Reload page
               window.location.reload(true)
-              //Option: Zoom back to snowline
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>
