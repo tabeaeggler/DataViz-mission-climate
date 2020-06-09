@@ -19,7 +19,7 @@
   right: 3.2%;
 }
 
-/* Outer Container*/
+/*Landscape*/
 .landscape-container {
   position: absolute;
   bottom: 0;
@@ -164,18 +164,6 @@ font-weight: bold;
   left: 300px;
   bottom: 20px;
   text-align: left;
-}
-
-.show-button-enter,
-.show-button-appear {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.show-button-enter-done {
-  opacity: 1;
-  visibility: visible;
-  transition: visibility 3s ease-in, opacity 3s ease-in;
 }
 
 .fade-climate2-enter,
