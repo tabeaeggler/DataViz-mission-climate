@@ -211,7 +211,8 @@ const GlacierOverview = props => {
           scaleFactor={calculatePercentage()}
           showAnswer={showAnswer}
           scaleFactorEstimation={scaleFactorEstimation}
-          showGlacierInteraction={props.showGlacierInteraction}></GlacierGraph>
+          showGlacierInteraction={props.showGlacierInteraction}
+          glacierData={dataVolume}></GlacierGraph>
         {createBubbleShowAnswer()}
       </div>
     </React.Fragment>

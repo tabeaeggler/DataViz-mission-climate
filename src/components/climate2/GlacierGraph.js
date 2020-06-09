@@ -5,11 +5,12 @@ import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
 /**
- * Creates a scalable glacier graph
+ * creates a scalable glacier graph
  * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactor scale factor for scaling the svg glacier
  * @param {number} props.scaleFactorEstimation scale factor of submitted estimation for scaling the glacier svg
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
+ * @param {array} props.glacierData volume data of swiss glaciers
  */
 const GlacierGraph = props => {
   //translation
@@ -20,7 +21,7 @@ const GlacierGraph = props => {
   const glacierHeight = 551
 
   /**
-   * Scales the image container for the glacier svg
+   * scales the image container for the glacier svg
    * @param {number} scaleFactor
    * @param {string} image
    * @returns dom element containing scaled glacier graphic
@@ -31,24 +32,34 @@ const GlacierGraph = props => {
         width={glacierWidth}
         height={glacierHeight * scaleFactor}
         src={image}
-        alt="scaled glacier"
+        alt="glacier"
         className={"glacier-img"}></img>
     )
   }
 
+  /**
+   * calculates volume of user estimation
+   * @returns {number} volume in cubic kilometers
+   */
+  function calculateEstimatedVolume() {
+    return (props.glacierData.data_1850 * props.scaleFactor).toFixed(0)
+  }
+
   return (
     <React.Fragment>
-      <div className="glacier-img-container">
-        <CSSTransition
-          in={props.showGlacierInteraction}
-          timeout={5000}
-          classNames="glacier-animation-fade-in"
-          unmountOnExit
-          appear>
-          <p className="glacier-original-text">{t("Climate2_Glacier_Graph.2") + " 1850"} 180 km&sup3;</p>
-        </CSSTransition>
-        {getScaledGlacier(1, GlacierTransparent)}
-      </div>
+      <CSSTransition
+        in={props.showGlacierInteraction}
+        timeout={3000}
+        classNames="glacier-animation-fade-in"
+        unmountOnExit
+        appear>
+        <div className="glacier-img-container">
+          <p className="glacier-original-text">
+            {t("Climate2_Glacier_Graph.3")} 1850: {props.glacierData.data_1850} km&sup3;
+          </p>
+          {getScaledGlacier(1, GlacierTransparent)}
+        </div>
+      </CSSTransition>
 
       {!props.showAnswer ? (
         <div className="glacier-img-container">
@@ -57,10 +68,8 @@ const GlacierGraph = props => {
               className="glacier-text glacier-input-text"
               style={{
                 bottom: props.scaleFactor * glacierHeight,
-                position: "absolute",
-                transform: `rotate(${-4 * props.scaleFactor}deg)`,
               }}>
-              {"2019: " + t("Climate2_Glacier_Graph.1")}
+              {t("Climate2_Glacier_Graph.3") + " 2019: " + calculateEstimatedVolume()} km&sup3;
             </p>
           ) : null}
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
@@ -74,9 +83,7 @@ const GlacierGraph = props => {
         unmountOnExit
         appear>
         <div className="glacier-img-container">
-          <p className="glacier-text glacier-result-text">
-            {t("Climate2_Glacier_Graph.2") + " 2019"} 51 km&sup3;
-          </p>
+          <p className="glacier-text glacier-result-text">{t("Climate2_Glacier_Graph.2")} 51 km&sup3;</p>
           {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
         </div>
       </CSSTransition>
@@ -90,11 +97,12 @@ const GlacierGraph = props => {
         <div
           style={{
             bottom: props.scaleFactorEstimation * glacierHeight,
-            position: "absolute",
-            textAlign: "right",
             left: glacierWidth,
-          }} className="estimation-container">
-          <p className="glacier-estimation-text">{t("Climate2_Glacier_Graph.1")}</p>
+          }}
+          className="estimation-container">
+          <p className="glacier-estimation-text">
+            {t("Climate2_Glacier_Graph.1") + calculateEstimatedVolume()} km&sup3;
+          </p>
           <div className="glacier-estimation-line"></div>
         </div>
       </CSSTransition>
