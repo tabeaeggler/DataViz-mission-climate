@@ -1,4 +1,4 @@
-/*temperature linegraph style*/
+/*temperature linegrap style*/
 .temperature-graph-container {
   display: flex;
   justify-content: center;
@@ -14,16 +14,6 @@
 
 .grid path {
   stroke-width: 0;
-}
-
-.linegraph-container {
-  position: absolute;
-  left: 53%;
-  top: 23%;
-}
-
-.linegraph-text-container {
-  position: relative;
 }
 
 text.global-name,
@@ -80,7 +70,6 @@ svg text.label {
 
 .globe-container {
   position: absolute;
-  bottom: 00.1%;
 }
 
 /*climate 1 style*/
@@ -92,12 +81,52 @@ svg text.label {
 }
 
 .climate-1-subtitle{
-  top: 100px;
+  top: 140px;
 }
 
 .climate-1-subtitle-year{
   bottom: 2%;
   opacity: 0.7;
+}
+
+/* modal */
+.modal-content{
+  width: 1000px;
+  background-color:#202023;
+  /* opacity: 0.8; */
+  position: absolute;
+  bottom: 1%;
+  left: -50%;
+}
+
+.modal-body{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-footer, .modal-header{
+  border: none;
+}
+
+.modal-title{
+  font-size: 0.9em;
+}
+
+div.modal-header{
+  display: block;
+  text-align:  center;
+  padding-bottom: 0;
+}
+
+button.close{
+  position: absolute;
+  top: 2%;
+  right: 3%;
+}
+
+button.close span{
+  color: #bbb9b9;
+  text-shadow: none;
 }
 
 

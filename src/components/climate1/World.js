@@ -11,6 +11,7 @@ import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
+import { Modal } from "react-bootstrap"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -44,6 +45,11 @@ const World = () => {
   const getVal = feat => feat.properties.TEMP
   //speech bubbles
   const [showInitialBubble, setShowInitialBubble] = useState(true)
+  //bootstrap modal
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -93,7 +99,10 @@ const World = () => {
               : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>
       `}
-          onPolygonClick={d => updateCountry(d)}
+          onPolygonClick={function (d) {
+            updateCountry(d)
+            handleShow()
+          }}
           polygonsTransitionDuration={300}
           //position-marker config
           labelTypeFace={OpenSans}
@@ -112,6 +121,7 @@ const World = () => {
           labelColor={() => "rgba(187, 185, 185, 1)"}
           labelResolution={6}
         />
+        {createModal()}
         <div className="location-button">
           <button onClick={handleZoom}>
             <img src={LocationButton} alt="location"></img>
@@ -119,6 +129,20 @@ const World = () => {
           </button>
         </div>
       </div>
+    )
+  }
+
+  function createModal() {
+    return (
+      <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <b>{t("Climate1_Title.2")}</b>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{createLinegraph()}</Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
     )
   }
 
@@ -130,7 +154,7 @@ const World = () => {
       {
         lat: 30,
         lng: 10,
-        altitude: 2.7,
+        altitude: 3,
       },
       2500
     )
@@ -148,24 +172,6 @@ const World = () => {
       ),
     })
     setShowInitialBubble(false)
-  }
-
-  /**
-   * Adds speach bubble with text for linegraph
-   * @returns dom element with speech bubble for linegraph
-   */
-  function createBubbleLineGraph() {
-    return (
-      <CSSTransition in={!showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate1-linegraph">
-          <p className="bubble-box-text">
-            <b>{t("Climate1_Bubble.3")}</b>
-            {t("Climate1_Bubble.4")}
-            {t("Climate1_Bubble.5")}
-          </p>
-        </div>
-      </CSSTransition>
-    )
   }
 
   /**
@@ -213,17 +219,14 @@ const World = () => {
   function createLinegraph() {
     return (
       <CSSTransition in={true} timeout={200000} classNames="fade" unmountOnExit appear>
-        <div className="linegraph-container">
-          <div className="linegraph-text-container">
-            {globalData === undefined ? null : (
-              <TemperatureLineGraph
-                selectedCountry={clickedCountry.country}
-                climateData={clickedCountry.filteredCountry}
-                globalData={globalData}
-              />
-            )}
-            <div className="info-box-linegraph">{createBubbleLineGraph()}</div>
-          </div>
+        <div>
+          {globalData === undefined ? null : (
+            <TemperatureLineGraph
+              selectedCountry={clickedCountry.country}
+              climateData={clickedCountry.filteredCountry}
+              globalData={globalData}
+            />
+          )}
         </div>
       </CSSTransition>
     )
@@ -240,7 +243,6 @@ const World = () => {
   return (
     <React.Fragment>
       {createGlobe()}
-      {/* {createLinegraph()} */}
       {navigationNext()}
       {navigationBack()}
     </React.Fragment>

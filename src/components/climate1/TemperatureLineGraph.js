@@ -78,7 +78,7 @@ const TemperatureLineGraph = props => {
   function createLineGraph() {
     const scaleGroup = 0.8
     const width = (window.innerWidth / 2) * scaleGroup
-    const height = 250
+    const height = 200
     const margin = 40
     //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr(
@@ -159,20 +159,6 @@ const TemperatureLineGraph = props => {
       .attr("opacity", "0.4")
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
-
-    //add description text for graph
-    svg
-      .append("svg:text")
-      .append("svg:tspan")
-      .attr("class", "linegraph-description")
-      .style("fill", "#bbb9b9")
-      .attr("y", "15px")
-      .attr("x", "20px")
-      .text(t("Climate1_TooltipTemperature.6"))
-      .append("svg:tspan")
-      .attr("y", "40px")
-      .attr("x", "22px")
-      .text(t("Climate1_TooltipTemperature.7"))
 
     //only render country line when country is selcted
     if (props.selectedCountry !== undefined || props.climateData.length > 0) {
