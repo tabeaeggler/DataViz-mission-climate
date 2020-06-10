@@ -219,62 +219,73 @@ function Climate3() {
      * function to add Gas text Lables: percentage, gas, source
      */
     function addGasTextLabels() {
+      var posFGAS = 0.57
+      var posCH4 = 0.64
+      var posC02 = 0.74
+      var posN02 = 0.6
+      var posAdd1 = 0.033
+      var posAdd2 = 0.029
+      var posAdd3 = 0.016
       //add percentage labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * 0.57, "2%", 6000)
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * 0.64, "16%", 6000)
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.6, height * 0.74, "76%", 6000)
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.83, height * 0.6, "6%", 6000)
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * posFGAS, "2%", 6000)
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * posCH4, "16%", 6000)
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.6, height * posC02, "76%", 6000)
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.83, height * posN02, "6%", 6000)
 
       //add gas labels
-      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * 0.6, t("Climate3_Gas.1"), 6000)
-      addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * 0.67, t("Climate3_Gas.2"), 6000)
-      addTextLabel("bubble-title-gas bubble-C02", width * 0.6, height * 0.78, t("Climate3_Gas.3"), 6000)
-      addTextLabel("bubble-title-gas bubble-N02", width * 0.83, height * 0.64, t("Climate3_Gas.4"), 6000)
+      addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * (posFGAS + posAdd1), t("Climate3_Gas.1"), 6000)
+      addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * (posCH4 + posAdd1), t("Climate3_Gas.2"), 6000)
+      addTextLabel("bubble-title-gas bubble-C02", width * 0.6, height * (posC02 + posAdd1), t("Climate3_Gas.3"), 6000)
+      addTextLabel("bubble-title-gas bubble-N02", width * 0.83, height * (posN02 + posAdd1), t("Climate3_Gas.4"), 6000)
 
       //add gas source
-      addTextLabel("bubble-source-gas bubble-FGAS", width * 0.15, height * 0.62, t("Climate3_Gas_Cause.1"), 8000)
-      addTextLabel("bubble-source-gas bubble-FGAS", width * 0.15, height * 0.632, t("Climate3_Gas_Cause.2"), 8000)
-      addTextLabel("bubble-source-gas bubble-CH4", width * 0.35, height * 0.69, t("Climate3_Gas_Cause.3"), 8000)
-      addTextLabel("bubble-source-gas bubble-CH4", width * 0.35, height * 0.702, t("Climate3_Gas_Cause.4"), 8000)
-      addTextLabel("bubble-source-gas bubble-C02", width * 0.6, height * 0.8, t("Climate3_Gas_Cause.5"), 8000)
-      addTextLabel("bubble-source-gas bubble-C02", width * 0.6, height * 0.812, t("Climate3_Gas_Cause.6"), 8000)
-      addTextLabel("bubble-source-gas bubble-N02", width * 0.83, height * 0.66, t("Climate3_Gas_Cause.7"), 8000)
-      addTextLabel("bubble-source-gas bubble-N02", width * 0.83, height * 0.672, t("Climate3_Gas_Cause.8"), 8000)
+      addTextLabel("bubble-source-gas bubble-FGAS", width * 0.15, height * (posFGAS + posAdd1 + posAdd2), t("Climate3_Gas_Cause.1"), 8000)
+      addTextLabel("bubble-source-gas bubble-FGAS", width * 0.15, height * (posFGAS + posAdd1 + posAdd2 + posAdd3), t("Climate3_Gas_Cause.2"), 8000)
+      addTextLabel("bubble-source-gas bubble-CH4", width * 0.35, height * (posCH4 + posAdd1 + posAdd2), t("Climate3_Gas_Cause.3"), 8000)
+      addTextLabel("bubble-source-gas bubble-CH4", width * 0.35, height * (posCH4 + posAdd1 + posAdd2 + posAdd3), t("Climate3_Gas_Cause.4"), 8000)
+      addTextLabel("bubble-source-gas bubble-C02", width * 0.6, height * (posC02 + posAdd1 + posAdd2), t("Climate3_Gas_Cause.5"), 8000)
+      addTextLabel("bubble-source-gas bubble-C02", width * 0.6, height * (posC02 + posAdd1 + posAdd2 + posAdd3), t("Climate3_Gas_Cause.6"), 8000)
+      addTextLabel("bubble-source-gas bubble-N02", width * 0.83, height * (posN02 + posAdd1 + posAdd2), t("Climate3_Gas_Cause.7"), 8000)
+      addTextLabel("bubble-source-gas bubble-N02", width * 0.83, height * (posN02 + posAdd1 + posAdd2 + posAdd3), t("Climate3_Gas_Cause.8"), 8000)
     }
 
     /**
      * function to add Gas text Lables: percentage, secotr, description
      */
     function addSectorTextLabels() {
+      var posPercentage = 0.65
+      var posSector = posPercentage + 0.033
+      var posSource = posSector + 0.029
+      var posSource2 = posSource + 0.016
       //add percentage label
-      addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * 0.65, "25%", 6000)
-      addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * 0.65, "24%", 6000)
-      addTextLabel("bubble-title-sector label-industry", width * 0.48, height * 0.65, "21%", 6000)
-      addTextLabel("bubble-title-sector label-transport", width * 0.63, height * 0.65, "14%", 6000)
-      addTextLabel("bubble-title-sector label-other", width * 0.75, height * 0.65, "10%", 6000)
-      addTextLabel("bubble-title-sector label-buildings", width * 0.87, height * 0.65, "6%", 6000)
+      addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * posPercentage, "25%", 6000)
+      addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * posPercentage, "24%", 6000)
+      addTextLabel("bubble-title-sector label-industry", width * 0.48, height * posPercentage, "21%", 6000)
+      addTextLabel("bubble-title-sector label-transport", width * 0.63, height * posPercentage, "14%", 6000)
+      addTextLabel("bubble-title-sector label-other", width * 0.75, height * posPercentage, "10%", 6000)
+      addTextLabel("bubble-title-sector label-buildings", width * 0.87, height * posPercentage, "6%", 6000)
 
       //add sector labels
-      addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * 0.68, t("Climate3_Sector.1"), 6000)
-      addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * 0.68, t("Climate3_Sector.2"), 6000)
-      addTextLabel("bubble-title-sector label-industry", width * 0.48, height * 0.68, t("Climate3_Sector.3"), 6000)
-      addTextLabel("bubble-title-sector label-transport", width * 0.63, height * 0.68, t("Climate3_Sector.4"), 6000)
-      addTextLabel("bubble-title-sector label-other", width * 0.75, height * 0.68, t("Climate3_Sector.5"), 6000)
-      addTextLabel("bubble-title-sector label-buildings", width * 0.87, height * 0.68, t("Climate3_Sector.6"), 6000)
+      addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * posSector, t("Climate3_Sector.1"), 6000)
+      addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * posSector, t("Climate3_Sector.2"), 6000)
+      addTextLabel("bubble-title-sector label-industry", width * 0.48, height * posSector, t("Climate3_Sector.3"), 6000)
+      addTextLabel("bubble-title-sector label-transport", width * 0.63, height * posSector, t("Climate3_Sector.4"), 6000)
+      addTextLabel("bubble-title-sector label-other", width * 0.75, height * posSector, t("Climate3_Sector.5"), 6000)
+      addTextLabel("bubble-title-sector label-buildings", width * 0.87, height * posSector, t("Climate3_Sector.6"), 6000)
 
       //add sector source
-      addTextLabel("bubble-source-sector label-electricity", width * 0.15, height * 0.7, t("Climate3_Sector_Cause.1"), 8000)
-      addTextLabel("bubble-source-sector label-electricity", width * 0.15, height * 0.712, t("Climate3_Sector_Cause.2"), 8000)
-      addTextLabel("bubble-source-sector label-agriculture", width * 0.32, height * 0.7, t("Climate3_Sector_Cause.3"), 8000)
-      addTextLabel("bubble-source-sector label-agriculture", width * 0.32, height * 0.712, t("Climate3_Sector_Cause.4"), 8000)
-      addTextLabel("bubble-source-sector label-industry", width * 0.48, height * 0.7, t("Climate3_Sector_Cause.5"), 8000)
-      addTextLabel("bubble-source-sector label-industry", width * 0.48, height * 0.712, t("Climate3_Sector_Cause.6"), 8000)
-      addTextLabel("bubble-source-sector label-transport", width * 0.63, height * 0.7, t("Climate3_Sector_Cause.7"), 8000)
-      addTextLabel("bubble-source-sector label-transport", width * 0.63, height * 0.712, t("Climate3_Sector_Cause.8"), 8000)
-      addTextLabel("bubble-source-sector label-other", width * 0.75, height * 0.7, t("Climate3_Sector_Cause.9"), 8000)
-      addTextLabel("bubble-source-sector label-other", width * 0.75, height * 0.712, t("Climate3_Sector_Cause.10"), 8000)
-      addTextLabel("bubble-source-sector label-buildings", width * 0.87, height * 0.7, t("Climate3_Sector_Cause.11"), 8000)
-      addTextLabel("bubble-source-sector label-buildings", width * 0.87, height * 0.712, t("Climate3_Sector_Cause.12"), 8000)
+      addTextLabel("bubble-source-sector label-electricity", width * 0.15, height * posSource, t("Climate3_Sector_Cause.1"), 8000)
+      addTextLabel("bubble-source-sector label-electricity", width * 0.15, height * posSource2, t("Climate3_Sector_Cause.2"), 8000)
+      addTextLabel("bubble-source-sector label-agriculture", width * 0.32, height * posSource, t("Climate3_Sector_Cause.3"), 8000)
+      addTextLabel("bubble-source-sector label-agriculture", width * 0.32, height * posSource2, t("Climate3_Sector_Cause.4"), 8000)
+      addTextLabel("bubble-source-sector label-industry", width * 0.48, height * posSource, t("Climate3_Sector_Cause.5"), 8000)
+      addTextLabel("bubble-source-sector label-industry", width * 0.48, height * posSource2, t("Climate3_Sector_Cause.6"), 8000)
+      addTextLabel("bubble-source-sector label-transport", width * 0.63, height * posSource, t("Climate3_Sector_Cause.7"), 8000)
+      addTextLabel("bubble-source-sector label-transport", width * 0.63, height * posSource2, t("Climate3_Sector_Cause.8"), 8000)
+      addTextLabel("bubble-source-sector label-other", width * 0.75, height * posSource, t("Climate3_Sector_Cause.9"), 8000)
+      addTextLabel("bubble-source-sector label-other", width * 0.75, height * posSource2, t("Climate3_Sector_Cause.10"), 8000)
+      addTextLabel("bubble-source-sector label-buildings", width * 0.87, height * posSource, t("Climate3_Sector_Cause.11"), 8000)
+      addTextLabel("bubble-source-sector label-buildings", width * 0.87, height * posSource2, t("Climate3_Sector_Cause.12"), 8000)
     }
 
     /**
