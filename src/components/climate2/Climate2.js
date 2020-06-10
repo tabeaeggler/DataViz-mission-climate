@@ -13,7 +13,6 @@ function Climate2() {
   const [showSnowlineGraph, setShowSnowlineGraph] = useState(true)
 
   return (
-    <React.Fragment>
       <CSSTransition
         in={showSnowlineGraph}
         timeout={{enter:1500, exit:2000}}
@@ -29,7 +28,6 @@ function Climate2() {
           <GlacierOverview showGlacierInteraction={!showSnowlineGraph}></GlacierOverview>
         </div>
       </CSSTransition>
-    </React.Fragment>
   )
 }
 

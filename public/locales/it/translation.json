@@ -61,8 +61,9 @@
   "Climate2_Source_Snowline": "Fonte: OcCC & ProClim",
   "Climate2_Source_Glacier": "Fonte: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
   "Climate2_Glacier_Graph": {
-    "1": "Il tuo preventivo",
-    "2": "Volume"
+    "1": "Stima 2019: ",
+    "2": "Soluzione 2019:",
+    "3": "Volume"
   },
   "Climate2_Lake": "Lago dei Quattro Cantoni",
   "Climate3_Title": {

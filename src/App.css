@@ -188,6 +188,18 @@ button.language-button,
   left: 0%;
 }
 
+.show-button-enter,
+.show-button-appear {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-button-enter-done {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 3s ease-in, opacity 3s ease-in;
+}
+
 /*Source*/
 .source {
   position: absolute;

@@ -1,4 +1,25 @@
-/* Outer Container*/
+/*Navigation*/
+#navigation-button-back-mountain{
+  bottom: 28.5%;
+  left:1.66%
+}
+
+#navigation-button-next-mountain{
+  bottom: 28.5%;
+  right: 35.8%;
+}
+
+#navigation-button-back-glacier{
+  bottom: 21.16%;
+  left: 50.3%;
+}
+
+#navigation-button-next-glacier{
+  bottom: 21.16%;
+  right: 3.2%;
+}
+
+/*Landscape*/
 .landscape-container {
   position: absolute;
   bottom: 0;
@@ -74,13 +95,16 @@
   stroke-width: 5;
 }
 .snowline-container {
-  width: auto;
   height: 596px;
   background-image: url("../../assets/img/mountains.svg");
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 66%;
 }
 
 .snowline-graph {
@@ -138,23 +162,11 @@ font-weight: bold;
   position: absolute;
 }
 
-.bubble-box-climate2-snow-start, .bubble-box-climate2-snow-answer {
+.bubble-box-snow-introduction, .bubble-box-climate2-snow-answer {
   width: 450px;
   left: 300px;
   bottom: 20px;
   text-align: left;
-}
-
-.show-button-enter,
-.show-button-appear {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.show-button-enter-done {
-  opacity: 1;
-  visibility: visible;
-  transition: visibility 3s ease-in, opacity 3s ease-in;
 }
 
 .fade-climate2-enter,
@@ -181,13 +193,6 @@ font-weight: bold;
   right: 67px !important;
 }
 
-.snowline-wrapper {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 66%;
-}
-
 .snowline-title-wrapper {
   position: absolute;
   bottom: 50%;
@@ -200,7 +205,7 @@ font-weight: bold;
 
 /* Glacier */
 .bubble-box-glacier-answer {
-  right: 20px;
+  right: 1180px;
   bottom: 210px;
   text-align: left;
   width: 330px;
@@ -338,7 +343,8 @@ margin-bottom: 0;
 }
 
 .glacier-original-text,
-.glacier-result-text {
+.glacier-result-text, 
+.glacier-input-text {
   color: #6a8adf;
   transform: rotate(-2.7deg);
   width: 100px;
@@ -348,9 +354,6 @@ margin-bottom: 0;
 }
 
 .glacier-input-text{
-  width: 250px;
-  transform: rotate(-4deg);
-  padding-left: 30px;
   color: #ffd763;
 }
 
@@ -360,13 +363,15 @@ margin-bottom: 0;
 }
 
 .glacier-estimation-line {
-  height: 1px;
-  width: 160px;
+  height: 2px;
+  width: 200px;
   background: repeating-linear-gradient(to right, #ffd763 0, #ffd763 5px, transparent 5px, transparent 7px);
 }
 
 .estimation-container {
-  height: 30px;
+  height: 32px;
+  position: absolute;
+  text-align: right;
 }
 
 .glacier-zoom {
