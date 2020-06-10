@@ -110,7 +110,7 @@ function Climate3() {
       d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
       d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-      splitGasAnimation(5000, 0.8)
+      splitGasAnimation(5000, 0.8, 600)
       addGasTextLabels()
     })
 
@@ -174,7 +174,7 @@ function Climate3() {
     /**
      * split gas force and animation -> used twice for next and back nav
      */
-    function splitGasAnimation(timeout, speedCenter) {
+    function splitGasAnimation(timeout, speedCenter, additionalTime = 0) {
       setTimeout(function () {
         simulation
           .force("collide", d3Force.forceCollide(17))
@@ -209,10 +209,10 @@ function Climate3() {
 
       setTimeout(function () {
         simulation.force("x", forceXSplitedByGas.strength(0.017)).force("y", d3Force.forceY(height / 2).strength(0.017))
-      }, timeout + 3000)
+      }, timeout + additionalTime + 3000)
       setTimeout(function () {
         simulation.force("x", forceXSplitedByGas.strength(0.01)).force("y", d3Force.forceY(height / 2).strength(0.01))
-      }, timeout + 3800)
+      }, timeout + additionalTime + 3800)
     }
 
     /**
