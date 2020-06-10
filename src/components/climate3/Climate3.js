@@ -14,12 +14,13 @@ import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
  */
 function Climate3() {
   const { t } = useTranslation()
-  const [textboxes, setTextboxes] = useState({
-    random: true,
+  const [state, setState] = useState({
+    overview: true,
     splitGas: false,
-    splitC02: false,
+    splitSector: false,
   })
   const svgRef = useRef()
+  const radiusBubble = 11
   const width = window.innerWidth
   const height = window.innerHeight
 
@@ -29,7 +30,6 @@ function Climate3() {
     //set bubble initial position and radius
     var padding = 4
     for (var i = 0; i < data.length; i++) {
-      data[i].radius = 11
       data[i].x = Math.random() * width
       data[i].y = Math.random() * height
     }
@@ -43,11 +43,9 @@ function Climate3() {
       .attr("class", function (d) {
         return `bubble-${d.sector} bubble-${d.type} `
       })
-      .attr("r", function (d) {
-        return d.radius
-      })
+      .attr("r", radiusBubble)
 
-    //initial force
+    //create initial force
     var simulation = d3Force.forceSimulation()
 
     //update position after tick (pos change)
@@ -78,8 +76,8 @@ function Climate3() {
      * source: (2) gas
      */
     d3.select("#inital-bubble-animation-back").on("click", function () {
-      d3.selectAll(".bubble-title-gas").style("opacity", 1).transition().delay(0).duration(1000).style("opacity", 0)
-      d3.selectAll(".bubble-source-gas").style("opacity", 1).transition().delay(0).duration(1000).style("opacity", 0)
+      d3.selectAll(".bubble-title-gas").style("opacity", 1).transition().duration(1000).style("opacity", 0)
+      d3.selectAll(".bubble-source-gas").style("opacity", 1).transition().duration(1000).style("opacity", 0)
 
       setTimeout(function () {
         simulation
@@ -96,40 +94,7 @@ function Climate3() {
      * source: (1) start page
      */
     d3.select("#split-bubbles-by-gas").on("click", function () {
-      setTimeout(function () {
-        simulation
-          .force("collide", d3Force.forceCollide(17))
-          .force("charge", null)
-          .force("x", d3Force.forceX(width / 2).strength(0.015))
-          .force("y", d3Force.forceY(height / 2).strength(0.015))
-          .alphaTarget(0.7)
-          .restart()
-      }, 500)
-
-      var forceXSplitedByGas = d3Force
-        .forceX(function (d) {
-          if (d.type === "FGAS") {
-            return width * 0.15
-          } else if (d.type === "CH4") {
-            return width * 0.35
-          } else if (d.type === "N02") {
-            return width * 0.83
-          } else {
-            return width * 0.6
-          }
-        })
-        .strength(0.02)
-
-      setTimeout(function () {
-        simulation
-          .force("x", forceXSplitedByGas)
-          .force("y", d3Force.forceY(height / 2).strength(0.02))
-          .force("collide", d3Force.forceCollide(17))
-          .force("charge", null)
-          .alphaTarget(0.64)
-          .restart()
-      }, 3500)
-
+      splitGasAnimation()
       addGasTextLabels()
     })
 
@@ -147,40 +112,7 @@ function Climate3() {
       d3.selectAll(".bubble-C02").transition().delay(1600).duration(2000).style("fill", "#d14aa7")
       d3.selectAll(".bubble-N02").transition().delay(1600).duration(2000).style("fill", "#d37b61")
 
-      setTimeout(function () {
-        simulation
-          .force("collide", d3Force.forceCollide(17))
-          .force("charge", null)
-          .force("x", d3Force.forceX(width / 2).strength(0.015))
-          .force("y", d3Force.forceY(height / 2).strength(0.015))
-          .alphaTarget(0.7)
-          .restart()
-      }, 500)
-
-      var forceXSplitedByGas = d3Force
-        .forceX(function (d) {
-          if (d.type === "FGAS") {
-            return width * 0.15
-          } else if (d.type === "CH4") {
-            return width * 0.35
-          } else if (d.type === "N02") {
-            return width * 0.83
-          } else {
-            return width * 0.6
-          }
-        })
-        .strength(0.02)
-
-      setTimeout(function () {
-        simulation
-          .force("x", forceXSplitedByGas)
-          .force("y", d3Force.forceY(height / 2).strength(0.02))
-          .force("collide", d3Force.forceCollide(17))
-          .force("charge", null)
-          .alphaTarget(0.64)
-          .restart()
-      }, 3500)
-
+      splitGasAnimation()
       addGasTextLabels()
     })
 
@@ -238,6 +170,45 @@ function Climate3() {
 
       addSectorTextLabels()
     })
+
+    /**
+     * split gas force and animation -> used twice for next and back nav
+     */
+    function splitGasAnimation() {
+      setTimeout(function () {
+        simulation
+          .force("collide", d3Force.forceCollide(17))
+          .force("charge", null)
+          .force("x", d3Force.forceX(width / 2).strength(0.015))
+          .force("y", d3Force.forceY(height / 2).strength(0.015))
+          .alphaTarget(0.7)
+          .restart()
+      }, 500)
+
+      var forceXSplitedByGas = d3Force
+        .forceX(function (d) {
+          if (d.type === "FGAS") {
+            return width * 0.15
+          } else if (d.type === "CH4") {
+            return width * 0.35
+          } else if (d.type === "N02") {
+            return width * 0.83
+          } else {
+            return width * 0.6
+          }
+        })
+        .strength(0.02)
+
+      setTimeout(function () {
+        simulation
+          .force("x", forceXSplitedByGas)
+          .force("y", d3Force.forceY(height / 2).strength(0.02))
+          .force("collide", d3Force.forceCollide(17))
+          .force("charge", null)
+          .alphaTarget(0.64)
+          .restart()
+      }, 3500)
+    }
 
     /**
      * function to add Gas text Lables: percentage, gas, source
@@ -330,12 +301,12 @@ function Climate3() {
   }, [])
 
   /**
-   * Adds Speach Bubble 1: overview
+   * Adds Speach Bubble: overview
    * @returns dom element with speech bubble
    */
-  function createBubble1() {
+  function createBubble() {
     return (
-      <CSSTransition in={textboxes.random} timeout={2000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition in={state.overview} timeout={2000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box-outer">
           <div className="bubble-box bubble-box-climate3">
             <p className="bubble-box-text">
@@ -358,29 +329,29 @@ function Climate3() {
   function navigationNext() {
     return (
       <div>
-        <div className={textboxes.random ? "show-nav" : "hide-nav"}>
+        <div className={state.overview ? "show-nav" : "hide-nav"}>
           <div className="navigation-button navigation-next-button">
             <button
               id="split-bubbles-by-gas"
               onClick={() => {
-                setTextboxes({ random: false, splitGas: true, splitC02: false })
+                setState({ overview: false, splitGas: true, splitSector: false })
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
           </div>
         </div>
-        <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
+        <div className={state.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="navigation-button navigation-next-button">
             <button
               id="split-bubbles-by-sector"
               onClick={() => {
-                setTextboxes({ random: false, splitGas: false, splitC02: true })
+                setState({ overview: false, splitGas: false, splitSector: true })
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
           </div>
         </div>
-        <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
+        <div className={state.splitSector ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
@@ -401,7 +372,7 @@ function Climate3() {
   function navigationBack() {
     return (
       <div>
-        <div className={textboxes.random ? "show-nav" : "hide-nav"}>
+        <div className={state.overview ? "show-nav" : "hide-nav"}>
           <div className="navigation-button navigation-back-button">
             <button
               onClick={() => {
@@ -412,24 +383,24 @@ function Climate3() {
           </div>
         </div>
 
-        <div className={textboxes.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
+        <div className={state.splitGas ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="navigation-button navigation-back-button">
             <button
               id="inital-bubble-animation-back"
               onClick={() => {
-                setTextboxes({ random: true, splitGas: false, splitC02: false })
+                setState({ overview: true, splitGas: false, splitSector: false })
               }}>
               <img src={ButtonLeft} alt="continue"></img>
             </button>
           </div>
         </div>
 
-        <div className={textboxes.splitC02 ? "show-nav-delay-8s" : "hide-nav"}>
+        <div className={state.splitSector ? "show-nav-delay-8s" : "hide-nav"}>
           <div className="navigation-button navigation-back-button">
             <button
               id="split-bubbles-by-gas-back"
               onClick={() => {
-                setTextboxes({ random: false, splitGas: true, splitC02: false })
+                setState({ overview: false, splitGas: true, splitSector: false })
               }}>
               <img src={ButtonLeft} alt="continue"></img>
             </button>
@@ -443,22 +414,22 @@ function Climate3() {
     <React.Fragment>
       <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
         <div>
-          {createBubble1()}
+          {createBubble()}
           {navigationNext()}
           {navigationBack()}
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
           <h1 className="title"> {t("Climate3_Title.1")}</h1>
-          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
-          {textboxes.splitGas ? (
+          {state.overview ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
+          {state.splitGas ? (
             <div className="show-subtitles">
               <h2 className="subtitle show-textbox">{t("Climate3_Title.3")}</h2>
             </div>
           ) : (
             ""
           )}
-          {textboxes.splitC02 ? (
+          {state.splitSector ? (
             <div className="show-subtitles">
               <h2 className="subtitle">{t("Climate3_Title.4")}</h2>
             </div>
