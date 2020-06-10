@@ -10,7 +10,7 @@
 
 .grid line {
   stroke: #141416;
-  opacity: 0.9;
+  opacity: 0.6;
 }
 
 .grid path {
@@ -37,25 +37,26 @@ text.year-text {
 
 /*world component style*/
 .legend-world {
-  width: 30px;
-  height: 250px;
+  width: 265px;
+  height: 50px;
   position: absolute;
-  left: -2.7%;
-  top: 12.1%;
-}
-
-.scene-tooltip {
-  font-family: "Open Sans", sans-serif;
+  bottom: 1%;
+  left: 42%;
 }
 
 svg text.legendTitle {
   fill: #bbb9b9;
-  font-size: 0.9em;
-  transform: translate(0px, 15px);
+  font-size: 0.6em;
+  transform: translate(58px, 9px);
 }
 svg text.label {
-  fill: transparent;
-  font-size: 0.7em;
+  fill: #bbb9b9;
+  font-size: 0.6em;
+  transform: translate(15px, 20px);
+}
+
+.scene-tooltip {
+  font-family: "Open Sans", sans-serif;
 }
 
 .location-button button {
@@ -95,7 +96,7 @@ svg text.label {
   width: 660px;
   background-color:#202023;
   position: absolute;
-  bottom: 1%;
+  bottom: -1%;
   left: -17%;
 }
 
@@ -108,22 +109,21 @@ svg text.label {
   border: none;
 }
 
-.modal-title{
-  font-size: 0.7em;
-  position: absolute;
-  top: 20px;
+.modal-footer{
+font-size:0.9em;
 }
 
 div.modal-header{
   display: block;
   text-align:  center;
-  padding-bottom: 0;
+  padding: 0;
 }
 
 button.close{
   position: absolute;
   top: 5px;
   right: 20px;
+  z-index: 10;
 }
 
 button.close span{

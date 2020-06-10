@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { scaleSequential, interpolateYlOrRd, csv } from "d3"
+import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
@@ -12,6 +12,7 @@ import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 import { Modal } from "react-bootstrap"
+import { legendColor } from "d3-svg-legend"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -43,6 +44,8 @@ const World = () => {
   //color scale
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
+  const svgRefLegend = useRef()
+
   //speech bubbles
   const [showInitialBubble, setShowInitialBubble] = useState(true)
   //bootstrap modal
@@ -135,13 +138,13 @@ const World = () => {
   function createModal() {
     return (
       <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <b>{t("Climate1_Title.2")}</b>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{createLinegraph()}</Modal.Body>
-        <Modal.Footer></Modal.Footer>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          {createLinegraph()}
+        </Modal.Body>
+        <Modal.Footer>
+        {t("Climate1_Title.2")}
+        </Modal.Footer>
       </Modal>
     )
   }
@@ -233,9 +236,27 @@ const World = () => {
   }
 
   /**
+   * Creates color-scale legend for globe
+   */
+  function createLegend() {
+    const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
+    const svg = select(svgRefLegend.current)
+    var legend = legendColor()
+      .title("Temperaturabweichungen")
+      .scale(colorScaleLegend)
+      .cells(8)
+      .orient("horizontal")
+      .shapeWidth(33)
+      .shapePadding(0)
+      .shapeHeight(5)
+    svg.call(legend)
+  }
+
+  /**
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    createLegend()
     loadData()
     handleZoom()
   }, [])
@@ -245,6 +266,9 @@ const World = () => {
       {createGlobe()}
       {navigationNext()}
       {navigationBack()}
+      <svg className="legend-world">
+        <g ref={svgRefLegend}></g>
+      </svg>
     </React.Fragment>
   )
 }

@@ -8,10 +8,7 @@ import {
   scaleLinear,
   axisLeft,
   extent,
-  interpolateRdYlBu,
-  scaleSequential
 } from "d3"
-import { legendColor } from "d3-svg-legend"
 
 
 /**
@@ -24,7 +21,6 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
-  const svgRefLegend = useRef()
   const scaleSvg = 0.93
 
 
@@ -200,27 +196,10 @@ const TemperatureLineGraph = props => {
   }
 
   /**
-   * Creates color-scale legend for globe
-   */
-  function createLegend() {
-    const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
-    const svg = select(svgRefLegend.current)
-    var legend = legendColor()
-      .scale(colorScaleLegend)
-      .cells(8)
-      .orient("vertical")
-      .shapeWidth(5)
-      .shapePadding(-2)
-      .shapeHeight(33)
-    svg.call(legend)
-  }
-
-  /**
    * React Lifecycle -> Renders as soon as props has changed
    */
   useEffect(() => {
     createLineGraph()
-    createLegend()
   }, [props])
 
   return (
@@ -231,9 +210,6 @@ const TemperatureLineGraph = props => {
           width={(window.innerWidth / 2)*scaleSvg}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
-        </svg>
-        <svg className="legend-world">
-          <g ref={svgRefLegend}></g>
         </svg>
       </div>
     </React.Fragment>
