@@ -8,7 +8,6 @@ import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
-import ButtonRightOld from "../../assets/img/buttonRight.svg"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
@@ -79,7 +78,7 @@ const World = () => {
           showGraticules={true}
           backgroundColor={"#141416"}
           showAtmosphere={false}
-          width={window.innerWidth / 2}
+          width={window.innerWidth}
           //country config
           polygonsData={countries.features}
           polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
@@ -113,7 +112,6 @@ const World = () => {
           labelColor={() => "rgba(187, 185, 185, 1)"}
           labelResolution={6}
         />
-        {createBubbleGlobe()}
         <div className="location-button">
           <button onClick={handleZoom}>
             <img src={LocationButton} alt="location"></img>
@@ -153,23 +151,6 @@ const World = () => {
   }
 
   /**
-   * Adds speach bubble with text for globe
-   * @returns dom element with speech bubble for globe
-   */
-  function createBubbleGlobe() {
-    return (
-      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate1-globe">
-          <p className="bubble-box-text">
-            <b>{t("Climate1_Bubble.1")}</b>
-            {t("Climate1_Bubble.2")}
-          </p>
-        </div>
-      </CSSTransition>
-    )
-  }
-
-  /**
    * Adds speach bubble with text for linegraph
    * @returns dom element with speech bubble for linegraph
    */
@@ -182,13 +163,6 @@ const World = () => {
             {t("Climate1_Bubble.4")}
             {t("Climate1_Bubble.5")}
           </p>
-          {/* <button
-            id="next-button"
-            onClick={() => {
-              history.push("/Snowline")
-            }}>
-            <img src={ButtonRightOld} alt="continue"></img>
-          </button> */}
         </div>
       </CSSTransition>
     )
@@ -266,7 +240,7 @@ const World = () => {
   return (
     <React.Fragment>
       {createGlobe()}
-      {createLinegraph()}
+      {/* {createLinegraph()} */}
       {navigationNext()}
       {navigationBack()}
     </React.Fragment>

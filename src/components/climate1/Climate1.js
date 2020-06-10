@@ -12,6 +12,7 @@ function Climate1() {
 
   return (
     <React.Fragment>
+      <World />
       <CSSTransition
         in={true}
         timeout={100000}
@@ -20,7 +21,6 @@ function Climate1() {
         appear>
         <h1 className="climate-1-title"> {t("Climate1_Title.1")}</h1>
       </CSSTransition>
-      <World />
       <h6 className="source">{t("Climate1_Source")}</h6>
     </React.Fragment>
   )

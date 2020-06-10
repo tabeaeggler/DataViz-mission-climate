@@ -83,20 +83,12 @@ svg text.label {
   bottom: 00.1%;
 }
 
-.bubble-box-climate1-globe {
-  bottom: 10%;
-  left: 28.5%;
-  width: 35%;
-  
-}
-
 /*climate 1 style*/
 .climate-1-title {
   position: absolute;
   z-index: 10;
-  left: 51.2%;
-  padding: 0;
-  top: 14%;
+  text-align: center;
+  width: 100%;
 }
 
 
