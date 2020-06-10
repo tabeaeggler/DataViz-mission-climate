@@ -5,11 +5,12 @@
 }
 
 .temperature-graph {
-  height: 320px;
+  height: 220px;
 }
 
 .grid line {
-  stroke: #1c1c1d;
+  stroke: #141416;
+  opacity: 0.9;
 }
 
 .grid path {
@@ -19,7 +20,7 @@
 text.global-name,
 text.country-name,
 text.year-text {
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .info-box-linegraph {
@@ -91,12 +92,11 @@ svg text.label {
 
 /* modal */
 .modal-content{
-  width: 1000px;
+  width: 660px;
   background-color:#202023;
-  /* opacity: 0.8; */
   position: absolute;
   bottom: 1%;
-  left: -50%;
+  left: -17%;
 }
 
 .modal-body{
@@ -109,7 +109,9 @@ svg text.label {
 }
 
 .modal-title{
-  font-size: 0.9em;
+  font-size: 0.7em;
+  position: absolute;
+  top: 20px;
 }
 
 div.modal-header{
@@ -120,8 +122,8 @@ div.modal-header{
 
 button.close{
   position: absolute;
-  top: 2%;
-  right: 3%;
+  top: 5px;
+  right: 20px;
 }
 
 button.close span{

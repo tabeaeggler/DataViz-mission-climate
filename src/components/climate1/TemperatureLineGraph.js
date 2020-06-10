@@ -76,9 +76,9 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const scaleGroup = 0.8
+    const scaleGroup = 0.6
     const width = (window.innerWidth / 2) * scaleGroup
-    const height = 200
+    const height = 160
     const margin = 40
     //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr(
@@ -102,7 +102,7 @@ const TemperatureLineGraph = props => {
     //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
     const yAxis = axisLeft(yScale).tickFormat(
-      index => index.toFixed(1) + " \u2103"
+      index => index.toFixed(1) + " \u2103" 
     )
 
     //add X and Y gridlines
