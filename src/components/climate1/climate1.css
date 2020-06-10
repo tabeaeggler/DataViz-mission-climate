@@ -84,11 +84,20 @@ svg text.label {
 }
 
 /*climate 1 style*/
-.climate-1-title {
+.climate-1-title, .climate-1-subtitle, .climate-1-subtitle-year {
   position: absolute;
   z-index: 10;
   text-align: center;
   width: 100%;
+}
+
+.climate-1-subtitle{
+  top: 100px;
+}
+
+.climate-1-subtitle-year{
+  bottom: 2%;
+  opacity: 0.7;
 }
 
 

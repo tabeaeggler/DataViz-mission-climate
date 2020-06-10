@@ -1,7 +1,8 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. The world is getting warmer"
+    "1": "1. The world is getting warmer",
+    "2": "- Deviation of the mean annual temperature from the average of the years 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Temperature increase",

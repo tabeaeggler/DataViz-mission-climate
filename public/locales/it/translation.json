@@ -1,7 +1,8 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. Il mondo si sta riscaldando"
+    "1": "1. Il mondo si sta riscaldando",
+    "2": "- Deviazione della temperatura media annuale dalla media degli anni 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Aumento della temperatura",

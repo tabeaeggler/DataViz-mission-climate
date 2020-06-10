@@ -1,7 +1,8 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. Le monde se réchauffe"
+    "1": "1. Le monde se réchauffe",
+    "2": "- Écart de la température moyenne annuelle par rapport à la moyenne des années 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Augmentation de la température",

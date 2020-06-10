@@ -1,7 +1,8 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. Die Welt wird wärmer"
+    "1": "1. Die Welt wird wärmer",
+    "2": "- Abweichung der mittleren Jahrestemperatur vom Durchschnitt der Jahre 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Temperaturzunahme",
