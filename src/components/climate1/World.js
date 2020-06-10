@@ -128,6 +128,7 @@ const World = () => {
         <div className="location-button">
           <button onClick={handleZoom}>
             <img src={LocationButton} alt="location"></img>
+            <br></br>
             {t("Climate1_Location")}
           </button>
         </div>

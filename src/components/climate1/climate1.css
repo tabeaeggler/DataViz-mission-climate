@@ -40,7 +40,7 @@ text.year-text {
   width: 265px;
   height: 50px;
   position: absolute;
-  bottom: 1%;
+  bottom: 1.5%;
   left: 42%;
 }
 
@@ -64,8 +64,8 @@ svg text.label {
   text-align: center;
   margin-bottom: 2em;
   position: fixed;
-  bottom: -1%;
-  left: 1%;
+  bottom: -0.5%;
+  left: 1.5%;
   display: block;
   font-size: 0.7em;
 }
