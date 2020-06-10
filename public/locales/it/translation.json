@@ -72,17 +72,9 @@
     "4": "- Quali settori sono responsabili delle emissioni globali? -"
   },
   "Climate3_Bubble_1": {
-    "1": "Gli esseri umani sono i principali responsabili del cambiamento climatico.",
-    "2": " Il ruolo più importante è svolto dai gas a effetto serra, che vengono prodotti, tra l'altro, nel consumo di elettricità, gas e benzina."
-  },
-  "Climate3_Bubble_2": {
-    "1": "I vari gas non contribuiscono allo stesso modo all'effetto serra. Per rendere comparabili gli effetti dei diversi gas serra, è stata introdotta l'unità di ",
-    "2": "CO₂ equivalenti.",
-    "3": " Ad esempio, NO₂ è 300 volte più efficace di CO₂."
-  },
-  "Climate3_Bubble_3": {
-    "1": "Nella considerazione precedente sono state indicate le proporzioni dei vari gas serra di tutte le emissioni prodotte dall'uomo.",
-    "2": " Qui la produzione è suddivisa per settore."
+    "1": "I gas serra prodotti dall'uomo causano troppo calore per essere trattenuti: il nostro pianeta si sta surriscaldando.",
+    "2": " Si comportano come un tetto di vetro: lasciano brillare la luce del sole sulla terra senza ostacoli, ma ostacolano la riflessione del calore.",
+    "3": " Sapete quali gas vengono emessi e a quali settori sono attribuibili?"
   },
   "Climate3_Gas": {
     "1": "Gas fluorurati",
@@ -94,7 +86,7 @@
     "1": "Origine: Impianti di refrigerazione e di condizionamento",
     "2": "d'aria Sprays, materiali isolanti, agenti estinguenti",
     "3": "Origine: Discariche di rifiuti, impianti di",
-    "4": "depurazione delle acque reflue Rutti di mucche, risaie",
+    "4": "depurazione delle acque reflue, rutti e scoregge di mucche, risaie",
     "5": "Origine: Combustione di combustibili fossili",
     "6": "come carbone, gas naturale e petrolio greggio",
     "7": "Origine: industria chimica, fertilizzanti, residui",
@@ -109,10 +101,10 @@
     "6": "industriali",
     "7": "Trasporto stradale,",
     "8": "ferroviario, aereo e marittimo",
-    "9": "Riscaldamento degli",
-    "10": "edifici e cucina",
-    "11": "Emissioni indirette del",
-    "12": "settore energetico"
+    "9": "Emissioni indirette del",
+    "10": "settore energetico",
+    "11": "Riscaldamento degli",
+    "12": "edifici e cucina"
   },
   "Climate3_Sector": {
     "1": "Energia",

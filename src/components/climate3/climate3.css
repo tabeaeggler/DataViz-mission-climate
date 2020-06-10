@@ -12,6 +12,14 @@
   text-anchor: middle;
 }
 
+.bubble-source-sector-1 {
+  fill: #9685e5;
+}
+
+.bubble-source-sector-2 {
+  fill: #6a8adf;
+}
+
 .bubble-source-bold {
   font-weight: bold;
 }
@@ -41,9 +49,9 @@
 
 .bubble-box-climate3 {
   text-align: left;
-  top: 40%;
+  top: 530px;
   width: 550px;
-  left: 35.1%;
+  left: 710px;
 }
 
 .label-electricity {

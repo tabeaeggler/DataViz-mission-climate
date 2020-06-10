@@ -71,18 +71,9 @@
     "4": "- Auf welche Sektoren sind die globalen Emissionen zurückzuführen? -"
   },
   "Climate3_Bubble_1": {
-    "1": "Menschenverursachte Treibhausgase spielen bei der Klimaerwärmung eine zentrale Rolle. Sie wirken wie ein Glasdach: Sie lassen das Sonnenlicht ungehindert auf die Erde einstrahlen, behindern aber die Wärme-Rückstrahlung.",
-    "2": " Durch die menschenverursachten Treibhausgase wird zu viel Wärme zurückgestaut: Unser Planet überhitzt.",
+    "1": "Durch die menschenverursachten Treibhausgase wird zu viel Wärme zurückgestaut: Unser Planet überhitzt.",
+    "2": " Die Treibhausgase wirken wie ein Glasdach: Sie lassen das Sonnenlicht ungehindert auf die Erde einstrahlen, verhindern aber die Wärme-Rückstrahlung.",
     "3": " Weisst du, welche Gase ausgestossen werden und auf welche Sektoren diese zurückzuführen sind?"
-  },
-  "Climate3_Bubble_2": {
-    "1": "Die verschiedenen Gase tragen nicht in gleichem Masse zum Treibhauseffekt bei. Um die Wirkung verschiedener Treibhausgase vergleichbar zu machen, wurde die Einheit der ",
-    "2": "CO₂-Äquivalente",
-    "3": " eingeführt. Beispielsweise ist NO₂ 300 mal wirksamer als CO₂."
-  },
-  "Climate3_Bubble_3": {
-    "1": "In der vorhergehenden Betrachtung wurden die Anteile der verschiedenen Treibhausgase aller menschengemachten Emissionen gezeigt.",
-    "2": " Hier wird der Ausstoss nach Sektoren aufgeschlüsselt."
   },
   "Climate3_Gas": {
     "1": "Fluorierte Gase",
@@ -94,25 +85,25 @@
     "1": "Entstehung: Kälte- und Klimaanlagen,",
     "2": "Sprays, Dämmstoffe, Feuerlöschmittel",
     "3": "Entstehung: Mülldeponien, Klärwerke,",
-    "4": "Rülpse von Kühen, Reisfelder",
+    "4": "Rülpse & Fürze von Kühen, Reisfelder",
     "5": "Entstehung: Verbrennung fossiler",
     "6": "Energieträger wie Kohle, Erdgas & Erdöl",
     "7": "Entstehung: chemische Industrie, Dünger,",
     "8": "Gärreste, Verbrennung fossiler Energieträger"
   },
   "Climate3_Sector_Cause": {
-    "1": "Strom- und ",
-    "2": "Wärmeerzeugung",
-    "3": "Ackerbau, Viehzucht",
-    "4": "und Entwaldung",
-    "5": "Industrielle",
-    "6": "Prozesse",
-    "7": "Straßen-, Schienen-, Luft- ",
-    "8": "und Seeverkehr",
-    "9": "Beheizung von Gebäuden",
-    "10": "und Kochen",
-    "11": "Indirekte Emissionen ",
-    "12": "aus dem Energiesektor"
+    "1": "(Strom- und ",
+    "2": "Wärmeerzeugung)",
+    "3": "(Ackerbau, Viehzucht",
+    "4": "und Entwaldung)",
+    "5": "(Industrielle",
+    "6": "Prozesse)",
+    "7": "(Straßen-, Schienen-, Luft- ",
+    "8": "und Seeverkehr)",
+    "9": "(Indirekte Emissionen ",
+    "10": "aus dem Energiesektor)",
+    "11": "(Beheizung von Gebäuden",
+    "12": "und Kochen)"
   },
   "Climate3_Sector": {
     "1": "Energie",

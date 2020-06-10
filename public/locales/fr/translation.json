@@ -72,17 +72,9 @@
     "4": "- Quels sont les secteurs responsables des émissions mondiales ? -"
   },
   "Climate3_Bubble_1": {
-    "1": "Les humains sont les principaux responsables du changement climatique.",
-    "2": " Le rôle le plus important est joué par les gaz à effet de serre, qui sont produits dans la consommation d'électricité, de gaz et d'essence, entre autres."
-  },
-  "Climate3_Bubble_2": {
-    "1": "Les différents gaz ne contribuent pas de la même manière à l'effet de serre. Afin de rendre comparables les effets des différents gaz à effet de serre, l'unité ",
-    "2": "d'équivalence CO₂",
-    "3": " a été introduite. Par exemple, NO₂ est 300 fois plus efficace que CO₂."
-  },
-  "Climate3_Bubble_3": {
-    "1": "Dans la considération précédente, les proportions des différents gaz à effet de serre par rapport à l'ensemble des émissions anthropiques ont été indiquées.",
-    "2": " Ici, la production est ventilée par secteur."
+    "1": "Les gaz à effet de serre produits par l'homme provoquent une trop grande rétention de chaleur : notre planète est en surchauffe.",
+    "2": " Ils agissent comme un toit de verre : ils laissent la lumière du soleil briller sans entrave sur la terre, mais empêchent la réflexion de la chaleur.",
+    "3": " Savez-vous quels sont les gaz émis et à quels secteurs ils sont attribuables ?"
   },
   "Climate3_Gas": {
     "1": "Gaz fluorés",
@@ -94,7 +86,7 @@
     "1": "Origine : systèmes de réfrigération et de conditionnement d'air ",
     "2": "Pulvérisateurs, matériaux isolants, agents extincteurs",
     "3": "Origine : décharges, stations d'épuration",
-    "4": "des eaux usées, rots de vaches, rizières",
+    "4": "des eaux usées, rots et pets de vaches, rizières",
     "5": "Origine : Combustion de combustibles fossiles tels",
     "6": "que le charbon, le gaz naturel et le pétrole brut",
     "7": "Origine : industrie chimique, engrais, résidus de",
@@ -109,10 +101,10 @@
     "6": "industriels",
     "7": "Le transport routier,",
     "8": "ferroviaire, aérien et maritime",
-    "9": "Chauffage des bâtiments",
-    "10": "et cuisine",
-    "11": "Émissions indirectes",
-    "12": "du secteur de l'énergie"
+    "9": "Émissions indirectes",
+    "10": "du secteur de l'énergie",
+    "11": "Chauffage des bâtiments",
+    "12": "et cuisine"
   },
   "Climate3_Sector": {
     "1": "Énergie",

@@ -72,17 +72,9 @@
     "4": "- Which sectors are responsible for global emissions? -"
   },
   "Climate3_Bubble_1": {
-    "1": "Humans are mainly responsible for climate change.",
-    "2": " The most important role is played by greenhouse gases, which are produced in the consumption of electricity, gas and petrol, among other things."
-  },
-  "Climate3_Bubble_2": {
-    "1": "The various gases do not contribute to the greenhouse effect in the same way. In order to make the effects of different greenhouse gases comparable, the unit of ",
-    "2": "CO₂ equivalents",
-    "3": " was introduced. For example, NO₂ is 300 times more effective than CO₂."
-  },
-  "Climate3_Bubble_3": {
-    "1": "In the previous consideration, the shares of the various greenhouse gases of all man-made emissions were shown.",
-    "2": " Here the output is broken down by sector."
+    "1": "Too much heat is trapped by man-made greenhouse gases: our planet is overheating.",
+    "2": " They act like a glass roof: they allow sunlight to reach the earth unhindered, but hinder heat reflection.",
+    "3": " Do you know which gases are emitted and to which sectors they are attributable?"
   },
   "Climate3_Gas": {
     "1": "Fluorinated gases",
@@ -94,7 +86,7 @@
     "1": "Origin: Refrigeration and air conditioning systems Sprays,",
     "2": "insulating materials, fire extinguishing agents",
     "3": "Emergence: garbage dumps, sewage treatment",
-    "4": "plants, burps from cows, rice fields",
+    "4": "plants, burps & farts from cows, rice fields",
     "5": "Origin: combustion of fossil fuels",
     "6": "such as coal, natural gas & crude oil",
     "7": "Origin: chemical industry, fertilizer,",
@@ -109,10 +101,10 @@
     "6": "processes",
     "7": "Road, rail, air",
     "8": "and sea transport",
-    "9": "Heating of buildings",
-    "10": "and cooking",
-    "11": "Indirect emissions",
-    "12": "from the energy sector"
+    "9": "Indirect emissions",
+    "10": "from the energy sector",
+    "11": "Heating of buildings",
+    "12": "and cooking"
   },
   "Climate3_Sector": {
     "1": "Energy",
