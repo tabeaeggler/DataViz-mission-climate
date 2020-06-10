@@ -79,14 +79,12 @@ function Climate3() {
       d3.selectAll(".bubble-title-gas").style("opacity", 1).transition().duration(1000).style("opacity", 0)
       d3.selectAll(".bubble-source-gas").style("opacity", 1).transition().duration(1000).style("opacity", 0)
 
-      setTimeout(function () {
-        simulation
-          .force("x", d3Force.forceX(d => width * d.cluster1X).strength(0.01))
-          .force("y", d3Force.forceY(d => height * d.cluster1Y).strength(0.01))
-          .force("charge", d3Force.forceManyBody())
-          .force("collide", d3Force.forceCollide(25))
-          .alphaTarget(0.3)
-      }, 0)
+      simulation
+        .force("x", d3Force.forceX(d => width * d.cluster1X).strength(0.01))
+        .force("y", d3Force.forceY(d => height * d.cluster1Y).strength(0.01))
+        .force("charge", d3Force.forceManyBody())
+        .force("collide", d3Force.forceCollide(25))
+        .alphaTarget(0.3)
     })
 
     /**
@@ -94,7 +92,7 @@ function Climate3() {
      * source: (1) start page
      */
     d3.select("#split-bubbles-by-gas").on("click", function () {
-      splitGasAnimation()
+      splitGasAnimation(3000, 1)
       addGasTextLabels()
     })
 
@@ -107,12 +105,12 @@ function Climate3() {
       d3.selectAll(".bubble-source-sector").style("opacity", 1).transition().delay(0).duration(1000).style("opacity", 0)
 
       //change color of bubbles by gas
-      d3.selectAll(".bubble-FGAS").transition().delay(1600).duration(2000).style("fill", "#ffd763")
-      d3.selectAll(".bubble-CH4").transition().delay(1600).duration(2000).style("fill", "#40b79b")
-      d3.selectAll(".bubble-C02").transition().delay(1600).duration(2000).style("fill", "#d14aa7")
-      d3.selectAll(".bubble-N02").transition().delay(1600).duration(2000).style("fill", "#d37b61")
+      d3.selectAll(".bubble-FGAS").transition().delay(1600).duration(2800).style("fill", "#ffd763")
+      d3.selectAll(".bubble-CH4").transition().delay(1600).duration(2800).style("fill", "#40b79b")
+      d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
+      d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-      splitGasAnimation()
+      splitGasAnimation(5000, 0.8)
       addGasTextLabels()
     })
 
@@ -142,31 +140,33 @@ function Climate3() {
       d3.selectAll(".bubble-Buildings").transition().delay(1600).duration(2000).style("fill", "#6a8adf")
 
       //split bubbles by sector
-      var forceXSplitedBySector = d3Force
-        .forceX(function (d) {
-          if (d.sector === "Electricity") {
-            return width * 0.15
-          } else if (d.sector === "Agriculture") {
-            return width * 0.32
-          } else if (d.sector === "Industry") {
-            return width * 0.48
-          } else if (d.sector === "Transport") {
-            return width * 0.63
-          } else if (d.sector === "Other") {
-            return width * 0.76
-          } else if (d.sector === "Buildings") {
-            return width * 0.87
-          }
-        })
-        .strength(0.06)
+      var forceXSplitedBySector = d3Force.forceX(function (d) {
+        if (d.sector === "Electricity") {
+          return width * 0.15
+        } else if (d.sector === "Agriculture") {
+          return width * 0.32
+        } else if (d.sector === "Industry") {
+          return width * 0.48
+        } else if (d.sector === "Transport") {
+          return width * 0.63
+        } else if (d.sector === "Other") {
+          return width * 0.76
+        } else if (d.sector === "Buildings") {
+          return width * 0.87
+        }
+      })
 
       setTimeout(function () {
         simulation
-          .force("x", forceXSplitedBySector)
-          .force("y", d3Force.forceY(height / 2).strength(0.06))
+          .force("x", forceXSplitedBySector.strength(0.07))
+          .force("y", d3Force.forceY(height / 2).strength(0.07))
           .alphaTarget(0.25)
           .restart()
       }, 4000)
+
+      setTimeout(function () {
+        simulation.force("x", forceXSplitedBySector.strength(0.08)).force("y", d3Force.forceY(height / 2).strength(0.08))
+      }, 9300)
 
       addSectorTextLabels()
     })
@@ -174,40 +174,45 @@ function Climate3() {
     /**
      * split gas force and animation -> used twice for next and back nav
      */
-    function splitGasAnimation() {
+    function splitGasAnimation(timeout, speedCenter) {
       setTimeout(function () {
         simulation
           .force("collide", d3Force.forceCollide(17))
           .force("charge", null)
-          .force("x", d3Force.forceX(width / 2).strength(0.015))
-          .force("y", d3Force.forceY(height / 2).strength(0.015))
-          .alphaTarget(0.7)
+          .force("x", d3Force.forceX(width / 2).strength(0.013))
+          .force("y", d3Force.forceY(height / 2).strength(0.013))
+          .alphaTarget(speedCenter)
           .restart()
       }, 500)
 
-      var forceXSplitedByGas = d3Force
-        .forceX(function (d) {
-          if (d.type === "FGAS") {
-            return width * 0.15
-          } else if (d.type === "CH4") {
-            return width * 0.35
-          } else if (d.type === "N02") {
-            return width * 0.83
-          } else {
-            return width * 0.6
-          }
-        })
-        .strength(0.02)
+      var forceXSplitedByGas = d3Force.forceX(function (d) {
+        if (d.type === "FGAS") {
+          return width * 0.15
+        } else if (d.type === "CH4") {
+          return width * 0.35
+        } else if (d.type === "N02") {
+          return width * 0.83
+        } else {
+          return width * 0.6
+        }
+      })
 
       setTimeout(function () {
         simulation
-          .force("x", forceXSplitedByGas)
-          .force("y", d3Force.forceY(height / 2).strength(0.02))
+          .force("x", forceXSplitedByGas.strength(0.023))
+          .force("y", d3Force.forceY(height / 2).strength(0.023))
           .force("collide", d3Force.forceCollide(17))
           .force("charge", null)
-          .alphaTarget(0.64)
+          .alphaTarget(0.65)
           .restart()
-      }, 3500)
+      }, timeout)
+
+      setTimeout(function () {
+        simulation.force("x", forceXSplitedByGas.strength(0.017)).force("y", d3Force.forceY(height / 2).strength(0.017))
+      }, timeout + 3000)
+      setTimeout(function () {
+        simulation.force("x", forceXSplitedByGas.strength(0.01)).force("y", d3Force.forceY(height / 2).strength(0.01))
+      }, timeout + 3800)
     }
 
     /**
@@ -412,7 +417,7 @@ function Climate3() {
 
   return (
     <React.Fragment>
-      <CSSTransition in={true} timeout={100000} classNames="fade" unmountOnExit appear>
+      <CSSTransition in={true} timeout={10000} classNames="fade" unmountOnExit appear>
         <div>
           {createBubble()}
           {navigationNext()}
