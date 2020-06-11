@@ -125,13 +125,18 @@ const World = () => {
         />
         {createBubbleGlobe()}
         {createModal()}
-        <div className="location-button">
-          <button onClick={zoom(30, 10, 3, 2000, 0)}>
-            <img src={LocationButton} alt="location"></img>
-            <br></br>
-            {t("Climate1_Location")}
-          </button>
-        </div>
+      </div>
+    )
+  }
+
+  function createLocationButton() {
+    return (
+      <div className="location-button">
+        <button onClick={() => zoom(30, 10, 3, 2000, 0)}>
+          <img src={LocationButton} alt="location"></img>
+          <br></br>
+          {t("Climate1_Location")}
+        </button>
       </div>
     )
   }
@@ -288,6 +293,7 @@ const World = () => {
   return (
     <React.Fragment>
       {createGlobe()}
+      {createLocationButton()}
       {navigationNext()}
       {navigationBack()}
       <svg className="legend-world">
