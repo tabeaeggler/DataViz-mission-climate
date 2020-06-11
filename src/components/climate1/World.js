@@ -74,6 +74,48 @@ const World = () => {
   }
 
   /**
+   * Handles the initial animation of the globe
+   */
+  function handleInitialAnimation() {
+    zoom(30, 10, 3, 1500, 0)
+    zoom(30, 30, 3, 1500, 1)
+    zoom(30, -10, 3, 1500, 2)
+    zoom(30, 10, 3, 1500, 3)
+    zoom(30, 10, 2, 1500, 4)
+    zoom(30, 10, 3, 1500, 5)
+  }
+
+  /**
+   * Animation helper, zooms to specified location
+   */
+  function zoom(lat, long, alt, time, order) {
+    setTimeout(() => {
+      globeElement.current.pointOfView(
+        {
+          lat: lat,
+          lng: long,
+          altitude: alt,
+        },
+        time
+      )
+    }, time * order)
+  }
+
+  /**
+   * Updates selected country and filter climate data for selected country
+   * @param {country object} country
+   */
+  function updateCountry(country) {
+    setClickedCountry({
+      country: country,
+      filteredCountry: climateData.filter(
+        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
+      ),
+    })
+    setShowInitialBubble(false)
+  }
+
+  /**
    * Creates a Globe with react-globe.gl
    * @returns dom element with globe
    */
@@ -127,6 +169,10 @@ const World = () => {
     )
   }
 
+  /**
+   * Creates the button center the globe on the current location of the user
+   * @returns dom element with location button
+   */
   function createLocationButton() {
     return (
       <div className="location-button">
@@ -139,6 +185,10 @@ const World = () => {
     )
   }
 
+  /**
+   * Creates a modal with additional information of the clicked country
+   * @returns dom element with modal
+   */
   function createModal() {
     return (
       <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
@@ -154,42 +204,21 @@ const World = () => {
   }
 
   /**
-   * Initial zoom on Europe/Swittzeland
+   * Creates linegraph
+   * @returns dom element linegraph
    */
-  function handleZoom() {
-    zoom(30, 10, 3, 1500, 0)
-    zoom(30, 30, 3, 1500, 1)
-    zoom(30, -10, 3, 1500, 2)
-    zoom(30, 10, 3, 1500, 3)
-    zoom(30, 10, 2, 1500, 4)
-    zoom(30, 10, 3, 1500, 5)
-  }
-
-  function zoom(lat, long, alt, time, order) {
-    setTimeout(() => {
-      globeElement.current.pointOfView(
-        {
-          lat: lat,
-          lng: long,
-          altitude: alt,
-        },
-        time
-      )
-    }, time * order)
-  }
-
-  /**
-   * Updates selected country and filter climate data for selected country
-   * @param {country object} country
-   */
-  function updateCountry(country) {
-    setClickedCountry({
-      country: country,
-      filteredCountry: climateData.filter(
-        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
-      ),
-    })
-    setShowInitialBubble(false)
+  function createLinegraph() {
+    return (
+      <div>
+        {globalData === undefined ? null : ( //only show linegraph when clickevent occured
+          <TemperatureLineGraph
+            selectedCountry={clickedCountry.country}
+            climateData={clickedCountry.filteredCountry}
+            globalData={globalData}
+          />
+        )}
+      </div>
+    )
   }
 
   /**
@@ -231,29 +260,12 @@ const World = () => {
   }
 
   /**
-   * Creates linegraph
-   * @returns dom element linegraph
-   */
-  function createLinegraph() {
-    return (
-      <div>
-        {globalData === undefined ? null : (
-          <TemperatureLineGraph
-            selectedCountry={clickedCountry.country}
-            climateData={clickedCountry.filteredCountry}
-            globalData={globalData}
-          />
-        )}
-      </div>
-    )
-  }
-
-  /**
-   * Creates color-scale legend for globe
+   * Appends legend for globe to svg
    */
   function createLegend() {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
+
     var legend = legendColor()
       .title(t("Climate1_Legend"))
       .scale(colorScaleLegend)
@@ -287,7 +299,7 @@ const World = () => {
   useEffect(() => {
     createLegend()
     loadData()
-    handleZoom()
+    handleInitialAnimation()
   }, [])
 
   return (

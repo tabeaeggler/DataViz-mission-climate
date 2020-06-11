@@ -1,9 +1,4 @@
 /*temperature linegrap style*/
-.temperature-graph-container {
-  display: flex;
-  justify-content: center;
-}
-
 .temperature-graph {
   height: 220px;
 }
@@ -18,13 +13,12 @@
 }
 
 path.domain {
-  stroke:  #141416;
+  stroke: #141416;
 }
 
-.axis text{
-  fill:  #bbb9b9;
+.axis text {
+  fill: #bbb9b9;
   opacity: 0.3;
-  /* fill: #141416; */
 }
 .tick line {
   stroke: #141416;
@@ -35,13 +29,6 @@ text.global-name,
 text.country-name,
 text.year-text {
   font-size: 0.6em;
-}
-
-.info-box-linegraph {
-  position: absolute;
-  bottom: -17%;
-  right: 7%;
-  width: 96%;
 }
 
 /*world component style*/
@@ -58,6 +45,7 @@ svg text.legendTitle {
   font-size: 0.6em;
   transform: translate(0px, 9px);
 }
+
 svg text.label {
   fill: #bbb9b9;
   font-size: 0.6em;
@@ -72,10 +60,10 @@ svg text.label {
   text-align: center;
   margin-bottom: 2em;
   position: fixed;
-  bottom: -0.5%;
+  bottom: -1.5%;
   left: 1.5%;
   display: block;
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .globe-container {
@@ -83,8 +71,7 @@ svg text.label {
 }
 
 .climate-1-title,
-.climate-1-subtitle,
-.climate-1-subtitle-year {
+.climate-1-subtitle {
   position: absolute;
   z-index: 10;
   text-align: center;
@@ -93,11 +80,6 @@ svg text.label {
 
 .climate-1-subtitle {
   top: 120px;
-}
-
-.climate-1-subtitle-year {
-  bottom: 2%;
-  opacity: 0.7;
 }
 
 .bubble-box-climate1-globe {
