@@ -75,60 +75,67 @@ svg text.label {
 }
 
 /*climate 1 style*/
-.climate-1-title, .climate-1-subtitle, .climate-1-subtitle-year {
+.climate-1-title,
+.climate-1-subtitle,
+.climate-1-subtitle-year {
   position: absolute;
   z-index: 10;
   text-align: center;
   width: 100%;
 }
 
-.climate-1-subtitle{
+.climate-1-subtitle {
   top: 140px;
 }
 
-.climate-1-subtitle-year{
+.climate-1-subtitle-year {
   bottom: 2%;
   opacity: 0.7;
 }
 
+.bubble-box-climate1-globe {
+  bottom: 15%;
+  left: 41.6%;
+  width: 15%;
+}
+
 /* modal */
-.modal-content{
+.modal-content {
   width: 660px;
-  background-color:#202023;
+  background-color: #202023;
   position: absolute;
   bottom: -1%;
   left: -17%;
 }
 
-.modal-body{
+.modal-body {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.modal-footer, .modal-header{
+.modal-footer,
+.modal-header {
   border: none;
 }
 
-.modal-footer{
-font-size:0.9em;
+.modal-footer {
+  font-size: 0.9em;
 }
 
-div.modal-header{
+div.modal-header {
   display: block;
-  text-align:  center;
+  text-align: center;
   padding: 0;
 }
 
-button.close{
+button.close {
   position: absolute;
   top: 5px;
   right: 20px;
   z-index: 10;
 }
 
-button.close span{
+button.close span {
   color: #bbb9b9;
   text-shadow: none;
 }
-
-

@@ -12,7 +12,7 @@ import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 import { Modal } from "react-bootstrap"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css"
 import { legendColor } from "d3-svg-legend"
 
 /**
@@ -46,14 +46,12 @@ const World = () => {
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
   const svgRefLegend = useRef()
-
-  //speech bubbles
-  const [showInitialBubble, setShowInitialBubble] = useState(true)
   //bootstrap modal
   const [show, setShow] = useState(false)
-
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  //bubble
+  const [showInitialBubble, setShowInitialBubble] = useState(true)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -104,8 +102,8 @@ const World = () => {
           }<br/>
       `}
           onPolygonClick={function (d) {
+            handleShow(true)
             updateCountry(d)
-            handleShow()
           }}
           polygonsTransitionDuration={300}
           //position-marker config
@@ -125,9 +123,10 @@ const World = () => {
           labelColor={() => "rgba(187, 185, 185, 1)"}
           labelResolution={6}
         />
+        {createBubbleGlobe()}
         {createModal()}
         <div className="location-button">
-          <button onClick={handleZoom}>
+          <button onClick={zoom(30, 10, 3, 2000, 0)}>
             <img src={LocationButton} alt="location"></img>
             <br></br>
             {t("Climate1_Location")}
@@ -151,35 +150,25 @@ const World = () => {
    * Initial zoom on Europe/Swittzeland
    */
   function handleZoom() {
-    // do{
-    //   zoom(30, 10, 3, 3000)
-    //   setTimeout(() => {
-    //     zoom(30, 40, 3, 3000)
-    //   }, 2000)
-    //   setTimeout(() => {
-    //     zoom(30, -30, 3, 3000)
-    //   }, 4000)
-    //   setTimeout(() => {
-    //     zoom(30, 10, 3, 3000)
-    //   }, 6000)
-    //   setTimeout(() => {
-    //     zoom(30, 10, 1.5, 3000)
-    //   }, 8000)
-    //   setTimeout(() => {
-    //     zoom(30, 10, 3, 3000)
-    //   }, 10000)
-    //  }while (clickedCountry.country === undefined)
+    zoom(30, 10, 3, 1500, 0)
+    zoom(30, 30, 3, 1500, 1)
+    zoom(30, -10, 3, 1500, 2)
+    zoom(30, 10, 3, 1500, 3)
+    zoom(30, 10, 2, 1500, 4)
+    zoom(30, 10, 3, 1500, 5)
   }
 
-  function zoom(lat, long, alt, time) {
-    globeElement.current.pointOfView(
-      {
-        lat: lat,
-        lng: long,
-        altitude: alt,
-      },
-      time
-    )
+  function zoom(lat, long, alt, time, order) {
+    setTimeout(() => {
+      globeElement.current.pointOfView(
+        {
+          lat: lat,
+          lng: long,
+          altitude: alt,
+        },
+        time
+      )
+    }, time * order)
   }
 
   /**
@@ -269,6 +258,22 @@ const World = () => {
       .shapePadding(0)
       .shapeHeight(5)
     svg.call(legend)
+  }
+
+  /**
+   * Adds speach bubble with text for globe
+   * @returns dom element with speech bubble for globe
+   */
+  function createBubbleGlobe() {
+    return (
+      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+        <div className="bubble-box bubble-box-climate1-globe">
+          <p className="bubble-box-text">
+            <b>{t("Climate1_Bubble.1")}</b>
+          </p>
+        </div>
+      </CSSTransition>
+    )
   }
 
   /**
