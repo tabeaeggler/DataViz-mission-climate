@@ -3,6 +3,12 @@ body {
   background-color: #141416;
   color: #bbb9b9;
   overflow: hidden;
+  line-height: initial;
+}
+
+*, ::after,
+::before {
+  box-sizing: content-box;
 }
 
 /*headings and fonts*/
@@ -78,18 +84,20 @@ button {
   background-color: transparent;
   border: none;
   padding: 0;
+  font-family: "Open Sans";
 }
 
 button:focus {
   outline: 0;
 }
 
-.submit-button {
+button.submit-button {
   background-color: #bbb9b9;
   color: #141416;
   margin-bottom: 20px;
   border-radius: 15px;
   font-size: 0.9em;
+  line-height: 1;
   padding: 5px 15px;
 }
 

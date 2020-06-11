@@ -12,6 +12,7 @@ import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 import { Modal } from "react-bootstrap"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { legendColor } from "d3-svg-legend"
 
 /**
@@ -140,12 +141,8 @@ const World = () => {
     return (
       <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
         <Modal.Header closeButton></Modal.Header>
-        <Modal.Body>
-          {createLinegraph()}
-        </Modal.Body>
-        <Modal.Footer>
-        {t("Climate1_Title.2")}
-        </Modal.Footer>
+        <Modal.Body>{createLinegraph()}</Modal.Body>
+        <Modal.Footer>{t("Climate1_Title.2")}</Modal.Footer>
       </Modal>
     )
   }
@@ -154,13 +151,34 @@ const World = () => {
    * Initial zoom on Europe/Swittzeland
    */
   function handleZoom() {
+    // do{
+    //   zoom(30, 10, 3, 3000)
+    //   setTimeout(() => {
+    //     zoom(30, 40, 3, 3000)
+    //   }, 2000)
+    //   setTimeout(() => {
+    //     zoom(30, -30, 3, 3000)
+    //   }, 4000)
+    //   setTimeout(() => {
+    //     zoom(30, 10, 3, 3000)
+    //   }, 6000)
+    //   setTimeout(() => {
+    //     zoom(30, 10, 1.5, 3000)
+    //   }, 8000)
+    //   setTimeout(() => {
+    //     zoom(30, 10, 3, 3000)
+    //   }, 10000)
+    //  }while (clickedCountry.country === undefined)
+  }
+
+  function zoom(lat, long, alt, time) {
     globeElement.current.pointOfView(
       {
-        lat: 30,
-        lng: 10,
-        altitude: 3,
+        lat: lat,
+        lng: long,
+        altitude: alt,
       },
-      2500
+      time
     )
   }
 
