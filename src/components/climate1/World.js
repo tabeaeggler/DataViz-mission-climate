@@ -123,8 +123,6 @@ const World = () => {
           labelColor={() => "rgba(187, 185, 185, 1)"}
           labelResolution={6}
         />
-        {createBubbleGlobe()}
-        {createModal()}
       </div>
     )
   }
@@ -234,17 +232,15 @@ const World = () => {
    */
   function createLinegraph() {
     return (
-      <CSSTransition in={true} timeout={200000} classNames="fade" unmountOnExit appear>
-        <div>
-          {globalData === undefined ? null : (
-            <TemperatureLineGraph
-              selectedCountry={clickedCountry.country}
-              climateData={clickedCountry.filteredCountry}
-              globalData={globalData}
-            />
-          )}
-        </div>
-      </CSSTransition>
+      <div>
+        {globalData === undefined ? null : (
+          <TemperatureLineGraph
+            selectedCountry={clickedCountry.country}
+            climateData={clickedCountry.filteredCountry}
+            globalData={globalData}
+          />
+        )}
+      </div>
     )
   }
 
@@ -255,7 +251,7 @@ const World = () => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
     var legend = legendColor()
-      .title("Temperaturabweichungen")
+      .title("Temperaturabweichungen vom Mittel in °C")
       .scale(colorScaleLegend)
       .cells(8)
       .orient("horizontal")
@@ -294,6 +290,8 @@ const World = () => {
     <React.Fragment>
       {createGlobe()}
       {createLocationButton()}
+      {createBubbleGlobe()}
+      {createModal()}
       {navigationNext()}
       {navigationBack()}
       <svg className="legend-world">

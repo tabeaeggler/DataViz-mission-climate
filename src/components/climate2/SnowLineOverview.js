@@ -34,7 +34,7 @@ const SnowLineOverview = props => {
         unmountOnExit
         appear>
         <div className="snowline-title-wrapper zoom-mountain">
-          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+          <h1> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
           <h6 className="source source-snowline">{t("Climate2_Source_Snowline")}</h6>
         </div>

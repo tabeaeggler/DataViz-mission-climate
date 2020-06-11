@@ -30,29 +30,23 @@ text.year-text {
   width: 96%;
 }
 
-.bubble-box-climate1-linegraph {
-  right: 0.5%;
-  width: 96.5%;
-}
-
 /*world component style*/
 .legend-world {
   width: 265px;
   height: 50px;
   position: absolute;
-  bottom: 1.5%;
+  bottom: 3%;
   left: 42%;
 }
 
 svg text.legendTitle {
   fill: #bbb9b9;
   font-size: 0.6em;
-  transform: translate(58px, 9px);
+  transform: translate(0px, 9px);
 }
 svg text.label {
   fill: #bbb9b9;
   font-size: 0.6em;
-  transform: translate(15px, 20px);
 }
 
 .scene-tooltip {
@@ -74,7 +68,6 @@ svg text.label {
   position: absolute;
 }
 
-/*climate 1 style*/
 .climate-1-title,
 .climate-1-subtitle,
 .climate-1-subtitle-year {
@@ -85,7 +78,7 @@ svg text.label {
 }
 
 .climate-1-subtitle {
-  top: 140px;
+  top: 120px;
 }
 
 .climate-1-subtitle-year {
@@ -95,8 +88,8 @@ svg text.label {
 
 .bubble-box-climate1-globe {
   bottom: 15%;
-  left: 41.6%;
-  width: 15%;
+  left: 41.2%;
+  width: 265px;
 }
 
 /* modal */
@@ -104,7 +97,7 @@ svg text.label {
   width: 660px;
   background-color: #202023;
   position: absolute;
-  bottom: -1%;
+  bottom: 0%;
   left: -17%;
 }
 

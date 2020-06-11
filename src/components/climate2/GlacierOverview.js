@@ -91,7 +91,7 @@ const GlacierOverview = props => {
         unmountOnExit
         appear>
         <div className="glacier-title-wrapper">
-          <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
+          <h1 className="glacier-zoom"> {t("Climate2_Title.1")}</h1>
           <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
           <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
         </div>

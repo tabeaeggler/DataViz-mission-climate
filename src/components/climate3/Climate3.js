@@ -455,7 +455,7 @@ function Climate3() {
           <svg className="svg-container" width={width} height={height}>
             <g ref={svgRef}></g>
           </svg>
-          <h1 className="title"> {t("Climate3_Title.1")}</h1>
+          <h1> {t("Climate3_Title.1")}</h1>
           {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
           {textboxes.splitGas ? (
             <div className="show-subtitles">
