@@ -114,8 +114,8 @@ const TemperatureLineGraph = props => {
       .call(make_y_gridlines(yScale).tickSize(-width).tickFormat(""))
 
     //add X and Y axis
-    svg.append("g").attr("transform", `translate(0,${height})`).call(xAxis)
-    svg.append("g").call(yAxis)
+    svg.append("g").attr("class", "axis").attr("transform", `translate(0,${height})`).call(xAxis)
+    svg.append("g").attr("class", "axis").call(yAxis)
 
     //remove old line tag
     svg.select(".country-name").remove()

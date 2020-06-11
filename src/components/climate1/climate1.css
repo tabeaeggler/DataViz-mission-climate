@@ -17,6 +17,20 @@
   stroke-width: 0;
 }
 
+path.domain {
+  stroke:  #141416;
+}
+
+.axis text{
+  fill:  #bbb9b9;
+  opacity: 0.3;
+  /* fill: #141416; */
+}
+.tick line {
+  stroke: #141416;
+  opacity: 0.6;
+}
+
 text.global-name,
 text.country-name,
 text.year-text {
@@ -109,6 +123,7 @@ svg text.label {
 .modal-footer,
 .modal-header {
   border: none;
+  display: block;
 }
 
 .modal-footer {

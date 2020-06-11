@@ -144,7 +144,11 @@ const World = () => {
       <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>{createLinegraph()}</Modal.Body>
-        <Modal.Footer>{t("Climate1_Title.2")}</Modal.Footer>
+        <Modal.Footer>
+          {t("Climate1_Bubble.2")}
+          <b>{t("Climate1_Bubble.3")}</b>
+          {t("Climate1_Bubble.4")}
+        </Modal.Footer>
       </Modal>
     )
   }
