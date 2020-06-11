@@ -2,30 +2,24 @@
   "": "Climate1_Screen",
   "Climate1_Title": {
     "1": "1. Le monde se réchauffe",
-    "2": "- Écart de la température moyenne annuelle par rapport à la moyenne des années 1950-1981 -"
+    "2": "- Écarts de température en 2019 par rapport à la moyenne 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Augmentation de la température",
     "2": "aucune information",
     "3": "d.ADMIN_FR",
     "4": "props.selectedCountry.properties.ADMIN_FR",
-    "5": "Global",
-    "6": "Écart de température par rapport",
-    "7": "à la moyenne de 1950-81"
+    "5": "Global"
   },
+  "Climate1_Legend": "Écarts de température à la moyenne en °C",
   "Climate1_Location": "Ma position",
   "Climate1_Bubble": {
-    "1": "La température augmente en 2019: ",
-    "2": "Tournez le globe ou zoomez avec deux doigts. ",
-    "3": "Cliquez sur un pays pour voir l'évolution de sa température relative au fil des ans. ",
-    "4": "Pour décrire les changements relatifs de température, les moyennes des températures nationales ou mondiales sont comparées à la température moyenne des années 1950 - 81. ",
-    "5": "Qu'est-ce que cela signifie pour la Suisse ?"
+    "1": "Faites pivoter le globe, zoomez avec deux doigts ou cliquez sur un pays pour plus d'informations.",
+    "2": "",
+    "3": "Les écarts des températures annuelles moyennes par rapport à la moyenne des années 1950-1981 ",
+    "4": "montrés dans le graphique montrent une augmentation constante de la température. Celles-ci ont un fort impact sur les personnes et l'environnement. Qu'est-ce que cela signifie pour la Suisse? Cliquez pour en savoir plus."
   },
   "Climate1_Source": "Source: NASA-GISS",
-  "Climate1_Button": {
-    "1": "Weiter",
-    "2": "Was bedeutet das für die Schweiz?"
-  },
   "Climate2_Bubble_Snowline": {
     "1": "Le niveau de congélation change de plus en plus et il reste moins de neige dans les zones inférieures.",
     "2": " À titre indicatif: il faut souvent s'attendre à de la neige de 200 à 400 mètres sous le niveau de congélation.",

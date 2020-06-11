@@ -11,18 +11,15 @@
     "4": "props.selectedCountry.properties.ADMIN_DE",
     "5": "Global"
   },
+  "Climate1_Legend": "Temperaturabweichungen vom Mittel in °C",
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
     "1": "Drehe die Weltkugel, zoome mit zwei Fingern oder klicke auf ein Land für mehr Informationen.",
     "2": "Die im Grafen dargestellten ",
     "3": "Abweichungen der mittleren Jahrestemperaturen vom Durchschnitt der Jahre 1950-1981, ",
-    "4": "zeigen eine stetige Temperaturzunahme. Diese haben starke Auswirkungen auf Mensch und Umwelt. Was bedeutet dies für die Schweiz? Klicke weiter um mehr zu erfahren. "
+    "4": "zeigen eine stetige Temperaturzunahme. Diese haben starke Auswirkungen auf Mensch und Umwelt. Was bedeutet dies für die Schweiz? Klicke weiter um mehr zu erfahren."
   },
   "Climate1_Source": "Quelle: NASA-GISS",
-  "Climate1_Button": {
-    "1": "Weiter",
-    "2": "Was bedeutet das für die Schweiz?"
-  },
   "Climate2_Bubble_Snowline": {
     "1": "Die Nullgradgrenze verschiebt sich immer weiter nach oben und weniger Schnee bleibt in tieferen Lagen liegen.",
     "2": " Als guter Richtwert gilt: Schnee ist oftmals 200 bis 400 Meter unterhalb der Nullgradgrenze zu erwarten.",

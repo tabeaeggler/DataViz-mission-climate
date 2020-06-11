@@ -255,7 +255,7 @@ const World = () => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
     var legend = legendColor()
-      .title("Temperaturabweichungen vom Mittel in °C")
+      .title(t("Climate1_Legend"))
       .scale(colorScaleLegend)
       .cells(8)
       .orient("horizontal")

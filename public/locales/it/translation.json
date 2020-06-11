@@ -2,24 +2,22 @@
   "": "Climate1_Screen",
   "Climate1_Title": {
     "1": "1. Il mondo si sta riscaldando",
-    "2": "- Deviazione della temperatura media annuale dalla media degli anni 1950-1981 -"
+    "2": "- Scostamenti di temperatura nel 2019 dalla media 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Aumento della temperatura",
     "2": "nessuna informazione",
     "3": "d.ADMIN_IT",
     "4": "props.selectedCountry.properties.ADMIN_IT",
-    "5": "Globalmente",
-    "6": "Deviazione della temperatura",
-    "7": "dalla media del 1950-81"
+    "5": "Globalmente"
   },
+  "Climate1_Legend": "Scostamenti di temperatura dalla media in °C",
   "Climate1_Location": "La mia posizione",
   "Climate1_Bubble": {
-    "1": "Aumenti di temperatura nel 2019: ",
-    "2": "Girare il mappamondo o zoomare con due dita. ",
-    "3": "Cliccare su un paese per vedere il relativo cambiamento di temperatura nel corso degli anni. ",
-    "4": "Per descrivere le variazioni di temperatura relative, le medie delle temperature nazionali o globali vengono confrontate con la temperatura media degli anni 1950 - 81. ",
-    "5": "Cosa significa questo per la Svizzera?"
+    "1": "Ruota il globo, ingrandisci con due dita o fai clic su un Paese per ulteriori informazioni.",
+    "2": "",
+    "3": "Le deviazioni delle temperature medie annue dalla media degli anni 1950-1981",
+    "4": "mostrate nel grafico mostrano un costante aumento della temperatura. Questi hanno un forte impatto sulle persone e sull'ambiente. Cosa significa questo per la Svizzera? Clicca per saperne di più."
   },
   "Climate1_Source": "Fonte: NASA-GISS",
   "Climate1_Button": {
