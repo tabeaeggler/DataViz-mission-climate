@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import { scaleSequential, interpolateYlOrRd, csv } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -12,6 +12,7 @@ import ButtonRightOld from "../../assets/img/buttonRight.svg"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
+import Context from "../../navigaton/Store"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -45,6 +46,8 @@ const World = () => {
   const getVal = feat => feat.properties.TEMP
   //speech bubbles
   const [showInitialBubble, setShowInitialBubble] = useState(true)
+  //global nav state
+  const [globalNavState, setGlobalNavState] = useContext(Context)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -89,9 +92,7 @@ const World = () => {
           polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
-            d.TEMP === "NO_DATA" || d.TEMP === "nan"
-              ? t("Climate1_TooltipTemperature.2")
-              : Number(d.TEMP).toFixed(1) + "°C"
+            d.TEMP === "NO_DATA" || d.TEMP === "nan" ? t("Climate1_TooltipTemperature.2") : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>
       `}
           onPolygonClick={d => updateCountry(d)}
@@ -145,9 +146,7 @@ const World = () => {
   function updateCountry(country) {
     setClickedCountry({
       country: country,
-      filteredCountry: climateData.filter(
-        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
-      ),
+      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
     })
     setShowInitialBubble(false)
   }
@@ -204,6 +203,7 @@ const World = () => {
         <div className="navigation-button navigation-next-button">
           <button
             onClick={() => {
+              setGlobalNavState(2)
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -242,11 +242,7 @@ const World = () => {
         <div className="linegraph-container">
           <div className="linegraph-text-container">
             {globalData === undefined ? null : (
-              <TemperatureLineGraph
-                selectedCountry={clickedCountry.country}
-                climateData={clickedCountry.filteredCountry}
-                globalData={globalData}
-              />
+              <TemperatureLineGraph selectedCountry={clickedCountry.country} climateData={clickedCountry.filteredCountry} globalData={globalData} />
             )}
             <div className="info-box-linegraph">{createBubbleLineGraph()}</div>
           </div>

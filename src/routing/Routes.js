@@ -11,15 +11,17 @@ import history from "./history"
 export default class Routes extends Component {
   render() {
     return (
-      <Router history={history}>
-        <Switch>
-          <Route path="/" exact component={Climate1} />
-          <Route path="/Snowline" component={Snowline} />
-          <Route path="/Glacier" component={Glacier} />
-          <Route path="/Glacier2" component={Glacier2} />
-          <Route path="/Cause" component={Cause} />
-        </Switch>
-      </Router>
+      <div>
+        <Router history={history}>
+          <Switch>
+            <Route path="/" exact component={Climate1} />
+            <Route path="/Snowline" component={Snowline} />
+            <Route path="/Glacier" component={Glacier} />
+            <Route path="/Glacier2" component={Glacier2} />
+            <Route path="/Cause" component={Cause} />
+          </Switch>
+        </Router>
+      </div>
     )
   }
 }
