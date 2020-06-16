@@ -11,6 +11,9 @@ import "rc-tooltip/assets/bootstrap.css"
 
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider
+ * @param {function} props.setNavigateBackToSnowline indicates whether the back-button was pressed on the glacier screen
+ * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
+ * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  */
 const GlacierOverview = props => {
@@ -212,7 +215,7 @@ const GlacierOverview = props => {
           <button
             onClick={() => {
               props.setShowSnowlineGraph(true)
-              props.setNavigateBack(true)
+              props.setNavigateBackToSnowline(true)
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>

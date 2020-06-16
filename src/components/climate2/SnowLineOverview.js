@@ -10,7 +10,7 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 /**
  * Creates context for the snowline graph with speech bubbles
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
- * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is visible
+ * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
  */
 const SnowLineOverview = props => {

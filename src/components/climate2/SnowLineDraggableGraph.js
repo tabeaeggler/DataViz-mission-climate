@@ -96,6 +96,24 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "snowline-text")
+        .attr("x", width - marginTextX)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
+            ? yScale(props.data[1].snowline + marginTextY / 2)
+            : yScale(props.data[1].snowline - marginTextY)
+        )
+        .text(props.data[1].snowline + " m")
+        .style("opacity", 0)
+        .transition()
+        .delay(2700)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
+
+      svg
+        .append("text")
+        .attr("class", "snowline-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -147,24 +165,6 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(t("Climate2_Graph.2"))
-
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", width - marginTextX)
-        .attr(
-          "y",
-          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
-            ? yScale(props.data[1].snowline + marginTextY / 2)
-            : yScale(props.data[1].snowline - marginTextY)
-        )
-        .text(props.data[1].snowline + " m")
-        .style("opacity", 0)
-        .transition()
-        .delay(2700)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
     }
 
     if (!props.showAnswer && props.showSnowlineInteraction) {

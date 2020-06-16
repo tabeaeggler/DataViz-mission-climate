@@ -6,8 +6,8 @@ import { CSSTransition } from "react-transition-group"
 
 /**
  * creates a scalable glacier graph
- * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactor scale factor for scaling the svg glacier
+ * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactorEstimation scale factor of submitted estimation for scaling the glacier svg
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  * @param {array} props.glacierData volume data of swiss glaciers

@@ -11,21 +11,19 @@ function Climate2() {
   //states
   const [showSnowlineInteraction, setShowSnowlineInteraction] = useState(false)
   const [showSnowlineGraph, setShowSnowlineGraph] = useState(true)
-  const [navigateBack, setNavigateBack] = useState(false)
-
-  console.log(navigateBack)
+  const [navigateBackToSnowline, setNavigateBackToSnowline] = useState(false)
 
   return (
     <React.Fragment>
       <CSSTransition
         in={showSnowlineGraph}
         timeout={{ enter: 1500, exit: 2000 }}
-        classNames={navigateBack ? "zoom-back" : "zoom-in-landscape"}
+        classNames={navigateBackToSnowline ? "zoom-back" : "zoom-in-landscape"}
         unmountOnExit={false}
         appear
         onEntered={() =>  setShowSnowlineInteraction(true)}
         onExit={() => {
-          setNavigateBack(false)
+          setNavigateBackToSnowline(false)
           setShowSnowlineGraph(false)
         }}>
         <div className="landscape-container">
@@ -34,7 +32,7 @@ function Climate2() {
             setShowSnowlineGraph={setShowSnowlineGraph}
             showSnowlineGraph={showSnowlineGraph}></SnowLineOverview>
           <GlacierOverview
-            setNavigateBack={setNavigateBack}
+            setNavigateBackToSnowline={setNavigateBackToSnowline}
             setShowSnowlineGraph={setShowSnowlineGraph}
             showSnowlineGraph={showSnowlineGraph}
             showGlacierInteraction={!showSnowlineGraph}></GlacierOverview>
