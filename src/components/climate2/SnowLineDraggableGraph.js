@@ -373,21 +373,21 @@ const SnowLineDraggableGraph = props => {
 
   return (
     <React.Fragment>
-        <div className="snowline-container zoom-mountain">
-          <svg className="snowline-graph" width={width + 2 * marginLeft}>
-            <g ref={svgRef}></g>
-          </svg>
-          {showSubmitButton ? (
-            <button
-              className="submit-button submit-button-snowline"
-              style={{
-                bottom: (draggableLinePosition * height) / mountainHeight - 5,
-              }}
-              onClick={() => showResult()}>
-              {t("Climate2_Submit_Button")}
-            </button>
-          ) : null}
-        </div>
+      <div className="snowline-container zoom-mountain">
+        <svg className="snowline-graph" width={width + 2 * marginLeft}>
+          <g ref={svgRef}></g>
+        </svg>
+        {showSubmitButton ? (
+          <button
+            className="submit-button submit-button-snowline"
+            style={{
+              bottom: (draggableLinePosition * height) / mountainHeight - 5,
+            }}
+            onClick={() => showResult()}>
+            {t("Climate2_Submit_Button")}
+          </button>
+        ) : null}
+      </div>
     </React.Fragment>
   )
 }

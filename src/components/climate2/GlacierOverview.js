@@ -86,7 +86,7 @@ const GlacierOverview = props => {
     return (
       <CSSTransition
         in={props.showGlacierInteraction}
-        timeout={{ enter: 3000, exit: 0 }}
+        timeout={{ enter: 2000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
         appear>
@@ -142,7 +142,12 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition
+        in={showAnswer && !props.showSnowlineGraph}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
         <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
           <p className="bubble-box-text extra-line-spacing">
             <b>
@@ -197,11 +202,17 @@ const GlacierOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition in={props.showGlacierInteraction} timeout={2000} classNames="show-button" unmountOnExit appear>
+      <CSSTransition
+        in={props.showGlacierInteraction}
+        timeout={{ enter: 2000, exit: 0 }}
+        classNames="show-button"
+        unmountOnExit
+        appear>
         <div className="navigation-button navigation-back-button glacier-zoom" id="navigation-button-back-glacier">
           <button
             onClick={() => {
-              window.location.reload(true)
+              props.setShowSnowlineGraph(true)
+              props.setNavigateBack(true)
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>
@@ -217,13 +228,12 @@ const GlacierOverview = props => {
       {createBubbleShowAnswer()}
       {navigationNext()}
       {navigationBack()}
-
-      <GlacierGraph
-        scaleFactor={calculatePercentage()}
-        showAnswer={showAnswer}
-        scaleFactorEstimation={scaleFactorEstimation}
-        showGlacierInteraction={props.showGlacierInteraction}
-        glacierData={dataVolume}></GlacierGraph>
+        <GlacierGraph
+          scaleFactor={calculatePercentage()}
+          showAnswer={showAnswer}
+          scaleFactorEstimation={scaleFactorEstimation}
+          showGlacierInteraction={props.showGlacierInteraction}
+          glacierData={dataVolume}></GlacierGraph>
     </React.Fragment>
   )
 }

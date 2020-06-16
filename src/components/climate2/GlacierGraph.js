@@ -26,19 +26,19 @@ const GlacierGraph = props => {
    */
   function createReferenceGlacier() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={3000}
-        classNames="glacier-animation-fade-in"
-        unmountOnExit
-        appear>
-        <div className="glacier-img-container">
+      <div className="glacier-img-container">
+        <CSSTransition
+          in={props.showGlacierInteraction}
+          timeout={3000}
+          classNames="glacier-animation-fade-in"
+          unmountOnExit
+          appear>
           <p className="glacier-original-text">
             {t("Climate2_Glacier_Graph.3")} 1850: {props.glacierData.data_1850} km&sup3;
           </p>
-          {getScaledGlacier(1, GlacierTransparent)}
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+        {getScaledGlacier(1, GlacierTransparent)}
+      </div>
     )
   }
 
