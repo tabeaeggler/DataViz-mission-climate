@@ -227,7 +227,7 @@ const World = () => {
    */
   function navigationNext() {
     return (
-      <CSSTransition in={true} timeout={2000} classNames="show-button" unmountOnExit appear>
+      <CSSTransition in={true} timeout={9000} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button">
           <button
             onClick={() => {
