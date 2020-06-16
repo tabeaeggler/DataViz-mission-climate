@@ -180,7 +180,7 @@ const World = () => {
    * Clears all scheduled functions calls for the initial animation
    */
   function clearScheduledAnimations() {
-    //clear all triggered functions
+    //clear excecution of all triggered functions
     timeouts.forEach(t => {
       clearTimeout(t)
     })
