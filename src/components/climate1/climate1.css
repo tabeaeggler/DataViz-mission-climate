@@ -40,6 +40,11 @@ text.year-text {
   left: 42%;
 }
 
+.legendCells{
+  transform: translateY(20px);
+
+}
+
 svg text.legendTitle {
   fill: #bbb9b9;
   font-size: 0.6em;
