@@ -52,6 +52,8 @@ const World = () => {
   const handleShow = () => setShow(true)
   //bubble
   const [showInitialBubble, setShowInitialBubble] = useState(true)
+  //animation
+  const [timeouts, setTimeouts] = useState([])
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -89,16 +91,20 @@ const World = () => {
    * Animation helper, zooms to specified location
    */
   function zoom(lat, long, alt, time, order) {
-    setTimeout(() => {
-      globeElement.current.pointOfView(
-        {
-          lat: lat,
-          lng: long,
-          altitude: alt,
-        },
-        time
-      )
-    }, time * order)
+    //save all scheduled functions
+    setTimeouts(timeouts => [
+      ...timeouts,
+      setTimeout(() => {
+        globeElement.current.pointOfView(
+          {
+            lat: lat,
+            lng: long,
+            altitude: alt,
+          },
+          time
+        )
+      }, time * order),
+    ])
   }
 
   /**
@@ -146,6 +152,7 @@ const World = () => {
           onPolygonClick={function (d) {
             handleShow(true)
             updateCountry(d)
+            clearScheduledAnimations()
           }}
           polygonsTransitionDuration={300}
           //position-marker config
@@ -167,6 +174,16 @@ const World = () => {
         />
       </div>
     )
+  }
+
+   /**
+   * Clears all scheduled functions calls for the initial animation
+   */
+  function clearScheduledAnimations() {
+    //clear all triggered functions
+    timeouts.forEach(t => {
+      clearTimeout(t)
+    })
   }
 
   /**
@@ -227,10 +244,11 @@ const World = () => {
    */
   function navigationNext() {
     return (
-      <CSSTransition in={true} timeout={9000} classNames="show-button" unmountOnExit appear>
+      <CSSTransition in={true} timeout={2000} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button">
           <button
             onClick={() => {
+              clearScheduledAnimations()
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
