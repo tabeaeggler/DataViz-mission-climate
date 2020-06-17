@@ -323,7 +323,6 @@ function Climate3() {
   function createBubble() {
     return (
       <CSSTransition in={state.overview} timeout={2000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box-outer">
           <div className="bubble-box bubble-box-climate3">
             <p className="bubble-box-text">
               <span className="question-style">
@@ -332,7 +331,6 @@ function Climate3() {
               {t("Climate3_Bubble_1.2")}
               {t("Climate3_Bubble_1.3")}
             </p>
-          </div>
         </div>
       </CSSTransition>
     )

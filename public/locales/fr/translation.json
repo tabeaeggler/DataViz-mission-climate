@@ -14,10 +14,9 @@
   "Climate1_Legend": "Écarts de température à la moyenne en °C",
   "Climate1_Location": "Ma position",
   "Climate1_Bubble": {
-    "1": "Faites pivoter le globe, zoomez avec deux doigts ou cliquez sur un pays pour plus d'informations.",
-    "2": "",
-    "3": "Les écarts des températures annuelles moyennes par rapport à la moyenne des années 1950-1981 ",
-    "4": "montrés dans le graphique montrent une augmentation constante de la température. Celles-ci ont un fort impact sur les personnes et l'environnement. Qu'est-ce que cela signifie pour la Suisse? Cliquez pour en savoir plus."
+    "1": "",
+    "2": "Les écarts des températures annuelles moyennes par rapport à la moyenne des années 1950-1981 ",
+    "3": "montrés dans le graphique montrent une augmentation constante de la température. Celles-ci ont un fort impact sur les personnes et l'environnement. Qu'est-ce que cela signifie pour la Suisse? Apprenez-en plus sur la page suivante."
   },
   "Climate1_Source": "Source: NASA-GISS",
   "Climate2_Bubble_Snowline": {

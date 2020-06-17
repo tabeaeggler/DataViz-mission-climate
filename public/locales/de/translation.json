@@ -14,10 +14,9 @@
   "Climate1_Legend": "Temperaturabweichungen vom Mittel in °C",
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
-    "1": "Drehe die Weltkugel, zoome mit zwei Fingern oder klicke auf ein Land für mehr Informationen.",
-    "2": "Die im Grafen dargestellten ",
-    "3": "Abweichungen der mittleren Jahrestemperaturen vom Durchschnitt der Jahre 1950-1981, ",
-    "4": "zeigen eine stetige Temperaturzunahme. Diese haben starke Auswirkungen auf Mensch und Umwelt. Was bedeutet dies für die Schweiz? Erfahre mehr auf der nächsten Seite."
+    "1": "Die im Grafen dargestellten ",
+    "2": "Abweichungen der mittleren Jahrestemperaturen vom Durchschnitt der Jahre 1950-1981, ",
+    "3": "zeigen eine stetige Temperaturzunahme. Diese haben starke Auswirkungen auf Mensch und Umwelt. Was bedeutet dies für die Schweiz? Erfahre mehr auf der nächsten Seite."
   },
   "Climate1_Source": "Quelle: NASA-GISS",
   "Climate2_Bubble_Snowline": {

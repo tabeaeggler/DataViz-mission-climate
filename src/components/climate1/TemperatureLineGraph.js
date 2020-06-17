@@ -12,7 +12,7 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
-  const scaleSvg = 0.7
+  const scaleSvg = 0.75
 
   /**
    * Creates a gridlines in x axis function

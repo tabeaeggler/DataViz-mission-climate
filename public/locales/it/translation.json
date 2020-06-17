@@ -14,10 +14,9 @@
   "Climate1_Legend": "Scostamenti di temperatura dalla media in °C",
   "Climate1_Location": "La mia posizione",
   "Climate1_Bubble": {
-    "1": "Ruota il globo, ingrandisci con due dita o fai clic su un Paese per ulteriori informazioni.",
-    "2": "",
-    "3": "Le deviazioni delle temperature medie annue dalla media degli anni 1950-1981",
-    "4": "mostrate nel grafico mostrano un costante aumento della temperatura. Questi hanno un forte impatto sulle persone e sull'ambiente. Cosa significa questo per la Svizzera? Clicca per saperne di più."
+    "1": "",
+    "2": "Le deviazioni delle temperature medie annue dalla media degli anni 1950-1981",
+    "3": "mostrate nel grafico mostrano un costante aumento della temperatura. Questi hanno un forte impatto sulle persone e sull'ambiente. Cosa significa questo per la Svizzera? Scopri di più nella pagina successiva."
   },
   "Climate1_Source": "Fonte: NASA-GISS",
   "Climate1_Button": {
