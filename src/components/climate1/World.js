@@ -50,8 +50,7 @@ const World = () => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  //bubble
-  const [showInitialBubble, setShowInitialBubble] = useState(true)
+  const modalWidth = (window.innerWidth / 2) * 0.75
   //animation
   const [timeouts, setTimeouts] = useState([])
 
@@ -116,7 +115,6 @@ const World = () => {
       country: country,
       filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
     })
-    setShowInitialBubble(false)
   }
 
   /**
@@ -204,23 +202,27 @@ const World = () => {
    */
   function createModal() {
     return (
-      <Modal show={show} onHide={handleClose} keyboard={false} style={{
-        marginLeft: -((window.innerWidth / 2) * 0.75)/2,
-      }}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        keyboard={false}
+        style={{
+          marginLeft: -(modalWidth / 2),
+        }}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           style={{
-            width: (window.innerWidth / 2) * 0.75,
+            width: modalWidth,
           }}>
           {createLinegraph()}
         </Modal.Body>
         <Modal.Footer
           style={{
-            width: (window.innerWidth / 2) * 0.75,
+            width: modalWidth,
           }}>
-          {t("Climate1_Bubble.2")}
-          <b>{t("Climate1_Bubble.3")}</b>
-          {t("Climate1_Bubble.4")}
+          {t("Climate1_Bubble.1")}
+          <b>{t("Climate1_Bubble.2")}</b>
+          {t("Climate1_Bubble.3")}
         </Modal.Footer>
       </Modal>
     )
@@ -290,21 +292,6 @@ const World = () => {
     svg.call(legend)
   }
 
-  /**
-   * Adds speach bubble with text for globe
-   * @returns dom element with speech bubble for globe
-   */
-  function createBubbleGlobe() {
-    return (
-      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate1-globe">
-          <p className="bubble-box-text">
-            <b>{t("Climate1_Bubble.1")}</b>
-          </p>
-        </div>
-      </CSSTransition>
-    )
-  }
 
   /**
    * React Lifecycle -> Renders only once
@@ -319,7 +306,6 @@ const World = () => {
     <React.Fragment>
       {createGlobe()}
       {createLocationButton()}
-      {createBubbleGlobe()}
       {createModal()}
       {navigationNext()}
       {navigationBack()}
