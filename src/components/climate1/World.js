@@ -14,13 +14,13 @@ import history from "../../routing/history"
 import { Modal } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { legendColor } from "d3-svg-legend"
-import { Context } from "../../navigaton/Store"
 
 /**
  * Creates a interactive globe to show climate warming
  * and renders TemperatureLineGraph for selected country.
+ * @param {function} props.setPageNr setter for navigation page
  */
-const World = () => {
+const World = props => {
   //translation
   const { t } = useTranslation()
   //globe
@@ -54,9 +54,6 @@ const World = () => {
   const modalWidth = (window.innerWidth / 2) * 0.75
   //animation
   const [timeouts, setTimeouts] = useState([])
-  //global nav state
-  const [globalNavState, setGlobalNavState] = useContext(Context)
-  setGlobalNavState(1)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -263,7 +260,7 @@ const World = () => {
           <button
             onClick={() => {
               clearScheduledAnimations()
-              setGlobalNavState(2)
+              props.setPageNr(2)
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -308,6 +305,7 @@ const World = () => {
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    props.setPageNr(1)
     createLegend()
     loadData()
     handleInitialAnimation()

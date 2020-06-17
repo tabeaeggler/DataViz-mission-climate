@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
 import "./climate3.css"
@@ -8,21 +8,19 @@ import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
-import { Context } from "../../navigaton/Store"
 
 /**
  * Assembles all elements of climate3 screen
+ * @param {function} props.setPageNr setter for navigation page
  */
-function Climate3() {
+
+function Climate3(props) {
   const { t } = useTranslation()
   const [state, setState] = useState({
     overview: true,
     splitGas: false,
     splitSector: false,
   })
-  //global nav state
-  const [globalNavState, setGlobalNavState] = useContext(Context)
-  setGlobalNavState(3)
 
   const svgRef = useRef()
   const radiusBubble = 11
@@ -316,6 +314,7 @@ function Climate3() {
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    props.setPageNr(3)
     d3.csv(BubbleObjectsPath).then(data => {
       createBubbleChart(data)
     })
@@ -328,14 +327,14 @@ function Climate3() {
   function createBubble() {
     return (
       <CSSTransition in={state.overview} timeout={2000} classNames="bubble-fade" unmountOnExit appear>
-          <div className="bubble-box bubble-box-climate3">
-            <p className="bubble-box-text">
-              <span className="question-style">
-                <b> {t("Climate3_Bubble_1.1")}</b>
-              </span>
-              {t("Climate3_Bubble_1.2")}
-              {t("Climate3_Bubble_1.3")}
-            </p>
+        <div className="bubble-box bubble-box-climate3">
+          <p className="bubble-box-text">
+            <span className="question-style">
+              <b> {t("Climate3_Bubble_1.1")}</b>
+            </span>
+            {t("Climate3_Bubble_1.2")}
+            {t("Climate3_Bubble_1.3")}
+          </p>
         </div>
       </CSSTransition>
     )
@@ -395,7 +394,7 @@ function Climate3() {
           <div className="navigation-button navigation-back-button">
             <button
               onClick={() => {
-                setGlobalNavState(2)
+                props.setPageNr(2)
                 history.push("/Snowline")
               }}>
               <img src={ButtonLeft} alt="continue"></img>

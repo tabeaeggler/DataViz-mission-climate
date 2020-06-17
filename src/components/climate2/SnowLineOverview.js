@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
@@ -6,14 +6,15 @@ import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 import Snow from "react-snowstorm"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
-import { Context } from "../../navigaton/Store"
 
 /**
  * Creates context for the snowline graph with speech bubbles
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
+ * @param {function} props.setPageNr setter for navigation page
  */
+
 const SnowLineOverview = props => {
   //translation
   const { t } = useTranslation()
@@ -22,9 +23,6 @@ const SnowLineOverview = props => {
   const [hideIntroductionBubble, setHideIntroductionBubble] = useState(false)
   //data
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
-  //global nav state
-  const [globalNavState, setGlobalNavState] = useContext(Context)
-  setGlobalNavState(2)
 
   /**
    * Creates the header section of the mountains page with animation
@@ -128,7 +126,7 @@ const SnowLineOverview = props => {
         <div className="navigation-button navigation-back-button zoom-mountain" id="navigation-button-back-mountain">
           <button
             onClick={() => {
-              setGlobalNavState(1)
+              props.setPageNr(1)
               history.push("/")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
@@ -137,6 +135,13 @@ const SnowLineOverview = props => {
       </CSSTransition>
     )
   }
+
+  /**
+   * React Lifecycle -> Renders only once
+   */
+  useEffect(() => {
+    props.setPageNr(2)
+  }, [])
 
   return (
     <React.Fragment>
