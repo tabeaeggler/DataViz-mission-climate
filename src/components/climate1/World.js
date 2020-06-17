@@ -204,7 +204,7 @@ const World = () => {
    */
   function createModal() {
     return (
-      <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
+      <Modal show={show} onHide={handleClose} keyboard={false}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           style={{
@@ -212,8 +212,11 @@ const World = () => {
           }}>
           {createLinegraph()}
         </Modal.Body>
-        <Modal.Footer>
-          {t("Climate1_Bubble.2")}
+        <Modal.Footer
+          style={{
+            width: (window.innerWidth / 2) * 0.7,
+          }}>
+          >{t("Climate1_Bubble.2")}
           <b>{t("Climate1_Bubble.3")}</b>
           {t("Climate1_Bubble.4")}
         </Modal.Footer>
