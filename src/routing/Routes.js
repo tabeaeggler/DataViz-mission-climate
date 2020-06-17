@@ -15,7 +15,7 @@ export default class Routes extends Component {
       <div>
         <Router history={history}>
           <Switch>
-            <Route path="/" exact></Route>component={Climate1} />
+            <Route path="/" exact component={Climate1} />
             <Route path="/Snowline" component={Snowline} />
             <Route path="/Glacier" component={Glacier} />
             <Route path="/Glacier2" component={Glacier2} />
@@ -26,4 +26,3 @@ export default class Routes extends Component {
     )
   }
 }
-

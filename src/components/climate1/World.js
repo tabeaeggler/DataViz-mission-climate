@@ -12,7 +12,7 @@ import ButtonRightOld from "../../assets/img/buttonRight.svg"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
-import Context from "../../navigaton/Store"
+import { Context } from "../../navigaton/Store"
 
 /**
  * Creates a interactive globe to show climate warming
