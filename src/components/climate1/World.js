@@ -181,13 +181,6 @@ const World = () => {
             {t("Climate1_Bubble.4")}
             {t("Climate1_Bubble.5")}
           </p>
-          {/* <button
-            id="next-button"
-            onClick={() => {
-              history.push("/Snowline")
-            }}>
-            <img src={ButtonRightOld} alt="continue"></img>
-          </button> */}
         </div>
       </CSSTransition>
     )

@@ -3,7 +3,6 @@ import { Context } from "./Store"
 import history from "../routing/history"
 
 function Navigation() {
-  //global nav state
   const [globalNavState, setGlobalNavState] = useContext(Context)
 
   function handleClick(path, pageNr) {
@@ -22,8 +21,13 @@ function Navigation() {
       <button className="nav-button" onClick={handleClick("/Snowline", 2)}>
         2
       </button>
+      <button className="nav-button" onClick={handleClick("/Cause", 3)}>
+        3
+      </button>
     </div>
   )
 }
 
 export default Navigation
+
+//https://www.youtube.com/watch?v=tnt2y7D3V9o
