@@ -114,9 +114,7 @@ const World = () => {
   function updateCountry(country) {
     setClickedCountry({
       country: country,
-      filteredCountry: climateData.filter(
-        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
-      ),
+      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
     })
     setShowInitialBubble(false)
   }
@@ -144,9 +142,7 @@ const World = () => {
           polygonLabel={({ properties: d }) => `
         <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
-            d.TEMP === "NO_DATA" || d.TEMP === "nan"
-              ? t("Climate1_TooltipTemperature.2")
-              : Number(d.TEMP).toFixed(1) + "°C"
+            d.TEMP === "NO_DATA" || d.TEMP === "nan" ? t("Climate1_TooltipTemperature.2") : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>
       `}
           onPolygonClick={function (d) {
@@ -176,7 +172,7 @@ const World = () => {
     )
   }
 
-   /**
+  /**
    * Clears all scheduled functions calls for the initial animation
    */
   function clearScheduledAnimations() {
@@ -210,7 +206,12 @@ const World = () => {
     return (
       <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
         <Modal.Header closeButton></Modal.Header>
-        <Modal.Body>{createLinegraph()}</Modal.Body>
+        <Modal.Body
+          style={{
+            width: (window.innerWidth / 2) * 0.7,
+          }}>
+          {createLinegraph()}
+        </Modal.Body>
         <Modal.Footer>
           {t("Climate1_Bubble.2")}
           <b>{t("Climate1_Bubble.3")}</b>
@@ -228,11 +229,7 @@ const World = () => {
     return (
       <div>
         {globalData === undefined ? null : ( //only show linegraph when clickevent occured
-          <TemperatureLineGraph
-            selectedCountry={clickedCountry.country}
-            climateData={clickedCountry.filteredCountry}
-            globalData={globalData}
-          />
+          <TemperatureLineGraph selectedCountry={clickedCountry.country} climateData={clickedCountry.filteredCountry} globalData={globalData} />
         )}
       </div>
     )
@@ -284,14 +281,7 @@ const World = () => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
 
-    var legend = legendColor()
-      .title(t("Climate1_Legend"))
-      .scale(colorScaleLegend)
-      .cells(8)
-      .orient("horizontal")
-      .shapeWidth(33)
-      .shapePadding(0)
-      .shapeHeight(5)
+    var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(33).shapePadding(0).shapeHeight(5)
     svg.call(legend)
   }
 
