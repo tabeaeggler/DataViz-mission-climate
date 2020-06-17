@@ -207,7 +207,7 @@ const TemperatureLineGraph = props => {
       <div className="temperature-graph-container">
         <svg
           className="temperature-graph"
-          width={(window.innerWidth / 2)*scaleSvg}>
+          width={660}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
