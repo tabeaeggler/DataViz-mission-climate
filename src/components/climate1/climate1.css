@@ -95,7 +95,7 @@ svg text.label {
 
 /* modal */
 .modal-content {
-  width: 660px;
+  width: auto;
   background-color: #202023;
   position: absolute;
   bottom: 0%;
