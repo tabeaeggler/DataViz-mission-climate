@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
 import "./climate3.css"
@@ -8,6 +8,7 @@ import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
+import { Context } from "../../navigaton/Store"
 
 /**
  * Assembles all elements of climate3 screen
@@ -19,6 +20,8 @@ function Climate3() {
     splitGas: false,
     splitSector: false,
   })
+  //global nav state
+  const [globalNavState, setGlobalNavState] = useContext(Context)
   const svgRef = useRef()
   const radiusBubble = 11
   const width = window.innerWidth
@@ -392,6 +395,7 @@ function Climate3() {
           <div className="navigation-button navigation-back-button">
             <button
               onClick={() => {
+                setGlobalNavState(2)
                 history.push("/Snowline")
               }}>
               <img src={ButtonLeft} alt="continue"></img>

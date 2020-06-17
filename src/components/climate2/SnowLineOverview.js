@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
@@ -6,6 +6,7 @@ import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
 import Snow from "react-snowstorm"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
+import { Context } from "../../navigaton/Store"
 
 /**
  * Creates context for the snowline graph with speech bubbles
@@ -20,6 +21,8 @@ const SnowLineOverview = props => {
   const [hideIntroductionBubble, setHideIntroductionBubble] = useState(false)
   //data
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
+  //global nav state
+  const [globalNavState, setGlobalNavState] = useContext(Context)
 
   /**
    * Creates the header section of the mountains page with animation
@@ -27,12 +30,7 @@ const SnowLineOverview = props => {
    */
   function createHeader() {
     return (
-      <CSSTransition
-        in={props.showSnowlineInteraction}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showSnowlineInteraction} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="snowline-title-wrapper zoom-mountain">
           <h1 className="title"> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
@@ -43,7 +41,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds speach bubble for introduction to the topic 
+   * Adds speach bubble for introduction to the topic
    * @returns dom element with speech bubble
    */
   function createBubbleIntroduction() {
@@ -70,12 +68,7 @@ const SnowLineOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showSnowlineInteraction}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate2-snow-answer zoom-mountain">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.3")}</b>
@@ -105,12 +98,7 @@ const SnowLineOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showSnowlineInteraction}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={{ enter: 3000, exit: 0 }} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button zoom-mountain" id="navigation-button-next-mountain">
           <button
             onClick={() => {
@@ -133,6 +121,7 @@ const SnowLineOverview = props => {
         <div className="navigation-button navigation-back-button zoom-mountain" id="navigation-button-back-mountain">
           <button
             onClick={() => {
+              setGlobalNavState(1)
               history.push("/")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
@@ -158,13 +147,7 @@ const SnowLineOverview = props => {
         setHideIntroductionBubble={setHideIntroductionBubble}
       />
 
-      <Snow
-        animationInterval={50}
-        followMouse={false}
-        vMaxY={1.5}
-        vMaxX={3}
-        flakesMaxActive={90}
-        flakesMax={150}></Snow>
+      <Snow animationInterval={50} followMouse={false} vMaxY={1.5} vMaxX={3} flakesMaxActive={90} flakesMax={150}></Snow>
     </React.Fragment>
   )
 }

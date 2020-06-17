@@ -216,6 +216,7 @@ const World = () => {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
+              //setGlobalNavState(0)
               console.log("Go to start page")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
