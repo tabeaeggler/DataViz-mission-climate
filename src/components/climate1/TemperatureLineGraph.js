@@ -1,15 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import {
-  select,
-  line,
-  curveCardinal,
-  axisBottom,
-  scaleLinear,
-  axisLeft,
-  extent,
-} from "d3"
-
+import { select, line, curveCardinal, axisBottom, scaleLinear, axisLeft, extent } from "d3"
 
 /**
  * Creates a linegraph with two lines: country specific & global climate change
@@ -21,8 +12,7 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
-  const scaleSvg = 0.93
-
+  const scaleSvg = 0.7
 
   /**
    * Creates a gridlines in x axis function
@@ -49,8 +39,7 @@ const TemperatureLineGraph = props => {
    */
   function getTagPosition(tag) {
     var globalTagPos = props.globalData[props.globalData.length - 1].value
-    if (props.selectedCountry === undefined || props.climateData.length === 0)
-      return globalTagPos
+    if (props.selectedCountry === undefined || props.climateData.length === 0) return globalTagPos
 
     var countryTagPos = props.climateData[props.climateData.length - 1].value
     if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
@@ -73,19 +62,13 @@ const TemperatureLineGraph = props => {
    */
   function createLineGraph() {
     const scaleGroup = 0.6
-    const width = 580
+    const width = (window.innerWidth / 2) * scaleGroup
     const height = 160
     const margin = 40
     //wrapper, so that the svg is available for d3
-    const svg = select(svgRef.current).attr(
-      "transform",
-      `translate(${margin},${margin})`
-    )
+    const svg = select(svgRef.current).attr("transform", `translate(${margin},${margin})`)
     //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
-    const svgLines = select(svgLinesRef.current).attr(
-      "transform",
-      `translate(${margin},${margin})`
-    )
+    const svgLines = select(svgLinesRef.current).attr("transform", `translate(${margin},${margin})`)
 
     //set the X and Y ranges
     const xScale = scaleLinear()
@@ -97,9 +80,7 @@ const TemperatureLineGraph = props => {
 
     //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
-    const yAxis = axisLeft(yScale).tickFormat(
-      index => index.toFixed(1) + " \u2103" 
-    )
+    const yAxis = axisLeft(yScale).tickFormat(index => index.toFixed(1) + " \u2103")
 
     //add X and Y gridlines
     svg
@@ -108,10 +89,7 @@ const TemperatureLineGraph = props => {
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines(xScale).tickSize(-height).tickFormat(""))
 
-    svg
-      .append("g")
-      .attr("class", "grid")
-      .call(make_y_gridlines(yScale).tickSize(-width).tickFormat(""))
+    svg.append("g").attr("class", "grid").call(make_y_gridlines(yScale).tickSize(-width).tickFormat(""))
 
     //add X and Y axis
     svg.append("g").attr("class", "axis").attr("transform", `translate(0,${height})`).call(xAxis)
@@ -143,14 +121,7 @@ const TemperatureLineGraph = props => {
     svg
       .append("text")
       .attr("class", "global-name")
-      .attr(
-        "transform",
-        "translate(" +
-          (width - 10) +
-          "," +
-          yScale(getTagPosition("global")) +
-          ")"
-      )
+      .attr("transform", "translate(" + (width - 10) + "," + yScale(getTagPosition("global")) + ")")
       .attr("dy", ".35em")
       .attr("opacity", "0.4")
       .style("fill", "white")
@@ -181,14 +152,7 @@ const TemperatureLineGraph = props => {
       svg
         .append("text")
         .attr("class", "country-name")
-        .attr(
-          "transform",
-          "translate(" +
-            (width - 10) +
-            "," +
-            yScale(getTagPosition("country")) +
-            ")"
-        )
+        .attr("transform", "translate(" + (width - 10) + "," + yScale(getTagPosition("country")) + ")")
         .attr("dy", ".35em")
         .style("fill", "#D37B61")
         .text(eval(t("Climate1_TooltipTemperature.4")))
@@ -204,14 +168,10 @@ const TemperatureLineGraph = props => {
 
   return (
     <React.Fragment>
-      <div className="temperature-graph-container">
-        <svg
-          className="temperature-graph"
-          width={660}>
+        <svg className="temperature-graph" width={(window.innerWidth / 2) * scaleSvg}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
         </svg>
-      </div>
     </React.Fragment>
   )
 }
