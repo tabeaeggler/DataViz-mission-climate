@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from "react"
 import { Context } from "./Store"
 import history from "../routing/history"
-import { gray } from "d3"
 
 function Navigation() {
   const [globalNavState, setGlobalNavState] = useContext(Context)
 
   useEffect(() => {
-    var bu
     document.getElementById("1").style.backgroundColor = "#bbb9b9"
     document.getElementById("2").style.backgroundColor = "#bbb9b9"
     document.getElementById("3").style.backgroundColor = "#bbb9b9"
@@ -15,7 +13,6 @@ function Navigation() {
   })
 
   function handleClick(path, pageNr) {
-    console.log("state changed from", globalNavState, "to:", pageNr)
     setGlobalNavState(pageNr)
     history.push(path)
   }
@@ -36,5 +33,3 @@ function Navigation() {
 }
 
 export default Navigation
-
-//https://www.youtube.com/watch?v=tnt2y7D3V9o
