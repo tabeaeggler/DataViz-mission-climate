@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import Slider from "rc-slider"
@@ -6,7 +6,6 @@ import GlacierGraph from "./GlacierGraph"
 import history from "../../routing/history"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
-import { Context } from "../../navigaton/Store"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
@@ -16,6 +15,7 @@ import "rc-tooltip/assets/bootstrap.css"
  * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
+ * @param {function} props.setPageNr setter for navigation page
  */
 const GlacierOverview = props => {
   //transaltion
@@ -34,8 +34,6 @@ const GlacierOverview = props => {
     data_1850: 130,
     data_2019: 50.645,
   }
-  //global nav state
-  const [globalNavState, setGlobalNavState] = useContext(Context)
 
   /**
    * Handles slider interaction. Sets new percentage and scale of lake.
@@ -138,12 +136,7 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer && !props.showSnowlineGraph}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && !props.showSnowlineGraph} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
           <p className="bubble-box-text extra-line-spacing">
             <b>
@@ -178,7 +171,7 @@ const GlacierOverview = props => {
         <div className="navigation-button navigation-next-button glacier-zoom" id="navigation-button-next-glacier">
           <button
             onClick={() => {
-              setGlobalNavState(3)
+              props.setPageNr(3)
               history.push("/Cause")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -194,12 +187,7 @@ const GlacierOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={{ enter: 2000, exit: 0 }}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction} timeout={{ enter: 2000, exit: 0 }} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-back-button glacier-zoom" id="navigation-button-back-glacier">
           <button
             onClick={() => {
@@ -220,12 +208,12 @@ const GlacierOverview = props => {
       {createBubbleShowAnswer()}
       {navigationNext()}
       {navigationBack()}
-        <GlacierGraph
-          scaleFactor={calculatePercentage()}
-          showAnswer={showAnswer}
-          scaleFactorEstimation={scaleFactorEstimation}
-          showGlacierInteraction={props.showGlacierInteraction}
-          glacierData={dataVolume}></GlacierGraph>
+      <GlacierGraph
+        scaleFactor={calculatePercentage()}
+        showAnswer={showAnswer}
+        scaleFactorEstimation={scaleFactorEstimation}
+        showGlacierInteraction={props.showGlacierInteraction}
+        glacierData={dataVolume}></GlacierGraph>
     </React.Fragment>
   )
 }

@@ -4,15 +4,16 @@ import "./climate1.css"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 
-/**
+ /**
  * assembles all elements of climate1 screen
+ * @param {function} props.setPageNr setter for navigation page
  */
-function Climate1() {
+function Climate1(props) {
   const { t } = useTranslation()
 
   return (
     <React.Fragment>
-      <World />
+      <World setPageNr={props.setPageNr} />
       <CSSTransition in={true} timeout={500} classNames="fade" unmountOnExit appear>
         <div>
           <h1 className="climate-1-title"> {t("Climate1_Title.1")}</h1>
