@@ -37,7 +37,8 @@ text.year-text {
   height: 50px;
   position: absolute;
   bottom: 3%;
-  left: 42%;
+  left: 50%;
+  margin-left: -132.5px;
 }
 
 .legendCells {
@@ -96,15 +97,19 @@ svg text.label {
 .modal-content {
   width: fit-content;
   background-color: #202023;
-  display: inline-block;
-  margin-top: 45%;
 }
 
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 800px;
-    text-align: center;
   }
+}
+
+.modal-dialog {
+  position: absolute;
+  bottom: 3%;
+  left: 48.5%;
+  margin: 0%;
 }
 
 .modal-body {
@@ -120,6 +125,7 @@ svg text.label {
 
 .modal-footer {
   font-size: 0.9em;
+  text-align: left;
 }
 
 div.modal-header {

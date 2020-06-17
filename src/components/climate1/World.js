@@ -204,19 +204,21 @@ const World = () => {
    */
   function createModal() {
     return (
-      <Modal show={show} onHide={handleClose} keyboard={false}>
+      <Modal show={show} onHide={handleClose} keyboard={false} style={{
+        marginLeft: -((window.innerWidth / 2) * 0.75)/2,
+      }}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           style={{
-            width: (window.innerWidth / 2) * 0.7,
+            width: (window.innerWidth / 2) * 0.75,
           }}>
           {createLinegraph()}
         </Modal.Body>
         <Modal.Footer
           style={{
-            width: (window.innerWidth / 2) * 0.7,
+            width: (window.innerWidth / 2) * 0.75,
           }}>
-          >{t("Climate1_Bubble.2")}
+          {t("Climate1_Bubble.2")}
           <b>{t("Climate1_Bubble.3")}</b>
           {t("Climate1_Bubble.4")}
         </Modal.Footer>
