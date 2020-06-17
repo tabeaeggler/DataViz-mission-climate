@@ -1,24 +1,23 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. The world is getting warmer"
+    "1": "1. The world is getting warmer",
+    "2": "- Temperature deviations in 2019 from the average 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Temperature increase",
     "2": "no values",
     "3": "d.ADMIN",
     "4": "props.selectedCountry.properties.ADMIN",
-    "5": "Global",
-    "6": "Temperature deviation",
-    "7": "from the average of 1950-81"
+    "5": "Global"
   },
+  "Climate1_Legend": "Temperature deviations from the mean in °C",
   "Climate1_Location": "My location",
   "Climate1_Bubble": {
-    "1": "Temperature increases in 2019: ",
-    "2": "Turn the globe or zoom with two fingers.",
-    "3": "Click on a country to see its relative temperature change over the years. ",
-    "4": "To describe relative temperature changes, the averages of national or global temperatures are compared with the average temperature of the years 1950 - 81. ",
-    "5": "What does this mean for Switzerland?"
+    "1": "Rotate the globe, zoom with two fingers or click on a country for more information.",
+    "2": "",
+    "3": "The deviations of the average annual temperatures from the average of the years 1950-1981 ",
+    "4": "shown in the graph show a steady increase in temperature. This has a strong impact on people and the environment. What does this mean for Switzerland? Click to learn more. "
   },
   "Climate1_Source": "Source: NASA-GISS",
   "Climate1_Button": {
@@ -27,11 +26,11 @@
   },
   "Climate2_Bubble_Snowline": {
     "1": "The freezing level shifts ever higher and less snow remains in lower areas.",
-    "2": " As a good guideline: Snow is often to be expected 200 to 400 meters below the freezing level.",
+    "2": " As a guideline: Snow is often to be expected 200 to 400 meters below the freezing level.",
     "3": "Solution: In the last 60 years the zero degree line has risen ",
     "4": "350 meters",
     "5": " - per degree of warming about 200 meters. This corresponds to",
-    "6": " a fifth of the height of the Mount Rigi.",
+    "6": " XX times the height of the weather station of the Verkehrshaus",
     "7": " Also the glaciers are affected, learn more on the next page!"
   },
   "Climate2_Bubble_Glacier": {

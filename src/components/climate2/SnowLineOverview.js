@@ -10,6 +10,7 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 /**
  * Creates context for the snowline graph with speech bubbles
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
+ * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
  */
 const SnowLineOverview = props => {
@@ -28,13 +29,13 @@ const SnowLineOverview = props => {
   function createHeader() {
     return (
       <CSSTransition
-        in={props.showSnowlineInteraction}
+        in={props.showSnowlineGraph && props.showSnowlineInteraction}
         timeout={{ enter: 3000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
         appear>
         <div className="snowline-title-wrapper zoom-mountain">
-          <h1 className="title"> {t("Climate2_Title.1")}</h1>
+          <h1> {t("Climate2_Title.1")}</h1>
           <h2 className="subtitle">{t("Climate2_Title.2")}</h2>
           <h6 className="source source-snowline">{t("Climate2_Source_Snowline")}</h6>
         </div>
@@ -106,7 +107,7 @@ const SnowLineOverview = props => {
   function navigationNext() {
     return (
       <CSSTransition
-        in={showAnswer && props.showSnowlineInteraction}
+        in={showAnswer && props.showSnowlineGraph}
         timeout={{ enter: 3000, exit: 0 }}
         classNames="show-button"
         unmountOnExit

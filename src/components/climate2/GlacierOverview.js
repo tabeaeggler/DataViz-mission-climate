@@ -11,6 +11,9 @@ import "rc-tooltip/assets/bootstrap.css"
 
 /**
  * Creates context for a scalable glacier graph with speech bubbles and slider
+ * @param {function} props.setNavigateBackToSnowline indicates whether the back-button was pressed on the glacier screen
+ * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
+ * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  */
 const GlacierOverview = props => {
@@ -86,12 +89,12 @@ const GlacierOverview = props => {
     return (
       <CSSTransition
         in={props.showGlacierInteraction}
-        timeout={{ enter: 3000, exit: 0 }}
+        timeout={{ enter: 2000, exit: 0 }}
         classNames="fade-climate2"
         unmountOnExit
         appear>
         <div className="glacier-title-wrapper">
-          <h1 className="glacier-zoom title"> {t("Climate2_Title.1")}</h1>
+          <h1 className="glacier-zoom"> {t("Climate2_Title.1")}</h1>
           <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
           <h6 className="glacier-zoom source source-glacier">{t("Climate2_Source_Glacier")}</h6>
         </div>
@@ -142,7 +145,12 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition in={showAnswer} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition
+        in={showAnswer && !props.showSnowlineGraph}
+        timeout={4000}
+        classNames="bubble-fade"
+        unmountOnExit
+        appear>
         <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
           <p className="bubble-box-text extra-line-spacing">
             <b>
@@ -197,11 +205,17 @@ const GlacierOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition in={props.showGlacierInteraction} timeout={2000} classNames="show-button" unmountOnExit appear>
+      <CSSTransition
+        in={props.showGlacierInteraction}
+        timeout={{ enter: 2000, exit: 0 }}
+        classNames="show-button"
+        unmountOnExit
+        appear>
         <div className="navigation-button navigation-back-button glacier-zoom" id="navigation-button-back-glacier">
           <button
             onClick={() => {
-              window.location.reload(true)
+              props.setShowSnowlineGraph(true)
+              props.setNavigateBackToSnowline(true)
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>
@@ -217,13 +231,12 @@ const GlacierOverview = props => {
       {createBubbleShowAnswer()}
       {navigationNext()}
       {navigationBack()}
-
-      <GlacierGraph
-        scaleFactor={calculatePercentage()}
-        showAnswer={showAnswer}
-        scaleFactorEstimation={scaleFactorEstimation}
-        showGlacierInteraction={props.showGlacierInteraction}
-        glacierData={dataVolume}></GlacierGraph>
+        <GlacierGraph
+          scaleFactor={calculatePercentage()}
+          showAnswer={showAnswer}
+          scaleFactorEstimation={scaleFactorEstimation}
+          showGlacierInteraction={props.showGlacierInteraction}
+          glacierData={dataVolume}></GlacierGraph>
     </React.Fragment>
   )
 }

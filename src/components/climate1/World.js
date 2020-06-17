@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { scaleSequential, interpolateYlOrRd, csv } from "d3"
+import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import OpenSans from "../../assets/font/OpenSansRegular.json"
@@ -8,10 +8,12 @@ import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
-import ButtonRightOld from "../../assets/img/buttonRight.svg"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import history from "../../routing/history"
+import { Modal } from "react-bootstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { legendColor } from "d3-svg-legend"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -43,8 +45,15 @@ const World = () => {
   //color scale
   const colorScaleGlobe = scaleSequential(interpolateYlOrRd).domain([0, 3])
   const getVal = feat => feat.properties.TEMP
-  //speech bubbles
+  const svgRefLegend = useRef()
+  //bootstrap modal
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  //bubble
   const [showInitialBubble, setShowInitialBubble] = useState(true)
+  //animation
+  const [timeouts, setTimeouts] = useState([])
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -67,6 +76,52 @@ const World = () => {
   }
 
   /**
+   * Handles the initial animation of the globe
+   */
+  function handleInitialAnimation() {
+    zoom(30, 10, 3, 1500, 0)
+    zoom(30, 30, 3, 1500, 1)
+    zoom(30, -10, 3, 1500, 2)
+    zoom(30, 10, 3, 1500, 3)
+    zoom(30, 10, 2, 1500, 4)
+    zoom(30, 10, 3, 1500, 5)
+  }
+
+  /**
+   * Animation helper, zooms to specified location
+   */
+  function zoom(lat, long, alt, time, order) {
+    //save all scheduled functions
+    setTimeouts(timeouts => [
+      ...timeouts,
+      setTimeout(() => {
+        globeElement.current.pointOfView(
+          {
+            lat: lat,
+            lng: long,
+            altitude: alt,
+          },
+          time
+        )
+      }, time * order),
+    ])
+  }
+
+  /**
+   * Updates selected country and filter climate data for selected country
+   * @param {country object} country
+   */
+  function updateCountry(country) {
+    setClickedCountry({
+      country: country,
+      filteredCountry: climateData.filter(
+        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
+      ),
+    })
+    setShowInitialBubble(false)
+  }
+
+  /**
    * Creates a Globe with react-globe.gl
    * @returns dom element with globe
    */
@@ -79,7 +134,7 @@ const World = () => {
           showGraticules={true}
           backgroundColor={"#141416"}
           showAtmosphere={false}
-          width={window.innerWidth / 2}
+          width={window.innerWidth}
           //country config
           polygonsData={countries.features}
           polygonAltitude={d => (d === clickedCountry.country ? 0.12 : 0.06)}
@@ -94,7 +149,11 @@ const World = () => {
               : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>
       `}
-          onPolygonClick={d => updateCountry(d)}
+          onPolygonClick={function (d) {
+            handleShow(true)
+            updateCountry(d)
+            clearScheduledAnimations()
+          }}
           polygonsTransitionDuration={300}
           //position-marker config
           labelTypeFace={OpenSans}
@@ -113,84 +172,69 @@ const World = () => {
           labelColor={() => "rgba(187, 185, 185, 1)"}
           labelResolution={6}
         />
-        {createBubbleGlobe()}
-        <div className="location-button">
-          <button onClick={handleZoom}>
-            <img src={LocationButton} alt="location"></img>
-            {t("Climate1_Location")}
-          </button>
-        </div>
+      </div>
+    )
+  }
+
+   /**
+   * Clears all scheduled functions calls for the initial animation
+   */
+  function clearScheduledAnimations() {
+    //clear excecution of all triggered functions
+    timeouts.forEach(t => {
+      clearTimeout(t)
+    })
+  }
+
+  /**
+   * Creates the button center the globe on the current location of the user
+   * @returns dom element with location button
+   */
+  function createLocationButton() {
+    return (
+      <div className="location-button">
+        <button onClick={() => zoom(30, 10, 3, 2000, 0)}>
+          <img src={LocationButton} alt="location"></img>
+          <br></br>
+          {t("Climate1_Location")}
+        </button>
       </div>
     )
   }
 
   /**
-   * Initial zoom on Europe/Swittzeland
+   * Creates a modal with additional information of the clicked country
+   * @returns dom element with modal
    */
-  function handleZoom() {
-    globeElement.current.pointOfView(
-      {
-        lat: 30,
-        lng: 10,
-        altitude: 2.7,
-      },
-      2500
+  function createModal() {
+    return (
+      <Modal show={show} onHide={handleClose} keyboard={false} centered={true}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>{createLinegraph()}</Modal.Body>
+        <Modal.Footer>
+          {t("Climate1_Bubble.2")}
+          <b>{t("Climate1_Bubble.3")}</b>
+          {t("Climate1_Bubble.4")}
+        </Modal.Footer>
+      </Modal>
     )
   }
 
   /**
-   * Updates selected country and filter climate data for selected country
-   * @param {country object} country
+   * Creates linegraph
+   * @returns dom element linegraph
    */
-  function updateCountry(country) {
-    setClickedCountry({
-      country: country,
-      filteredCountry: climateData.filter(
-        o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()
-      ),
-    })
-    setShowInitialBubble(false)
-  }
-
-  /**
-   * Adds speach bubble with text for globe
-   * @returns dom element with speech bubble for globe
-   */
-  function createBubbleGlobe() {
+  function createLinegraph() {
     return (
-      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate1-globe">
-          <p className="bubble-box-text">
-            <b>{t("Climate1_Bubble.1")}</b>
-            {t("Climate1_Bubble.2")}
-          </p>
-        </div>
-      </CSSTransition>
-    )
-  }
-
-  /**
-   * Adds speach bubble with text for linegraph
-   * @returns dom element with speech bubble for linegraph
-   */
-  function createBubbleLineGraph() {
-    return (
-      <CSSTransition in={!showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
-        <div className="bubble-box bubble-box-climate1-linegraph">
-          <p className="bubble-box-text">
-            <b>{t("Climate1_Bubble.3")}</b>
-            {t("Climate1_Bubble.4")}
-            {t("Climate1_Bubble.5")}
-          </p>
-          {/* <button
-            id="next-button"
-            onClick={() => {
-              history.push("/Snowline")
-            }}>
-            <img src={ButtonRightOld} alt="continue"></img>
-          </button> */}
-        </div>
-      </CSSTransition>
+      <div>
+        {globalData === undefined ? null : ( //only show linegraph when clickevent occured
+          <TemperatureLineGraph
+            selectedCountry={clickedCountry.country}
+            climateData={clickedCountry.filteredCountry}
+            globalData={globalData}
+          />
+        )}
+      </div>
     )
   }
 
@@ -204,6 +248,7 @@ const World = () => {
         <div className="navigation-button navigation-next-button">
           <button
             onClick={() => {
+              clearScheduledAnimations()
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -233,23 +278,34 @@ const World = () => {
   }
 
   /**
-   * Creates linegraph
-   * @returns dom element linegraph
+   * Appends legend for globe to svg
    */
-  function createLinegraph() {
+  function createLegend() {
+    const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
+    const svg = select(svgRefLegend.current)
+
+    var legend = legendColor()
+      .title(t("Climate1_Legend"))
+      .scale(colorScaleLegend)
+      .cells(8)
+      .orient("horizontal")
+      .shapeWidth(33)
+      .shapePadding(0)
+      .shapeHeight(5)
+    svg.call(legend)
+  }
+
+  /**
+   * Adds speach bubble with text for globe
+   * @returns dom element with speech bubble for globe
+   */
+  function createBubbleGlobe() {
     return (
-      <CSSTransition in={true} timeout={200000} classNames="fade" unmountOnExit appear>
-        <div className="linegraph-container">
-          <div className="linegraph-text-container">
-            {globalData === undefined ? null : (
-              <TemperatureLineGraph
-                selectedCountry={clickedCountry.country}
-                climateData={clickedCountry.filteredCountry}
-                globalData={globalData}
-              />
-            )}
-            <div className="info-box-linegraph">{createBubbleLineGraph()}</div>
-          </div>
+      <CSSTransition in={showInitialBubble} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+        <div className="bubble-box bubble-box-climate1-globe">
+          <p className="bubble-box-text">
+            <b>{t("Climate1_Bubble.1")}</b>
+          </p>
         </div>
       </CSSTransition>
     )
@@ -259,16 +315,22 @@ const World = () => {
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    createLegend()
     loadData()
-    handleZoom()
+    handleInitialAnimation()
   }, [])
 
   return (
     <React.Fragment>
       {createGlobe()}
-      {createLinegraph()}
+      {createLocationButton()}
+      {createBubbleGlobe()}
+      {createModal()}
       {navigationNext()}
       {navigationBack()}
+      <svg className="legend-world">
+        <g ref={svgRefLegend}></g>
+      </svg>
     </React.Fragment>
   )
 }

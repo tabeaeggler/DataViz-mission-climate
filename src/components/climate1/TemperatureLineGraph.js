@@ -8,10 +8,7 @@ import {
   scaleLinear,
   axisLeft,
   extent,
-  interpolateRdYlBu,
-  scaleSequential
 } from "d3"
-import { legendColor } from "d3-svg-legend"
 
 
 /**
@@ -24,7 +21,6 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
-  const svgRefLegend = useRef()
   const scaleSvg = 0.93
 
 
@@ -76,9 +72,9 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   function createLineGraph() {
-    const scaleGroup = 0.8
+    const scaleGroup = 0.6
     const width = (window.innerWidth / 2) * scaleGroup
-    const height = 250
+    const height = 160
     const margin = 40
     //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr(
@@ -102,7 +98,7 @@ const TemperatureLineGraph = props => {
     //create X and Y axis
     const xAxis = axisBottom(xScale).tickFormat(index => index)
     const yAxis = axisLeft(yScale).tickFormat(
-      index => index.toFixed(1) + " \u2103"
+      index => index.toFixed(1) + " \u2103" 
     )
 
     //add X and Y gridlines
@@ -118,8 +114,8 @@ const TemperatureLineGraph = props => {
       .call(make_y_gridlines(yScale).tickSize(-width).tickFormat(""))
 
     //add X and Y axis
-    svg.append("g").attr("transform", `translate(0,${height})`).call(xAxis)
-    svg.append("g").call(yAxis)
+    svg.append("g").attr("class", "axis").attr("transform", `translate(0,${height})`).call(xAxis)
+    svg.append("g").attr("class", "axis").call(yAxis)
 
     //remove old line tag
     svg.select(".country-name").remove()
@@ -159,20 +155,6 @@ const TemperatureLineGraph = props => {
       .attr("opacity", "0.4")
       .style("fill", "white")
       .text(t("Climate1_TooltipTemperature.5"))
-
-    //add description text for graph
-    svg
-      .append("svg:text")
-      .append("svg:tspan")
-      .attr("class", "linegraph-description")
-      .style("fill", "#bbb9b9")
-      .attr("y", "15px")
-      .attr("x", "20px")
-      .text(t("Climate1_TooltipTemperature.6"))
-      .append("svg:tspan")
-      .attr("y", "40px")
-      .attr("x", "22px")
-      .text(t("Climate1_TooltipTemperature.7"))
 
     //only render country line when country is selcted
     if (props.selectedCountry !== undefined || props.climateData.length > 0) {
@@ -214,27 +196,10 @@ const TemperatureLineGraph = props => {
   }
 
   /**
-   * Creates color-scale legend for globe
-   */
-  function createLegend() {
-    const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
-    const svg = select(svgRefLegend.current)
-    var legend = legendColor()
-      .scale(colorScaleLegend)
-      .cells(8)
-      .orient("vertical")
-      .shapeWidth(5)
-      .shapePadding(-2)
-      .shapeHeight(33)
-    svg.call(legend)
-  }
-
-  /**
    * React Lifecycle -> Renders as soon as props has changed
    */
   useEffect(() => {
     createLineGraph()
-    createLegend()
   }, [props])
 
   return (
@@ -242,12 +207,9 @@ const TemperatureLineGraph = props => {
       <div className="temperature-graph-container">
         <svg
           className="temperature-graph"
-          width={(window.innerWidth / 2)*scaleSvg}>
+          width={660}>
           <g ref={svgRef}></g>
           <g ref={svgLinesRef}></g>
-        </svg>
-        <svg className="legend-world">
-          <g ref={svgRefLegend}></g>
         </svg>
       </div>
     </React.Fragment>

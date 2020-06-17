@@ -6,8 +6,8 @@ import { CSSTransition } from "react-transition-group"
 
 /**
  * creates a scalable glacier graph
- * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactor scale factor for scaling the svg glacier
+ * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {number} props.scaleFactorEstimation scale factor of submitted estimation for scaling the glacier svg
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
  * @param {array} props.glacierData volume data of swiss glaciers
@@ -26,19 +26,19 @@ const GlacierGraph = props => {
    */
   function createReferenceGlacier() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={3000}
-        classNames="glacier-animation-fade-in"
-        unmountOnExit
-        appear>
-        <div className="glacier-img-container">
+      <div className="glacier-img-container">
+        <CSSTransition
+          in={props.showGlacierInteraction}
+          timeout={3000}
+          classNames="glacier-animation-fade-in"
+          unmountOnExit
+          appear>
           <p className="glacier-original-text">
             {t("Climate2_Glacier_Graph.3")} 1850: {props.glacierData.data_1850} km&sup3;
           </p>
-          {getScaledGlacier(1, GlacierTransparent)}
-        </div>
-      </CSSTransition>
+        </CSSTransition>
+        {getScaledGlacier(1, GlacierTransparent)}
+      </div>
     )
   }
 
