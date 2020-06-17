@@ -48,10 +48,11 @@
 }
 
 .bubble-box-climate3 {
+  position: absolute;
   text-align: left;
-  top: 530px;
+  top: 45%;
   width: 550px;
-  left: 710px;
+  left: 36%;
 }
 
 .label-electricity {

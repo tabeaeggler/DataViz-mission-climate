@@ -1,60 +1,37 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { BrowserRouter as Router } from "react-router-dom"
 import Routes from "./routing/Routes"
+import history from "./routing/history"
 import "./App.css"
 
 function App() {
-  const { i18n } = useTranslation()
-
-  //initally color button with current language
-  useEffect(() => {
-    var selectedItem = document.getElementById(i18n.language)
-    selectedItem.id = "language-button-clicked"
-  }, [i18n])
-
   //handle button clickevent
-  function handleClick(lang, e) {
-    //change language
-    i18n.changeLanguage(lang)
-
+  function handleClick(path, e) {
+    //change page
+    history.push(path)
     //change color of selected button
-    var selectedItem = document.getElementById("language-button-clicked")
+    var selectedItem = document.getElementById("nav-button-clicked")
     if (selectedItem != null) {
       selectedItem.removeAttribute("id")
-      selectedItem.classList.add("language-button")
+      selectedItem.classList.add("nav-button")
     }
-    e.target.id = "language-button-clicked"
+    e.target.id = "nav-button-clicked"
   }
 
   return (
     <Router>
       <div className="App">
         <Routes />
-        <div className="language-button-container">
-          <button
-            className="language-button"
-            id="en"
-            onClick={e => handleClick("en", e)}>
-            E
+        <div className="nav-button-container">
+          <button className="nav-button" id="nav-button-clicked" onClick={e => handleClick("/", e)}>
+            1
           </button>
-          <button
-            className="language-button"
-            id="de"
-            onClick={e => handleClick("de", e)}>
-            D
+          <button className="nav-button" onClick={e => handleClick("/Snowline", e)}>
+            2
           </button>
-          <button
-            className="language-button"
-            id="fr"
-            onClick={e => handleClick("fr", e)}>
-            F
-          </button>
-          <button
-            className="language-button"
-            id="it"
-            onClick={e => handleClick("it", e)}>
-            I
+          <button className="nav-button" onClick={e => handleClick("/Cause", e)}>
+            3
           </button>
         </div>
       </div>
