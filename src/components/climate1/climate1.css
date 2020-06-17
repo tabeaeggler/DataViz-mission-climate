@@ -1,70 +1,63 @@
-/*temperature linegraph style*/
-.temperature-graph-container {
-  display: flex;
-  justify-content: center;
-}
-
+/*temperature linegrap style*/
 .temperature-graph {
-  height: 320px;
+  height: 220px;
 }
 
 .grid line {
-  stroke: #1c1c1d;
+  stroke: #141416;
+  opacity: 0.6;
 }
 
 .grid path {
   stroke-width: 0;
 }
 
-.linegraph-container {
-  position: absolute;
-  left: 53%;
-  top: 23%;
+path.domain {
+  stroke: #141416;
 }
 
-.linegraph-text-container {
-  position: relative;
+.axis text {
+  fill: #bbb9b9;
+  opacity: 0.3;
+}
+.tick line {
+  stroke: #141416;
+  opacity: 0.6;
 }
 
 text.global-name,
 text.country-name,
 text.year-text {
-  font-size: 0.7em;
-}
-
-.info-box-linegraph {
-  position: absolute;
-  bottom: -17%;
-  right: 7%;
-  width: 96%;
-}
-
-.bubble-box-climate1-linegraph {
-  right: 0.5%;
-  width: 96.5%;
+  font-size: 0.6em;
 }
 
 /*world component style*/
 .legend-world {
-  width: 30px;
-  height: 250px;
+  width: 265px;
+  height: 50px;
   position: absolute;
-  left: -2.7%;
-  top: 12.1%;
+  bottom: 3%;
+  left: 42%;
 }
 
-.scene-tooltip {
-  font-family: "Open Sans", sans-serif;
+.legendCells{
+  transform: translateY(20px);
+
 }
 
 svg text.legendTitle {
   fill: #bbb9b9;
-  font-size: 0.9em;
-  transform: translate(0px, 15px);
+  font-size: 0.6em;
+  transform: translate(0px, 9px);
 }
+
 svg text.label {
-  fill: transparent;
-  font-size: 0.7em;
+  fill: #bbb9b9;
+  font-size: 0.6em;
+}
+
+.scene-tooltip {
+  font-family: "Open Sans", sans-serif;
 }
 
 .location-button button {
@@ -72,31 +65,72 @@ svg text.label {
   text-align: center;
   margin-bottom: 2em;
   position: fixed;
-  bottom: -1%;
-  left: 1%;
+  bottom: -1.5%;
+  left: 1.5%;
   display: block;
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .globe-container {
   position: absolute;
-  bottom: 00.1%;
+}
+
+.climate-1-title,
+.climate-1-subtitle {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+}
+
+.climate-1-subtitle {
+  top: 120px;
 }
 
 .bubble-box-climate1-globe {
-  bottom: 10%;
-  left: 28.5%;
-  width: 35%;
-  
+  bottom: 15%;
+  left: 41.2%;
+  width: 265px;
 }
 
-/*climate 1 style*/
-.climate-1-title {
+/* modal */
+.modal-content {
+  width: 660px;
+  background-color: #202023;
   position: absolute;
-  z-index: 10;
-  left: 51.2%;
-  padding: 0;
-  top: 14%;
+  bottom: 0%;
+  left: -17%;
 }
 
+.modal-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
+.modal-footer,
+.modal-header {
+  border: none;
+  display: block;
+}
+
+.modal-footer {
+  font-size: 0.9em;
+}
+
+div.modal-header {
+  display: block;
+  text-align: center;
+  padding: 0;
+}
+
+button.close {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  z-index: 10;
+}
+
+button.close span {
+  color: #bbb9b9;
+  text-shadow: none;
+}

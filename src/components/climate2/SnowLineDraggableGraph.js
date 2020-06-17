@@ -96,6 +96,24 @@ const SnowLineDraggableGraph = props => {
       svg
         .append("text")
         .attr("class", "snowline-text")
+        .attr("x", width - marginTextX)
+        .attr(
+          "y",
+          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
+            ? yScale(props.data[1].snowline + marginTextY / 2)
+            : yScale(props.data[1].snowline - marginTextY)
+        )
+        .text(props.data[1].snowline + " m")
+        .style("opacity", 0)
+        .transition()
+        .delay(2700)
+        .duration(300)
+        .ease(easeLinear)
+        .style("opacity", 1)
+
+      svg
+        .append("text")
+        .attr("class", "snowline-text")
         .attr("x", 8)
         .attr(
           "y",
@@ -147,24 +165,6 @@ const SnowLineDraggableGraph = props => {
             : yScale(draggableLinePosition - marginTextY)
         )
         .text(t("Climate2_Graph.2"))
-
-      svg
-        .append("text")
-        .attr("class", "snowline-text")
-        .attr("x", width - marginTextX)
-        .attr(
-          "y",
-          props.data[1].snowline - draggableLinePosition < offset && props.data[1].snowline - draggableLinePosition > 0
-            ? yScale(props.data[1].snowline + marginTextY / 2)
-            : yScale(props.data[1].snowline - marginTextY)
-        )
-        .text(props.data[1].snowline + " m")
-        .style("opacity", 0)
-        .transition()
-        .delay(2700)
-        .duration(300)
-        .ease(easeLinear)
-        .style("opacity", 1)
     }
 
     if (!props.showAnswer && props.showSnowlineInteraction) {
@@ -373,21 +373,21 @@ const SnowLineDraggableGraph = props => {
 
   return (
     <React.Fragment>
-        <div className="snowline-container zoom-mountain">
-          <svg className="snowline-graph" width={width + 2 * marginLeft}>
-            <g ref={svgRef}></g>
-          </svg>
-          {showSubmitButton ? (
-            <button
-              className="submit-button submit-button-snowline"
-              style={{
-                bottom: (draggableLinePosition * height) / mountainHeight - 5,
-              }}
-              onClick={() => showResult()}>
-              {t("Climate2_Submit_Button")}
-            </button>
-          ) : null}
-        </div>
+      <div className="snowline-container zoom-mountain">
+        <svg className="snowline-graph" width={width + 2 * marginLeft}>
+          <g ref={svgRef}></g>
+        </svg>
+        {showSubmitButton ? (
+          <button
+            className="submit-button submit-button-snowline"
+            style={{
+              bottom: (draggableLinePosition * height) / mountainHeight - 5,
+            }}
+            onClick={() => showResult()}>
+            {t("Climate2_Submit_Button")}
+          </button>
+        ) : null}
+      </div>
     </React.Fragment>
   )
 }

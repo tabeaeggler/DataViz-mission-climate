@@ -1,37 +1,32 @@
 {
   "": "Climate1_Screen",
   "Climate1_Title": {
-    "1": "1. Die Welt wird wärmer"
+    "1": "1. Die Welt wird wärmer",
+    "2": "- Temperaturabweichungen des Jahres 2019 vom Mittel 1950-1981 -"
   },
   "Climate1_TooltipTemperature": {
     "1": "Temperaturzunahme",
     "2": "keine Angaben",
     "3": "d.ADMIN_DE",
     "4": "props.selectedCountry.properties.ADMIN_DE",
-    "5": "Global",
-    "6": "Temperaturabweichung vom Durchschnitt",
-    "7": "der Jahre 1950-81"
+    "5": "Global"
   },
+  "Climate1_Legend": "Temperaturabweichungen vom Mittel in °C",
   "Climate1_Location": "Mein Standort",
   "Climate1_Bubble": {
-    "1": "Temperaturzunahmen im Jahr 2019: ",
-    "2": "Drehe die Weltkugel oder zoome mit zwei Fingern.",
-    "3": "Klicke auf ein Land, damit du seine relativen Temperaturveränderung über die Jahre sehen kannst. ",
-    "4": "Um relative Temperaturveränderungen zu beschreiben, werden die Durchschnitte der nationalen oder globalen Temperaturen mit der durchschnittlichen Temperatur der Jahre 1950 - 81 verglichen. ",
-    "5": "Was bedeutet diese für die Schweiz?"
+    "1": "Drehe die Weltkugel, zoome mit zwei Fingern oder klicke auf ein Land für mehr Informationen.",
+    "2": "Die im Grafen dargestellten ",
+    "3": "Abweichungen der mittleren Jahrestemperaturen vom Durchschnitt der Jahre 1950-1981, ",
+    "4": "zeigen eine stetige Temperaturzunahme. Diese haben starke Auswirkungen auf Mensch und Umwelt. Was bedeutet dies für die Schweiz? Klicke weiter um mehr zu erfahren."
   },
   "Climate1_Source": "Quelle: NASA-GISS",
-  "Climate1_Button": {
-    "1": "Weiter",
-    "2": "Was bedeutet das für die Schweiz?"
-  },
   "Climate2_Bubble_Snowline": {
     "1": "Die Nullgradgrenze verschiebt sich immer weiter nach oben und weniger Schnee bleibt in tieferen Lagen liegen.",
-    "2": " Als guter Richtwert gilt: Schnee ist oftmals 200 bis 400 Meter unterhalb der Nullgradgrenze zu erwarten.",
+    "2": " Als Richtwert gilt: Schnee ist oftmals 200 bis 400 Meter unterhalb der Nullgradgrenze zu erwarten.",
     "3": "Lösung: Die Nullgradgrenze stieg in den letzten 60 Jahre um ",
     "4": "350 Meter",
     "5": " - pro Grad Erwärmung ca. 200 Meter. Dies entspricht",
-    "6": " einem Fünftel der Höhe des Rigi.",
+    "6": " XX mal der Höhe der Wetterstation des Verkehrshaus.",
     "7": " Auch die Gletscher sind betroffen, erfahre mehr auf der nächsten Seite!"
   },
   "Climate2_Bubble_Glacier": {

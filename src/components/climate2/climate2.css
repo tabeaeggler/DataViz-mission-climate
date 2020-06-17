@@ -45,22 +45,39 @@
   transition: opacity 1500ms;
 }
 
-.zoom-in-landscape-exit {
+.zoom-in-landscape-exit, .zoom-back-exit {
   transform-origin: 4.5% 100%;
   transform: scale(1.6);
 }
 
-.zoom-in-landscape-exit-active {
+.zoom-in-landscape-exit-active, .zoom-back-exit-active {
   transform-origin: 94% 100%;
   transform: scale(2.15);
   transition: all 2s;
 }
 
-.zoom-in-landscape-exit-done {
+.zoom-in-landscape-exit-done, .zoom-back-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
   background-image: url("../../assets/img/mountainsLandscapeTransparent.svg") !important;
   transition: all 2s;
+}
+
+.zoom-back-enter{
+  transform-origin: 94% 100%;
+  transform: scale(2.15);
+}
+
+.zoom-back-enter-active{
+  transform-origin: 4.5% 100%;
+  transform: scale(1.6);
+  transition: all 3s;
+}
+
+.zoom-back-enter-done{
+  transform-origin: 4.5% 100%;
+  transform: scale(1.6);
+  transition: all 3s;
 }
 
 /*Snowline*/
@@ -149,7 +166,6 @@ font-weight: bold;
 
 .difference-rect {
   fill: #6a8adf;
-  opacity: 0.1;
 }
 
 .difference-line {
@@ -195,7 +211,7 @@ font-weight: bold;
 
 .snowline-title-wrapper {
   position: absolute;
-  bottom: 50%;
+  bottom: 52%;
   width: 66%;
 }
 
@@ -265,6 +281,8 @@ margin-bottom: 0;
 
 .slider-text-small {
   font-size: 0.5em;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .slider-text-bold {
@@ -276,7 +294,7 @@ margin-bottom: 0;
 }
 
 .submit-button-glacier {
-  margin-top: 15px;
+  margin-top: 10px;
   left: -3%;
 }
 
@@ -388,7 +406,7 @@ margin-bottom: 0;
   position: absolute;
   width: 66%;
   left:40.5%;
-  bottom: 37%;
+  bottom: 39%;
 }
 
 .source-glacier {
