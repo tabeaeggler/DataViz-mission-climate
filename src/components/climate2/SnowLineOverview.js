@@ -23,6 +23,7 @@ const SnowLineOverview = props => {
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
   //global nav state
   const [globalNavState, setGlobalNavState] = useContext(Context)
+  setGlobalNavState(2)
 
   /**
    * Creates the header section of the mountains page with animation

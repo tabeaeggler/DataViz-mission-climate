@@ -8,10 +8,10 @@ function Navigation() {
 
   useEffect(() => {
     var bu
-    document.getElementById("1").style.backgroundColor = "gray"
-    document.getElementById("2").style.backgroundColor = "gray"
-    document.getElementById("3").style.backgroundColor = "gray"
-    document.getElementById(globalNavState).style.backgroundColor = "red"
+    document.getElementById("1").style.backgroundColor = "#bbb9b9"
+    document.getElementById("2").style.backgroundColor = "#bbb9b9"
+    document.getElementById("3").style.backgroundColor = "#bbb9b9"
+    document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
   })
 
   function handleClick(path, pageNr) {
@@ -22,8 +22,6 @@ function Navigation() {
 
   return (
     <div className="nav-button-container">
-      {console.log("globalNavState", globalNavState)}
-      <h6>globalNavState: {globalNavState}</h6>
       <button className="nav-button" id="1" onClick={() => handleClick("/", 1)}>
         1
       </button>

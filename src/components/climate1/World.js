@@ -48,6 +48,7 @@ const World = () => {
   const [showInitialBubble, setShowInitialBubble] = useState(true)
   //global nav state
   const [globalNavState, setGlobalNavState] = useContext(Context)
+  setGlobalNavState(1)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph

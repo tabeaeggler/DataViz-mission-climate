@@ -22,6 +22,8 @@ function Climate3() {
   })
   //global nav state
   const [globalNavState, setGlobalNavState] = useContext(Context)
+  setGlobalNavState(3)
+
   const svgRef = useRef()
   const radiusBubble = 11
   const width = window.innerWidth
