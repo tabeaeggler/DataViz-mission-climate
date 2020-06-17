@@ -15,13 +15,13 @@ function Navigation() {
     <div className="nav-button-container">
       {console.log("globalNavState", globalNavState)}
       <h6>globalNavState: {globalNavState}</h6>
-      <button className="nav-button" onClick={handleClick("/", 1)}>
+      <button className="nav-button" onClick={() => handleClick("/", 1)}>
         1
       </button>
-      <button className="nav-button" onClick={handleClick("/Snowline", 2)}>
+      <button className="nav-button" onClick={() => handleClick("/Snowline", 2)}>
         2
       </button>
-      <button className="nav-button" onClick={handleClick("/Cause", 3)}>
+      <button className="nav-button" onClick={() => handleClick("/Cause", 3)}>
         3
       </button>
     </div>
