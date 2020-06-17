@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import Slider from "rc-slider"
@@ -6,6 +6,7 @@ import GlacierGraph from "./GlacierGraph"
 import history from "../../routing/history"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
 import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
+import { Context } from "../../navigaton/Store"
 import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
@@ -33,6 +34,8 @@ const GlacierOverview = props => {
     data_1850: 130,
     data_2019: 50.645,
   }
+  //global nav state
+  const [globalNavState, setGlobalNavState] = useContext(Context)
 
   /**
    * Handles slider interaction. Sets new percentage and scale of lake.
@@ -87,12 +90,7 @@ const GlacierOverview = props => {
    */
   function createHeader() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={{ enter: 2000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="glacier-title-wrapper">
           <h1 className="glacier-zoom"> {t("Climate2_Title.1")}</h1>
           <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
@@ -108,12 +106,7 @@ const GlacierOverview = props => {
    */
   function createSliderAndNumbers() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction && !showAnswer}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction && !showAnswer} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="slider-container-glacier">
           <Slider max="90" value={percentageLabel.percentageDecrease} onChange={handleSliderChange} />
           <div className="glacier-zoom slider-text-volume">
@@ -181,15 +174,11 @@ const GlacierOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showGlacierInteraction}
-        timeout={6000}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showGlacierInteraction} timeout={6000} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button glacier-zoom" id="navigation-button-next-glacier">
           <button
             onClick={() => {
+              setGlobalNavState(3)
               history.push("/Cause")
             }}>
             <img src={ButtonRight} alt="continue"></img>

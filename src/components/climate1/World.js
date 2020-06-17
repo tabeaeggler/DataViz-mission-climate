@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -14,6 +14,7 @@ import history from "../../routing/history"
 import { Modal } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { legendColor } from "d3-svg-legend"
+import { Context } from "../../navigaton/Store"
 
 /**
  * Creates a interactive globe to show climate warming
@@ -53,6 +54,9 @@ const World = () => {
   const modalWidth = (window.innerWidth / 2) * 0.75
   //animation
   const [timeouts, setTimeouts] = useState([])
+  //global nav state
+  const [globalNavState, setGlobalNavState] = useContext(Context)
+  setGlobalNavState(1)
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -195,6 +199,12 @@ const World = () => {
       </div>
     )
   }
+  function updateCountry(country) {
+    setClickedCountry({
+      country: country,
+      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
+    })
+  }
 
   /**
    * Creates a modal with additional information of the clicked country
@@ -253,6 +263,7 @@ const World = () => {
           <button
             onClick={() => {
               clearScheduledAnimations()
+              setGlobalNavState(2)
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -272,6 +283,7 @@ const World = () => {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
+              //setGlobalNavState(0)
               console.log("Go to start page")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
@@ -291,7 +303,6 @@ const World = () => {
     var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(33).shapePadding(0).shapeHeight(5)
     svg.call(legend)
   }
-
 
   /**
    * React Lifecycle -> Renders only once

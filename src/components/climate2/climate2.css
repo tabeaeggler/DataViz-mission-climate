@@ -1,20 +1,20 @@
 /*Navigation*/
-#navigation-button-back-mountain{
+#navigation-button-back-mountain {
   bottom: 28.5%;
-  left:1.66%
+  left: 1.66%;
 }
 
-#navigation-button-next-mountain{
+#navigation-button-next-mountain {
   bottom: 28.5%;
   right: 35.8%;
 }
 
-#navigation-button-back-glacier{
+#navigation-button-back-glacier {
   bottom: 21.16%;
   left: 50.3%;
 }
 
-#navigation-button-next-glacier{
+#navigation-button-next-glacier {
   bottom: 21.16%;
   right: 3.2%;
 }
@@ -45,36 +45,39 @@
   transition: opacity 1500ms;
 }
 
-.zoom-in-landscape-exit, .zoom-back-exit {
+.zoom-in-landscape-exit,
+.zoom-back-exit {
   transform-origin: 4.5% 100%;
   transform: scale(1.6);
 }
 
-.zoom-in-landscape-exit-active, .zoom-back-exit-active {
+.zoom-in-landscape-exit-active,
+.zoom-back-exit-active {
   transform-origin: 94% 100%;
   transform: scale(2.15);
   transition: all 2s;
 }
 
-.zoom-in-landscape-exit-done, .zoom-back-exit-done {
+.zoom-in-landscape-exit-done,
+.zoom-back-exit-done {
   transform-origin: 94% 100%;
   transform: scale(2.15);
   background-image: url("../../assets/img/mountainsLandscapeTransparent.svg") !important;
   transition: all 2s;
 }
 
-.zoom-back-enter{
+.zoom-back-enter {
   transform-origin: 94% 100%;
   transform: scale(2.15);
 }
 
-.zoom-back-enter-active{
+.zoom-back-enter-active {
   transform-origin: 4.5% 100%;
   transform: scale(1.6);
   transition: all 3s;
 }
 
-.zoom-back-enter-done{
+.zoom-back-enter-done {
   transform-origin: 4.5% 100%;
   transform: scale(1.6);
   transition: all 3s;
@@ -146,8 +149,8 @@
 }
 
 .draggable-line-text-question {
-font-size: 0.9em;
-font-weight: bold;
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 .active-d3-item {
@@ -178,7 +181,8 @@ font-weight: bold;
   position: absolute;
 }
 
-.bubble-box-snow-introduction, .bubble-box-climate2-snow-answer {
+.bubble-box-snow-introduction,
+.bubble-box-climate2-snow-answer {
   width: 450px;
   left: 300px;
   bottom: 20px;
@@ -211,7 +215,7 @@ font-weight: bold;
 
 .snowline-title-wrapper {
   position: absolute;
-  bottom: 52%;
+  top: 37.8%;
   width: 66%;
 }
 
@@ -271,8 +275,8 @@ font-weight: bold;
 }
 
 .slider-text-small-ice {
-height: 30px;
-margin-bottom: 0;
+  height: 30px;
+  margin-bottom: 0;
 }
 
 .slider-text-scaleFactor {
@@ -361,7 +365,7 @@ margin-bottom: 0;
 }
 
 .glacier-original-text,
-.glacier-result-text, 
+.glacier-result-text,
 .glacier-input-text {
   color: #6a8adf;
   transform: rotate(-2.7deg);
@@ -371,7 +375,7 @@ margin-bottom: 0;
   position: absolute;
 }
 
-.glacier-input-text{
+.glacier-input-text {
   color: #ffd763;
 }
 
@@ -405,11 +409,12 @@ margin-bottom: 0;
 .glacier-title-wrapper {
   position: absolute;
   width: 66%;
-  left:40.5%;
-  bottom: 39%;
+  left: 40.5%;
+  top: 53.7%;
 }
 
 .source-glacier {
+  position: absolute;
   width: 250px;
-  right: 370px !important;
+  right: 15% !important;
 }
