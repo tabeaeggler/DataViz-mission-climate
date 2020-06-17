@@ -124,7 +124,8 @@
   position: absolute;
   bottom: 0;
   text-align: center;
-  width: 66%;
+  left: 50%;
+  margin-left: -900px;
 }
 
 .snowline-graph {
@@ -259,6 +260,8 @@
   border-radius: 5px;
   height: 65px;
   padding: 5px 10px;
+  left: 50%;
+  margin-left: 190px;
 }
 
 .slider-text-volume,
@@ -403,7 +406,8 @@
 .glacier-wrapper {
   position: absolute;
   bottom: 0;
-  right: 1150px;
+  left: 50%;
+  margin-left: 700px;
 }
 
 .glacier-title-wrapper {
