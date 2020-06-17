@@ -437,8 +437,8 @@ function Climate3() {
             <g ref={svgRef}></g>
           </svg>
           <h1> {t("Climate3_Title.1")}</h1>
-          {textboxes.random ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
-          {textboxes.splitGas ? (
+          {state.overview ? <h2 className="subtitle">{t("Climate3_Title.2")}</h2> : ""}
+          {state.splitGas ? (
             <div className="show-subtitles">
               <h2 className="subtitle show-textbox">{t("Climate3_Title.3")}</h2>
             </div>
