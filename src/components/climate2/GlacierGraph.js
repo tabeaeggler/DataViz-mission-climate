@@ -110,9 +110,7 @@ const GlacierGraph = props => {
       <CSSTransition in={props.showAnswer} timeout={500} classNames="glacier-animation-fade-in" unmountOnExit appear>
         <div
           style={{
-            bottom: props.scaleFactorEstimation * glacierHeight,
-            left: glacierWidth,
-          }}
+            bottom: props.scaleFactorEstimation * glacierHeight          }}
           className="estimation-container">
           <p className="glacier-estimation-text">
             {t("Climate2_Glacier_Graph.1") + calculateEstimatedVolume()} km&sup3;
