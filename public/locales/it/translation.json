@@ -52,9 +52,9 @@
     "3": "Stimare e confermare"
   },
   "Climate2_Slider": {
-    "1": "Diminuzione di volume",
-    "2": "Ghiaccio fuso",
-    "3": "Lago dei Quattro Cantoni"
+    "1": "Diminuzione \ndi volume",
+    "2": "Ghiaccio \nfuso",
+    "3": "Lago dei \nQuattro Cantoni"
   },
   "Climate2_Source_Snowline": "Fonte: OcCC & ProClim",
   "Climate2_Source_Glacier": "Fonte: SCNAT & VAW/ETHZürich & Universität Freiburg & Bundesamt für Statistik",
