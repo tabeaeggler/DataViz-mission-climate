@@ -11,14 +11,17 @@ import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
  * Assembles all elements of climate3 screen
+ * @param {function} props.setPageNr setter for navigation page
  */
-function Climate3() {
+
+function Climate3(props) {
   const { t } = useTranslation()
   const [state, setState] = useState({
     overview: true,
     splitGas: false,
     splitSector: false,
   })
+
   const svgRef = useRef()
   const radiusBubble = 11
   const width = window.innerWidth
@@ -311,6 +314,7 @@ function Climate3() {
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    props.setPageNr(3)
     d3.csv(BubbleObjectsPath).then(data => {
       createBubbleChart(data)
     })
@@ -323,14 +327,14 @@ function Climate3() {
   function createBubble() {
     return (
       <CSSTransition in={state.overview} timeout={2000} classNames="bubble-fade" unmountOnExit appear>
-          <div className="bubble-box bubble-box-climate3">
-            <p className="bubble-box-text">
-              <span className="question-style">
-                <b> {t("Climate3_Bubble_1.1")}</b>
-              </span>
-              {t("Climate3_Bubble_1.2")}
-              {t("Climate3_Bubble_1.3")}
-            </p>
+        <div className="bubble-box bubble-box-climate3">
+          <p className="bubble-box-text">
+            <span className="question-style">
+              <b> {t("Climate3_Bubble_1.1")}</b>
+            </span>
+            {t("Climate3_Bubble_1.2")}
+            {t("Climate3_Bubble_1.3")}
+          </p>
         </div>
       </CSSTransition>
     )
@@ -390,6 +394,7 @@ function Climate3() {
           <div className="navigation-button navigation-back-button">
             <button
               onClick={() => {
+                props.setPageNr(2)
                 history.push("/Snowline")
               }}>
               <img src={ButtonLeft} alt="continue"></img>

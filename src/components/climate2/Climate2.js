@@ -6,8 +6,9 @@ import "./climate2.css"
 
 /**
  * Assembles all elements of climate2 screen
+ * @param {function} props.setPageNr setter for navigation page
  */
-function Climate2() {
+function Climate2(props) {
   //states
   const [showSnowlineInteraction, setShowSnowlineInteraction] = useState(false)
   const [showSnowlineGraph, setShowSnowlineGraph] = useState(true)
@@ -21,7 +22,7 @@ function Climate2() {
         classNames={navigateBackToSnowline ? "zoom-back" : "zoom-in-landscape"}
         unmountOnExit={false}
         appear
-        onEntered={() =>  setShowSnowlineInteraction(true)}
+        onEntered={() => setShowSnowlineInteraction(true)}
         onExit={() => {
           setNavigateBackToSnowline(false)
           setShowSnowlineGraph(false)
@@ -30,12 +31,14 @@ function Climate2() {
           <SnowLineOverview
             showSnowlineInteraction={showSnowlineInteraction}
             setShowSnowlineGraph={setShowSnowlineGraph}
-            showSnowlineGraph={showSnowlineGraph}></SnowLineOverview>
+            showSnowlineGraph={showSnowlineGraph}
+            setPageNr={props.setPageNr}></SnowLineOverview>
           <GlacierOverview
             setNavigateBackToSnowline={setNavigateBackToSnowline}
             setShowSnowlineGraph={setShowSnowlineGraph}
             showSnowlineGraph={showSnowlineGraph}
-            showGlacierInteraction={!showSnowlineGraph}></GlacierOverview>
+            showGlacierInteraction={!showSnowlineGraph}
+            setPageNr={props.setPageNr}></GlacierOverview>
         </div>
       </CSSTransition>
     </React.Fragment>

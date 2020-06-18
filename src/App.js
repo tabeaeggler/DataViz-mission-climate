@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
 import { BrowserRouter as Router } from "react-router-dom"
-import Routes from "./routing/Routes"
 import history from "./routing/history"
+import Routes from "./routing/Routes"
+import ButtonHome from "./assets/img/buttonHome.svg"
+
 import "./App.css"
 
 function App() {
-  //handle button clickevent
-  function handleClick(path, e) {
-    //change page
-    history.push(path)
-    //change color of selected button
-    var selectedItem = document.getElementById("nav-button-clicked")
-    if (selectedItem != null) {
-      selectedItem.removeAttribute("id")
-      selectedItem.classList.add("nav-button")
-    }
-    e.target.id = "nav-button-clicked"
-  }
+  const [globalNavState, setGlobalNavState] = useState(1)
 
+  useEffect(() => {
+    document.getElementById("0").style.backgroundColor = "#bbb9b9"
+    document.getElementById("1").style.backgroundColor = "#bbb9b9"
+    document.getElementById("2").style.backgroundColor = "#bbb9b9"
+    document.getElementById("3").style.backgroundColor = "#bbb9b9"
+    document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
+  })
+
+  function handleClick(path, pageNr) {
+    setGlobalNavState(pageNr)
+    history.push(path)
+  }
   return (
     <Router>
       <div className="App">
-        <Routes />
+        <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
-          <button className="nav-button" id="nav-button-clicked" onClick={e => handleClick("/", e)}>
+          <button className="nav-button" id="0">
+            <img src={ButtonHome} alt="home"></img>
+          </button>
+          <button className="nav-button" id="1" onClick={() => handleClick("/", 1)}>
             1
           </button>
-          <button className="nav-button" onClick={e => handleClick("/Snowline", e)}>
+          <button className="nav-button" id="2" onClick={() => handleClick("/Snowline", 2)}>
             2
           </button>
-          <button className="nav-button" onClick={e => handleClick("/Cause", e)}>
+          <button className="nav-button" id="3" onClick={() => handleClick("/Cause", 3)}>
             3
           </button>
         </div>

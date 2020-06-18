@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
 import ButtonRight from "../../assets/img/buttonNavRight.svg"
@@ -12,7 +12,9 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
+ * @param {function} props.setPageNr setter for navigation page
  */
+
 const SnowLineOverview = props => {
   //translation
   const { t } = useTranslation()
@@ -44,7 +46,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds speach bubble for introduction to the topic 
+   * Adds speach bubble for introduction to the topic
    * @returns dom element with speech bubble
    */
   function createBubbleIntroduction() {
@@ -71,12 +73,7 @@ const SnowLineOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showSnowlineInteraction}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate2-snow-answer zoom-mountain">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.3")}</b>
@@ -106,12 +103,7 @@ const SnowLineOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showSnowlineGraph}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showSnowlineGraph} timeout={{ enter: 3000, exit: 0 }} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button zoom-mountain" id="navigation-button-next-mountain">
           <button
             onClick={() => {
@@ -134,6 +126,7 @@ const SnowLineOverview = props => {
         <div className="navigation-button navigation-back-button zoom-mountain" id="navigation-button-back-mountain">
           <button
             onClick={() => {
+              props.setPageNr(1)
               history.push("/")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
@@ -142,6 +135,13 @@ const SnowLineOverview = props => {
       </CSSTransition>
     )
   }
+
+  /**
+   * React Lifecycle -> Renders only once
+   */
+  useEffect(() => {
+    props.setPageNr(2)
+  }, [])
 
   return (
     <React.Fragment>
@@ -159,13 +159,7 @@ const SnowLineOverview = props => {
         setHideIntroductionBubble={setHideIntroductionBubble}
       />
 
-      <Snow
-        animationInterval={50}
-        followMouse={false}
-        vMaxY={1.5}
-        vMaxX={3}
-        flakesMaxActive={90}
-        flakesMax={150}></Snow>
+      <Snow animationInterval={50} followMouse={false} vMaxY={1.5} vMaxX={3} flakesMaxActive={90} flakesMax={150}></Snow>
     </React.Fragment>
   )
 }

@@ -15,6 +15,7 @@ import "rc-tooltip/assets/bootstrap.css"
  * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
+ * @param {function} props.setPageNr setter for navigation page
  */
 const GlacierOverview = props => {
   //transaltion
@@ -87,12 +88,7 @@ const GlacierOverview = props => {
    */
   function createHeader() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={{ enter: 2000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="glacier-title-wrapper">
           <h1 className="glacier-zoom"> {t("Climate2_Title.1")}</h1>
           <h2 className="glacier-zoom subtitle">{t("Climate2_Title.3")}</h2>
@@ -108,12 +104,7 @@ const GlacierOverview = props => {
    */
   function createSliderAndNumbers() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction && !showAnswer}
-        timeout={{ enter: 3000, exit: 0 }}
-        classNames="fade-climate2"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction && !showAnswer} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="slider-container-glacier">
           <Slider max="90" value={percentageLabel.percentageDecrease} onChange={handleSliderChange} />
           <div className="glacier-zoom slider-text-volume">
@@ -145,12 +136,7 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition
-        in={showAnswer && !props.showSnowlineGraph}
-        timeout={4000}
-        classNames="bubble-fade"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && !props.showSnowlineGraph} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
         <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
           <p className="bubble-box-text extra-line-spacing">
             <b>
@@ -181,15 +167,11 @@ const GlacierOverview = props => {
    */
   function navigationNext() {
     return (
-      <CSSTransition
-        in={showAnswer && props.showGlacierInteraction}
-        timeout={6000}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={showAnswer && props.showGlacierInteraction} timeout={6000} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-next-button glacier-zoom" id="navigation-button-next-glacier">
           <button
             onClick={() => {
+              props.setPageNr(3)
               history.push("/Cause")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -205,12 +187,7 @@ const GlacierOverview = props => {
    */
   function navigationBack() {
     return (
-      <CSSTransition
-        in={props.showGlacierInteraction}
-        timeout={{ enter: 2000, exit: 0 }}
-        classNames="show-button"
-        unmountOnExit
-        appear>
+      <CSSTransition in={props.showGlacierInteraction} timeout={{ enter: 2000, exit: 0 }} classNames="show-button" unmountOnExit appear>
         <div className="navigation-button navigation-back-button glacier-zoom" id="navigation-button-back-glacier">
           <button
             onClick={() => {
@@ -231,12 +208,12 @@ const GlacierOverview = props => {
       {createBubbleShowAnswer()}
       {navigationNext()}
       {navigationBack()}
-        <GlacierGraph
-          scaleFactor={calculatePercentage()}
-          showAnswer={showAnswer}
-          scaleFactorEstimation={scaleFactorEstimation}
-          showGlacierInteraction={props.showGlacierInteraction}
-          glacierData={dataVolume}></GlacierGraph>
+      <GlacierGraph
+        scaleFactor={calculatePercentage()}
+        showAnswer={showAnswer}
+        scaleFactorEstimation={scaleFactorEstimation}
+        showGlacierInteraction={props.showGlacierInteraction}
+        glacierData={dataVolume}></GlacierGraph>
     </React.Fragment>
   )
 }

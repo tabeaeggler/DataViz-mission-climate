@@ -1,0 +1,11 @@
+<svg width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="2.15" y1="11.6535" x2="2.15" y2="26.3535" stroke="#141416" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="bevel"/>
+<line x1="20.963" y1="11.6535" x2="20.963" y2="26.3535" stroke="#141416" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="bevel"/>
+<line x1="2.1998" y1="26.85" x2="20.7998" y2="26.85" stroke="#141416" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="bevel"/>
+<mask id="path-4-inside-1" fill="white">
+<rect x="7" y="17" width="9" height="11" rx="1"/>
+</mask>
+<rect x="7" y="17" width="9" height="11" rx="1" stroke="#141416" stroke-width="4.4" mask="url(#path-4-inside-1)"/>
+<line x1="2.14344" y1="11.3746" x2="11.102" y2="1.7678" stroke="#141416" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="bevel"/>
+<line x1="11.7258" y1="1.74592" x2="20.7278" y2="11.2719" stroke="#141416" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="bevel"/>
+</svg>

@@ -1,25 +1,26 @@
-import React, { Component } from "react"
+import React from "react"
 import { Router, Switch, Route } from "react-router-dom"
-
 import Snowline from "../components/climate2/Climate2"
 import Climate1 from "../components/climate1/Climate1"
-import Glacier from "../components/climate2/GlacierOverview"
-import Glacier2 from "../components/climate2/GlacierOverview"
 import Cause from "../components/climate3/Climate3"
 import history from "./history"
 
-export default class Routes extends Component {
-  render() {
-    return (
+/**
+ * Rendering of components with specific path
+ * @param {function} props.setPageNr setter for navigation page
+ */
+const Routes = props => {
+  return (
+    <div>
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={Climate1} />
-          <Route path="/Snowline" component={Snowline} />
-          <Route path="/Glacier" component={Glacier} />
-          <Route path="/Glacier2" component={Glacier2} />
-          <Route path="/Cause" component={Cause} />
+          <Route path="/" exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
+          <Route path="/Snowline" component={() => <Snowline setPageNr={props.setPageNr} />} />
+          <Route path="/Cause" component={() => <Cause setPageNr={props.setPageNr} />} />
         </Switch>
       </Router>
-    )
-  }
+    </div>
+  )
 }
+
+export default Routes

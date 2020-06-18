@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -18,8 +18,9 @@ import { legendColor } from "d3-svg-legend"
 /**
  * Creates a interactive globe to show climate warming
  * and renders TemperatureLineGraph for selected country.
+ * @param {function} props.setPageNr setter for navigation page
  */
-const World = () => {
+const World = props => {
   //translation
   const { t } = useTranslation()
   //globe
@@ -195,6 +196,12 @@ const World = () => {
       </div>
     )
   }
+  function updateCountry(country) {
+    setClickedCountry({
+      country: country,
+      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
+    })
+  }
 
   /**
    * Creates a modal with additional information of the clicked country
@@ -253,6 +260,7 @@ const World = () => {
           <button
             onClick={() => {
               clearScheduledAnimations()
+              props.setPageNr(2)
               history.push("/Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
@@ -272,6 +280,7 @@ const World = () => {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
+              //setGlobalNavState(0)
               console.log("Go to start page")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
@@ -292,11 +301,11 @@ const World = () => {
     svg.call(legend)
   }
 
-
   /**
    * React Lifecycle -> Renders only once
    */
   useEffect(() => {
+    props.setPageNr(1)
     createLegend()
     loadData()
     handleInitialAnimation()
