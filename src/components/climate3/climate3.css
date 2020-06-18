@@ -42,8 +42,9 @@
 
 .bubble-title-gas,
 .bubble-title-sector {
-  font-size: 1.4em;
-  font-family: "Inconsolata", monospace;
+  font-size: 16pt;
+  font-family: "Gudea", sans-serif;
+  font-weight: 700;
   text-anchor: middle;
 }
 

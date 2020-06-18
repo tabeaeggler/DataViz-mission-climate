@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
-import OpenSans from "../../assets/font/OpenSansRegular.json"
+import Gudea from "../../assets/font/Gudea_Regular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
 import LocationButton from "../../assets/img/location.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
@@ -151,7 +151,7 @@ const World = props => {
           }}
           polygonsTransitionDuration={300}
           //position-marker config
-          labelTypeFace={OpenSans}
+          labelTypeFace={Gudea}
           labelsData={currentLocationMarker}
           labelLat={d => d.latitude}
           labelLng={d => d.longitude}

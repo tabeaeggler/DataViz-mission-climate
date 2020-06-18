@@ -19,6 +19,7 @@ path.domain {
 .axis text {
   fill: #bbb9b9;
   opacity: 0.3;
+  font-family: "Gudea", sans-serif;
 }
 .tick line {
   stroke: #141416;
@@ -57,7 +58,7 @@ svg text.label {
 }
 
 .scene-tooltip {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Gudea", sans-serif;
 }
 
 .location-button button {
