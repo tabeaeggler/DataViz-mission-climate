@@ -6,6 +6,11 @@ body {
   line-height: 1.3;
 }
 
+/*Stop back/forward two finger swipe*/
+html {
+  touch-action: none;
+}
+
 *,
 ::after,
 ::before {
