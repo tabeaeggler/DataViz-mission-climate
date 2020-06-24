@@ -141,7 +141,8 @@ const World = props => {
           polygonSideColor={d => (d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)")}
           polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
           polygonLabel={({ properties: d }) => `
-        <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
+          
+        <b>${/* eslint-disable no-eval */ eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
             d.TEMP === "NO_DATA" || d.TEMP === "nan" ? t("Climate1_TooltipTemperature.2") : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>

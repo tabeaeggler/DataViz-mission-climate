@@ -130,6 +130,7 @@ const TemperatureLineGraph = props => {
         .attr("transform", "translate(" + (width - 10) + "," + yScale(getTagPosition("country")) + ")")
         .attr("dy", ".35em")
         .style("fill", "#D37B61")
+        /* eslint-disable no-eval */
         .text(eval(t("Climate1_TooltipTemperature.4")))
     }
 
