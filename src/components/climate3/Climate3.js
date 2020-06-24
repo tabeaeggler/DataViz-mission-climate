@@ -31,7 +31,6 @@ function Climate3(props) {
     const svg = d3.select(svgRef.current)
 
     //set bubble initial position and radius
-    var padding = 4
     for (var i = 0; i < data.length; i++) {
       data[i].x = Math.random() * width
       data[i].y = Math.random() * height
@@ -318,7 +317,7 @@ function Climate3(props) {
     d3.csv(BubbleObjectsPath).then(data => {
       createBubbleChart(data)
     })
-  }, [])
+  }, [props])
 
   /**
    * Adds Speach Bubble: overview

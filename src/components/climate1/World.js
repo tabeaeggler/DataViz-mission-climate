@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -196,12 +196,7 @@ const World = props => {
       </div>
     )
   }
-  function updateCountry(country) {
-    setClickedCountry({
-      country: country,
-      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
-    })
-  }
+
 
   /**
    * Creates a modal with additional information of the clicked country
@@ -309,7 +304,7 @@ const World = props => {
     createLegend()
     loadData()
     handleInitialAnimation()
-  }, [])
+  }, [props])
 
   return (
     <React.Fragment>
