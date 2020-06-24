@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -78,7 +78,7 @@ const World = props => {
   /**
    * Handles the initial animation of the globe
    */
-  function handleInitialAnimation() {
+  const handleInitialAnimation = useCallback(() => {
     var timeoutIds = []
 
     timeoutIds.push(zoom(30, 10, 3, 1500, 0))
@@ -90,7 +90,7 @@ const World = props => {
 
     setTimeoutIds([...timeoutIds])
     return timeoutIds
-  }
+  }, [])
 
   /**
    * Animation helper, zooms to specified location
@@ -289,13 +289,13 @@ const World = props => {
   /**
    * Appends legend for globe to svg
    */
-  function createLegend() {
+  const createLegend = useCallback(() => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
 
     var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(33).shapePadding(0).shapeHeight(5)
     svg.call(legend)
-  }
+  }, [t])
 
   /**
    * React Lifecycle -> Renders only once
@@ -304,11 +304,12 @@ const World = props => {
     props.setPageNr(1)
     createLegend()
     loadData()
+
     const ids = handleInitialAnimation()
     return () => {
       clearScheduledAnimations(ids)
     }
-  }, [props])
+  }, [props, createLegend, handleInitialAnimation])
 
   return (
     <React.Fragment>
