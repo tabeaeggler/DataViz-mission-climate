@@ -1,2 +1,2 @@
-#this script is used for CI. Port 443
-serve -l 443 -s build
+#this script is used for CI.
+serve -l 3000 -s build
