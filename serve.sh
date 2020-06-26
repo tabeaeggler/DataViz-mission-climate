@@ -1,2 +1,2 @@
-#this script is used for CI, defined port 5000
+#this script is used for CI
 serve -l 5000 -s build
