@@ -1,2 +1,2 @@
 #this script is used for CI. port
-serve -l 5000 -s build
+serve -l 80 -s build
