@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from "react-router-dom"
 import history from "./routing/history"
 import Routes from "./routing/Routes"
 import ButtonHome from "./assets/img/buttonHome.svg"
-
 import "./App.css"
 
 function App() {
@@ -21,13 +20,14 @@ function App() {
     setGlobalNavState(pageNr)
     history.push(path)
   }
+
   return (
     <Router>
       <div className="App">
         <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
           <button className="nav-button" id="0">
-            <img src={ButtonHome} alt="home"></img>
+            <img className={"home-button"} src={ButtonHome} alt="home"></img>
           </button>
           <button className="nav-button" id="1" onClick={() => handleClick("/", 1)}>
             1

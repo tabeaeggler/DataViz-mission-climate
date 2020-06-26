@@ -222,6 +222,10 @@ button.nav-button,
   transition: visibility 3s ease-in, opacity 3s ease-in;
 }
 
+.home-button {
+  padding-bottom: 5px;
+}
+
 /*Source*/
 .source {
   position: absolute;

@@ -141,7 +141,7 @@ const SnowLineOverview = props => {
    */
   useEffect(() => {
     props.setPageNr(2)
-  }, [])
+  }, [props])
 
   return (
     <React.Fragment>

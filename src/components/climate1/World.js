@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import { scaleSequential, interpolateYlOrRd, csv, interpolateRdYlBu, select } from "d3"
 import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
@@ -53,7 +53,7 @@ const World = props => {
   const handleShow = () => setShow(true)
   const modalWidth = (window.innerWidth / 2) * 0.75
   //animation
-  const [timeouts, setTimeouts] = useState([])
+  const [timeoutIds, setTimeoutIds] = useState([])
 
   /**
    * Loads the data for the globe and TemperatureLineGraph
@@ -78,33 +78,35 @@ const World = props => {
   /**
    * Handles the initial animation of the globe
    */
-  function handleInitialAnimation() {
-    zoom(30, 10, 3, 1500, 0)
-    zoom(30, 30, 3, 1500, 1)
-    zoom(30, -10, 3, 1500, 2)
-    zoom(30, 10, 3, 1500, 3)
-    zoom(30, 10, 2, 1500, 4)
-    zoom(30, 10, 3, 1500, 5)
-  }
+  const handleInitialAnimation = useCallback(() => {
+    var timeoutIds = []
+
+    timeoutIds.push(zoom(30, 10, 3, 1500, 0))
+    timeoutIds.push(zoom(30, 30, 3, 1500, 1))
+    timeoutIds.push(zoom(30, -10, 3, 1500, 2))
+    timeoutIds.push(zoom(30, 10, 3, 1500, 3))
+    timeoutIds.push(zoom(30, 10, 2, 1500, 4))
+    timeoutIds.push(zoom(30, 10, 3, 1500, 5))
+
+    setTimeoutIds([...timeoutIds])
+    return timeoutIds
+  }, [])
 
   /**
    * Animation helper, zooms to specified location
    */
   function zoom(lat, long, alt, time, order) {
     //save all scheduled functions
-    setTimeouts(timeouts => [
-      ...timeouts,
-      setTimeout(() => {
-        globeElement.current.pointOfView(
-          {
-            lat: lat,
-            lng: long,
-            altitude: alt,
-          },
-          time
-        )
-      }, time * order),
-    ])
+    return setTimeout(() => {
+      globeElement.current.pointOfView(
+        {
+          lat: lat,
+          lng: long,
+          altitude: alt,
+        },
+        time
+      )
+    }, time * order)
   }
 
   /**
@@ -139,7 +141,8 @@ const World = props => {
           polygonSideColor={d => (d === clickedCountry.country ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)")}
           polygonStrokeColor={() => "rgba(0, 0, 0, 0.2)"}
           polygonLabel={({ properties: d }) => `
-        <b>${eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
+          
+        <b>${/* eslint-disable no-eval */ eval(t("Climate1_TooltipTemperature.3"))}</b> <br />
         ${t("Climate1_TooltipTemperature.1")}: ${
             d.TEMP === "NO_DATA" || d.TEMP === "nan" ? t("Climate1_TooltipTemperature.2") : Number(d.TEMP).toFixed(1) + "°C"
           }<br/>
@@ -147,7 +150,7 @@ const World = props => {
           onPolygonClick={function (d) {
             handleShow(true)
             updateCountry(d)
-            clearScheduledAnimations()
+            clearScheduledAnimations(timeoutIds)
           }}
           polygonsTransitionDuration={300}
           //position-marker config
@@ -173,11 +176,12 @@ const World = props => {
 
   /**
    * Clears all scheduled functions calls for the initial animation
+   *  @param {array} ids array with all timout ids
    */
-  function clearScheduledAnimations() {
+  function clearScheduledAnimations(ids) {
     //clear excecution of all triggered functions
-    timeouts.forEach(t => {
-      clearTimeout(t)
+    ids.forEach(id => {
+      clearTimeout(id)
     })
   }
 
@@ -195,12 +199,6 @@ const World = props => {
         </button>
       </div>
     )
-  }
-  function updateCountry(country) {
-    setClickedCountry({
-      country: country,
-      filteredCountry: climateData.filter(o => o.country_code.toLowerCase() === country.properties.ISO_A2.toLowerCase()),
-    })
   }
 
   /**
@@ -259,7 +257,6 @@ const World = props => {
         <div className="navigation-button navigation-next-button">
           <button
             onClick={() => {
-              clearScheduledAnimations()
               props.setPageNr(2)
               history.push("/Snowline")
             }}>
@@ -293,13 +290,13 @@ const World = props => {
   /**
    * Appends legend for globe to svg
    */
-  function createLegend() {
+  const createLegend = useCallback(() => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
 
     var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(33).shapePadding(0).shapeHeight(5)
     svg.call(legend)
-  }
+  }, [t])
 
   /**
    * React Lifecycle -> Renders only once
@@ -308,8 +305,12 @@ const World = props => {
     props.setPageNr(1)
     createLegend()
     loadData()
-    handleInitialAnimation()
-  }, [])
+
+    const ids = handleInitialAnimation()
+    return () => {
+      clearScheduledAnimations(ids)
+    }
+  }, [props, createLegend, handleInitialAnimation])
 
   return (
     <React.Fragment>

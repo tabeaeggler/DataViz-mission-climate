@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import { select, line, curveCardinal, axisBottom, scaleLinear, axisLeft, extent } from "d3"
 
@@ -33,34 +33,9 @@ const TemperatureLineGraph = props => {
   }
 
   /**
-   * Calculates best position for naming tags beside line
-   * @param {string} tag differs the line. Is either global or country
-   * @returns {number} position for naming tag
-   */
-  function getTagPosition(tag) {
-    var globalTagPos = props.globalData[props.globalData.length - 1].value
-    if (props.selectedCountry === undefined || props.climateData.length === 0) return globalTagPos
-
-    var countryTagPos = props.climateData[props.climateData.length - 1].value
-    if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
-      if (globalTagPos > countryTagPos) {
-        if (tag === "global") return parseFloat(globalTagPos) + 0.1
-        if (tag === "country") return parseFloat(countryTagPos) - 0.1
-      }
-      if (globalTagPos < countryTagPos) {
-        if (tag === "global") return parseFloat(globalTagPos) - 0.1
-        if (tag === "country") return parseFloat(countryTagPos) + 0.1
-      }
-    } else {
-      if (tag === "global") return globalTagPos
-      if (tag === "country") return countryTagPos
-    }
-  }
-
-  /**
    * Main code for linegraph
    */
-  function createLineGraph() {
+  const createLineGraph = useCallback(() => {
     const scaleGroup = 0.6
     const width = (window.innerWidth / 2) * scaleGroup
     const height = 160
@@ -155,23 +130,49 @@ const TemperatureLineGraph = props => {
         .attr("transform", "translate(" + (width - 10) + "," + yScale(getTagPosition("country")) + ")")
         .attr("dy", ".35em")
         .style("fill", "#D37B61")
+        /* eslint-disable no-eval */
         .text(eval(t("Climate1_TooltipTemperature.4")))
     }
-  }
+
+    /**
+     * Calculates best position for naming tags beside line
+     * @param {string} tag differs the line. Is either global or country
+     * @returns {number} position for naming tag
+     */
+    function getTagPosition(tag) {
+      var globalTagPos = props.globalData[props.globalData.length - 1].value
+      if (props.selectedCountry === undefined || props.climateData.length === 0) return globalTagPos
+
+      var countryTagPos = props.climateData[props.climateData.length - 1].value
+      if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
+        if (globalTagPos > countryTagPos) {
+          if (tag === "global") return parseFloat(globalTagPos) + 0.1
+          if (tag === "country") return parseFloat(countryTagPos) - 0.1
+        }
+        if (globalTagPos < countryTagPos) {
+          if (tag === "global") return parseFloat(globalTagPos) - 0.1
+          if (tag === "country") return parseFloat(countryTagPos) + 0.1
+        }
+      } else {
+        if (tag === "global") return globalTagPos
+        if (tag === "country") return countryTagPos
+      }
+    }
+  }, [props, t])
 
   /**
    * React Lifecycle -> Renders as soon as props has changed
    */
   useEffect(() => {
     createLineGraph()
-  }, [props])
+  }, [props, createLineGraph])
 
   return (
     <React.Fragment>
-        <svg className="temperature-graph" width={(window.innerWidth / 2) * scaleSvg}>
-          <g ref={svgRef}></g>
-          <g ref={svgLinesRef}></g>
-        </svg>
+      <svg className="temperature-graph" width={(window.innerWidth / 2) * scaleSvg}>
+        <g ref={svgRef}></g>
+        <g ref={svgLinesRef}></g>
+      </svg>
     </React.Fragment>
   )
 }

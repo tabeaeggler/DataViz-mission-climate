@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import * as d3 from "d3"
 import * as d3Force from "d3-force"
 import "./climate3.css"
@@ -27,11 +27,10 @@ function Climate3(props) {
   const width = window.innerWidth
   const height = window.innerHeight
 
-  function createBubbleChart(data) {
+  const createBubbleChart = useCallback((data) => {
     const svg = d3.select(svgRef.current)
 
     //set bubble initial position and radius
-    var padding = 4
     for (var i = 0; i < data.length; i++) {
       data[i].x = Math.random() * width
       data[i].y = Math.random() * height
@@ -308,7 +307,7 @@ function Climate3(props) {
         .ease(d3.easeLinear)
         .style("opacity", 1)
     }
-  }
+  }, [height, width, t])
 
   /**
    * React Lifecycle -> Renders only once
@@ -318,7 +317,7 @@ function Climate3(props) {
     d3.csv(BubbleObjectsPath).then(data => {
       createBubbleChart(data)
     })
-  }, [])
+  }, [props, createBubbleChart])
 
   /**
    * Adds Speach Bubble: overview
