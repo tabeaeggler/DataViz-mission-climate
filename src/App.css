@@ -81,17 +81,14 @@ b {
   -webkit-text-fill-color: transparent;
   position: absolute;
   top: 50%;
-  margin-top: -200px;
+  margin-top: -70px;
   left: 50%;
-  margin-left: -469px;
-  width: 939px;
+  margin-left: -539px;
+  width: 1079px;
 }
 
 .start-circle {
   z-index: -10;
-  position: absolute;
-  top: 5px;
-  right: 140px;
 }
 
 .end-text-container {

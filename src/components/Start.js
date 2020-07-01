@@ -74,30 +74,14 @@ const Start = props => {
    */
   function createAnimation() {
     return (
-      <svg width="120" height="120" className="start-circle">
-        <path
-          id="sun"
-          d="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
-          fill="#6a8adf">
-          <animate
-            id="anim1"
-            attributeName="d"
-            to="M90 45C90 69.8528 69.8528 90 45 90C20.1472 90 0 69.8528 0 45C0 20.1472 20.1472 0 45 0C69.8528 0 90 20.1472 90 45Z"
-            begin="0s;anim4.end"
-            dur="2s"
-            fill="freeze"
-          />
+      <svg width="140" height="140" className="start-circle">
+        <circle cx="0" cy="0" r="45" transform="translate(70 70)" fill="#6a8adf">
+          <animate attributeName="r" from="45" to="60" id="anim1" begin="0s;anim4.end" dur="2s" fill="freeze" />
           <animate id="anim2" fill="freeze" attributeName="fill" begin="0s;anim4.end" dur="2s" to="#d37b61" />
-          <animate
-            id="anim3"
-            attributeName="d"
-            to="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
-            begin="anim1.end"
-            dur="2s"
-            fill="freeze"
-          />
+          <animate attributeName="r" from="60" to="45" id="anim3" begin="anim1.end" dur="2s" fill="freeze" />
           <animate id="anim4" attributeName="fill" to="#6a8adf" begin="anim1.end" dur="2s" fill="freeze" />
-        </path>
+        </circle>
+        <text fill="#d37b61" transform="translate(47.5 97.5)">?</text>
       </svg>
     )
   }
