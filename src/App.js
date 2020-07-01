@@ -6,7 +6,7 @@ import ButtonHome from "./assets/img/buttonHome.svg"
 import "./App.css"
 
 function App() {
-  const [globalNavState, setGlobalNavState] = useState(1)
+  const [globalNavState, setGlobalNavState] = useState(0)
 
   useEffect(() => {
     document.getElementById("0").style.backgroundColor = "#bbb9b9"
@@ -26,10 +26,10 @@ function App() {
       <div className="App">
         <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
-          <button className="nav-button" id="0">
+          <button className="nav-button" id="0" onClick={() => handleClick("/", 0)}>
             <img className={"home-button"} src={ButtonHome} alt="home"></img>
           </button>
-          <button className="nav-button" id="1" onClick={() => handleClick("/", 1)}>
+          <button className="nav-button" id="1" onClick={() => handleClick("/Globe", 1)}>
             1
           </button>
           <button className="nav-button" id="2" onClick={() => handleClick("/Snowline", 2)}>

@@ -4,6 +4,8 @@ import Snowline from "../components/climate2/Climate2"
 import Climate1 from "../components/climate1/Climate1"
 import Cause from "../components/climate3/Climate3"
 import history from "./history"
+import Start from "../components/Start"
+import End from "../components/End"
 
 /**
  * Rendering of components with specific path
@@ -14,9 +16,11 @@ const Routes = props => {
     <div>
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
+          <Route path="/" exact component={() => <Start setPageNr={props.setPageNr}/>} />
+          <Route path="/Globe" exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
           <Route path="/Snowline" component={() => <Snowline setPageNr={props.setPageNr} />} />
           <Route path="/Cause" component={() => <Cause setPageNr={props.setPageNr} />} />
+          <Route path="/End" component={() => <End />} />
         </Switch>
       </Router>
     </div>

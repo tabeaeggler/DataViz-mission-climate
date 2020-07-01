@@ -1,5 +1,5 @@
 {
-  "": "Climate1_Screen",
+  "Start": "Cambiamento Climatico?",
   "Climate1_Title": {
     "1": "1. Il mondo si sta riscaldando",
     "2": "- Scostamenti di temperatura nel 2019 dalla media 1950-1981 -"
@@ -42,7 +42,7 @@
   },
   "Climate2_Submit_Button": "Conferma",
   "Climate2_Title": {
-    "1": "2. Anche la Svizzera è interessata",
+    "1": "2. Anche la Svizzera è colpita",
     "2": "- Qual è stato il livello di congelamento nel 2018? -",
     "3": "- Di quale percentuale è diminuito il volume del ghiacciaio dal 1850? -"
   },
@@ -113,5 +113,11 @@
     "5": "Altri",
     "6": "Edificio"
   },
-  "Climate3_Source": "Fonte: IPCC (Anno di riferimento: 2010), WWF, Bayerischer Rundfunk, US EPA"
+  "Climate3_Source": "Fonte: IPCC (Anno di riferimento: 2010), WWF, Bayerischer Rundfunk, US EPA",
+  "End": {
+    "1": "Cambiamento Climatico? Sì!",
+    "2": "1. Si sta riscaldando",
+    "3": "2. La Svizzera è colpita",
+    "4": "3. L'uomo è il principale responsabile"
+  }
 }

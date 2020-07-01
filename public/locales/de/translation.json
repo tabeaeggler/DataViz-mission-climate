@@ -1,5 +1,5 @@
 {
-  "": "Climate1_Screen",
+  "Start": "Klimawandel?",
   "Climate1_Title": {
     "1": "1. Die Welt wird wärmer",
     "2": "- Temperaturabweichungen des Jahres 2019 vom Mittel 1950-1981 -"
@@ -108,5 +108,11 @@
     "5": "Andere",
     "6": "Gebäude"
   },
-  "Climate3_Source": "Quelle: IPCC (Referenzjahr: 2010), WWF, Bayerischer Rundfunk, US EPA"
+  "Climate3_Source": "Quelle: IPCC (Referenzjahr: 2010), WWF, Bayerischer Rundfunk, US EPA",
+  "End": {
+    "1": "Klimawandel? Ja!",
+    "2": "1. Es wird  wärmer",
+    "3": "2. Die Schweiz ist betroffen",
+    "4": "3. Der Mensch ist hauptverantwortlich"
+  }
 }
