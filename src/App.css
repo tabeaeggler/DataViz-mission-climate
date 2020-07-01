@@ -87,6 +87,13 @@ b {
   width: 939px;
 }
 
+.start-circle {
+  position: absolute;
+  top: 30px;
+  right: 341px;
+  opacity: 0.8;
+}
+
 .end-text-container {
   position: absolute;
   top: 50%;

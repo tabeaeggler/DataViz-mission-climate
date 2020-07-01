@@ -5,7 +5,7 @@ import history from "../routing/history"
 import { CSSTransition } from "react-transition-group"
 import "../App.css"
 
-const Start = (props) => {
+const Start = props => {
   const { t, i18n } = useTranslation()
 
   //initally color button with current language
@@ -74,8 +74,15 @@ const Start = (props) => {
    */
   function createAnimation() {
     return (
-      <svg width="100">
-
+      <svg width="261" height="261" className="start-circle">
+        <path
+          id="sun"
+          d="M261 130.5C261 202.573 202.573 261 130.5 261C58.4268 261 0 202.573 0 130.5C0 58.4268 58.4268 0 130.5 0C202.573 0 261 58.4268 261 130.5Z"
+          fill="#7589D2">
+          fill="#7589D2">
+          <animate id="anim1" fill="freeze" attributeName="fill" begin="0s;anim2.end+2s" dur="2s" to="#C97D6D" />
+          <animate id="anim2" attributeName="fill" to="#7589D2" begin="anim1.end+2s" dur="2s" fill="freeze" />
+        </path>
       </svg>
     )
   }
