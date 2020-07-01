@@ -88,10 +88,10 @@ b {
 }
 
 .start-circle {
+  z-index: -10;
   position: absolute;
-  top: 30px;
-  right: 341px;
-  opacity: 0.8;
+  top: 5px;
+  right: 140px;
 }
 
 .end-text-container {

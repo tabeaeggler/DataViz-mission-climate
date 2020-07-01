@@ -74,14 +74,29 @@ const Start = props => {
    */
   function createAnimation() {
     return (
-      <svg width="261" height="261" className="start-circle">
+      <svg width="120" height="120" className="start-circle">
         <path
           id="sun"
-          d="M261 130.5C261 202.573 202.573 261 130.5 261C58.4268 261 0 202.573 0 130.5C0 58.4268 58.4268 0 130.5 0C202.573 0 261 58.4268 261 130.5Z"
-          fill="#7589D2">
-          fill="#7589D2">
-          <animate id="anim1" fill="freeze" attributeName="fill" begin="0s;anim2.end+2s" dur="2s" to="#C97D6D" />
-          <animate id="anim2" attributeName="fill" to="#7589D2" begin="anim1.end+2s" dur="2s" fill="freeze" />
+          d="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
+          fill="#6a8adf">
+          <animate
+            id="anim1"
+            attributeName="d"
+            to="M90 45C90 69.8528 69.8528 90 45 90C20.1472 90 0 69.8528 0 45C0 20.1472 20.1472 0 45 0C69.8528 0 90 20.1472 90 45Z"
+            begin="0s;anim4.end"
+            dur="2s"
+            fill="freeze"
+          />
+          <animate id="anim2" fill="freeze" attributeName="fill" begin="0s;anim4.end" dur="2s" to="#d37b61" />
+          <animate
+            id="anim3"
+            attributeName="d"
+            to="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
+            begin="anim1.end"
+            dur="2s"
+            fill="freeze"
+          />
+          <animate id="anim4" attributeName="fill" to="#6a8adf" begin="anim1.end" dur="2s" fill="freeze" />
         </path>
       </svg>
     )
@@ -93,9 +108,8 @@ const Start = props => {
       {createLangugageButtons()}
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
         <div className="start-text">
-          {createAnimation()}
-          <br></br>
           {t("Start")}
+          {createAnimation()}
         </div>
       </CSSTransition>
     </React.Fragment>
