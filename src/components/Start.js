@@ -76,12 +76,14 @@ const Start = props => {
     return (
       <svg width="140" height="140" className="start-circle">
         <circle cx="0" cy="0" r="45" transform="translate(70 70)" fill="#6a8adf">
-          <animate attributeName="r" from="45" to="60" id="anim1" begin="0s;anim4.end" dur="2s" fill="freeze" />
-          <animate id="anim2" fill="freeze" attributeName="fill" begin="0s;anim4.end" dur="2s" to="#d37b61" />
-          <animate attributeName="r" from="60" to="45" id="anim3" begin="anim1.end" dur="2s" fill="freeze" />
-          <animate id="anim4" attributeName="fill" to="#6a8adf" begin="anim1.end" dur="2s" fill="freeze" />
+          <animate attributeName="r" from="45" to="60" id="anim1" begin="0s;anim4.end+1s" dur="2s" fill="freeze" />
+          <animate id="anim2" fill="freeze" attributeName="fill" begin="0s;anim4.end+1s" dur="2s" to="#d37b61" />
+          <animate attributeName="r" from="60" to="45" id="anim3" begin="anim1.end+1s" dur="2s" fill="freeze" />
+          <animate id="anim4" attributeName="fill" to="#6a8adf" begin="anim1.end+1s" dur="2s" fill="freeze" />
         </circle>
-        <text fill="#d37b61" transform="translate(47.5 97.5)">?</text>
+        <text fill="#d37b61" transform="translate(47.5 97.5)">
+          ?
+        </text>
       </svg>
     )
   }
