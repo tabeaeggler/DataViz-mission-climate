@@ -210,6 +210,10 @@ button.language-button,
   width: 220px;
 }
 
+button > img {
+  padding-top: 5px;
+}
+
 /*Bubble Text box*/
 .bubble-fade-enter {
   opacity: 0;
@@ -292,7 +296,7 @@ button.language-button,
   transition: visibility 3s ease-in, opacity 3s ease-in;
 }
 
-.home-button {
+.img-nav-button {
   padding-bottom: 5px;
 }
 
