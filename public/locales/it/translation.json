@@ -92,18 +92,18 @@
     "8": "di fermentazione, combustione di combustibili fossili"
   },
   "Climate3_Sector_Cause": {
-    "1": "Generazione di",
-    "2": "energia e di calore",
-    "3": "Seminativi, bestiame",
-    "4": "e deforestazione",
-    "5": "Processi",
-    "6": "industriali",
-    "7": "Trasporto stradale,",
-    "8": "ferroviario, aereo e marittimo",
-    "9": "Emissioni indirette del",
-    "10": "settore energetico",
-    "11": "Riscaldamento degli",
-    "12": "edifici e cucina"
+    "1": "(Generazione, trasmissione & ",
+    "2": "distribuzione di energia elettrica)",
+    "3": "(Seminativi, bestiame",
+    "4": "e deforestazione)",
+    "5": "(Processi",
+    "6": "industriali)",
+    "7": "(Trasporto stradale,",
+    "8": "ferroviario, aereo e marittimo)",
+    "9": "(Emissioni indirette del",
+    "10": "settore energetico)",
+    "11": "(Riscaldamento degli",
+    "12": "edifici e cucina)"
   },
   "Climate3_Sector": {
     "1": "Energia",

@@ -88,18 +88,18 @@
     "8": "fermentation, combustion de combustibles fossiles"
   },
   "Climate3_Sector_Cause": {
-    "1": "Production d'électricité",
-    "2": "et de chaleur",
-    "3": "Terres arables,",
-    "4": "bétail et déforestation",
-    "5": "Processus",
-    "6": "industriels",
-    "7": "Le transport routier,",
-    "8": "ferroviaire, aérien et maritime",
-    "9": "Émissions indirectes",
-    "10": "du secteur de l'énergie",
-    "11": "Chauffage des bâtiments",
-    "12": "et cuisine"
+    "1": "(Génération, transmission & ",
+    "2": "distribution d'électricité)",
+    "3": "(Terres arables,",
+    "4": "bétail et déforestation)",
+    "5": "(Processus",
+    "6": "industriels)",
+    "7": "(Le transport routier,",
+    "8": "ferroviaire, aérien et maritime)",
+    "9": "(Émissions indirectes",
+    "10": "du secteur de l'énergie)",
+    "11": "(Chauffage des bâtiments",
+    "12": "et cuisine)"
   },
   "Climate3_Sector": {
     "1": "Énergie",

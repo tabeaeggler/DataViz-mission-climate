@@ -92,18 +92,18 @@
     "8": "fermentation residues, combustion of fossil fuels"
   },
   "Climate3_Sector_Cause": {
-    "1": "Power and",
-    "2": "heat generation",
-    "3": "Arable, livestock",
-    "4": "and deforestation",
-    "5": "Industrial",
-    "6": "processes",
-    "7": "Road, rail, air",
-    "8": "and sea transport",
-    "9": "Indirect emissions",
-    "10": "from the energy sector",
-    "11": "Heating of buildings",
-    "12": "and cooking"
+    "1": "(Generation, transmission & ",
+    "2": "Distribution of electricity)",
+    "3": "(Arable, livestock",
+    "4": "and deforestation)",
+    "5": "(Industrial",
+    "6": "processes)",
+    "7": "(Road, rail, air",
+    "8": "and sea transport)",
+    "9": "(Indirect emissions",
+    "10": "from the energy sector)",
+    "11": "(Heating of buildings",
+    "12": "and cooking)"
   },
   "Climate3_Sector": {
     "1": "Energy",
