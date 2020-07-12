@@ -375,6 +375,7 @@ function Climate3(props) {
           <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
+                props.setPageNr(4)
                 history.push("/End")
               }}>
               <img src={ButtonRight} alt="continue"></img>
