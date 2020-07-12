@@ -13,7 +13,7 @@ function App() {
     document.getElementById("1").style.backgroundColor = "#bbb9b9"
     document.getElementById("2").style.backgroundColor = "#bbb9b9"
     document.getElementById("3").style.backgroundColor = "#bbb9b9"
-ga    if (globalNavState !== 4) document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
+    if (globalNavState !== 4) document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
   })
 
   function handleClick(path, pageNr) {
