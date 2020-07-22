@@ -33,10 +33,10 @@ const End = props => {
       {navigationBack()}
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
         <div className="end-text-container">
-          <p className="end-text-title">{t("End.1")}</p>
-          <p className="end-text-subtitle1">{t("End.2")}</p>
-          <p className="end-text-subtitle2">{t("End.3")}</p>
-          <p className="end-text-subtitle2">{t("End.4")}</p>
+          <p className="end-title">{t("End.1")}</p>
+          <p className="end-subtitle">{t("End.2")}</p>
+          <p className="end-subtitle">{t("End.3")}</p>
+          <p className="end-subtitle">{t("End.4")}</p>
         </div>
       </CSSTransition>
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>

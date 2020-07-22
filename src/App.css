@@ -79,7 +79,7 @@ b {
   width: 1079px;
 }
 
-.start-text {
+.start-title, .end-title  {
   font-family: "Inconsolata", monospace;
   font-weight: bold;
   font-size: 64pt;
@@ -91,8 +91,7 @@ b {
   margin: 0;
 }
 
-.start-subtitle,.end-text-subtitle1,
-.end-text-subtitle2 {
+.start-subtitle,.end-subtitle {
   font-family: "Inconsolata", monospace;
   font-size: 22pt;
   color: #bbb9b9;
@@ -110,20 +109,7 @@ b {
   text-align: center;
 }
 
-.end-text-title {
-  font-family: "Inconsolata";
-  font-weight: bold;
-  font-size: 64pt;
-  text-align: center;
-  text-transform: uppercase;
-  background: -webkit-linear-gradient(0deg, #6a8adf 30%, #d37b61 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-}
-
-.end-text-subtitle1,
-.end-text-subtitle2 {
+.end-text-subtitle{
   background: none;
   margin-top: 20px;
   margin-bottom: 10px;
