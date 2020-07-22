@@ -3,10 +3,10 @@
     "1": "Start",
     "2": "Fin"
   },
-  "Start":{
-    "1":"Changement Climatique?",
-    "2":" - 3 choses que vous devez savoir -"
-  } ,
+  "Start": {
+    "1": "Changement Climatique?",
+    "2": " - 3 choses que vous devez savoir -"
+  },
   "Climate1_Title": {
     "1": "1. Le monde se réchauffe",
     "2": "- Écarts de température en 2019 par rapport à la moyenne 1950-1981 -"
@@ -121,6 +121,7 @@
     "1": "Changement Climatique? Oui!",
     "2": "1. Il fait plus chaud",
     "3": "2. La Suisse est touchée",
-    "4": "3. L'homme est principalement responsable"
+    "4": "3. L'homme est principalement responsable",
+    "5": "Retour au début"
   }
 }

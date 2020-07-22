@@ -28,28 +28,26 @@ const End = props => {
     )
   }
 
-  /**
-   * Creates title animation
-   * @returns animated svg
-   */
-  function createAnimation() {
-    return (
-      <svg width="100" height="120">
-      </svg>
-    )
-  }
-
   return (
     <React.Fragment>
       {navigationBack()}
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
         <div className="end-text-container">
-          {createAnimation()}
           <p className="end-text-title">{t("End.1")}</p>
-          <p className="end-text-subtitle1">{ t("End.2")}</p>
+          <p className="end-text-subtitle1">{t("End.2")}</p>
           <p className="end-text-subtitle2">{t("End.3")}</p>
           <p className="end-text-subtitle2">{t("End.4")}</p>
         </div>
+      </CSSTransition>
+      <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
+        <button
+          onClick={() => {
+            props.setPageNr(0)
+            history.push("/")
+          }}
+          className="go-to-start-button">
+          {t("End.5")}
+        </button>
       </CSSTransition>
     </React.Fragment>
   )

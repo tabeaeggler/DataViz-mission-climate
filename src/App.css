@@ -70,17 +70,17 @@ b {
 }
 
 /*start and endscreen*/
-.start-container{
+.start-container {
   position: absolute;
   top: 50%;
-  margin-top: -70px;
+  margin-top: -85px;
   left: 50%;
   margin-left: -539px;
   width: 1079px;
 }
 
 .start-text {
-  font-family: Inconsolata;
+  font-family: "Inconsolata", monospace;
   font-weight: bold;
   font-size: 64pt;
   text-align: center;
@@ -88,10 +88,11 @@ b {
   background: -webkit-linear-gradient(0deg, #6a8adf 30%, #d37b61 70%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin:0;
+  margin: 0;
 }
 
-.start-subtitle {
+.start-subtitle,.end-text-subtitle1,
+.end-text-subtitle2 {
   font-family: "Inconsolata", monospace;
   font-size: 22pt;
   color: #bbb9b9;
@@ -110,7 +111,7 @@ b {
 }
 
 .end-text-title {
-  font-family: Inconsolata;
+  font-family: "Inconsolata";
   font-weight: bold;
   font-size: 64pt;
   text-align: center;
@@ -123,17 +124,23 @@ b {
 
 .end-text-subtitle1,
 .end-text-subtitle2 {
-  text-align: center;
-  font-size: 18pt;
-  font-weight: 700;
-  color: #bbb9b9;
   background: none;
-  margin-top: 100px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.end-text-subtitle2 {
-  margin-top: 0;
+.go-to-start-button {
+  background-color: #2d2d2e;
+  border-radius: 5px;
+  padding: 26px;
+  color: #bbb9b9;
+  position: absolute;
+  bottom: 65px;
+  left: 50%;
+  margin-left: -111px;
+  font-size: 16pt;
+  font-family: "Gudea";
+  font-weight: bold;
 }
 
 /* infobox style*/
