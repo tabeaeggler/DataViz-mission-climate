@@ -1,5 +1,12 @@
 {
-  "": "Climate1_Screen",
+  "Navigation": {
+    "1": "Start",
+    "2": "Ende"
+  },
+  "Start": {
+    "1": "Klimawandel?",
+    "2": "- 3 Dinge, die du wissen musst -"
+  },
   "Climate1_Title": {
     "1": "1. Die Welt wird wärmer",
     "2": "- Temperaturabweichungen des Jahres 2019 vom Mittel 1950-1981 -"
@@ -108,5 +115,14 @@
     "5": "Andere",
     "6": "Gebäude"
   },
-  "Climate3_Source": "Quelle: IPCC (Referenzjahr: 2010), WWF, Bayerischer Rundfunk, US EPA"
+  "Climate3_Source": "Quelle: IPCC (Referenzjahr: 2010), WWF, Bayerischer Rundfunk, US EPA",
+  "End": {
+    "1": "Klimawandel?",
+    "2": "Ja!",
+    "3": "1. Es wird  wärmer",
+    "4": "2. Die Schweiz ist betroffen",
+    "5": "3. Der Mensch ist hauptverantwortlich",
+    "6": "Zurück zur Startseite"
+
+  }
 }

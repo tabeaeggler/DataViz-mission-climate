@@ -1,5 +1,12 @@
 {
-  "": "Climate1_Screen",
+  "Navigation": {
+    "1": "Start",
+    "2": "Fin"
+  },
+  "Start": {
+    "1": "Changement Climatique?",
+    "2": " - 3 choses que vous devez savoir -"
+  },
   "Climate1_Title": {
     "1": "1. Le monde se réchauffe",
     "2": "- Écarts de température en 2019 par rapport à la moyenne 1950-1981 -"
@@ -109,5 +116,13 @@
     "5": "Autres",
     "6": "Bâtiment"
   },
-  "Climate3_Source": "Source: IPCC (Année de référence : 2010), WWF, Bayerischer Rundfunk, US EPA"
+  "Climate3_Source": "Source: IPCC (Année de référence : 2010), WWF, Bayerischer Rundfunk, US EPA",
+  "End": {
+    "1": "Changement Climatique?",
+    "2": "Oui!",
+    "3": "1. Il fait plus chaud",
+    "4": "2. La Suisse est touchée",
+    "5": "3. L'homme est principalement responsable",
+    "6": "Retour au début"
+  }
 }

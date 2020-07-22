@@ -1,5 +1,12 @@
 {
-  "": "Climate1_Screen",
+  "Navigation":{
+    "1": "Start",
+    "2": "End"
+  },
+  "Start": {
+    "1": "Climate Change?",
+    "2": " - 3 things you need to know -"
+  },
   "Climate1_Title": {
     "1": "1. The world is getting warmer",
     "2": "- Temperature deviations in 2019 from the average 1950-1981 -"
@@ -113,5 +120,13 @@
     "5": "Other",
     "6": "Buildings"
   },
-  "Climate3_Source": "Source: IPCC (Reference year: 2010), WWF, Bayerischer Rundfunk, US EPA"
+  "Climate3_Source": "Source: IPCC (Reference year: 2010), WWF, Bayerischer Rundfunk, US EPA",
+  "End": {
+    "1": "Climate Change?",
+    "2": "Yes!",
+    "3": "1. It is getting warmer",
+    "4": "2. Switzerland is affected",
+    "5": "3. Humans are primarily responsible",
+    "6": "Back to the start"
+  }
 }

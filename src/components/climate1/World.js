@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import Globe from "react-globe.gl"
 import Gudea from "../../assets/font/Gudea_Regular.json"
 import TemperatureLineGraph from "./TemperatureLineGraph"
-import LocationButton from "../../assets/img/location.svg"
+import LocationButton from "../../assets/img/buttonLocation.svg"
 import climateDataPath from "../../assets/data_climate1/climate_change_cleaned.csv"
 import globalDataPath from "../../assets/data_climate1/climate_change_global_cleaned.csv"
 import { CSSTransition } from "react-transition-group"
@@ -277,8 +277,8 @@ const World = props => {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
-              //setGlobalNavState(0)
-              console.log("Go to start page")
+              props.setPageNr(0)
+              history.push("/")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>

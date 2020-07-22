@@ -95,7 +95,7 @@ function Climate3(props) {
        * source: (1) start page
        */
       d3.select("#split-bubbles-by-gas").on("click", function () {
-        splitGasAnimation(3200, 1)
+        splitGasAnimation(3000, 1)
         addGasTextLabels()
       })
 
@@ -113,7 +113,7 @@ function Climate3(props) {
         d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
         d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-        splitGasAnimation(5200, 0.8, 600)
+        splitGasAnimation(5000, 0.8, 600)
         addGasTextLabels()
       })
 
@@ -165,11 +165,11 @@ function Climate3(props) {
             .force("y", d3Force.forceY(height / 2).strength(0.07))
             .alphaTarget(0.25)
             .restart()
-        }, 4200)
+        }, 4000)
 
         setTimeout(function () {
           simulation.force("x", forceXSplitedBySector.strength(0.08)).force("y", d3Force.forceY(height / 2).strength(0.08))
-        }, 9500)
+        }, 9300)
 
         addSectorTextLabels()
       })
@@ -212,10 +212,10 @@ function Climate3(props) {
 
         setTimeout(function () {
           simulation.force("x", forceXSplitedByGas.strength(0.017)).force("y", d3Force.forceY(height / 2).strength(0.017))
-        }, timeout + additionalTime + 3200)
+        }, timeout + additionalTime + 3000)
         setTimeout(function () {
           simulation.force("x", forceXSplitedByGas.strength(0.01)).force("y", d3Force.forceY(height / 2).strength(0.01))
-        }, timeout + additionalTime + 4200)
+        }, timeout + additionalTime + 3800)
       }
 
       /**
@@ -375,7 +375,8 @@ function Climate3(props) {
           <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
-                console.log("Go to next page")
+                props.setPageNr(4)
+                history.push("/End")
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
