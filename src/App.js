@@ -11,11 +11,10 @@ function App() {
   const [globalNavState, setGlobalNavState] = useState(0)
 
   useEffect(() => {
-    document.getElementById("0").style.backgroundColor = "#bbb9b9"
-    document.getElementById("1").style.backgroundColor = "#bbb9b9"
-    document.getElementById("2").style.backgroundColor = "#bbb9b9"
-    document.getElementById("3").style.backgroundColor = "#bbb9b9"
-    document.getElementById("4").style.backgroundColor = "#bbb9b9"
+    for (let index = 0; index < 5; index++) {
+      if (index < globalNavState + 2) document.getElementById(index.toString()).style.backgroundColor = "#bbb9b9" 
+      else document.getElementById(index.toString()).style.backgroundColor = "#2d2d2e"
+    }
     document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
   })
 
