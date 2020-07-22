@@ -70,6 +70,15 @@ b {
 }
 
 /*start and endscreen*/
+.start-container{
+  position: absolute;
+  top: 50%;
+  margin-top: -70px;
+  left: 50%;
+  margin-left: -539px;
+  width: 1079px;
+}
+
 .start-text {
   font-family: Inconsolata;
   font-weight: bold;
@@ -79,16 +88,15 @@ b {
   background: -webkit-linear-gradient(0deg, #6a8adf 30%, #d37b61 70%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: absolute;
-  top: 50%;
-  margin-top: -70px;
-  left: 50%;
-  margin-left: -539px;
-  width: 1079px;
+  margin:0;
 }
 
-.start-circle {
-  z-index: -10;
+.start-subtitle {
+  font-family: "Inconsolata", monospace;
+  font-size: 22pt;
+  color: #bbb9b9;
+  font-weight: 700;
+  text-align: center;
 }
 
 .end-text-container {

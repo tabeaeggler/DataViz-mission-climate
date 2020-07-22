@@ -3,7 +3,10 @@
     "1": "Start",
     "2": "Fine"
   },
-  "Start": "Cambiamento Climatico?",
+  "Start": {
+    "1": "Cambiamento Climatico?",
+    "2": "- 3 cose che devi sapere -"
+  },
   "Climate1_Title": {
     "1": "1. Il mondo si sta riscaldando",
     "2": "- Scostamenti di temperatura nel 2019 dalla media 1950-1981 -"

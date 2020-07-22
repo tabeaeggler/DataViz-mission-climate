@@ -3,7 +3,10 @@
     "1": "Start",
     "2": "End"
   },
-  "Start": "Climate Change?",
+  "Start": {
+    "1": "Climate Change?",
+    "2": " - 3 things you need to know -"
+  },
   "Climate1_Title": {
     "1": "1. The world is getting warmer",
     "2": "- Temperature deviations in 2019 from the average 1950-1981 -"

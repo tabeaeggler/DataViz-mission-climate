@@ -130,8 +130,9 @@ const Start = props => {
       {navigationNext()}
       {createLangugageButtons()}
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
-        <div className="start-text">
-          {t("Start")}
+        <div className="start-container">
+          <p className="start-text">{t("Start.1")}</p>
+          <p className="start-subtitle">{t("Start.2")}</p>
         </div>
       </CSSTransition>
     </React.Fragment>
