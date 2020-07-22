@@ -38,8 +38,8 @@ const End = props => {
         <text fill="#d37b61" transform="translate(0 97.5)" font-weight="bold" fontFamily="Inconsolata" fontSize="64pt">
           <tspan>
           {t("End.2")}
-            <animate id="anim1" attributeType="CSS" attributeName="font-size" from="64pt" to="80pt" dur="1.5s" begin="0s; anim2.end" />
-            <animate id="anim2" attributeType="CSS" attributeName="font-size" from="80pt" to="64pt" dur="1.5s" begin="anim1.end" />
+            <animate id="anim1" attributeName="font-size" from="64pt" to="80pt" dur="1.5s" begin="0s; anim2.end" />
+            <animate id="anim2" attributeName="font-size" from="80pt" to="64pt" dur="1.5s" begin="anim1.end" />
           </tspan>
         </text>
       </svg>
