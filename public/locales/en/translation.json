@@ -122,10 +122,11 @@
   },
   "Climate3_Source": "Source: IPCC (Reference year: 2010), WWF, Bayerischer Rundfunk, US EPA",
   "End": {
-    "1": "Climate Change? Yes!",
-    "2": "1. It is getting warmer",
-    "3": "2. Switzerland is affected",
-    "4": "3. Humans are primarily responsible",
-    "5": "Back to the start"
+    "1": "Climate Change?",
+    "2": "Yes!",
+    "3": "1. It is getting warmer",
+    "4": "2. Switzerland is affected",
+    "5": "3. Humans are primarily responsible",
+    "6": "Back to the start"
   }
 }

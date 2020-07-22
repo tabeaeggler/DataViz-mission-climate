@@ -28,25 +28,49 @@ const End = props => {
     )
   }
 
+  /**
+   * Creates title animation
+   * @returns animated svg
+   */
+  function createAnimation() {
+    return (
+      <svg width="200px" className="end-text-animation">
+        <text fill="#d37b61" transform="translate(0 97.5)" font-weight="bold" fontFamily="Inconsolata" fontSize="64pt">
+          <tspan>
+          {t("End.2")}
+            <animate id="anim1" attributeType="CSS" attributeName="font-size" from="64pt" to="80pt" dur="1.5s" begin="0s; anim2.end" />
+            <animate id="anim2" attributeType="CSS" attributeName="font-size" from="80pt" to="64pt" dur="1.5s" begin="anim1.end" />
+          </tspan>
+        </text>
+      </svg>
+    )
+  }
+
   return (
     <React.Fragment>
       {navigationBack()}
       <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
-        <div className="end-text-container">
-          <p className="end-title">{t("End.1")}</p>
-          <p className="end-subtitle">{t("End.2")}</p>
-          <p className="end-subtitle">{t("End.3")}</p>
-          <p className="end-subtitle">{t("End.4")}</p>
+        <div className="end-title-container">
+          <p className="end-title">
+            {t("End.1")} {createAnimation()}
+          </p>
         </div>
       </CSSTransition>
-      <CSSTransition in={true} timeout={4000} classNames="fade" unmountOnExit appear>
+      <CSSTransition in={true} timeout={3000} classNames="fade-end-text" unmountOnExit appear>
+        <div className="end-text-container">
+          <p className="end-subtitle-top end-subtitle">{t("End.3")}</p>
+          <p className="end-subtitle">{t("End.4")}</p>
+          <p className="end-subtitle">{t("End.5")}</p>
+        </div>
+      </CSSTransition>
+      <CSSTransition in={true} timeout={5000} classNames="fade-end-text" unmountOnExit appear>
         <button
           onClick={() => {
             props.setPageNr(0)
             history.push("/")
           }}
           className="go-to-start-button">
-          {t("End.5")}
+          {t("End.6")}
         </button>
       </CSSTransition>
     </React.Fragment>

@@ -117,11 +117,12 @@
   },
   "Climate3_Source": "Quelle: IPCC (Referenzjahr: 2010), WWF, Bayerischer Rundfunk, US EPA",
   "End": {
-    "1": "Klimawandel? Ja!",
-    "2": "1. Es wird  wärmer",
-    "3": "2. Die Schweiz ist betroffen",
-    "4": "3. Der Mensch ist hauptverantwortlich",
-    "5": "Zurück zur Startseite"
+    "1": "Klimawandel?",
+    "2": "Ja!",
+    "3": "1. Es wird  wärmer",
+    "4": "2. Die Schweiz ist betroffen",
+    "5": "3. Der Mensch ist hauptverantwortlich",
+    "6": "Zurück zur Startseite"
 
   }
 }

@@ -122,10 +122,11 @@
   },
   "Climate3_Source": "Fonte: IPCC (Anno di riferimento: 2010), WWF, Bayerischer Rundfunk, US EPA",
   "End": {
-    "1": "Cambiamento Climatico? Sì!",
-    "2": "1. Si sta riscaldando",
-    "3": "2. La Svizzera è colpita",
-    "4": "3. L'uomo è il principale responsabile",
-    "5": "Ritorno all'inizio"
+    "1": "Cambiamento Climatico?",
+    "2": "Sì!",
+    "3": "1. Si sta riscaldando",
+    "4": "2. La Svizzera è colpita",
+    "5": "3. L'uomo è il principale responsabile",
+    "6": "Ritorno all'inizio"
   }
 }

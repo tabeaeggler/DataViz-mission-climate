@@ -99,20 +99,22 @@ b {
   text-align: center;
 }
 
-.end-text-container {
+.end-subtitle-top{
+  margin-top:50px;
+}
+
+.end-text-container, .end-title-container {
   position: absolute;
   top: 50%;
-  margin-top: -170px;
+  margin-top: -145px;
   left: 50%;
-  margin-left: -576px;
-  width: 1152px;
+  margin-left: -600px;
+  width: 1200px;
   text-align: center;
 }
 
-.end-text-subtitle{
-  background: none;
-  margin-top: 20px;
-  margin-bottom: 10px;
+.end-text-container{
+  margin-top: -10px;
 }
 
 .go-to-start-button {
@@ -127,6 +129,15 @@ b {
   font-size: 16pt;
   font-family: "Gudea";
   font-weight: bold;
+}
+
+.fade-end-text-appear {
+  opacity: 0;
+}
+
+.fade-end-text-enter-done{
+  transition: opacity 3000ms;
+  opacity: 1;
 }
 
 /* infobox style*/
