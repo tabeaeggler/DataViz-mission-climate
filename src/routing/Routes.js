@@ -20,7 +20,7 @@ const Routes = props => {
           <Route path="/Globe" exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
           <Route path="/Snowline" component={() => <Snowline setPageNr={props.setPageNr} />} />
           <Route path="/Cause" component={() => <Cause setPageNr={props.setPageNr} />} />
-          <Route path="/End" component={() => <End />} />
+          <Route path="/End" component={() => <End setPageNr={props.setPageNr} />} />
         </Switch>
       </Router>
     </div>

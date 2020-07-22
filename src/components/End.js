@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group"
 import history from "../routing/history"
 import "../App.css"
 
-function End() {
+const End = props => {
   const { t } = useTranslation()
 
   /**
@@ -18,7 +18,8 @@ function End() {
         <div className="navigation-button navigation-back-button">
           <button
             onClick={() => {
-              history.push("/Climate")
+              props.setPageNr(3)
+              history.push("/Cause")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>
