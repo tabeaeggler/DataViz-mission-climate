@@ -19,8 +19,10 @@ function App() {
   })
 
   function handleClick(path, pageNr) {
-    setGlobalNavState(pageNr)
-    history.push(path)
+    if (pageNr < globalNavState + 2) {
+      setGlobalNavState(pageNr)
+      history.push(path)
+    }
   }
 
   return (
