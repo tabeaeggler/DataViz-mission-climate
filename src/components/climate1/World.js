@@ -294,7 +294,7 @@ const World = props => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
     const svg = select(svgRefLegend.current)
 
-    var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(33).shapePadding(0).shapeHeight(5)
+    var legend = legendColor().title(t("Climate1_Legend")).scale(colorScaleLegend).cells(8).orient("horizontal").shapeWidth(36).shapePadding(0).shapeHeight(5)
     svg.call(legend)
   }, [t])
 
