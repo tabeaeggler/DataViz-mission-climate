@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next"
  * @param {function} props.globalNavState indicates the current selected page
  */
 const TimeoutPopup = props => {
-  //timing variables
+  //timing variables: 2 min until changing to homepage --> user gets warned 10s before
   const goToStartTime = 1000 * 60 * 2
   const warningTime = 1000 * 60 * (2 - 1 / 6)
   var warnTimeout
