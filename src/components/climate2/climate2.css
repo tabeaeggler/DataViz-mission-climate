@@ -377,12 +377,7 @@
   left: 50%;
 }
 
-.glacier-input-text {
-  color: #ffd763;
-}
-
-.glacier-estimation-text {
-  margin-bottom: 5px;
+.glacier-input-text, .glacier-estimation-text {
   color: #ffd763;
 }
 

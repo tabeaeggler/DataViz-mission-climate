@@ -34,7 +34,7 @@ const GlacierGraph = props => {
           unmountOnExit
           appear>
           <p className="glacier-original-text">
-            {t("Climate2_Glacier_Graph.3")} 1850: {props.glacierData.data_1850} km&sup3;
+            {t("Climate2_Glacier_Graph.3")} 1850: <br></br>{props.glacierData.data_1850} km&sup3;
           </p>
         </CSSTransition>
         {getScaledGlacier(1, GlacierTransparent)}
@@ -57,7 +57,7 @@ const GlacierGraph = props => {
             style={{
               bottom: props.scaleFactor * glacierHeight,
             }}>
-            {t("Climate2_Glacier_Graph.3") + " 2019: " + calculateEstimatedVolume()} km&sup3;
+            {t("Climate2_Glacier_Graph.3") + " 2019: "} <br></br> {calculateEstimatedVolume()} km&sup3;
           </p>
         )
       }
@@ -93,7 +93,7 @@ const GlacierGraph = props => {
           unmountOnExit
           appear>
           <div className="glacier-img-container">
-            <p className="glacier-text glacier-result-text">{t("Climate2_Glacier_Graph.2")} 51 km&sup3;</p>
+            <p className="glacier-text glacier-result-text">{t("Climate2_Glacier_Graph.2")} <br></br> 51 km&sup3;</p>
             {getScaledGlacier(props.scaleFactor, GlacierOriginal)}
           </div>
         </CSSTransition>
