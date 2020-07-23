@@ -13,6 +13,7 @@ function App() {
   const [globalNavState, setGlobalNavState] = useState(0)
 
   useEffect(() => {
+    //color navigation
     for (let index = 0; index < 5; index++) {
       if (index < globalNavState + 2) document.getElementById(index.toString()).style.backgroundColor = "#bbb9b9"
       else document.getElementById(index.toString()).style.backgroundColor = "#2d2d2e"
@@ -21,6 +22,7 @@ function App() {
   })
 
   function handleClick(path, pageNr) {
+    //only past and current plus one nav points are clickable
     if (pageNr < globalNavState + 2) {
       setGlobalNavState(pageNr)
       history.push(path)
