@@ -51,7 +51,7 @@ const World = props => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const modalWidth = (window.innerWidth / 2)
+  const modalWidth = window.innerWidth / 2
   //animation
   const [timeoutIds, setTimeoutIds] = useState([])
 
@@ -148,7 +148,10 @@ const World = props => {
           }<br/>
       `}
           onPolygonClick={function (d) {
-            handleShow(true)
+            //let country rise, then show modal
+            setTimeout(() => {
+              handleShow(true)
+            }, 600)
             updateCountry(d)
             clearScheduledAnimations(timeoutIds)
           }}
