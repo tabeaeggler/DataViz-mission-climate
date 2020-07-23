@@ -119,6 +119,8 @@ svg text.label {
 .modal-body {
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: 15px;
+  padding-right: 0;
   height: 250px;
 }
 
