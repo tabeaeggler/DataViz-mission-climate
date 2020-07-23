@@ -132,6 +132,7 @@ b {
   font-size: 16pt;
   font-family: "Gudea";
   font-weight: bold;
+  width: 170px;
 }
 
 .fade-end-text-appear {
@@ -352,7 +353,8 @@ button.language-button,
   font-size: 16pt;
   font-family: "Gudea";
   font-weight: bold;
- position: absolute;
- margin-left: -186px;
- bottom: 60px;
+  position: absolute;
+  margin-left: -156px;
+  width: 260px;
+  bottom: 60px;
 }

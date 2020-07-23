@@ -3,6 +3,10 @@
     "1": "Start",
     "2": "Fin"
   },
+  "Timeout_Popup": {
+    "1": "En raison de votre inactivité, vous serez de retour sur la page d'accueil dans 10 secondes.",
+    "2": "Restez sur cette page"
+  },
   "Start": {
     "1": "Changement Climatique?",
     "2": " - 3 choses que vous devez savoir -"

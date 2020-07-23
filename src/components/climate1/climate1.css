@@ -99,14 +99,8 @@ svg text.label {
 
 /* modal */
 .modal-content {
-  width: fit-content;
   background-color: #202023;
-}
-
-@media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 800px;
-  }
+  width: fit-content;
 }
 
 .modal-dialog {
@@ -133,12 +127,6 @@ svg text.label {
 .modal-footer {
   font-size: 0.9em;
   text-align: left;
-}
-
-div.modal-header {
-  display: block;
-  text-align: center;
-  padding: 0;
 }
 
 button.close {

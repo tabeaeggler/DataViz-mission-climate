@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import history from "../routing/history"
 import { Modal } from "react-bootstrap"
+import { useTranslation } from "react-i18next"
 
 /**
  * Rendering of components with specific path
@@ -8,10 +9,14 @@ import { Modal } from "react-bootstrap"
  * @param {function} props.globalNavState indicates the current selected page
  */
 const TimeoutPopup = props => {
+  //timing variables
   const goToStartTime = 1000 * 60 * 2
   const warningTime = 1000 * 60 * (2 - 1 / 6)
   var warnTimeout
   var goToStartTimeout
+
+  //translation
+  const { t } = useTranslation()
 
   //bootstrap modal
   const [show, setShow] = useState(false)
@@ -20,7 +25,6 @@ const TimeoutPopup = props => {
   const modalWidth = window.innerWidth / 2
 
   function warn() {
-    console.log("here", props.globalNavState)
     if (props.globalNavState !== 0) handleShow()
   }
   function goToStart() {
@@ -58,7 +62,7 @@ const TimeoutPopup = props => {
         clearTimeouts()
       }
     }
-  }, [])
+  })
 
   return (
     <div>
@@ -75,14 +79,14 @@ const TimeoutPopup = props => {
             width: modalWidth,
           }}
           className="timeout-text">
-          Aufgrund von Inaktivität wirst du in 10 Sekunden wieder auf die Startseite gelangen.
+          {t("Timeout_Popup.1")}
           <br></br>
           <button
             onClick={() => {
               handleClose()
             }}
             className="stay-button">
-            Auf der momentanen Seite bleiben
+            {t("Timeout_Popup.2")}
           </button>
         </Modal.Body>
       </Modal>

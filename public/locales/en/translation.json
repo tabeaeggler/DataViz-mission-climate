@@ -1,7 +1,11 @@
 {
-  "Navigation":{
+  "Navigation": {
     "1": "Start",
     "2": "End"
+  },
+  "Timeout_Popup": {
+    "1": "Due to inactivity, you will be back on the homepage in 10 seconds.",
+    "2": "Stay on the current page"
   },
   "Start": {
     "1": "Climate Change?",

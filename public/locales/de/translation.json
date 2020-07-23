@@ -3,6 +3,10 @@
     "1": "Start",
     "2": "Ende"
   },
+  "Timeout_Popup": {
+    "1": "Aufgrund von Inaktivität wirst du in 10 Sekunden wieder auf die Startseite gelangen.",
+    "2": "Auf dieser Seite bleiben"
+  },
   "Start": {
     "1": "Klimawandel?",
     "2": "- 3 Dinge, die du wissen musst -"
@@ -122,7 +126,6 @@
     "3": "1. Es wird  wärmer",
     "4": "2. Die Schweiz ist betroffen",
     "5": "3. Der Mensch ist hauptverantwortlich",
-    "6": "Zurück zur Startseite"
-
+    "6": "Zurück zum Start"
   }
 }

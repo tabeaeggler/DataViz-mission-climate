@@ -9,6 +9,7 @@ import "./App.css"
 function App() {
   //translation
   const { t } = useTranslation()
+  //navigation
   const [globalNavState, setGlobalNavState] = useState(0)
 
   useEffect(() => {
