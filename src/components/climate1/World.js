@@ -51,7 +51,7 @@ const World = props => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const modalWidth = (window.innerWidth / 2) * 0.75
+  const modalWidth = (window.innerWidth / 2)
   //animation
   const [timeoutIds, setTimeoutIds] = useState([])
 

@@ -1,6 +1,8 @@
 /*temperature linegrap style*/
 .temperature-graph {
-  height: 220px;
+  height: 230px;
+  position: absolute;
+  bottom: 0;
 }
 
 .grid line {
@@ -20,6 +22,7 @@ path.domain {
   fill: #bbb9b9;
   opacity: 0.3;
   font-family: "Gudea", sans-serif;
+  font-size: 9pt;
 }
 .tick line {
   stroke: #141416;
@@ -29,17 +32,17 @@ path.domain {
 text.global-name,
 text.country-name,
 text.year-text {
-  font-size: 0.6em;
+  font-size: 12pt;
 }
 
 /*world component style*/
 .legend-world {
-  width: 265px;
+  width: 280px;
   height: 50px;
   position: absolute;
   bottom: 3%;
   left: 50%;
-  margin-left: -132.5px;
+  margin-left: -140px;
 }
 
 .legendCells {
@@ -48,13 +51,13 @@ text.year-text {
 
 svg text.legendTitle {
   fill: #bbb9b9;
-  font-size: 0.6em;
-  transform: translate(0px, 9px);
+  font-size: 11pt;
+  transform: translate(0px, 12px);
 }
 
 svg text.label {
   fill: #bbb9b9;
-  font-size: 0.6em;
+  font-size: 11pt;
 }
 
 .scene-tooltip {
@@ -69,7 +72,7 @@ svg text.label {
   bottom: -1.5%;
   left: 1.5%;
   display: block;
-  font-size: 0.6em;
+  font-size: 11pt;
 }
 
 .globe-container {
@@ -116,6 +119,7 @@ svg text.label {
 .modal-body {
   padding-top: 0;
   padding-bottom: 0;
+  height: 250px;
 }
 
 .modal-footer,

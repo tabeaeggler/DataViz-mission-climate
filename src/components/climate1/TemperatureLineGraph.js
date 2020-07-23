@@ -12,7 +12,6 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
-  const scaleSvg = 0.75
 
   /**
    * Creates a gridlines in x axis function
@@ -36,14 +35,15 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   const createLineGraph = useCallback(() => {
-    const scaleGroup = 0.6
+    const scaleGroup = 0.8
     const width = (window.innerWidth / 2) * scaleGroup
-    const height = 160
-    const margin = 40
+    const height = 200
+    const marginX = 45
+    const marginY = 10
     //wrapper, so that the svg is available for d3
-    const svg = select(svgRef.current).attr("transform", `translate(${margin},${margin})`)
+    const svg = select(svgRef.current).attr("transform", `translate(${marginX},${marginY})`)
     //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
-    const svgLines = select(svgLinesRef.current).attr("transform", `translate(${margin},${margin})`)
+    const svgLines = select(svgLinesRef.current).attr("transform", `translate(${marginX},${marginY})`)
 
     //set the X and Y ranges
     const xScale = scaleLinear()
@@ -154,8 +154,10 @@ const TemperatureLineGraph = props => {
           if (tag === "country") return parseFloat(countryTagPos) + 0.1
         }
       } else {
-        if (tag === "global") return globalTagPos
-        if (tag === "country") return countryTagPos
+        console.log("global", globalTagPos)
+        console.log("country", countryTagPos)
+        if (tag === "global") return parseFloat(globalTagPos)
+        if (tag === "country") return parseFloat(countryTagPos)
       }
     }
   }, [props, t])
@@ -169,7 +171,7 @@ const TemperatureLineGraph = props => {
 
   return (
     <React.Fragment>
-      <svg className="temperature-graph" width={(window.innerWidth / 2) * scaleSvg}>
+      <svg className="temperature-graph" width={window.innerWidth / 2}>
         <g ref={svgRef}></g>
         <g ref={svgLinesRef}></g>
       </svg>
