@@ -79,7 +79,8 @@ b {
   width: 1079px;
 }
 
-.start-title, .end-title  {
+.start-title,
+.end-title {
   font-family: "Inconsolata", monospace;
   font-weight: bold;
   font-size: 64pt;
@@ -91,7 +92,8 @@ b {
   margin: 0;
 }
 
-.start-subtitle,.end-subtitle {
+.start-subtitle,
+.end-subtitle {
   font-family: "Inconsolata", monospace;
   font-size: 22pt;
   color: #bbb9b9;
@@ -99,11 +101,12 @@ b {
   text-align: center;
 }
 
-.end-subtitle-top{
-  margin-top:50px;
+.end-subtitle-top {
+  margin-top: 50px;
 }
 
-.end-text-container, .end-title-container {
+.end-text-container,
+.end-title-container {
   position: absolute;
   top: 50%;
   margin-top: -145px;
@@ -113,7 +116,7 @@ b {
   text-align: center;
 }
 
-.end-text-container{
+.end-text-container {
   margin-top: -10px;
 }
 
@@ -135,7 +138,7 @@ b {
   opacity: 0;
 }
 
-.fade-end-text-enter-done{
+.fade-end-text-enter-done {
   transition: opacity 3000ms;
   opacity: 1;
 }
@@ -331,4 +334,25 @@ button.language-button,
   right: 15px;
   top: 0%;
   margin-top: 35px;
+}
+
+.timeout-text {
+  font-weight: bold;
+  font-size: 18pt;
+  text-align: center;
+  padding: 15px;
+  margin-top: 80px;
+}
+
+.stay-button {
+  background-color: #2d2d2e;
+  border-radius: 5px;
+  padding: 26px;
+  color: #bbb9b9;
+  font-size: 16pt;
+  font-family: "Gudea";
+  font-weight: bold;
+ position: absolute;
+ margin-left: -186px;
+ bottom: 60px;
 }

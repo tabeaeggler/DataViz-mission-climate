@@ -3,7 +3,7 @@ import history from "../routing/history"
 import { Modal } from "react-bootstrap"
 
 const TimeoutPopup = () => {
-  const goToStartTime = 5000
+  const goToStartTime = 150000000
   const warningTime = 3000
   var warnTimeout
   var goToStartTimeout
@@ -66,19 +66,18 @@ const TimeoutPopup = () => {
         <Modal.Body
           style={{
             width: modalWidth,
-          }}></Modal.Body>
-        <Modal.Footer
-          style={{
-            width: modalWidth,
-          }}>
+          }}
+          className="timeout-text">
+          Aufgrund von Inaktivität wirst du in 10 Sekunden wieder auf die Startseite gelangen.
+          <br></br>
           <button
             onClick={() => {
               handleClose()
             }}
-            className="go-to-start-button">
-            Auf der Seite bleiben
+            className="stay-button">
+            Auf der momentanen Seite bleiben
           </button>
-        </Modal.Footer>
+        </Modal.Body>
       </Modal>
     </div>
   )
