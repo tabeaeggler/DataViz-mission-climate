@@ -47,7 +47,7 @@ function App() {
             {t("Navigation.2")}
           </button>
         </div>
-        {globalNavState !== 0 ? <TimeoutPopup></TimeoutPopup> : null}
+        {globalNavState !== 0 ? <TimeoutPopup setPageNr={setGlobalNavState} globalNavState={globalNavState}></TimeoutPopup > : null}
       </div>
     </Router>
   )

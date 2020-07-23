@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react"
 import history from "../routing/history"
 import { Modal } from "react-bootstrap"
 
-const TimeoutPopup = () => {
-  const goToStartTime = 150000000
-  const warningTime = 3000
+/**
+ * Rendering of components with specific path
+ * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.globalNavState indicates the current selected page
+ */
+const TimeoutPopup = props => {
+  const goToStartTime = 1000 * 60 * 2
+  const warningTime = 1000 * 60 * (2 - 1 / 6)
   var warnTimeout
   var goToStartTimeout
 
@@ -15,11 +20,13 @@ const TimeoutPopup = () => {
   const modalWidth = window.innerWidth / 2
 
   function warn() {
-    handleShow()
+    console.log("here", props.globalNavState)
+    if (props.globalNavState !== 0) handleShow()
   }
   function goToStart() {
     handleClose()
     history.push("/")
+    props.setPageNr(0)
   }
 
   function setTimeouts() {
@@ -33,7 +40,7 @@ const TimeoutPopup = () => {
   }
 
   useEffect(() => {
-    const events = ["load", "mousemove", "mousedown", "click", "scroll", "keypress"]
+    const events = ["load", "mousemove", "mousedown", "click", "scroll", "touchstart"]
 
     function resetTimeout() {
       clearTimeouts()
