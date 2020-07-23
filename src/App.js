@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 import history from "./routing/history"
 import Routes from "./routing/Routes"
 import { useTranslation } from "react-i18next"
+import TimeoutPopup from "./components/TimeoutPopup"
 import "./App.css"
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
   useEffect(() => {
     for (let index = 0; index < 5; index++) {
-      if (index < globalNavState + 2) document.getElementById(index.toString()).style.backgroundColor = "#bbb9b9" 
+      if (index < globalNavState + 2) document.getElementById(index.toString()).style.backgroundColor = "#bbb9b9"
       else document.getElementById(index.toString()).style.backgroundColor = "#2d2d2e"
     }
     document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
@@ -46,6 +47,7 @@ function App() {
             {t("Navigation.2")}
           </button>
         </div>
+        {globalNavState !== 0 ? <TimeoutPopup></TimeoutPopup> : null}
       </div>
     </Router>
   )
