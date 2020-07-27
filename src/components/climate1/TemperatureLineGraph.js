@@ -12,6 +12,7 @@ const TemperatureLineGraph = props => {
   const { t } = useTranslation()
   const svgRef = useRef()
   const svgLinesRef = useRef()
+  const svgWidth = 835
 
   /**
    * Creates a gridlines in x axis function
@@ -35,11 +36,11 @@ const TemperatureLineGraph = props => {
    * Main code for linegraph
    */
   const createLineGraph = useCallback(() => {
-    const scaleGroup = 0.8
-    const width = (window.innerWidth / 2) * scaleGroup
     const height = 200
     const marginX = 45
     const marginY = 10
+    const width = svgWidth * 0.8
+
     //wrapper, so that the svg is available for d3
     const svg = select(svgRef.current).attr("transform", `translate(${marginX},${marginY})`)
     //create seperate svg for lines to ensure that the lines are above the grid -> render after other svg
@@ -146,12 +147,12 @@ const TemperatureLineGraph = props => {
       var countryTagPos = props.climateData[props.climateData.length - 1].value
       if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
         if (globalTagPos > countryTagPos) {
-          if (tag === "global") return parseFloat(globalTagPos) + 0.1
-          if (tag === "country") return parseFloat(countryTagPos) - 0.1
+          if (tag === "global") return parseFloat(globalTagPos) + 0.15
+          if (tag === "country") return parseFloat(countryTagPos) - 0.15
         }
         if (globalTagPos < countryTagPos) {
-          if (tag === "global") return parseFloat(globalTagPos) - 0.1
-          if (tag === "country") return parseFloat(countryTagPos) + 0.1
+          if (tag === "global") return parseFloat(globalTagPos) - 0.15
+          if (tag === "country") return parseFloat(countryTagPos) + 0.15
         }
       } else {
         if (tag === "global") return parseFloat(globalTagPos)
@@ -169,7 +170,7 @@ const TemperatureLineGraph = props => {
 
   return (
     <React.Fragment>
-      <svg className="temperature-graph" width={window.innerWidth / 2}>
+      <svg className="temperature-graph" width={svgWidth}>
         <g ref={svgRef}></g>
         <g ref={svgLinesRef}></g>
       </svg>

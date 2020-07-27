@@ -144,6 +144,25 @@ b {
   opacity: 1;
 }
 
+.about-title{
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.about-subtitle{
+  font-size: 14pt;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.about-text{
+  font-weight: 400;
+  text-align: center;
+
+}
+
 /* infobox style*/
 .infobox-enter,
 .infobox-exit {

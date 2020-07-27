@@ -16,7 +16,6 @@ const End = props => {
     setShow(false)
   }
   const handleShow = () => setShow(true)
-  const modalWidth = window.innerWidth / 2
 
   /**
    * Adds back navigation button
@@ -93,22 +92,29 @@ const End = props => {
           About
         </button>
       </div>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        keyboard={false}
-        style={{
-          marginLeft: -(modalWidth / 2),
-        }}>
-        <Modal.Header closeButton></Modal.Header>
+      <Modal show={show} onHide={handleClose} keyboard={false}>
+        <Modal.Header closeButton className="about-title">
+          Bachelor Arbeit - Mission Klima und Wetter
+        </Modal.Header>
         <Modal.Body
           style={{
-            width: modalWidth,
-          }}></Modal.Body>
-        <Modal.Footer
-          style={{
-            width: modalWidth,
-          }}></Modal.Footer>
+            width: 820,
+          }}>
+          <p className="about-subtitle">
+            Projektteam <br></br>
+            <span className="about-text">Tabea Eggler - tabea.eggler@students.fhnw.ch</span> <br></br>
+            <span className="about-text">Hannah Kühne - hannahsarah.kuehne@students.fhnw.ch</span>
+          </p>
+          <p className="about-subtitle">
+            Betreuende <br></br>
+            <span className="about-text">Doris Agotai - doris.agotai@fhnw.ch</span> <br></br>
+            <span className="about-text">Marco Soldati - marco.soldati@fhnw.ch</span>
+          </p>
+          <p className="about-subtitle">
+            Kunde <br></br>
+            <span className="about-text">Verkehrshaus Luzern</span>
+          </p>
+        </Modal.Body>
       </Modal>
     </React.Fragment>
   )

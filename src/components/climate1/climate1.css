@@ -105,16 +105,14 @@ svg text.label {
 
 .modal-dialog {
   position: absolute;
-  bottom: 3%;
-  left: 48.5%;
+  bottom: 19px;
+  left: 50%;
   margin: 0%;
+  margin-left: -425px;
 }
 
 .modal-body {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 15px;
-  padding-right: 0;
+  padding: 0px 15px;
   height: 250px;
 }
 

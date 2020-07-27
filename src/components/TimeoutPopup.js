@@ -22,7 +22,6 @@ const TimeoutPopup = props => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const modalWidth = window.innerWidth / 2
 
   function warn() {
     if (props.globalNavState !== 0) handleShow()
@@ -66,17 +65,11 @@ const TimeoutPopup = props => {
 
   return (
     <div>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        keyboard={false}
-        style={{
-          marginLeft: -(modalWidth / 2),
-        }}>
+      <Modal show={show} onHide={handleClose} keyboard={false}>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           style={{
-            width: modalWidth,
+            width: 820,
           }}
           className="timeout-text">
           {t("Timeout_Popup.1")}

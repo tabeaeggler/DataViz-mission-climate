@@ -51,7 +51,6 @@ const World = props => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const modalWidth = window.innerWidth / 2
   //animation
   const [timeoutIds, setTimeoutIds] = useState([])
 
@@ -214,20 +213,15 @@ const World = props => {
         show={show}
         onHide={handleClose}
         keyboard={false}
-        style={{
-          marginLeft: -(modalWidth / 2),
-        }}>
+      className="world-modal">
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body
           style={{
-            width: modalWidth,
+            width: 820,
           }}>
           {createLinegraph()}
         </Modal.Body>
-        <Modal.Footer
-          style={{
-            width: modalWidth,
-          }}>
+        <Modal.Footer>
           {t("Climate1_Bubble.1")}
           <b>{t("Climate1_Bubble.2")}</b>
           {t("Climate1_Bubble.3")}
