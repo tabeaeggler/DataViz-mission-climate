@@ -94,25 +94,28 @@ const End = props => {
       </div>
       <Modal show={show} onHide={handleClose} keyboard={false}>
         <Modal.Header closeButton className="about-title">
-          Bachelor Arbeit - Mission Klima und Wetter
+          {t("End_Modal.1")}
         </Modal.Header>
         <Modal.Body
           style={{
             width: 820,
           }}>
           <p className="about-subtitle">
-            Projektteam <br></br>
+            {t("End_Modal.2")}
+            <br></br>
             <span className="about-text">Tabea Eggler - tabea.eggler@students.fhnw.ch</span> <br></br>
             <span className="about-text">Hannah Kühne - hannahsarah.kuehne@students.fhnw.ch</span>
           </p>
           <p className="about-subtitle">
-            Betreuende <br></br>
+            {t("End_Modal.3")}
+            <br></br>
             <span className="about-text">Doris Agotai - doris.agotai@fhnw.ch</span> <br></br>
             <span className="about-text">Marco Soldati - marco.soldati@fhnw.ch</span>
           </p>
           <p className="about-subtitle">
-            Kunde <br></br>
-            <span className="about-text">Verkehrshaus Luzern</span>
+            {t("End_Modal.4")}
+            <br></br>
+            <span className="about-text"> {t("End_Modal.5")}</span>
           </p>
         </Modal.Body>
       </Modal>
