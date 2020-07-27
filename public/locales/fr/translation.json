@@ -37,7 +37,7 @@
     "4": "350 mètres",
     "5": " - par degré de réchauffement d'environ 200 mètres. Cela correspond à!",
     "6": " XX fois la hauteur de la station météo de la Verkehrshaus",
-    "7": " Les glaciers sont également touchés, en savoir plussur la page suivante!"
+    "7": " Les glaciers sont également touchés, en savoir plus sur la page suivante!"
   },
   "Climate2_Bubble_Glacier": {
     "1": "Solution : les glaciers ont reculé de ",
@@ -45,7 +45,7 @@
     "3": " Cela correspond à une masse de glace de ",
     "4": ", qui remplit ",
     "5": " fois le lac des Quatre-Cantons.",
-    "6": " Quelles sont les raisons de ces changements ?"
+    "6": " Quelles sont les raisons de ces changements? En savoir plus sur la page suivante!"
   },
   "Climate2_Submit_Button": "Confirmer",
   "Climate2_Title": {
@@ -80,7 +80,7 @@
   "Climate3_Bubble_1": {
     "1": "Les gaz à effet de serre produits par l'homme provoquent une trop grande rétention de chaleur : notre planète est en surchauffe.",
     "2": " Ils agissent comme un toit de verre : ils laissent la lumière du soleil briller sans entrave sur la terre, mais empêchent la réflexion de la chaleur.",
-    "3": " Savez-vous quels sont les gaz émis et à quels secteurs ils sont attribuables ?"
+    "3": " Savez-vous quels sont les gaz émis et à quels secteurs ils sont attribuables? Continuez et apprenez-en plus."
   },
   "Climate3_Gas": {
     "1": "Gaz fluorés",
