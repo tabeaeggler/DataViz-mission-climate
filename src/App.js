@@ -35,7 +35,7 @@ function App() {
         <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
           <button className="nav-button start-button" id="0" onClick={() => handleClick("/", 0)}>
-            <span className="start-button-text">{t("Navigation.1")}</span>
+            {t("Navigation.1")}
           </button>
           <button className="nav-button" id="1" onClick={() => handleClick("/Globe", 1)}>
             1
@@ -50,7 +50,7 @@ function App() {
             {t("Navigation.2")}
           </button>
         </div>
-        {globalNavState !== 0 ? <TimeoutPopup setPageNr={setGlobalNavState} globalNavState={globalNavState}></TimeoutPopup > : null}
+        {globalNavState !== 0 ? <TimeoutPopup setPageNr={setGlobalNavState} globalNavState={globalNavState}></TimeoutPopup> : null}
       </div>
     </Router>
   )

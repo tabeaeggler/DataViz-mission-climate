@@ -194,7 +194,8 @@ button.submit-button {
 button.nav-button,
 #nav-button-clicked,
 button.language-button,
-#language-button-clicked {
+#language-button-clicked,
+.about-button {
   font-size: 18pt;
   font-weight: 400;
   font-family: "Inconsolata", monospace;
@@ -209,21 +210,22 @@ button.language-button,
 }
 
 .start-button,
-.end-button {
+.end-button,
+.about-button {
   font-size: 11pt !important;
 }
 
 #nav-button-clicked,
-#language-button-clicked {
+#language-button-clicked,
+#about-button-clicked {
   background-color: #d37b61;
 }
 
 .nav-button-container {
   position: fixed;
   bottom: 0;
-  left: 78.2%;
-  margin-bottom: 1.5%;
-  width: 350px;
+  right: 30px;
+  margin-bottom: 20px;
   height: 40px;
   display: table;
   text-align: center;
@@ -235,12 +237,12 @@ button.language-button,
   position: absolute;
 }
 
-.language-button-container {
+.language-button-container,
+.about-button-container {
   position: fixed;
   bottom: 0;
-  left: 20px;
+  left: 10px;
   margin-bottom: 20px;
-  width: 220px;
 }
 
 /*Bubble Text box*/

@@ -1,12 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import ButtonLeft from "../assets/img/buttonNavLeft.svg"
 import { useTranslation } from "react-i18next"
 import { CSSTransition } from "react-transition-group"
+import { Modal } from "react-bootstrap"
 import history from "../routing/history"
 import "../App.css"
 
 const End = props => {
+  //translation
   const { t } = useTranslation()
+
+  //bootstrap modal
+  const [show, setShow] = useState(false)
+  const handleClose = () => {
+    setShow(false)
+  }
+  const handleShow = () => setShow(true)
+  const modalWidth = window.innerWidth / 2
 
   /**
    * Adds back navigation button
@@ -37,7 +47,7 @@ const End = props => {
       <svg width="200px" className="end-text-animation">
         <text fill="#d37b61" transform="translate(0 97.5)" fontWeight="bold" fontFamily="Inconsolata" fontSize="64pt">
           <tspan>
-          {t("End.2")}
+            {t("End.2")}
             <animate id="anim1" attributeName="font-size" from="64pt" to="80pt" dur="1.5s" begin="0s; anim2.end" />
             <animate id="anim2" attributeName="font-size" from="80pt" to="64pt" dur="1.5s" begin="anim1.end" />
           </tspan>
@@ -73,6 +83,33 @@ const End = props => {
           {t("End.6")}
         </button>
       </CSSTransition>
+      <div className="about-button-container">
+        <button
+          className="about-button"
+          id={show ? "about-button-clicked" : null}
+          onClick={e => {
+            handleShow()
+          }}>
+          About
+        </button>
+      </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        keyboard={false}
+        style={{
+          marginLeft: -(modalWidth / 2),
+        }}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body
+          style={{
+            width: modalWidth,
+          }}></Modal.Body>
+        <Modal.Footer
+          style={{
+            width: modalWidth,
+          }}></Modal.Footer>
+      </Modal>
     </React.Fragment>
   )
 }
