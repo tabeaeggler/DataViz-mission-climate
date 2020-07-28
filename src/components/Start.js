@@ -4,6 +4,10 @@ import history from "../routing/history"
 import { CSSTransition } from "react-transition-group"
 import "../App.css"
 
+/**
+ * creates start screen
+ * @param {function} props.setPageNr setter for navigation page
+ */
 const Start = props => {
   const { t, i18n } = useTranslation()
 

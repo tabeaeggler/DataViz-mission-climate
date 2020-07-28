@@ -67,11 +67,7 @@ const TimeoutPopup = props => {
     <div>
       <Modal show={show} onHide={handleClose} keyboard={false}>
         <Modal.Header closeButton></Modal.Header>
-        <Modal.Body
-          style={{
-            width: 820,
-          }}
-          className="timeout-text">
+        <Modal.Body className="timeout-text">
           {t("Timeout_Popup.1")}
           <br></br>
           <button

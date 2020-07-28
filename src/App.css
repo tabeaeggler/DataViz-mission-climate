@@ -144,23 +144,21 @@ b {
   opacity: 1;
 }
 
-.about-title{
+.about-title {
   font-size: 16pt;
   font-weight: bold;
   text-align: center;
 }
 
-.about-subtitle{
+.about-subtitle {
   font-size: 14pt;
   font-weight: bold;
   text-align: center;
-
 }
 
-.about-text{
+.about-text {
   font-weight: 400;
   text-align: center;
-
 }
 
 /* infobox style*/

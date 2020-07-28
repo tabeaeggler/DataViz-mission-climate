@@ -114,6 +114,7 @@ svg text.label {
 .modal-body {
   padding: 0px 15px;
   height: 250px;
+  width: 820px;
 }
 
 .modal-footer,
