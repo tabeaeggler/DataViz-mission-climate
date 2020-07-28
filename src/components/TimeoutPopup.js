@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next"
  */
 const TimeoutPopup = props => {
   //timing variables: 2 min until changing to homepage --> user gets warned 10s before
-  const goToStartTime = 1000 * 60 * 2
+  const goToStartTime = 2000 * 60 * 2
   const warningTime = 1000 * 60 * (2 - 1 / 6)
   var warnTimeout
   var goToStartTimeout
@@ -46,6 +46,7 @@ const TimeoutPopup = props => {
     const events = ["load", "mousemove", "mousedown", "click", "scroll", "touchstart"]
 
     function resetTimeout() {
+      handleClose()
       clearTimeouts()
       setTimeouts()
     }
