@@ -7,7 +7,7 @@ import history from "../routing/history"
 import "../App.css"
 
 /**
- * creates end screen
+ * Creates the end screen of the climate presentation
  * @param {function} props.setPageNr setter for navigation page
  */
 const End = props => {
