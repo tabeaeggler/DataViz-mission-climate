@@ -112,7 +112,7 @@ const End = props => {
    */
   function createTakeHomeMessages() {
     return (
-      <CSSTransition in={!show} timeout={{ enter: 3000, exit: 0 }} classNames="fade-end-text" unmountOnExit appear>
+      <CSSTransition in={!show} timeout={{ enter: 2000, exit: 0 }} classNames="fade-end-text" unmountOnExit appear>
         <div className="end-text-container">
           <p className="end-subtitle-top end-subtitle">{t("End.3")}</p>
           <p className="end-subtitle">{t("End.4")}</p>
@@ -129,7 +129,7 @@ const End = props => {
   function createButtons() {
     return (
       <div>
-        <CSSTransition in={!show} timeout={{ enter: 5000, exit: 0 }} classNames="fade-end-text" unmountOnExit appear>
+        <CSSTransition in={!show} timeout={{ enter: 4500, exit: 0 }} classNames="fade-end-text" unmountOnExit appear>
           <button
             onClick={() => {
               props.setPageNr(0)

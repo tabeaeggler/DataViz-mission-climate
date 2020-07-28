@@ -140,7 +140,7 @@ b {
 }
 
 .fade-end-text-enter-done {
-  transition: opacity 3000ms;
+  transition: opacity 2000ms;
   opacity: 1;
 }
 
