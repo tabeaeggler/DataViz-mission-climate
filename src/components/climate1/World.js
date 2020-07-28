@@ -147,10 +147,13 @@ const World = props => {
           }<br/>
       `}
           onPolygonClick={function (d) {
+            //handle countries with no data
+            if (d.properties.TEMP === "NO_DATA" || d.properties.TEMP === "nan") return
             //let country rise, then show modal
             setTimeout(() => {
-              handleShow(true)
+              handleShow()
             }, 600)
+
             updateCountry(d)
             clearScheduledAnimations(timeoutIds)
           }}

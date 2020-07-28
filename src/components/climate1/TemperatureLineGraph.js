@@ -147,12 +147,12 @@ const TemperatureLineGraph = props => {
       var countryTagPos = props.climateData[props.climateData.length - 1].value
       if (Math.abs(globalTagPos - countryTagPos) < 0.16) {
         if (globalTagPos > countryTagPos) {
-          if (tag === "global") return parseFloat(globalTagPos) + 0.15
-          if (tag === "country") return parseFloat(countryTagPos) - 0.15
+          if (tag === "global") return parseFloat(globalTagPos) + 0.1
+          if (tag === "country") return parseFloat(countryTagPos) - 0.1
         }
         if (globalTagPos < countryTagPos) {
-          if (tag === "global") return parseFloat(globalTagPos) - 0.15
-          if (tag === "country") return parseFloat(countryTagPos) + 0.15
+          if (tag === "global") return parseFloat(globalTagPos) - 0.1
+          if (tag === "country") return parseFloat(countryTagPos) + 0.1
         }
       } else {
         if (tag === "global") return parseFloat(globalTagPos)
