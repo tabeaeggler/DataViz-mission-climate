@@ -57,7 +57,7 @@ const GlacierGraph = props => {
             style={{
               bottom: props.scaleFactor * glacierHeight,
             }}>
-            {t("Climate2_Glacier_Graph.3") + " 2019: "} <br></br> {calculateEstimatedVolume()} km&sup3;
+            {t("Climate2_Glacier_Graph.3") + " 2019: "} <br></br> {calculateEstimatedVolume(props.scaleFactor)} km&sup3;
           </p>
         )
       }
@@ -113,7 +113,7 @@ const GlacierGraph = props => {
             bottom: props.scaleFactorEstimation * glacierHeight          }}
           className="estimation-container">
           <p className="glacier-estimation-text">
-            {t("Climate2_Glacier_Graph.1") + calculateEstimatedVolume()} km&sup3;
+            {t("Climate2_Glacier_Graph.1") + calculateEstimatedVolume(props.scaleFactorEstimation)} km&sup3;
           </p>
           <div className="glacier-estimation-line"></div>
         </div>
@@ -142,8 +142,8 @@ const GlacierGraph = props => {
    * calculates the volume of the users estimation
    * @returns {number} volume in cubic kilometers
    */
-  function calculateEstimatedVolume() {
-    return (props.glacierData.data_1850 * props.scaleFactor).toFixed(0)
+  function calculateEstimatedVolume(scale) {
+    return (props.glacierData.data_1850 * scale).toFixed(0)
   }
 
   return (

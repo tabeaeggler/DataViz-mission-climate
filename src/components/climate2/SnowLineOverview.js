@@ -73,7 +73,7 @@ const SnowLineOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition in={showAnswer && props.showSnowlineInteraction} timeout={{ enter: 3000, exit: 500 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="bubble-box bubble-box-climate2-snow-answer zoom-mountain">
           <p className="bubble-box-text">
             <b>{t("Climate2_Bubble_Snowline.3")}</b>

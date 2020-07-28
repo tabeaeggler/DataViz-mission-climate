@@ -136,7 +136,7 @@ const GlacierOverview = props => {
    */
   function createBubbleShowAnswer() {
     return (
-      <CSSTransition in={showAnswer && !props.showSnowlineGraph} timeout={4000} classNames="bubble-fade" unmountOnExit appear>
+      <CSSTransition in={showAnswer && !props.showSnowlineGraph} timeout={{ enter: 3000, exit: 0 }} classNames="fade-climate2" unmountOnExit appear>
         <div className="bubble-box bubble-box-glacier-answer glacier-zoom">
           <p className="bubble-box-text extra-line-spacing">
             <b>
