@@ -5,4 +5,4 @@ Dieses Projekt wurde im Rahmen des Informatikstudiums von Hannah Kühne & Tabea 
 http://86.119.42.83:5000/
 
 lokale Nutzung:
-npm start
+`npm start`
