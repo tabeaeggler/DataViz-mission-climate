@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"
 
 /**
  * creates pop-up when user is inactive
- * @param {function} props.setPageNr setter for navigation 
+ * @param {function} props.setPageNr setter for navigation
  * @param {function} props.globalNavState indicates the current selected page
  */
 const TimeoutPopup = props => {
@@ -23,28 +23,48 @@ const TimeoutPopup = props => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
+  /**
+   * warns user when warntime is over
+   */
   function warn() {
     if (props.globalNavState !== 0) handleShow()
   }
+
+  /**
+   * handles the switch to the startpage when time is up
+   */
   function goToStart() {
     handleClose()
     history.push("/")
     props.setPageNr(0)
   }
 
+  /**
+   * sets timeouts for warning and going back to the start page
+   */
   function setTimeouts() {
     warnTimeout = setTimeout(warn, warningTime)
     goToStartTimeout = setTimeout(goToStart, goToStartTime)
   }
 
+  /**
+   * clears all timeouts
+   */
   function clearTimeouts() {
     if (warnTimeout) clearTimeout(warnTimeout)
     if (goToStartTimeout) clearTimeout(goToStartTimeout)
   }
 
+  /**
+   * react lifecycle
+   */
   useEffect(() => {
+    //possible events that trigger the reset of the timeouts
     const events = ["load", "mousemove", "mousedown", "click", "scroll", "touchstart"]
 
+    /**
+     * resets current timeouts and sets new timeouts
+     */
     function resetTimeout() {
       handleClose()
       clearTimeouts()
@@ -56,6 +76,7 @@ const TimeoutPopup = props => {
     }
 
     setTimeouts()
+
     return () => {
       for (let i in events) {
         window.removeEventListener(events[i], resetTimeout)
