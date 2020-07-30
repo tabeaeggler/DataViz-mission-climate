@@ -12,6 +12,22 @@ function App() {
   //navigation
   const [globalNavState, setGlobalNavState] = useState(0)
 
+  /**
+   * handles navigation button click
+   * @param {string} path
+   * @param {number} pageNr
+   */
+  function handleClick(path, pageNr) {
+    //only past and current plus one nav points are clickable
+    if (pageNr < globalNavState + 2) {
+      setGlobalNavState(pageNr)
+      history.push(path)
+    }
+  }
+
+  /**
+   * react lifecycle
+   */
   useEffect(() => {
     //color navigation
     for (let index = 0; index < 5; index++) {
@@ -20,14 +36,6 @@ function App() {
     }
     document.getElementById(globalNavState).style.backgroundColor = "#d37b61"
   })
-
-  function handleClick(path, pageNr) {
-    //only past and current plus one nav points are clickable
-    if (pageNr < globalNavState + 2) {
-      setGlobalNavState(pageNr)
-      history.push(path)
-    }
-  }
 
   return (
     <Router>
