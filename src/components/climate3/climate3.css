@@ -87,7 +87,7 @@
   float: right;
 }
 
-/*Fade for nav*/
+/*fade for nav*/
 .hide-nav {
   animation-duration: 1s;
   animation-name: fadeOutNav;

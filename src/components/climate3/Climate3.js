@@ -10,7 +10,7 @@ import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
- * Assembles all elements of climate3 screen
+ * assembles all elements of climate3 screen
  * @param {function} props.setPageNr setter for navigation page
  */
 
@@ -219,7 +219,7 @@ function Climate3(props) {
       }
 
       /**
-       * function to add Gas text Lables: percentage, gas, source
+       * add gas text lables: percentage, gas, source
        */
       function addGasTextLabels() {
         var posFGAS = 0.57
@@ -253,7 +253,7 @@ function Climate3(props) {
       }
 
       /**
-       * function to add Gas text Lables: percentage, secotr, description
+       * add gas text Lables: percentage, sector, description
        */
       function addSectorTextLabels() {
         var posPercentage = 0.65
@@ -292,7 +292,7 @@ function Climate3(props) {
       }
 
       /**
-       * function to add textlabel to a specific position
+       * add textlabel to a specific position
        */
       function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
         svg
@@ -313,7 +313,7 @@ function Climate3(props) {
   )
 
   /**
-   * React Lifecycle -> Renders only once
+   * react lifecycle
    */
   useEffect(() => {
     props.setPageNr(3)
@@ -323,7 +323,7 @@ function Climate3(props) {
   }, [props, createBubbleChart])
 
   /**
-   * Adds Speach Bubble: overview
+   * adds speach bubble: overview
    * @returns dom element with speech bubble
    */
   function createBubble() {
@@ -343,7 +343,7 @@ function Climate3(props) {
   }
 
   /**
-   * Adds next navigation button
+   * adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -387,7 +387,7 @@ function Climate3(props) {
   }
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {
