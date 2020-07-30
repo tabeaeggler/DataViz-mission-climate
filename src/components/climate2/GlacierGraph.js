@@ -21,7 +21,7 @@ const GlacierGraph = props => {
   const glacierHeight = 551
 
   /**
-   * Creates a glacier showing the reference volume of 1850 with animation
+   * creates a glacier showing the reference volume of 1850 with animation
    * @returns dom element
    */
   function createReferenceGlacier() {
@@ -43,7 +43,7 @@ const GlacierGraph = props => {
   }
 
   /**
-   * Creates a glacier with the volume of the users estimation
+   * creates a glacier with the volume of the users estimation
    * @returns dom element
    */
   function createEstimationGlacier() {
@@ -71,7 +71,7 @@ const GlacierGraph = props => {
   }
 
   /**
-   * Creates the animation for showing the result
+   * creates the animation for showing the result
    * @returns dom element
    */
   function createResultAnimation() {
@@ -102,7 +102,7 @@ const GlacierGraph = props => {
   }
 
   /**
-   * Creates an animated line with the users estimation
+   * creates an animated line with the users estimation
    * @returns dom element
    */
   function createEstimationLine() {

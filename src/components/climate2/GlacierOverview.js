@@ -10,7 +10,7 @@ import "rc-slider/assets/index.css"
 import "rc-tooltip/assets/bootstrap.css"
 
 /**
- * Creates context for a scalable glacier graph with speech bubbles and slider
+ * creates context for a scalable glacier graph with speech bubbles and slider
  * @param {function} props.setNavigateBackToSnowline indicates whether the back-button was pressed on the glacier screen
  * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
@@ -36,7 +36,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Handles slider interaction. Sets new percentage and scale of lake.
+   * handles slider interaction. sets new percentage and scale of lake.
    * @param {number} percentage
    */
   function handleSliderChange(percentage) {
@@ -48,15 +48,15 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Calculates scale of lake
+   * calculates scale of lake
    * @returns {number} scale of lake
    */
   function calculateScaleFactor(percentage) {
-    //Source: https://en.wikipedia.org/wiki/Water
+    //source: https://en.wikipedia.org/wiki/Water
     const densityWater = 997
-    //Source: https://de.wikipedia.org/wiki/Eis
+    //source: https://de.wikipedia.org/wiki/Eis
     const densityIce = 918
-    //Source: https://en.wikipedia.org/wiki/Lake_Lucerne
+    //source: https://en.wikipedia.org/wiki/Lake_Lucerne
     const volumeLakeLucern = 11.8
 
     var conversionIceToWater = (dataVolume.data_1850 / 100) * percentage * (densityIce / densityWater)
@@ -64,18 +64,17 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Handles submit event
+   * handles submit event
    */
   function showResult() {
     const solutionPercentageVolumeDecrease = 61
-
     setShowAnswer(true)
     setScaleFactorEstimation(calculatePercentage())
     handleSliderChange(solutionPercentageVolumeDecrease)
   }
 
   /**
-   * Calculates percentage of remaining glacier volume according to the current volume decrease
+   * calculates percentage of remaining glacier volume according to the current volume decrease
    * @returns {number} perscentage of remaining glacier volume
    */
   function calculatePercentage() {
@@ -83,7 +82,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Creates the header section of the glacier page with animation
+   * creates the header section of the glacier page with animation
    * @returns dom element with header
    */
   function createHeader() {
@@ -99,7 +98,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds slider and glacier attributes
+   * adds slider and glacier attributes
    * @returns dom element with slider and glacier attributes
    */
   function createSliderAndNumbers() {
@@ -131,7 +130,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds speach bubble for showing glacier quizz answer
+   * adds speach bubble for showing glacier quizz answer
    * @returns dom element with speech bubble text
    */
   function createBubbleShowAnswer() {
@@ -162,7 +161,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds next navigation button
+   * adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -182,7 +181,7 @@ const GlacierOverview = props => {
   }
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {

@@ -5,7 +5,7 @@ import GlacierOverview from "./GlacierOverview"
 import "./climate2.css"
 
 /**
- * Assembles all elements of climate2 screen
+ * assembles all elements of climate2 screen
  * @param {function} props.setPageNr setter for navigation page
  */
 function Climate2(props) {

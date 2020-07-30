@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mouse } from "d3"
 
 /**
- * Creates a draggable snowline graph
+ * creates a draggable snowline graph
  * @param {boolean} props.showAnswer indicates whether submission has occured
  * @param {array} props.data height of snowline of specific year
  * @param {function} props.showQuizzResult handles submit event
@@ -28,7 +28,7 @@ const SnowLineDraggableGraph = props => {
   const [showSubmitButton, setShowSubmitButton] = useState(false)
 
   /**
-   * Main code for SnowLineDraggable
+   * main code for snowlinegraph
    */
   function createSnowLine() {
     const svg = select(svgRef.current).attr("transform", `translate(${marginLeft},${marginTop})`)
@@ -237,23 +237,21 @@ const SnowLineDraggableGraph = props => {
       animationLineText(marginTextY, ".draggable-line-text-question")
 
       /**
-       * Handle drag start event
+       * handle drag start event
        */
       function dragstarted() {
         if (!props.showAnswer) {
           setShowSubmitButton(false)
           props.setHideIntroductionBubble(true)
 
-          svg
-            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
-            .classed("active-text", true)
+          svg.selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter").classed("active-text", true)
           svg.selectAll(".draggable-line, .draggable-area, .draggable-line-text-year").interrupt()
           svg.select(".draggable-line-text-question").remove()
         }
       }
 
       /**
-       * Handle drag event
+       * handle drag event
        */
       function dragged() {
         //y position of mouse for checking boundaries
@@ -274,33 +272,29 @@ const SnowLineDraggableGraph = props => {
 
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
-          //Update the line properties
+          //update the line properties
           currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
           currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
 
-          //Update text
-          textDraggableLineMeter
-            .attr("y", newYPosition + marginTextY / 4)
-            .text(yScale.invert(newYPosition).toFixed(0) + " m")
+          //update text
+          textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
         }
       }
 
       /**
-       * Handle drag end event
+       * handle drag end event
        */
       function dragended() {
         if (!props.showAnswer) {
           setShowSubmitButton(true)
-          svg
-            .selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter")
-            .classed("active-text", false)
+          svg.selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter").classed("active-text", false)
         }
       }
     }
 
     /**
-     * Handle animation of text
+     * handle animation of text
      */
     function animationLineText(offset, selector) {
       svg
@@ -309,21 +303,11 @@ const SnowLineDraggableGraph = props => {
         .delay(3000)
         .duration(600)
         .ease(easeQuad)
-        .attr(
-          "y",
-          yScale(
-            selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition
-          )
-        )
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition))
         .transition()
         .attr("y", yScale(draggableLinePosition + offset))
         .transition()
-        .attr(
-          "y",
-          yScale(
-            selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition
-          )
-        )
+        .attr("y", yScale(selector === ".draggable-line-text-question" ? draggableLinePosition + 2 * offset : draggableLinePosition))
         .transition()
         .attr("y", yScale(draggableLinePosition + offset))
         .on("end", function () {
@@ -332,7 +316,7 @@ const SnowLineDraggableGraph = props => {
     }
 
     /**
-     * Handle animation of draggable line
+     * handle animation of draggable line
      */
     function animationLine() {
       svg
@@ -357,14 +341,14 @@ const SnowLineDraggableGraph = props => {
   }
 
   /**
-   * React Lifecycle
+   * react lifecycle
    */
   useEffect(() => {
     createSnowLine()
   }, [props.showAnswer, props.showSnowlineInteraction])
 
   /**
-   * Handle submission of result
+   * handle submission of result
    */
   function showResult() {
     props.showQuizzResult()

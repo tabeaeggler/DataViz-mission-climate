@@ -1,4 +1,4 @@
-/*Navigation*/
+/*navigation*/
 #navigation-button-back-mountain {
   bottom: 28.5%;
   left: 1.66%;
@@ -19,7 +19,7 @@
   right: 3.2%;
 }
 
-/*Landscape*/
+/*landscape*/
 .landscape-container {
   position: absolute;
   bottom: 0;
@@ -83,7 +83,7 @@
   transition: all 3s;
 }
 
-/*Snowline*/
+/*snowline*/
 .draggable-line,
 .draggable-line-static {
   stroke: #ffd763;
@@ -223,7 +223,7 @@
   zoom: 60%;
 }
 
-/* Glacier */
+/* glacier */
 .bubble-box-glacier-answer {
   right: 27.5%;
   margin-right: 160px;

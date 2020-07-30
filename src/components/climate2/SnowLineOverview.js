@@ -8,7 +8,7 @@ import Snow from "react-snowstorm"
 import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
 
 /**
- * Creates context for the snowline graph with speech bubbles
+ * creates context for the snowline graph with speech bubbles
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
@@ -25,7 +25,7 @@ const SnowLineOverview = props => {
   const [data, setData] = useState([{ year: 1960, snowline: 900 }])
 
   /**
-   * Creates the header section of the mountains page with animation
+   * creates the header section of the mountains page with animation
    * @returns dom element with header
    */
   function createHeader() {
@@ -46,7 +46,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds speach bubble for introduction to the topic
+   * adds speach bubble for introduction to the topic
    * @returns dom element with speech bubble
    */
   function createBubbleIntroduction() {
@@ -68,7 +68,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds speach bubble for showing snowline answer
+   * adds speach bubble for showing snowline answer
    * @returns dom element with speech bubble
    */
   function createBubbleShowAnswer() {
@@ -90,7 +90,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Handles submit event
+   * handles submit event
    */
   function showQuizzResult() {
     setData(prevState => [...prevState, { year: 2020, snowline: 1250 }])
@@ -98,7 +98,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds next navigation button
+   * adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -117,7 +117,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {
@@ -137,7 +137,7 @@ const SnowLineOverview = props => {
   }
 
   /**
-   * React Lifecycle -> Renders only once
+   * react lifecycle
    */
   useEffect(() => {
     props.setPageNr(2)
@@ -150,7 +150,6 @@ const SnowLineOverview = props => {
       {createBubbleIntroduction()}
       {navigationNext()}
       {navigationBack()}
-
       <SnowLineDraggableGraph
         showAnswer={showAnswer}
         data={data}
@@ -158,7 +157,6 @@ const SnowLineOverview = props => {
         showSnowlineInteraction={props.showSnowlineInteraction}
         setHideIntroductionBubble={setHideIntroductionBubble}
       />
-
       <Snow animationInterval={50} followMouse={false} vMaxY={1.5} vMaxX={3} flakesMaxActive={90} flakesMax={150}></Snow>
     </React.Fragment>
   )
