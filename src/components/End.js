@@ -8,7 +8,7 @@ import "../App.css"
 
 /**
  * Creates the end screen of the climate presentation
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation 
  */
 const End = props => {
   //translation
@@ -20,7 +20,7 @@ const End = props => {
   const handleShow = () => setShow(true)
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element
    */
   function navigationBack() {
@@ -40,7 +40,7 @@ const End = props => {
   }
 
   /**
-   * Creates title animation
+   * creates title animation
    * @returns animated svg
    */
   function createAnimation() {
@@ -58,7 +58,7 @@ const End = props => {
   }
 
   /**
-   * Creates a modal with the "about" information
+   * creates a modal with the "about" information
    * @returns dom element with modal
    */
   function createModal() {
@@ -91,7 +91,7 @@ const End = props => {
   }
 
   /**
-   * Creates the title of the page
+   * creates the title of the page
    * @returns dom element
    */
   function createTitle() {
@@ -107,7 +107,7 @@ const End = props => {
   }
 
   /**
-   * Creates three take home messages
+   * creates three take home messages
    * @returns dom element
    */
   function createTakeHomeMessages() {
@@ -123,7 +123,7 @@ const End = props => {
   }
 
   /**
-   * Creates "About" and "Go to Startpage" Buttons
+   * creates "About" and "Go to Startpage" Buttons
    * @returns dom element
    */
   function createButtons() {

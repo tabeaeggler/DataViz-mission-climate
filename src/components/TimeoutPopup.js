@@ -4,12 +4,12 @@ import { Modal } from "react-bootstrap"
 import { useTranslation } from "react-i18next"
 
 /**
- * Rendering of components with specific path
- * @param {function} props.setPageNr setter for navigation page
+ * creates pop-up when user is inactive
+ * @param {function} props.setPageNr setter for navigation 
  * @param {function} props.globalNavState indicates the current selected page
  */
 const TimeoutPopup = props => {
-  //timing variables: 2 min until changing to homepage --> user gets warned 10s before
+  //timing variables: 2 min until switching to homepage --> user gets warned 10s before
   const goToStartTime = 2000 * 60 * 2
   const warningTime = 1000 * 60 * (2 - 1 / 6)
   var warnTimeout
