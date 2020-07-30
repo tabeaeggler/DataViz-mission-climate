@@ -9,7 +9,7 @@ import End from "../components/End"
 
 /**
  * Rendering of components with specific path
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation
  */
 const Routes = props => {
   return (
