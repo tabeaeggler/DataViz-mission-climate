@@ -6,7 +6,7 @@ import "./climate2.css"
 
 /**
  * assembles all elements of climate2 screen
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation
  */
 function Climate2(props) {
   //states

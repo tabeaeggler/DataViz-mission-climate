@@ -6,7 +6,7 @@ import { CSSTransition } from "react-transition-group"
 
  /**
  * assembles all elements of climate1 screen
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation 
  */
 function Climate1(props) {
   const { t } = useTranslation()

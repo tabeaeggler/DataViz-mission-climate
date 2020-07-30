@@ -11,7 +11,7 @@ import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
  * assembles all elements of climate3 screen
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation
  */
 
 function Climate3(props) {

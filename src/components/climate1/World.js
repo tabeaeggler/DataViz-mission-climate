@@ -18,7 +18,7 @@ import { legendColor } from "d3-svg-legend"
 /**
  * creates a interactive globe to show climate warming
  * and renders TemperatureLineGraph for selected country.
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation 
  */
 const World = props => {
   //translation

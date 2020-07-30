@@ -15,7 +15,7 @@ import "rc-tooltip/assets/bootstrap.css"
  * @param {function} props.setShowSnowlineGraph triggers switch back to snowline graph
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {boolean} props.showGlacierInteraction indicates whether glacier iteraction elements are visible
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation
  */
 const GlacierOverview = props => {
   //transaltion

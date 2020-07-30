@@ -12,7 +12,7 @@ import SnowLineDraggableGraph from "./SnowLineDraggableGraph"
  * @param {boolean} props.showSnowlineInteraction indicates whether snowline iteraction elements are visible
  * @param {boolean} props.showSnowlineGraph indicates whether the snowline graph is focused
  * @param {function} props.setShowSnowlineGraph triggers switch to glacier visualisation
- * @param {function} props.setPageNr setter for navigation page
+ * @param {function} props.setPageNr setter for navigation
  */
 
 const SnowLineOverview = props => {
