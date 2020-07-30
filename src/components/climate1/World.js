@@ -16,7 +16,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { legendColor } from "d3-svg-legend"
 
 /**
- * Creates a interactive globe to show climate warming
+ * creates a interactive globe to show climate warming
  * and renders TemperatureLineGraph for selected country.
  * @param {function} props.setPageNr setter for navigation page
  */
@@ -75,7 +75,7 @@ const World = props => {
   }
 
   /**
-   * Handles the initial animation of the globe
+   * handles the initial animation of the globe
    */
   const handleInitialAnimation = useCallback(() => {
     var timeoutIds = []
@@ -92,7 +92,7 @@ const World = props => {
   }, [])
 
   /**
-   * Animation helper, zooms to specified location
+   * animation helper, zooms to specified location
    */
   function zoom(lat, long, alt, time, order) {
     //save all scheduled functions
@@ -109,7 +109,7 @@ const World = props => {
   }
 
   /**
-   * Updates selected country and filter climate data for selected country
+   * updates selected country and filter climate data for selected country
    * @param {country object} country
    */
   function updateCountry(country) {
@@ -120,7 +120,7 @@ const World = props => {
   }
 
   /**
-   * Creates a Globe with react-globe.gl
+   * creates a globe with react-globe.gl
    * @returns dom element with globe
    */
   function createGlobe() {
@@ -180,7 +180,7 @@ const World = props => {
   }
 
   /**
-   * Clears all scheduled functions calls for the initial animation
+   * clears all scheduled functions calls for the initial animation
    *  @param {array} ids array with all timout ids
    */
   function clearScheduledAnimations(ids) {
@@ -191,7 +191,7 @@ const World = props => {
   }
 
   /**
-   * Creates the button center the globe on the current location of the user
+   * creates the button center the globe on the current location of the user
    * @returns dom element with location button
    */
   function createLocationButton() {
@@ -207,7 +207,7 @@ const World = props => {
   }
 
   /**
-   * Creates a modal with additional information of the clicked country
+   * creates a modal with additional information of the clicked country
    * @returns dom element with modal
    */
   function createModal() {
@@ -225,8 +225,8 @@ const World = props => {
   }
 
   /**
-   * Creates linegraph
-   * @returns dom element linegraph
+   * creates linegraph
+   * @returns dom element with linegraph
    */
   function createLinegraph() {
     return (
@@ -239,7 +239,7 @@ const World = props => {
   }
 
   /**
-   * Adds next navigation button
+   * adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -259,7 +259,7 @@ const World = props => {
   }
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {
@@ -279,7 +279,7 @@ const World = props => {
   }
 
   /**
-   * Appends legend for globe to svg
+   * appends legend for globe to svg
    */
   const createLegend = useCallback(() => {
     const colorScaleLegend = scaleSequential(interpolateRdYlBu).domain([3, -3])
@@ -290,7 +290,7 @@ const World = props => {
   }, [t])
 
   /**
-   * React Lifecycle -> Renders only once
+   * react lifecycle
    */
   useEffect(() => {
     props.setPageNr(1)

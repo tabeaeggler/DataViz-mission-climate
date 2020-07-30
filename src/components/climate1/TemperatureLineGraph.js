@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { select, line, curveCardinal, axisBottom, scaleLinear, axisLeft, extent } from "d3"
 
 /**
- * Creates a linegraph with two lines: country specific & global climate change
+ * creates a linegraph with two lines: country specific & global climate change
  * @param {array} props.selectedCountry geojson data for selected country
  * @param {array} props.climateData country specifiy climate data from 1961 - 2019
  * @param {array} props.globalData global climata data from 1961 - 2019
@@ -15,7 +15,7 @@ const TemperatureLineGraph = props => {
   const svgWidth = 835
 
   /**
-   * Creates a gridlines in x axis function
+   * creates a gridlines in x axis function
    * @param {function} xScale
    * @returns {function} grid function
    */
@@ -24,7 +24,7 @@ const TemperatureLineGraph = props => {
   }
 
   /**
-   * Creates a gridlines in y axis function
+   * creates a gridlines in y axis function
    * @param {function} yScale
    * @returns {function} grid function
    */
@@ -33,7 +33,7 @@ const TemperatureLineGraph = props => {
   }
 
   /**
-   * Main code for linegraph
+   * main code for linegraph
    */
   const createLineGraph = useCallback(() => {
     const height = 200
@@ -136,7 +136,7 @@ const TemperatureLineGraph = props => {
     }
 
     /**
-     * Calculates best position for naming tags beside line
+     * calculates best position for naming tags beside line
      * @param {string} tag differs the line. Is either global or country
      * @returns {number} position for naming tag
      */
@@ -162,7 +162,7 @@ const TemperatureLineGraph = props => {
   }, [props, t])
 
   /**
-   * React Lifecycle -> Renders as soon as props has changed
+   * react lifecycle 
    */
   useEffect(() => {
     createLineGraph()
