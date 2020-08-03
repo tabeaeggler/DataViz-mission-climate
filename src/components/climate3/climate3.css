@@ -8,7 +8,7 @@
 .bubble-source-gas,
 .bubble-source-sector {
   fill: #868585;
-  font-size: 0.7em;
+  font-size: 13pt;
   text-anchor: middle;
 }
 
@@ -42,7 +42,7 @@
 
 .bubble-title-gas,
 .bubble-title-sector {
-  font-size: 16pt;
+  font-size: 18pt;
   font-family: "Gudea", sans-serif;
   font-weight: 700;
   text-anchor: middle;

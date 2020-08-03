@@ -132,12 +132,12 @@
 }
 
 .snowline-text {
-  font-size: 0.7em;
+  font-size: 13pt;
   fill: #6a8adf;
 }
 
 .difference-text {
-  font-size: 0.9em;
+  font-size: 15pt;
   font-weight: bold;
 }
 
@@ -149,7 +149,7 @@
 }
 
 .draggable-line-text-question {
-  font-size: 0.9em;
+  font-size: 16pt;
   font-weight: bold;
 }
 
@@ -278,7 +278,7 @@
 }
 
 .slider-text-small-ice {
-  height: 30px;
+  height: 14pt;
   margin-bottom: 0;
 }
 
@@ -287,7 +287,7 @@
 }
 
 .slider-text-small {
-  font-size: 0.5em;
+  font-size: 13pt;
   margin: 10px auto;
   margin-right: auto;
   white-space: pre-wrap;
@@ -302,7 +302,7 @@
 }
 
 .submit-button-glacier {
-  margin-top: 10px;
+  margin-top: 25px;
   left: -3%;
 }
 
@@ -353,7 +353,7 @@
 .glacier-estimation-text,
 .glacier-original-text {
   margin: 0;
-  font-size: 0.7em;
+  font-size: 13pt;
 }
 
 .glacier-result-text {
@@ -370,8 +370,8 @@
 .glacier-input-text {
   color: #6a8adf;
   transform: rotate(-2.7deg);
-  width: 90px;
-  padding-left: 120px;
+  width: 120px;
+  padding-left: 100px;
   z-index: 100;
   position: absolute;
   left: 50%;
@@ -383,7 +383,7 @@
 
 .glacier-estimation-line {
   height: 3px;
-  width: 200px;
+  width: 230px;
   background: repeating-linear-gradient(to right, #ffd763 0, #ffd763 5px, transparent 5px, transparent 7px);
 }
 

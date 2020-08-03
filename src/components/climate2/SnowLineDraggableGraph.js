@@ -20,7 +20,7 @@ const SnowLineDraggableGraph = props => {
   const marginLeft = 98
   const marginTop = 45
   const mountainHeight = 2128
-  const marginTextY = 60
+  const marginTextY = 70
   const marginTextX = 50
   const offset = 75
   //state
@@ -70,7 +70,7 @@ const SnowLineDraggableGraph = props => {
         .append("text")
         .attr("class", "snowline-text difference-text")
         .attr("x", width + 20)
-        .attr("y", yScale(props.data[1].snowline - 190))
+        .attr("y", yScale(props.data[1].snowline - 200))
         .text("350 m")
         .style("opacity", 0)
         .transition()

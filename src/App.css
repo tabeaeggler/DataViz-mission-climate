@@ -29,40 +29,34 @@ html {
 /*headings and fonts*/
 h1 {
   font-family: "Inconsolata", monospace;
-  font-size: 36pt;
+  font-size: 40pt;
   text-align: center;
   padding-bottom: 10px;
-  margin-top: 55px;
+  margin-top: 50px;
   margin-bottom: 10px;
 }
 
 h2 {
   font-family: "Gudea", sans-serif;
-  font-size: 18pt;
+  font-size: 20pt;
   font-weight: 700;
   text-align: center;
   margin: 0;
 }
 
-h3 {
-  font-family: "Gudea", sans-serif;
-  font-size: 1.2em;
-  text-align: left;
-}
-
 h6 {
-  font-size: 0.7em;
+  font-size: 12pt;
   color: white;
   opacity: 0.2;
   font-weight: 400 !important;
 }
 
 p {
-  font-size: 0.9em;
+  font-size: 14pt;
 }
 
 b {
-  font-size: 1em;
+  font-size: 15pt;
 }
 
 .subtitle {
@@ -73,17 +67,17 @@ b {
 .start-container {
   position: absolute;
   top: 50%;
-  margin-top: -85px;
+  margin-top: -75px;
   left: 50%;
-  margin-left: -539px;
-  width: 1079px;
+  margin-left: -850px;
+  width: 1700px;
 }
 
 .start-title,
 .end-title {
   font-family: "Inconsolata", monospace;
   font-weight: bold;
-  font-size: 64pt;
+  font-size: 84pt;
   text-align: center;
   text-transform: uppercase;
   background: -webkit-linear-gradient(0deg, #6a8adf 30%, #d37b61 70%);
@@ -94,8 +88,8 @@ b {
 
 .start-subtitle,
 .end-subtitle {
-  font-family: "Inconsolata", monospace;
-  font-size: 22pt;
+  font-family: "Gudea", sans-serif;
+  font-size: 24pt;
   color: #bbb9b9;
   font-weight: 700;
   text-align: center;
@@ -109,10 +103,10 @@ b {
 .end-title-container {
   position: absolute;
   top: 50%;
-  margin-top: -145px;
+  margin-top: -160px;
   left: 50%;
-  margin-left: -600px;
-  width: 1200px;
+  margin-left: -850px;
+  width: 1700px;
   text-align: center;
 }
 
@@ -126,7 +120,7 @@ b {
   padding: 26px;
   color: #bbb9b9;
   position: absolute;
-  bottom: 65px;
+  bottom: 75px;
   left: 50%;
   margin-left: -111px;
   font-size: 16pt;
@@ -176,9 +170,10 @@ button:focus {
 button.submit-button {
   background-color: #bbb9b9;
   color: #141416;
+  font-weight: bold;
   margin-bottom: 20px;
   border-radius: 15px;
-  font-size: 0.9em;
+  font-size: 14pt;
   line-height: 1;
   padding: 5px 15px;
 }
@@ -189,14 +184,14 @@ button.nav-button,
 button.language-button,
 #language-button-clicked,
 .about-button {
-  font-size: 18pt;
+  font-size: 24pt;
   font-weight: 400;
   font-family: "Inconsolata", monospace;
   color: #141416;
   background-color: #bbb9b9;
   border-radius: 100%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-left: 15px;
   display: table-cell;
   vertical-align: bottom;
@@ -205,7 +200,7 @@ button.language-button,
 .start-button,
 .end-button,
 .about-button {
-  font-size: 11pt !important;
+  font-size: 14pt !important;
 }
 
 #nav-button-clicked,

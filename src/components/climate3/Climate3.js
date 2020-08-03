@@ -227,8 +227,8 @@ function Climate3(props) {
         var posC02 = 0.74
         var posN02 = 0.6
         var posAdd1 = 0.033
-        var posAdd2 = 0.029
-        var posAdd3 = 0.016
+        var posAdd2 = 0.033
+        var posAdd3 = 0.02
         //add percentage labels
         addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * posFGAS, "2%", 6000)
         addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * posCH4, "16%", 6000)
@@ -258,8 +258,8 @@ function Climate3(props) {
       function addSectorTextLabels() {
         var posPercentage = 0.65
         var posSector = posPercentage + 0.033
-        var posSource = posSector + 0.029
-        var posSource2 = posSource + 0.016
+        var posSource = posSector + 0.033
+        var posSource2 = posSource + 0.02
         //add percentage label
         addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * posPercentage, "25%", 6000)
         addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * posPercentage, "24%", 6000)

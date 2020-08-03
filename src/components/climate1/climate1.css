@@ -32,17 +32,17 @@ path.domain {
 text.global-name,
 text.country-name,
 text.year-text {
-  font-size: 12pt;
+  font-size: 13pt;
 }
 
 /*world component style*/
 .legend-world {
-  width: 300px;
+  width: 380px;
   height: 50px;
   position: absolute;
-  bottom: 3%;
+  bottom: 20px;
   left: 50%;
-  margin-left: -140px;
+  margin-left: -175px;
 }
 
 .legendCells {
@@ -51,13 +51,18 @@ text.year-text {
 
 svg text.legendTitle {
   fill: #bbb9b9;
-  font-size: 11pt;
-  transform: translate(0px, 12px);
+  font-size: 14pt;
+  transform: translate(0px, 15px);
 }
 
-svg text.label {
+svg text.label{
   fill: #bbb9b9;
-  font-size: 11pt;
+  font-size: 12pt;
+  transform: translate(21px, 30px);
+}
+
+.swatch {
+  transform: translate(0px, 5px);
 }
 
 .scene-tooltip {
@@ -67,12 +72,11 @@ svg text.label {
 .location-button button {
   color: #bbb9b9;
   text-align: center;
-  margin-bottom: 2em;
   position: fixed;
-  bottom: -1.5%;
+  bottom: 20px;
   left: 1.5%;
   display: block;
-  font-size: 11pt;
+  font-size: 14pt;
 }
 
 .globe-container {

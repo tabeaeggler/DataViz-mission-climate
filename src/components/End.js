@@ -45,12 +45,12 @@ const End = props => {
    */
   function createAnimation() {
     return (
-      <svg width="140px" className="end-text-animation">
+      <svg width="250px" className="end-text-animation">
         <text fill="#d37b61" transform="translate(0 97.5)" fontWeight="bold" fontFamily="Inconsolata" fontSize="64pt">
           <tspan>
             {t("End.2")}
-            <animate id="anim1" attributeName="font-size" from="64pt" to="80pt" dur="1.5s" begin="0s; anim2.end" />
-            <animate id="anim2" attributeName="font-size" from="80pt" to="64pt" dur="1.5s" begin="anim1.end" />
+            <animate id="anim1" attributeName="font-size" from="84pt" to="100pt" dur="1.5s" begin="0s; anim2.end" />
+            <animate id="anim2" attributeName="font-size" from="100pt" to="84pt" dur="1.5s" begin="anim1.end" />
           </tspan>
         </text>
       </svg>
