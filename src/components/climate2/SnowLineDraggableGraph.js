@@ -295,13 +295,12 @@ const SnowLineDraggableGraph = props => {
 
           dragended()
         } else if (yScale.invert(line).toFixed(0) <= 300) {
-          drag_behavior.on("drag", null)
+          event.on("drag", null)
           var newYPosition = yScale(301)
           setDraggableLinePosition(301)
           //update the line properties
           currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
           currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
-
           //update text
           textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
