@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear, mouse } from "d3"
+import { select, scaleLinear, drag, event, easeQuad, easeCubic, easeLinear } from "d3"
 
 /**
  * creates a draggable snowline graph
@@ -210,7 +210,7 @@ const SnowLineDraggableGraph = props => {
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
 
-      var drag_behavior = draggableGroup.call(drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
+      draggableGroup.call(drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
       animationLine()
 
       var textDraggableLineMeter = svg
@@ -257,17 +257,13 @@ const SnowLineDraggableGraph = props => {
         //select lines and dragabble area
         var currentLine = select(".draggable-line")
         var currentDragArea = select(".draggable-area")
+        var linePos = parseFloat(currentLine.attr("y1"))
 
-        const zoomFactor = 1.6
-        var deltaY = event.dy * zoomFactor
+        if (!props.showAnswer && yScale.invert(linePos).toFixed(0) < 2110 && yScale.invert(linePos).toFixed(0) > 300) {
+          //calculate position (difference)
+          const zoomFactor = 1.6
+          var deltaY = event.dy * zoomFactor
 
-        //y position of mouse for checking boundaries
-        var line = parseFloat(currentLine.attr("y1"))
-
-        var eventpos = 0
-
-        if (!props.showAnswer && yScale.invert(line).toFixed(0) < 2110 && yScale.invert(line).toFixed(0) > 300) {
-          console.log("first if")
           //calculate new position
           var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
@@ -279,33 +275,38 @@ const SnowLineDraggableGraph = props => {
           //update text
           textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
-
-          eventpos = event.sourceEvent.pageY
-          console.log(eventpos)
-        } else if (yScale.invert(line).toFixed(0) >= 2110) {
-          event.on("drag", null)
-          var newYPosition = yScale(2109)
-          setDraggableLinePosition(2109)
-          //update the line properties
-          currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
-          currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
-          //update text
-          textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
-          textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
-
-          dragended()
-        } else if (yScale.invert(line).toFixed(0) <= 300) {
-          event.on("drag", null)
-          var newYPosition = yScale(301)
-          setDraggableLinePosition(301)
-          //update the line properties
-          currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
-          currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
-          //update text
-          textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
-          textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
-          dragended()
+        } else if (yScale.invert(linePos).toFixed(0) >= 2110) {
+          handleBoundries(2109)
+        } else if (yScale.invert(linePos).toFixed(0) <= 200) {
+          handleBoundries(201)
         }
+      }
+
+      /**
+       * Stop drag event if boundries are overpassed
+       * @param {number} newPosition valid position in mountain boundries
+       */
+      function handleBoundries(newPosition) {
+        //cancel event
+        event.on("drag", null)
+
+        //select lines and dragabble area
+        var currentLine = select(".draggable-line")
+        var currentDragArea = select(".draggable-area")
+
+        //set new position
+        var newYPosition = yScale(newPosition)
+        setDraggableLinePosition(newPosition)
+
+        //update the line properties
+        currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
+        currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
+
+        //update text
+        textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
+        textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
+
+        dragended()
       }
 
       /**
