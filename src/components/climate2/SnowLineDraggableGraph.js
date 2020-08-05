@@ -259,7 +259,7 @@ const SnowLineDraggableGraph = props => {
         var currentDragArea = select(".draggable-area")
         var linePos = parseFloat(currentLine.attr("y1"))
 
-        if (!props.showAnswer && yScale.invert(linePos).toFixed(0) < 2110 && yScale.invert(linePos).toFixed(0) > 300) {
+        if (!props.showAnswer && yScale.invert(linePos).toFixed(0) < 2110 && yScale.invert(linePos).toFixed(0) > 200) {
           //calculate position (difference)
           const zoomFactor = 1.6
           var deltaY = event.dy * zoomFactor
