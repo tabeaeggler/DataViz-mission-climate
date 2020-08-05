@@ -210,7 +210,7 @@ const SnowLineDraggableGraph = props => {
         .attr("y1", yScale(draggableLinePosition))
         .attr("y2", yScale(draggableLinePosition))
 
-      draggableGroup.call(drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
+      var drag_behavior = draggableGroup.call(drag().on("start", dragstarted).on("drag", dragged).on("end", dragended))
       animationLine()
 
       var textDraggableLineMeter = svg
@@ -254,22 +254,22 @@ const SnowLineDraggableGraph = props => {
        * handle drag event
        */
       function dragged() {
+        //select lines and dragabble area
+        var currentLine = select(".draggable-line")
+        var currentDragArea = select(".draggable-area")
+
+        const zoomFactor = 1.6
+        var deltaY = event.dy * zoomFactor
+
         //y position of mouse for checking boundaries
-        var yMouse = mouse(this)[1]
-        const upperLimit = ((-175 * window.innerHeight) / 939) * (window.innerHeight / 939)
-        const lowerLimit = ((159 * window.innerHeight) / 939) * (1 - 939 / window.innerHeight)
+        var line = parseFloat(currentLine.attr("y1"))
 
-        if (!props.showAnswer) {
-          const zoomFactor = 1.6
+        var eventpos = 0
 
-          //select lines and dragabble area
-          var currentLine = select(".draggable-line")
-          var currentDragArea = select(".draggable-area")
-
+        if (!props.showAnswer && yScale.invert(line).toFixed(0) < 2110 && yScale.invert(line).toFixed(0) > 300) {
+          console.log("first if")
           //calculate new position
-          var deltaY = event.dy * zoomFactor
           var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
-
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
           //update the line properties
@@ -279,6 +279,33 @@ const SnowLineDraggableGraph = props => {
           //update text
           textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
           textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
+
+          eventpos = event.sourceEvent.pageY
+          console.log(eventpos)
+        } else if (yScale.invert(line).toFixed(0) >= 2110) {
+          event.on("drag", null)
+          var newYPosition = yScale(2109)
+          setDraggableLinePosition(2109)
+          //update the line properties
+          currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
+          currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
+          //update text
+          textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
+          textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
+
+          dragended()
+        } else if (yScale.invert(line).toFixed(0) <= 300) {
+          drag_behavior.on("drag", null)
+          var newYPosition = yScale(301)
+          setDraggableLinePosition(301)
+          //update the line properties
+          currentLine.attr("y1", newYPosition).attr("y2", newYPosition)
+          currentDragArea.attr("y1", newYPosition).attr("y2", newYPosition)
+
+          //update text
+          textDraggableLineMeter.attr("y", newYPosition + marginTextY / 4).text(yScale.invert(newYPosition).toFixed(0) + " m")
+          textDraggableLineYear.attr("y", newYPosition + marginTextY / 4)
+          dragended()
         }
       }
 
@@ -287,24 +314,6 @@ const SnowLineDraggableGraph = props => {
        */
       function dragended() {
         if (!props.showAnswer) {
-          //select lines and dragabble area
-          var currentLine = select(".draggable-line")
-          var currentDragArea = select(".draggable-area")
-          var newPos = yScale.invert(parseFloat(currentLine.attr("y1")).toFixed(0))
-
-          console.log(newPos)
-          if (newPos > mountainHeight || newPos < 100) {
-            var defaultPositiotn = yScale(1000)
-
-            setDraggableLinePosition(1000)
-            //update the line properties
-            currentLine.attr("y1", defaultPositiotn).attr("y2", defaultPositiotn)
-            currentDragArea.attr("y1", defaultPositiotn).attr("y2", defaultPositiotn)
-
-            //update text
-            textDraggableLineMeter.attr("y", defaultPositiotn + marginTextY / 4).text(yScale.invert(defaultPositiotn).toFixed(0) + " m")
-            textDraggableLineYear.attr("y", defaultPositiotn + marginTextY / 4)
-          }
           setShowSubmitButton(true)
           svg.selectAll(".draggable-line, .draggable-line-text-year, .draggable-line-text-meter").classed("active-text", false)
         }
