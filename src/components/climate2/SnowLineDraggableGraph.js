@@ -256,8 +256,8 @@ const SnowLineDraggableGraph = props => {
       function dragged() {
         //y position of mouse for checking boundaries
         var yMouse = mouse(this)[1]
-        const upperLimit = -170
-        const lowerLimit = 135
+        const upperLimit = ((-175 * window.innerHeight) / 939) * (window.innerHeight / 939)
+        const lowerLimit = ((159 * window.innerHeight) / 939) * (1 - 939 / window.innerHeight)
 
         if (!props.showAnswer && yMouse > upperLimit && yMouse < lowerLimit) {
           const zoomFactor = 1.6
@@ -270,6 +270,7 @@ const SnowLineDraggableGraph = props => {
           var deltaY = event.dy * zoomFactor
           var newYPosition = parseFloat(currentLine.attr("y1")) + deltaY
 
+          console.log("pos", yScale.invert(newYPosition).toFixed(0))
           setDraggableLinePosition(yScale.invert(newYPosition).toFixed(0))
 
           //update the line properties
