@@ -113,7 +113,7 @@ function Climate3(props) {
         d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
         d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-        splitGasAnimation(5000, 0.8, 600)
+        splitGasAnimation(4500, 1.1, 700)
         addGasTextLabels()
       })
 
@@ -127,10 +127,10 @@ function Climate3(props) {
 
         setTimeout(function () {
           simulation
-            .force("x", d3Force.forceX(width / 2).strength(0.03))
-            .force("y", d3Force.forceY(height / 2).strength(0.03))
+            .force("x", d3Force.forceX(width / 2).strength(0.035))
+            .force("y", d3Force.forceY(height / 2).strength(0.035))
             .force("charge", null)
-            .alphaTarget(0.01)
+            .alphaTarget(0.02)
             .restart()
         }, 500)
 
