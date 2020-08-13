@@ -10,8 +10,8 @@ import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
- * Assembles all elements of climate3 screen
- * @param {function} props.setPageNr setter for navigation page
+ * assembles all elements of climate3 screen
+ * @param {function} props.setPageNr setter for navigation
  */
 
 function Climate3(props) {
@@ -113,7 +113,7 @@ function Climate3(props) {
         d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
         d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-        splitGasAnimation(4500, 0.9, 600)
+        splitGasAnimation(4200, 0.94, 600)
         addGasTextLabels()
       })
 
@@ -219,7 +219,7 @@ function Climate3(props) {
       }
 
       /**
-       * function to add Gas text Lables: percentage, gas, source
+       * add gas text lables: percentage, gas, source
        */
       function addGasTextLabels() {
         var posFGAS = 0.57
@@ -227,8 +227,8 @@ function Climate3(props) {
         var posC02 = 0.74
         var posN02 = 0.6
         var posAdd1 = 0.033
-        var posAdd2 = 0.029
-        var posAdd3 = 0.016
+        var posAdd2 = 0.033
+        var posAdd3 = 0.02
         //add percentage labels
         addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * posFGAS, "2%", 6000)
         addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * posCH4, "16%", 6000)
@@ -253,13 +253,13 @@ function Climate3(props) {
       }
 
       /**
-       * function to add Gas text Lables: percentage, secotr, description
+       * add gas text Lables: percentage, sector, description
        */
       function addSectorTextLabels() {
         var posPercentage = 0.65
         var posSector = posPercentage + 0.033
-        var posSource = posSector + 0.029
-        var posSource2 = posSource + 0.016
+        var posSource = posSector + 0.033
+        var posSource2 = posSource + 0.02
         //add percentage label
         addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * posPercentage, "25%", 6000)
         addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * posPercentage, "24%", 6000)
@@ -292,7 +292,7 @@ function Climate3(props) {
       }
 
       /**
-       * function to add textlabel to a specific position
+       * add textlabel to a specific position
        */
       function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
         svg
@@ -313,7 +313,7 @@ function Climate3(props) {
   )
 
   /**
-   * React Lifecycle -> Renders only once
+   * react lifecycle
    */
   useEffect(() => {
     props.setPageNr(3)
@@ -323,7 +323,7 @@ function Climate3(props) {
   }, [props, createBubbleChart])
 
   /**
-   * Adds Speach Bubble: overview
+   * adds speach bubble: overview
    * @returns dom element with speech bubble
    */
   function createBubble() {
@@ -343,7 +343,7 @@ function Climate3(props) {
   }
 
   /**
-   * Adds next navigation button
+   * adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -375,7 +375,8 @@ function Climate3(props) {
           <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
-                console.log("Go to next page")
+                props.setPageNr(4)
+                history.push("/End")
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
@@ -386,7 +387,7 @@ function Climate3(props) {
   }
 
   /**
-   * Adds back navigation button
+   * adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {
