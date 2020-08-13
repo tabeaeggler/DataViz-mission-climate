@@ -95,7 +95,7 @@ function Climate3(props) {
        * source: (1) start page
        */
       d3.select("#split-bubbles-by-gas").on("click", function () {
-        splitGasAnimation(3000, 1.2)
+        splitGasAnimation(2500, 1.1)
         addGasTextLabels()
       })
 
@@ -113,7 +113,7 @@ function Climate3(props) {
         d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
         d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-        splitGasAnimation(4500, 1.1, 700)
+        splitGasAnimation(4000, 1.0, 700)
         addGasTextLabels()
       })
 
@@ -182,8 +182,8 @@ function Climate3(props) {
           simulation
             .force("collide", d3Force.forceCollide(17))
             .force("charge", null)
-            .force("x", d3Force.forceX(width / 2).strength(0.013))
-            .force("y", d3Force.forceY(height / 2).strength(0.013))
+            .force("x", d3Force.forceX(width / 2).strength(0.012))
+            .force("y", d3Force.forceY(height / 2).strength(0.012))
             .alphaTarget(speedCenter)
             .restart()
         }, 200)
@@ -202,8 +202,8 @@ function Climate3(props) {
 
         setTimeout(function () {
           simulation
-            .force("x", forceXSplitedByGas.strength(0.027))
-            .force("y", d3Force.forceY(height / 2).strength(0.027))
+            .force("x", forceXSplitedByGas.strength(0.026))
+            .force("y", d3Force.forceY(height / 2).strength(0.026))
             .force("collide", d3Force.forceCollide(17))
             .force("charge", null)
             .alphaTarget(0.5)
@@ -211,15 +211,12 @@ function Climate3(props) {
         }, timeout)
         setTimeout(function () {
           simulation.force("x", forceXSplitedByGas.strength(0.023)).force("y", d3Force.forceY(height / 2).strength(0.023))
-        }, timeout + additionalTime + 2600)
+        }, timeout + additionalTime + 2800)
         setTimeout(function () {
           simulation.force("x", forceXSplitedByGas.strength(0.02)).force("y", d3Force.forceY(height / 2).strength(0.02))
-        }, timeout + additionalTime + 3300)
+        }, timeout + additionalTime + 3500)
         setTimeout(function () {
-          simulation.force("x", forceXSplitedByGas.strength(0.01)).force("y", d3Force.forceY(height / 2).strength(0.01))
-        }, timeout + additionalTime + 4100)
-        setTimeout(function () {
-          simulation.force("x", forceXSplitedByGas.strength(0.005)).force("y", d3Force.forceY(height / 2).strength(0.005))
+          simulation.force("x", forceXSplitedByGas.strength(0.005)).force("y", d3Force.forceY(height / 2).strength(0.01))
         }, timeout + additionalTime + 4300)
       }
 
