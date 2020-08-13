@@ -10,8 +10,8 @@ import ButtonLeft from "../../assets/img/buttonNavLeft.svg"
 import BubbleObjectsPath from "../../assets/data_climate3/bubble_objects.csv"
 
 /**
- * assembles all elements of climate3 screen
- * @param {function} props.setPageNr setter for navigation
+ * Assembles all elements of climate3 screen
+ * @param {function} props.setPageNr setter for navigation page
  */
 
 function Climate3(props) {
@@ -95,7 +95,7 @@ function Climate3(props) {
        * source: (1) start page
        */
       d3.select("#split-bubbles-by-gas").on("click", function () {
-        splitGasAnimation(2500, 1.1)
+        splitGasAnimation(3000, 1.0)
         addGasTextLabels()
       })
 
@@ -113,7 +113,7 @@ function Climate3(props) {
         d3.selectAll(".bubble-C02").transition().delay(1600).duration(2800).style("fill", "#d14aa7")
         d3.selectAll(".bubble-N02").transition().delay(1600).duration(2800).style("fill", "#d37b61")
 
-        splitGasAnimation(4000, 1.0, 700)
+        splitGasAnimation(4500, 0.9, 600)
         addGasTextLabels()
       })
 
@@ -127,10 +127,10 @@ function Climate3(props) {
 
         setTimeout(function () {
           simulation
-            .force("x", d3Force.forceX(width / 2).strength(0.035))
-            .force("y", d3Force.forceY(height / 2).strength(0.035))
+            .force("x", d3Force.forceX(width / 2).strength(0.032))
+            .force("y", d3Force.forceY(height / 2).strength(0.032))
             .force("charge", null)
-            .alphaTarget(0.02)
+            .alphaTarget(0.012)
             .restart()
         }, 500)
 
@@ -182,11 +182,11 @@ function Climate3(props) {
           simulation
             .force("collide", d3Force.forceCollide(17))
             .force("charge", null)
-            .force("x", d3Force.forceX(width / 2).strength(0.012))
-            .force("y", d3Force.forceY(height / 2).strength(0.012))
+            .force("x", d3Force.forceX(width / 2).strength(0.013))
+            .force("y", d3Force.forceY(height / 2).strength(0.013))
             .alphaTarget(speedCenter)
             .restart()
-        }, 200)
+        }, 500)
 
         var forceXSplitedByGas = d3Force.forceX(function (d) {
           if (d.type === "FGAS") {
@@ -202,26 +202,24 @@ function Climate3(props) {
 
         setTimeout(function () {
           simulation
-            .force("x", forceXSplitedByGas.strength(0.026))
-            .force("y", d3Force.forceY(height / 2).strength(0.026))
+            .force("x", forceXSplitedByGas.strength(0.024))
+            .force("y", d3Force.forceY(height / 2).strength(0.024))
             .force("collide", d3Force.forceCollide(17))
             .force("charge", null)
-            .alphaTarget(0.5)
+            .alphaTarget(0.65)
             .restart()
         }, timeout)
+
         setTimeout(function () {
-          simulation.force("x", forceXSplitedByGas.strength(0.023)).force("y", d3Force.forceY(height / 2).strength(0.023))
-        }, timeout + additionalTime + 2800)
+          simulation.force("x", forceXSplitedByGas.strength(0.018)).force("y", d3Force.forceY(height / 2).strength(0.018))
+        }, timeout + additionalTime + 4000)
         setTimeout(function () {
-          simulation.force("x", forceXSplitedByGas.strength(0.02)).force("y", d3Force.forceY(height / 2).strength(0.02))
-        }, timeout + additionalTime + 3500)
-        setTimeout(function () {
-          simulation.force("x", forceXSplitedByGas.strength(0.005)).force("y", d3Force.forceY(height / 2).strength(0.01))
-        }, timeout + additionalTime + 4300)
+          simulation.force("x", forceXSplitedByGas.strength(0.01)).force("y", d3Force.forceY(height / 2).strength(0.01))
+        }, timeout + additionalTime + 4700)
       }
 
       /**
-       * add gas text lables: percentage, gas, source
+       * function to add Gas text Lables: percentage, gas, source
        */
       function addGasTextLabels() {
         var posFGAS = 0.57
@@ -229,8 +227,8 @@ function Climate3(props) {
         var posC02 = 0.74
         var posN02 = 0.6
         var posAdd1 = 0.033
-        var posAdd2 = 0.033
-        var posAdd3 = 0.02
+        var posAdd2 = 0.029
+        var posAdd3 = 0.016
         //add percentage labels
         addTextLabel("bubble-title-gas bubble-FGAS", width * 0.15, height * posFGAS, "2%", 6000)
         addTextLabel("bubble-title-gas bubble-CH4", width * 0.35, height * posCH4, "16%", 6000)
@@ -255,13 +253,13 @@ function Climate3(props) {
       }
 
       /**
-       * add gas text Lables: percentage, sector, description
+       * function to add Gas text Lables: percentage, secotr, description
        */
       function addSectorTextLabels() {
         var posPercentage = 0.65
         var posSector = posPercentage + 0.033
-        var posSource = posSector + 0.033
-        var posSource2 = posSource + 0.02
+        var posSource = posSector + 0.029
+        var posSource2 = posSource + 0.016
         //add percentage label
         addTextLabel("bubble-title-sector label-electricity", width * 0.15, height * posPercentage, "25%", 6000)
         addTextLabel("bubble-title-sector label-agriculture", width * 0.32, height * posPercentage, "24%", 6000)
@@ -294,7 +292,7 @@ function Climate3(props) {
       }
 
       /**
-       * add textlabel to a specific position
+       * function to add textlabel to a specific position
        */
       function addTextLabel(cssClass, xPos, yPos, text, delay = 3000) {
         svg
@@ -315,7 +313,7 @@ function Climate3(props) {
   )
 
   /**
-   * react lifecycle
+   * React Lifecycle -> Renders only once
    */
   useEffect(() => {
     props.setPageNr(3)
@@ -325,7 +323,7 @@ function Climate3(props) {
   }, [props, createBubbleChart])
 
   /**
-   * adds speach bubble: overview
+   * Adds Speach Bubble: overview
    * @returns dom element with speech bubble
    */
   function createBubble() {
@@ -345,7 +343,7 @@ function Climate3(props) {
   }
 
   /**
-   * adds next navigation button
+   * Adds next navigation button
    * @returns dom element with arrow button right
    */
   function navigationNext() {
@@ -377,8 +375,7 @@ function Climate3(props) {
           <div className="navigation-button navigation-next-button">
             <button
               onClick={() => {
-                props.setPageNr(4)
-                history.push("/End")
+                console.log("Go to next page")
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
@@ -389,7 +386,7 @@ function Climate3(props) {
   }
 
   /**
-   * adds back navigation button
+   * Adds back navigation button
    * @returns dom element with arrow button left
    */
   function navigationBack() {
