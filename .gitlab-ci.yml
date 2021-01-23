@@ -1,4 +1,4 @@
-image: docker/compose:latest
+image: docker
 
 variables:
   DOCKER_DRIVER: overlay2
@@ -9,14 +9,14 @@ stages:
 
 services:
   - docker:dind
-
-before_script:
-  - docker info
-  - docker-compose --version
  
 build:
     only: 
       - master
     stage: build
+    tags:
+      - iit
+      - prod
     script:
-        - docker-compose -f docker-compose.prod.yml up -d --build
+        - docker build -t app/mission-klima .
+        - docker run -d -p 3000:3000 --rm --name klima app/mission-klima
