@@ -15,4 +15,5 @@ build:
       - master
     stage: build
     script:
-        - Dockerfile up -d --build
+        - docker build -t app/mission-klima .  
+        - docker run -d -p 3000:3000 --rm --name klima app/mission-klima
