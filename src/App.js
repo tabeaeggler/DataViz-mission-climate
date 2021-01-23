@@ -38,7 +38,7 @@ function App() {
   })
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
