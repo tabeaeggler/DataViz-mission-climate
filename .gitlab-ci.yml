@@ -19,4 +19,4 @@ build:
       - prod
     script:
         - docker build -t app/mission-klima .
-        - docker run -d -p 3000:3000 --rm --name klima app/mission-klima
+        - docker run -d -p 3000:3000 --name klima --rm app/mission-klima
