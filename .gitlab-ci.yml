@@ -1,18 +1,22 @@
-image: docker
+image: docker/compose:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+
+stages:
+    - build
 
 services:
   - docker:dind
 
-stages:
-  - build
+before_script:
+  - docker info
+  - docker-compose --version
  
 build:
     only: 
-      - master
+      - development
     stage: build
-    tags:
-      - iit
-      - prod
     script:
-        - docker build -t app/mission-klima .
-        - docker run -d -p 3000:3000  --rm --name klima app/mission-klima
+        - docker-compose -f docker-compose.prod.yml up -d --build
