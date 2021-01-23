@@ -16,7 +16,7 @@ before_script:
  
 build:
     only: 
-      - development
+      - master
     stage: build
     script:
         - docker-compose -f docker-compose.prod.yml up -d --build
