@@ -1,14 +1,10 @@
-image: docker/compose:latest
-
-variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: "/certs"
-
-stages:
-    - build
+image: docker
 
 services:
   - docker:dind
+
+stages:
+  - build
  
 build:
     only: 
