@@ -42,7 +42,7 @@ function App() {
       <div className="App">
         <Routes setPageNr={setGlobalNavState} />
         <div className="nav-button-container">
-          <button className="nav-button start-button" id="0" onClick={() => handleClick("/", 0)}>
+          <button className="nav-button start-button" id="0" onClick={() => handleClick(process.env.PUBLIC_URL, 0)}>
             {t("Navigation.1")}
           </button>
           <button className="nav-button" id="1" onClick={() => handleClick(process.env.PUBLIC_URL + "/Globe", 1)}>
