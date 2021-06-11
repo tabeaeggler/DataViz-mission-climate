@@ -18,12 +18,19 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    backend: {
+      loadPath: () => {
+        // check the domain
+        const host = window.location.host
+        return (host === "production.ltd" ? "/static/app" : "") + "/static/app/static/locales/{{lng}}/{{ns}}.json"
+      },
+    },
     lng: "de",
     fallbackLng: "de",
     debug: true,
     whitelist: languages,
     interpolation: {
-      escapeValue: false // not needed for react as it escapes by default
+      escapeValue: false, // not needed for react as it escapes by default
     },
   })
 
