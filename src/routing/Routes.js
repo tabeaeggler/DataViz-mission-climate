@@ -1,12 +1,13 @@
 import React from "react"
-import { Router, Switch, Route } from "react-router-dom"
+import { Router, Switch, Route, useRouterHistory } from "react-router-dom"
 import Snowline from "../components/climate2/Climate2"
 import Climate1 from "../components/climate1/Climate1"
 import Cause from "../components/climate3/Climate3"
 //import history from "./history"
 import Start from "../components/Start"
 import End from "../components/End"
-import createBrowserHistory from "history/lib/createBrowserHistory"
+
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 /**
  * Rendering of components with specific path
@@ -14,8 +15,8 @@ import createBrowserHistory from "history/lib/createBrowserHistory"
  */
 const Routes = props => {
   const hist = useRouterHistory(createBrowserHistory)({
-    basename= "/mission-erde/klima"
-  })
+    basename: '/',
+})
   return (
     <div>
       <Router history={hist}>
