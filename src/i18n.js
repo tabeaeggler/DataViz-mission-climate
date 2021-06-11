@@ -22,7 +22,7 @@ i18n
       loadPath: () => {
         // check the domain
         const host = window.location.host
-        return (host === "production.ltd" ? "/static/app" : "") + "/mission-erde/klima/static/locales/{{lng}}/{{ns}}.json"
+        return (host === "production.ltd" ? "/static/app" : "") + "/mission-erde/klima/locales/{{lng}}/{{ns}}.json"
       },
     },
     lng: "de",
