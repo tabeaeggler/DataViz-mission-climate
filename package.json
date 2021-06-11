@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "deploy": "pm2 start ./serve.sh"
   },
-  "homepage": "http://iit.cs.technik.fhnw.ch/mission-erde/klima",
+  "homepage": "./mission-erde/klima",
   "eslintConfig": {
     "extends": "react-app"
   },
