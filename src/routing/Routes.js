@@ -16,11 +16,11 @@ const Routes = props => {
     <div>
       <Router history={history}>
         <Switch>
-          <Route path="/mission-erde/klima/" exact component={() => <Start setPageNr={props.setPageNr}/>} />
-          <Route path="/mission-erde/klima/Globe" exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
-          <Route path="/mission-erde/klima/Snowline" component={() => <Snowline setPageNr={props.setPageNr} />} />
-          <Route path="/mission-erde/klima/Cause" component={() => <Cause setPageNr={props.setPageNr} />} />
-          <Route path="/mission-erde/klima/End" component={() => <End setPageNr={props.setPageNr} />} />
+          <Route path={process.env.PUBLIC_URL} exact component={() => <Start setPageNr={props.setPageNr}/>} />
+          <Route path={process.env.PUBLIC_URL + "Globe"} exact component={() => <Climate1 setPageNr={props.setPageNr} />} />
+          <Route path={process.env.PUBLIC_URL + "Snowline"} component={() => <Snowline setPageNr={props.setPageNr} />} />
+          <Route path={process.env.PUBLIC_URL + "Cause"} component={() => <Cause setPageNr={props.setPageNr} />} />
+          <Route path={process.env.PUBLIC_URL + "End"} component={() => <End setPageNr={props.setPageNr} />} />
         </Switch>
       </Router>
     </div>
