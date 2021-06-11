@@ -7,7 +7,7 @@ import Cause from "../components/climate3/Climate3"
 import Start from "../components/Start"
 import End from "../components/End"
 
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { createBrowserHistory} from 'history';
 
 /**
  * Rendering of components with specific path
