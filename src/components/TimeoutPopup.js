@@ -35,7 +35,7 @@ const TimeoutPopup = props => {
    */
   function goToStart() {
     handleClose()
-    history.push("/")
+    history.push(process.env.PUBLIC_URL)
     props.setPageNr(0)
   }
 

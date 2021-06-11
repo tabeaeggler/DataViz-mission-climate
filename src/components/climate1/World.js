@@ -249,7 +249,7 @@ const World = props => {
           <button
             onClick={() => {
               props.setPageNr(2)
-              history.push("/Snowline")
+              history.push(process.env.PUBLIC_URL + "Snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
@@ -269,7 +269,7 @@ const World = props => {
           <button
             onClick={() => {
               props.setPageNr(0)
-              history.push("/")
+              history.push(process.env.PUBLIC_URL)
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>

@@ -127,7 +127,7 @@ const SnowLineOverview = props => {
           <button
             onClick={() => {
               props.setPageNr(1)
-              history.push("/Globe")
+              history.push(process.env.PUBLIC_URL + "Globe")
             }}>
             <img src={ButtonLeft} alt="continue"></img>
           </button>

@@ -171,7 +171,7 @@ const GlacierOverview = props => {
           <button
             onClick={() => {
               props.setPageNr(3)
-              history.push("/Cause")
+              history.push(process.env.PUBLIC_URL + "Cause")
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
