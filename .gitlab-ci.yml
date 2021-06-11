@@ -19,5 +19,5 @@ build:
       - prod
     script:
         - docker build -t app/mission-klima .
-        - docker stop mission-klima || true
-        - docker run -d -p 3000:3000 --rm --name mission-klima app/mission-klima
+        - docker stop klima || true
+        - docker run -d -p 3000:3000 --rm --name klima app/mission-klima
