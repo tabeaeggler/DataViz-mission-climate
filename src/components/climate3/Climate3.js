@@ -376,7 +376,7 @@ function Climate3(props) {
             <button
               onClick={() => {
                 props.setPageNr(4)
-                history.push(process.env.PUBLIC_URL + "/End")
+                history.push(process.env.PUBLIC_URL + "/end")
               }}>
               <img src={ButtonRight} alt="continue"></img>
             </button>
@@ -398,7 +398,7 @@ function Climate3(props) {
             <button
               onClick={() => {
                 props.setPageNr(2)
-                history.push(process.env.PUBLIC_URL + "/Snowline")
+                history.push(process.env.PUBLIC_URL + "/snowline")
               }}>
               <img src={ButtonLeft} alt="continue"></img>
             </button>

@@ -249,7 +249,7 @@ const World = props => {
           <button
             onClick={() => {
               props.setPageNr(2)
-              history.push(process.env.PUBLIC_URL + "/Snowline")
+              history.push(process.env.PUBLIC_URL + "/snowline")
             }}>
             <img src={ButtonRight} alt="continue"></img>
           </button>
