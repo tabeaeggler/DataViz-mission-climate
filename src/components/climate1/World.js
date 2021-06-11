@@ -59,7 +59,7 @@ const World = props => {
    */
   function loadData() {
     //fetch geojson data
-    fetch("../../../geojson_temp_translations.geojson")
+    fetch("geojson_temp_translations.geojson")
       .then(res => res.json())
       .then(setCountries)
 
