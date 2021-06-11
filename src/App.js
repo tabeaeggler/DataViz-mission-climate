@@ -45,16 +45,16 @@ function App() {
           <button className="nav-button start-button" id="0" onClick={() => handleClick(process.env.PUBLIC_URL, 0)}>
             {t("Navigation.1")}
           </button>
-          <button className="nav-button" id="1" onClick={() => handleClick(process.env.PUBLIC_URL + "/Globe", 1)}>
+          <button className="nav-button" id="1" onClick={() => handleClick(process.env.PUBLIC_URL + "Globe", 1)}>
             1
           </button>
-          <button className="nav-button" id="2" onClick={() => handleClick(process.env.PUBLIC_URL + "/Snowline", 2)}>
+          <button className="nav-button" id="2" onClick={() => handleClick(process.env.PUBLIC_URL + "Snowline", 2)}>
             2
           </button>
-          <button className="nav-button" id="3" onClick={() => handleClick(process.env.PUBLIC_URL + "/Cause", 3)}>
+          <button className="nav-button" id="3" onClick={() => handleClick(process.env.PUBLIC_URL + "Cause", 3)}>
             3
           </button>
-          <button className="nav-button end-button" id="4" onClick={() => handleClick(process.env.PUBLIC_URL + "/End", 4)}>
+          <button className="nav-button end-button" id="4" onClick={() => handleClick(process.env.PUBLIC_URL + "End", 4)}>
             {t("Navigation.2")}
           </button>
         </div>
