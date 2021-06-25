@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start-dev": "env-cmd -f .env.development react-scripts start",
-    "start": "env-cmd -f .env.production react-scripts start",
+    "start": "env-cmd -f .env.production DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
