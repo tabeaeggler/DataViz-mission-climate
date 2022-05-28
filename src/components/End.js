@@ -71,8 +71,8 @@ const End = props => {
           <p className="about-subtitle">
             {t("End_Modal.2")}
             <br></br>
-            <span className="about-text">Tabea Eggler - tabea.eggler@students.fhnw.ch</span> <br></br>
-            <span className="about-text">Hannah Kühne - hannahsarah.kuehne@students.fhnw.ch</span>
+            <span className="about-text">Tabea Eggler - tabea.eggler@hotmail.com</span> <br></br>
+            <span className="about-text">Hannah Kühne - hannahsarah.kuehne@fhnw.ch</span>
           </p>
           <p className="about-subtitle">
             {t("End_Modal.3")}

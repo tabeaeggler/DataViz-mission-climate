@@ -2,7 +2,7 @@
 Dieses Projekt wurde im Rahmen des Informatikstudiums von Hannah Kühne & Tabea Eggler im Auftrag vom Verkehrshaus Luzern im FS20 erstellt.
 
 ## Projekt einsehen
-http://86.119.42.83:5000/
+http://iit.cs.technik.fhnw.ch/mission-erde/klima/
 
 lokale Nutzung:
 `npm start`
