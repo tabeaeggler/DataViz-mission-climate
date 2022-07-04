@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import history from "../routing/history"
 import Screens from "../assets/img/screens.svg"
 import ClimateScreen from "../assets/img/climate_screen.svg"
@@ -20,14 +20,17 @@ const LandingPage = props => {
   const handleShow = () => setShow(true)
   const [popUpMsg, setPopUpMsg] = useState()
   const [popUpSubtitle, setPopUpSubtitle] = useState()
+  const [isMobile, setIsMobile] = useState()
+  const [clickedClimateScreen, setClickedClimateScreen] = useState()
 
   /**
    * handles screen click
    * @param {string} id
    */
   function handleClick(id) {
+    setClickedClimateScreen(id === "climate")
     if (isChrome() && isCorrectWindowSize()) {
-      if (id === "climate") {
+      if (clickedClimateScreen) {
         props.setIsLandingPage(false)
         history.push(process.env.PUBLIC_URL + "/start")
       } else {
@@ -41,11 +44,12 @@ const LandingPage = props => {
   function createPopUpMsg() {
     if (!isCorrectWindowSize()) {
       setPopUpMsg("Uups... Dein Screen ist zu klein - die Applikationen sind nur für grosse Screens optimiert (Minimum: 850px x 1700px)")
-      setPopUpSubtitle("")
+      setPopUpSubtitle("Schaue dir anstelle ein Video der Applikation an!")
     } else if (!isChrome()) {
       setPopUpMsg("Uups... Leider können die Applikationen nur mit Chrome geöffnet werden!")
       setPopUpSubtitle("Lade den Chrome Browser herunter oder schaue dir Videos der Applikationen an!")
     }
+
     handleShow()
   }
 
@@ -54,8 +58,6 @@ const LandingPage = props => {
   }
 
   function isCorrectWindowSize() {
-    console.log(window.outerHeight)
-    console.log(window.outerWidth)
     return window.outerHeight >= 1000 && window.outerWidth >= 1500
   }
 
@@ -63,12 +65,20 @@ const LandingPage = props => {
     document.getElementById("video-wrapper").scrollIntoView({ behavior: "smooth" })
   }
 
+  /**
+   * react lifecycle
+   */
+  useEffect(() => {
+    const isMobile = window.outerWidth <= 880
+    setIsMobile(isMobile)
+  }, [])
+
   return (
     <div className="landing-page">
       <div className="landing-page-wrapper">
         <h1 className="landing-page-title">Mission Wetter und Klima</h1>
         <p className="project-description">
-          Visuelle Aufbereitung von Wetterdaten fürs Verkehrshaus Luzern: «Mission Wetter» und «Mission Klima» sind zwei interaktive Web-Applikationen, welche
+          Visuelle Aufbereitung von Wetterdaten fürs Verkehrshaus Luzern: «Mission Wetter» und «Mission Klima» sind zwei interaktive Web-Applikationen , welche
           für zwei 49 Zoll Touch-Bildschirme, im Rahmen der Ausstellung «Mission Erde» des Verkehrshaus Luzern, konzipiert und implementiert wurden. Anhand von
           interaktiven und personalisierten Visualisierungen wird den Besuchenden die Bedeutung des Wetters, der Unterschied zwischen Wetter und Klima und die
           Problematik des Klimawandels nähergebracht. Ziel des Projekts ist es, die Komplexität der Themen zu reduzieren und sie für Jugendliche zugänglich zu
@@ -87,28 +97,41 @@ const LandingPage = props => {
             {popUpMsg}
             <p className="landing-page-modal-subtitle">{popUpSubtitle}</p>
             <br></br>
-            <button
-              onClick={() => {
-                handleClose()
-                scrollToVideos()
-              }}
-              className="landing-page-modal-button">
-              Zu den Videos
-              <img src={buttonDown}></img>
-            </button>
+            {isMobile ? (
+              <video
+                controls="controls"
+                width="100%"
+                height="auto"
+                name="weather application"
+                src={clickedClimateScreen ? climateVideo + "#t=0.5" : weatherVideo}></video>
+            ) : (
+              <button
+                onClick={() => {
+                  handleClose()
+                  scrollToVideos()
+                }}
+                className="landing-page-modal-button">
+                Zu den Videos
+                <img src={buttonDown}></img>
+              </button>
+            )}
           </Modal.Body>
         </Modal>
       </div>
-      <div id="video-wrapper">
-        <div className="video-container">
-          <h2 className="video-title">Wetter Applikation</h2>
-          <video controls="controls" width="100%" height="auto" name="weather application" src={weatherVideo}></video>
+      {!isMobile ? (
+        <div id="video-wrapper">
+          <div className="video-container">
+            <h2 className="video-title">Wetter Applikation</h2>
+            <video controls="controls" width="100%" height="auto" name="weather application" src={weatherVideo}></video>
+          </div>
+          <div className="climate-video video-container">
+            <h2 className="video-title">Klima Applikation</h2>
+            <video preload="metadata" controls="controls" width="100%" height="auto" name="climate application" src={climateVideo + "#t=0.5"}></video>
+          </div>
         </div>
-        <div className="climate-video video-container">
-          <h2 className="video-title">Klima Applikation</h2>
-          <video preload="metadata" controls="controls" width="100%" height="auto" name="climate application" src={climateVideo + "#t=0.5"}></video>
-        </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   )
 }

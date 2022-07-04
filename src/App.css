@@ -379,6 +379,7 @@ button.language-button,
   line-height: 20px;
   text-align: justify;
   margin: 0;
+  line-height: 24px;
 }
 
 .click-area {
@@ -479,6 +480,7 @@ video {
     justify-content: flex-start;
     margin-left: 40px;
     margin-right: 40px;
+    margin-bottom: 40px;
     height: auto;
   }
 
@@ -499,11 +501,13 @@ video {
   .modal-body{
     height: auto !important;
     width: auto !important;
+    text-align: center;
   }
 
   .modal-dialog {
     position: static !important;
     margin: auto !important;
+    max-width: 100%;
   }
 
   .landing-page-modal-body{
@@ -512,7 +516,8 @@ video {
   }
 
   .landing-page-modal-subtitle{
-    font-size: 12px;
+    margin-top: 10px;
+    font-size: 14px;
   }
 
   .landing-page-modal-button {
