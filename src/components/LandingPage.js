@@ -100,13 +100,13 @@ const LandingPage = props => {
         </Modal>
       </div>
       <div id="video-wrapper">
-        <div className="climate-video video-container">
-          <h2>Mission Klima</h2>
-          <video preload="metadata" controls="controls" width="100%" height="auto" name="climate application" src={climateVideo + "#t=0.5"}></video>
-        </div>
         <div className="video-container">
-          <h2>Mission Wetter</h2>
+          <h2 className="video-title">Wetter Applikation</h2>
           <video controls="controls" width="100%" height="auto" name="weather application" src={weatherVideo}></video>
+        </div>
+        <div className="climate-video video-container">
+          <h2 className="video-title">Klima Applikation</h2>
+          <video preload="metadata" controls="controls" width="100%" height="auto" name="climate application" src={climateVideo + "#t=0.5"}></video>
         </div>
       </div>
     </div>
