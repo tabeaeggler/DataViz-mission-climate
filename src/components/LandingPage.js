@@ -28,9 +28,10 @@ const LandingPage = props => {
    * @param {string} id
    */
   function handleClick(id) {
-    setClickedClimateScreen(id === "climate")
+    const clickedClimateApp = id === "climate"
+    setClickedClimateScreen(clickedClimateApp)
     if (isChrome() && isCorrectWindowSize()) {
-      if (clickedClimateScreen) {
+      if (clickedClimateApp) {
         props.setIsLandingPage(false)
         history.push(process.env.PUBLIC_URL + "/start")
       } else {
@@ -71,7 +72,7 @@ const LandingPage = props => {
   useEffect(() => {
     const isMobile = window.outerWidth <= 880
     setIsMobile(isMobile)
-  }, [])
+  })
 
   return (
     <div className="landing-page">
