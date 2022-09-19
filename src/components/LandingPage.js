@@ -44,11 +44,11 @@ const LandingPage = props => {
 
   function createPopUpMsg() {
     if (!isCorrectWindowSize()) {
-      setPopUpMsg("Uups... Dein Screen ist zu klein - die Applikationen sind nur für grosse Screens optimiert (Minimum: 850px x 1700px)")
-      setPopUpSubtitle("Schaue dir anstelle ein Video der Applikation an!")
+      setPopUpMsg("Oops... Your screen is too small - the applications are optimized for large screens only (minimum: 850px x 1700px)")
+      setPopUpSubtitle("Watch a video of the application instead!")
     } else if (!isChrome()) {
-      setPopUpMsg("Uups... Leider können die Applikationen nur mit Chrome geöffnet werden!")
-      setPopUpSubtitle("Lade den Chrome Browser herunter oder schaue dir Videos der Applikationen an!")
+      setPopUpMsg("Oops... Unfortunately, the applications can only be opened with Chrome!")
+      setPopUpSubtitle("Download the Chrome browser or watch videos of the applications!")
     }
 
     handleShow()
@@ -77,13 +77,13 @@ const LandingPage = props => {
   return (
     <div className="landing-page">
       <div className="landing-page-wrapper">
-        <h1 className="landing-page-title">Mission Wetter und Klima</h1>
+        <h1 className="landing-page-title">Mission Weather and Climate</h1>
         <p className="project-description">
-          Visuelle Aufbereitung von Wetterdaten fürs Verkehrshaus Luzern: «Mission Wetter» und «Mission Klima» sind zwei interaktive Web-Applikationen , welche
-          für zwei 49 Zoll Touch-Bildschirme, im Rahmen der Ausstellung «Mission Erde» des Verkehrshaus Luzern, konzipiert und implementiert wurden. Anhand von
-          interaktiven und personalisierten Visualisierungen wird den Besuchenden die Bedeutung des Wetters, der Unterschied zwischen Wetter und Klima und die
-          Problematik des Klimawandels nähergebracht. Ziel des Projekts ist es, die Komplexität der Themen zu reduzieren und sie für Jugendliche zugänglich zu
-          machen. Die Schwerpunkte der Arbeit liegen auf der Interaktivität und der Personalisierung der Visualisierungen sowie dem User Experience Design.
+          Visual processing of weather data for the Museum of Transport in Lucerne: "Mission Weather" and "Mission Climate" are two interactive web applications
+          that were designed and implemented for two 49-inch touch screens as part of the exhibition "Mission Earth" at the Museum of Transport in Lucerne.
+          Through interactive and personalized visualizations, visitors are introduced to the meaning of weather, the difference between weather and climate,
+          and the problems of climate change. The goal of the project is to reduce the complexity of the topics and make them accessible to young people. The
+          focus of the work is on interactivity and personalization of the visualizations as well as user experience design.
         </p>
         <div id="landing-page-screens">
           <div className="click-area click-area-left screen-setup" onClick={() => handleClick("weather")}></div>
@@ -112,7 +112,7 @@ const LandingPage = props => {
                   scrollToVideos()
                 }}
                 className="landing-page-modal-button">
-                Zu den Videos
+                Go to videos
                 <img src={buttonDown}></img>
               </button>
             )}
@@ -122,11 +122,11 @@ const LandingPage = props => {
       {!isMobile ? (
         <div id="video-wrapper">
           <div className="video-container">
-            <h2 className="video-title">Wetter Applikation</h2>
+            <h2 className="video-title">Weather application</h2>
             <video controls="controls" width="100%" height="auto" name="weather application" src={weatherVideo}></video>
           </div>
           <div className="climate-video video-container">
-            <h2 className="video-title">Klima Applikation</h2>
+            <h2 className="video-title">Climate application</h2>
             <video preload="metadata" controls="controls" width="100%" height="auto" name="climate application" src={climateVideo + "#t=0.5"}></video>
           </div>
         </div>
