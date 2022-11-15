@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  web:
+    container_name: "mission-klima-web-frontend"
+    image: mission-klima-web-frontend:dev
+    build: .
+    ports:
+     - "3000:3000"  
