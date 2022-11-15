@@ -16,7 +16,7 @@ before_script:
  
 build:
     only: 
-    - dev
+    - master
     stage: build
     tags:
       - iit
